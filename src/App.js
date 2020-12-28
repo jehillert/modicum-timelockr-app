@@ -16,7 +16,7 @@ import {
     ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import NewModuleButton from './src/NewModuleButton';
+import NewModuleButton from './NewModuleButton';
 
 const App: () => React$Node = () => {
     return (
