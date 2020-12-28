@@ -5,6 +5,7 @@
   "scripts": {
     "start": "react-native start",
     "clean": "./clean.sh",
+    "clean-cache": "npm start -- --reset-cache",
     "clean-cache:rnd": "open 'rndebugger://set-debugger-loc?host=localhost&port=8081' && npm start -- --reset-cache",
     "android": "react-native run-android"
   },
