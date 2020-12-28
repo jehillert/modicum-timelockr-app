@@ -7,7 +7,6 @@ import {
     Text,
     StatusBar,
 } from 'react-native';
-
 import {
     Header,
     LearnMoreLinks,
@@ -15,7 +14,6 @@ import {
     DebugInstructions,
     ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-
 import NewModuleButton from './NewModuleButton';
 
 const App: () => React$Node = () => {
