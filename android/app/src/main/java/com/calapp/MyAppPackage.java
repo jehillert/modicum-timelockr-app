@@ -1,5 +1,17 @@
+/*
+ *  This file imports the native module you created, CalendarModule. It then
+ * instantiates CalendarModule within the createNativeModules() function and
+ * returns it as a list of NativeModules to register. If you add more native
+ * modules down the line, you can also instantiate them and add them to the
+ * list returned here.
+ */
+
 package com.calapp;
+
+// import custom modules
 import com.calapp.CalendarModule;
+import com.calapp.noke.RNNokeModule;
+
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -21,7 +33,9 @@ public class MyAppPackage implements ReactPackage {
            ReactApplicationContext reactContext) {
        List<NativeModule> modules = new ArrayList<>();
 
+       // add custom modules
        modules.add(new CalendarModule(reactContext));
+       modules.add(new RNNokeModule(reactContext));
 
        return modules;
    }
