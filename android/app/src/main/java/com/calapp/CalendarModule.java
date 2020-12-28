@@ -23,7 +23,7 @@ public class CalendarModule extends ReactContextBaseJavaModule {
     // All native module methods invoked from JS must be annotated with @ReactMethod.
     @ReactMethod
     public void createCalendarEvent(String name, String location) {
-        Log.d("CalendarModule", "Create event called with name: " + name
+        Log.d("••• CalendarModule •••", "Create event called with name: " + name
        + " and location: " + location);
     }
 }
