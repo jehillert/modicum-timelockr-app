@@ -17,8 +17,9 @@ import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
-
 import com.facebook.react.uimanager.IllegalViewOperationException;
+import android.util.Log;
+
 import com.noke.nokemobilelibrary.NokeDefines;
 import com.noke.nokemobilelibrary.NokeDevice;
 import com.noke.nokemobilelibrary.NokeDeviceManagerService;
@@ -42,6 +43,7 @@ public class RNNokeModule extends ReactContextBaseJavaModule {
     // Pass in the context to the constructor and save it so you can emit events
     // https://facebook.github.io/react-native/docs/native-modules-android.html#the-toast-module
     super(context);
+    Log.d("RNNokeModule", "Context passed to RNNokeModule(ReactApplicationContext context). . .");
 
     reactContext = context;
   }
@@ -61,6 +63,7 @@ public class RNNokeModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   private void setApiKey(String key, Promise promise) {
+    Log.d("RNNokeModule", "Calling setApiKey(String key, Promise promise). . .");
     try {
       if(mNokeService == null) {
         promise.reject("message", "mNokeService is null");
@@ -78,6 +81,7 @@ public class RNNokeModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   private void setBluetoothDelayDefault(int delay, Promise promise) {
+    Log.d("RNNokeModule", "Calling setBluetoothDelayDefault(int delay, Promise promise). . .");
     try {
       if(mNokeService == null) {
         promise.reject("message", "mNokeService is null");
@@ -95,6 +99,7 @@ public class RNNokeModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   private void setBluetoothDelayBackgroundDefault(int delay, Promise promise) {
+    Log.d("RNNokeModule", "Calling setBluetoothDelayBackgroundDefault(int delay, Promise promise). . .");
     try {
       if(mNokeService == null) {
         promise.reject("message", "mNokeService is null");
@@ -112,6 +117,7 @@ public class RNNokeModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   private void setBluetoothScanDuration(int duration, Promise promise) {
+    Log.d("RNNokeModule", "Calling setBluetoothScanDuration(int duration, Promise promise). . .");
     try {
       if(mNokeService == null) {
         promise.reject("message", "mNokeService is null");
@@ -129,6 +135,7 @@ public class RNNokeModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   private void initiateNokeService(int mode, Promise promise) {
+    Log.d("RNNokeModule", "Calling initiateNokeService(int mode, Promise promise). . .");
     try {
       Intent nokeServiceIntent = new Intent(reactContext, NokeDeviceManagerService.class);
       nokeLibraryMode = mode;
@@ -144,6 +151,7 @@ public class RNNokeModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void isBluetoothEnabled(Promise promise) {
+    Log.d("RNNokeModule", "Calling sBluetoothEnabled(Promise promise). . .");
     try {
       if (mNokeService == null) {
         promise.reject("message", "mNokeService is null");
@@ -161,6 +169,7 @@ public class RNNokeModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void startScan(Promise promise) {
+    Log.d("RNNokeModule", "Calling tartScan(Promise promise). . .");
     try {
       mNokeService.startScanningForNokeDevices();
       final WritableMap event = Arguments.createMap();
@@ -174,6 +183,7 @@ public class RNNokeModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void stopScan(Promise promise) {
+    Log.d("RNNokeModule", "Calling topScan(Promise promise). . .");
     try {
       mNokeService.stopScanning();
       final WritableMap event = Arguments.createMap();
@@ -187,6 +197,7 @@ public class RNNokeModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void addNokeDevice(ReadableMap data, Promise promise) {
+    Log.d("RNNokeModule", "Calling ddNokeDevice(ReadableMap data, Promise promise). . .");
     try {
       /**
        * name: "Lock Name"
@@ -219,6 +230,7 @@ public class RNNokeModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void addNokeOfflineValues(ReadableMap data, Promise promise) {
+    Log.d("RNNokeModule", "Calling ddNokeOfflineValues(ReadableMap data, Promise promise). . .");
     try {
       /**
        * name: "Lock Name"
@@ -255,6 +267,7 @@ public class RNNokeModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void sendCommands(String mac, String command, Promise promise) {
+    Log.d("RNNokeModule", "Calling endCommands(String mac, String command, Promise promise). . .");
     try {
       NokeDevice daNoke = mNokeService.nokeDevices.get(mac);
         if(daNoke == null) {
@@ -270,6 +283,7 @@ public class RNNokeModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void connect(String mac, Promise promise) {
+    Log.d("RNNokeModule", "Calling onnect(String mac, Promise promise). . .");
     if(mNokeService == null) {
       promise.reject("message", "mNokeService is null");
       return;
@@ -290,6 +304,7 @@ public class RNNokeModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void disconnect(String mac, Promise promise) {
+    Log.d("RNNokeModule", "Calling isconnect(String mac, Promise promise). . .");
     if(mNokeService == null) {
       promise.reject("message", "mNokeService is null");
       return;
@@ -310,6 +325,7 @@ public class RNNokeModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void removeAllNokes(Promise promise) {
+    Log.d("RNNokeModule", "Calling emoveAllNokes(Promise promise). . .");
     try {
       mNokeService.removeAllNoke();
       final WritableMap event = Arguments.createMap();
@@ -323,6 +339,7 @@ public class RNNokeModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void removeNokeDevice(String mac, Promise promise) {
+    Log.d("RNNokeModule", "Calling emoveNokeDevice(String mac, Promise promise). . .");
     try {
       mNokeService.removeNokeDevice(mac);
 
@@ -337,6 +354,7 @@ public class RNNokeModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void offlineUnlock(String mac, Promise promise) {
+    Log.d("RNNokeModule", "Calling fflineUnlock(String mac, Promise promise). . .");
     try {
       NokeDevice daNoke = mNokeService.nokeDevices.get(mac);
       if(daNoke == null) {
@@ -360,6 +378,7 @@ public class RNNokeModule extends ReactContextBaseJavaModule {
 
   @Override
   public String getName() {
+    Log.d("RNNokeModule", "Calling getName(). . .");
     // Tell React the name of the module
     // https://facebook.github.io/react-native/docs/native-modules-android.html#the-toast-module
     return REACT_CLASS;
@@ -412,6 +431,7 @@ public class RNNokeModule extends ReactContextBaseJavaModule {
   private NokeServiceListener mNokeServiceListener = new NokeServiceListener() {
     @Override
     public void onNokeDiscovered(NokeDevice noke) {
+      Log.d("RNNokeModule", "Calling onNokeDiscovered(NokeDevice noke). . .");
       final WritableMap event = Arguments.createMap();
       event.putString("name", noke.getName());
       event.putString("mac", noke.getMac());
@@ -424,6 +444,7 @@ public class RNNokeModule extends ReactContextBaseJavaModule {
 
     @Override
     public void onNokeConnecting(NokeDevice noke) {
+      Log.d("RNNokeModule", "Calling onNokeConnecting(NokeDevice noke). . .");
       final WritableMap event = Arguments.createMap();
       event.putString("name", noke.getName());
       event.putString("mac", noke.getMac());
@@ -433,6 +454,7 @@ public class RNNokeModule extends ReactContextBaseJavaModule {
 
     @Override
     public void onNokeConnected(NokeDevice noke) {
+      Log.d("RNNokeModule", "Calling onNokeConnected(NokeDevice noke). . .");
       final WritableMap event = Arguments.createMap();
       event.putString("name", noke.getName());
       event.putString("mac", noke.getMac());
@@ -444,6 +466,7 @@ public class RNNokeModule extends ReactContextBaseJavaModule {
 
     @Override
     public void onNokeSyncing(NokeDevice noke) {
+      Log.d("RNNokeModule", "Calling onNokeSyncing(NokeDevice noke). . .");
       final WritableMap event = Arguments.createMap();
       event.putString("name", noke.getName());
       event.putString("mac", noke.getMac());
@@ -453,6 +476,7 @@ public class RNNokeModule extends ReactContextBaseJavaModule {
 
     @Override
     public void onNokeUnlocked(NokeDevice noke) {
+      Log.d("RNNokeModule", "Calling onNokeUnlocked(NokeDevice noke). . .");
       final WritableMap event = Arguments.createMap();
       event.putString("name", noke.getName());
       event.putString("mac", noke.getMac());
@@ -462,6 +486,7 @@ public class RNNokeModule extends ReactContextBaseJavaModule {
 
     @Override
     public void onNokeDisconnected(NokeDevice noke) {
+      Log.d("RNNokeModule", "Calling onNokeDisconnected(NokeDevice noke). . .");
       final WritableMap event = Arguments.createMap();
       event.putString("name", noke.getName());
       event.putString("mac", noke.getMac());
@@ -472,6 +497,7 @@ public class RNNokeModule extends ReactContextBaseJavaModule {
 
     @Override
     public void onNokeShutdown(NokeDevice noke, Boolean isLocked, Boolean didTimeout) {
+      Log.d("RNNokeModule", "Calling onNokeShutdown(NokeDevice noke, Boolean isLocked, Boolean didTimeout). . .");
       final WritableMap event = Arguments.createMap();
       event.putString("name", noke.getName());
       event.putString("mac", noke.getMac());
@@ -482,11 +508,13 @@ public class RNNokeModule extends ReactContextBaseJavaModule {
 
     @Override
     public void onDataUploaded(int i, String s) {
+      Log.d("RNNokeModule", "Calling onDataUploaded(int i, String s). . .");
 
     }
 
     @Override
     public void onBluetoothStatusChanged(int bluetoothStatus) {
+      Log.d("RNNokeModule", "Calling onBluetoothStatusChanged(int bluetoothStatus). . .");
       final WritableMap event = Arguments.createMap();
       event.putInt("code", bluetoothStatus);
       emitDeviceEvent("onBluetoothStatusChanged", event);
