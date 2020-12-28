@@ -12,7 +12,8 @@
   "dependencies": {
     "react": "16.13.1",
     "react-native": "0.63.4",
-    "rxjs": "^6.6.3"
+    "rxjs": "^6.6.3",
+    "rxjs-compat": "^6.6.3"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
