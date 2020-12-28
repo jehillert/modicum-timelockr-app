@@ -1,5 +1,5 @@
 import { NativeEventEmitter, NativeModules } from 'react-native';
-import { Observable } from 'rxjs/Observable';
+import Observable from 'rxjs/Observable';
 import nokeEvents from './constants';
 
 const { RNNoke } = NativeModules;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { PermissionsAndroid, Platform, View, Button } from 'react-native';
 import RNNoke from './react-native-noke';
-import { Observable } from 'rxjs/Observable';
+import Observable from 'rxjs/Observable';
 // console.log('%c⧭', 'color: #aa00ff', RNNoke);
 
 RNNoke.initiateNokeService('NOKE_LIBRARY_SANDBOX');
@@ -103,9 +103,7 @@ export class NokeServiceTestCode extends Component {
         RNNoke.offlineUnlock(data).then(console.log).catch(console.error);
     };
 
-    onAddNoke = (data: any) => {
-        RNNoke.addNokeDeviceOnce(data).then(console.log).catch(console.error);
-    };
+    // onAddNoke = (data: any) => { RNNoke.addNokeDeviceOnce(data).then(console.log).catch(console.error); };
 
     onSendCommands = (data: any) => {
         RNNoke.sendCommands(data).then(console.log).catch(console.error);
@@ -115,9 +113,7 @@ export class NokeServiceTestCode extends Component {
         RNNoke.removeAllNokes().then(console.log).catch(console.error);
     };
 
-    getDeviceInfo = () => {
-        RNNoke.getDeviceInfo().then(console.log).catch(console.error);
-    };
+    // getDeviceInfo = () => { RNNoke.getDeviceInfo().then(console.log).catch(console.error); };
 
     onStartScan = () => {
         RNNoke.startScan().then(console.log).catch(console.error);
