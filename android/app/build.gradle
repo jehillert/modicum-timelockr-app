@@ -120,6 +120,15 @@ def jscFlavor = 'org.webkit:android-jsc:+'
  */
 def enableHermes = project.ext.react.get("enableHermes", false);
 
+/**
+ * Load apikey.properties (.e.g, env variables in JS)
+ */
+def apikeyPropertiesFile = rootProject.file("apikey.properties")
+
+def apikeyProperties = new Properties()
+
+apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
+
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
@@ -134,6 +143,7 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+        manifestPlaceholders.mobileKey = apikeyProperties['MOBILE_KEY']
     }
     splits {
         abi {
@@ -207,8 +217,10 @@ dependencies {
     } else {
         implementation jscFlavor
     }
+    // These are for custom modules, and documentation says not to put them here...
     implementation 'com.google.code.gson:gson:2.8.2'
-    // implementation project(':react-native-noke')
+    // implementation 'com.noke.nokemobilelibrary:nokemobilelibrary:0.6.6'
+    // implementation project(':react-native-noke') // cliff
 }
 
 // Run this once to be able to run the application with BUCK
