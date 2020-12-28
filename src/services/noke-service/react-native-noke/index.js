@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { NativeModules } from 'react-native';
 import {
     fromNokeEvents,
@@ -11,22 +10,22 @@ import {
 const { RNNoke } = NativeModules;
 
 const {
-  initiateNokeService,
-  setApiKey,
-  offlineUnlock,
-  sendCommands,
-  addNokeDevice,
-  addNokeOfflineValues,
-  removeAllNokes,
-  removeNokeDevice,
-  startScan,
-  stopScan,
-  disconnect,
-  connect,
-  isBluetoothEnabled,
-  setBluetoothDelayDefault,
-  setBluetoothDelayBackgroundDefault,
-  setBluetoothScanDuration,
+    initiateNokeService,
+    setApiKey,
+    offlineUnlock,
+    sendCommands,
+    addNokeDevice,
+    addNokeOfflineValues,
+    removeAllNokes,
+    removeNokeDevice,
+    startScan,
+    stopScan,
+    disconnect,
+    connect,
+    isBluetoothEnabled,
+    setBluetoothDelayDefault,
+    setBluetoothDelayBackgroundDefault,
+    setBluetoothScanDuration,
 } = RNNoke;
 
 export default {
@@ -48,7 +47,7 @@ export default {
     fromNokeEvents,
     getEventListeners,
     isBluetoothEnabled,
-    setBluetoothDelayDefault,           // Android only
+    setBluetoothDelayDefault, // Android only
     setBluetoothDelayBackgroundDefault, // Android only
-    setBluetoothScanDuration,           // Android only
+    setBluetoothScanDuration, // Android only
 };
