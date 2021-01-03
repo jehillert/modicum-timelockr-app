@@ -217,10 +217,9 @@ dependencies {
     } else {
         implementation jscFlavor
     }
-    // These are for custom modules, and documentation says not to put them here...
     implementation 'com.google.code.gson:gson:2.8.2'
-    // implementation 'com.noke.nokemobilelibrary:nokemobilelibrary:0.6.6'
-    // implementation project(':react-native-noke') // cliff
+    implementation 'com.noke.nokemobilelibrary:nokemobilelibrary:0.6.6'
+    // implementation project(':react-native-noke') // cliff (this is for when you have the package locally)
 }
 
 // Run this once to be able to run the application with BUCK
