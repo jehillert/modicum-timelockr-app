@@ -8,9 +8,8 @@
 
 package com.calapp;
 
-// import custom modules
 import com.calapp.CalendarModule;
-import com.calapp.noke.RNNokeModule;
+// import com.calapp.noke.RNNokeModule;
 
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.NativeModule;
@@ -35,7 +34,7 @@ public class MyAppPackage implements ReactPackage {
 
        // add custom modules
        modules.add(new CalendarModule(reactContext));
-       modules.add(new RNNokeModule(reactContext));
+    //    modules.add(new RNNokeModule(reactContext));
 
        return modules;
    }
