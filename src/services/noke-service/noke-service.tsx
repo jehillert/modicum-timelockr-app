@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { PermissionsAndroid, Platform, View, Button } from 'react-native';
 import RNNoke from './react-native-noke';
-import Observable from 'rxjs/Observable';
-// console.log('%c⧭', 'color: #aa00ff', RNNoke);
+import { Observable } from 'rxjs/Observable';
 
 RNNoke.initiateNokeService('NOKE_LIBRARY_SANDBOX');
 
@@ -59,15 +58,15 @@ interface RNNoke {
     removeAllNokes: () => Promise<null>;
     removeNokeDevice: () => Promise<null>;
     offlineUnlock: () => Promise<NokeResponse>;
-    getDeviceInfo: () => Promise<NokeInfoResponse>;
+    // getDeviceInfo: () => Promise<NokeInfoResponse>;
     on: (
         eventName: EventName,
         callback: (response: NokeResponse) => RNNoke,
     ) => void;
     fromNokeEvents: () => Observable<{ name: EventName; data: NokeResponse }>;
 }
-
-export class NokeServiceTestCode extends Component {
+console.log('🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦');
+export class NokeServiceButtons extends Component {
     componentDidMount() {
         this.requestLocationPermission(); // only Android
 
@@ -81,10 +80,12 @@ export class NokeServiceTestCode extends Component {
             .on('onNokeDisconnected', (data: any) => console.log('onNokeDisconnected', data))
             .on('onBluetoothStatusChanged', (data: any) => console.log('onBluetoothStatusChanged', data))
             .on('onError', (data: any) => console.log('onError', data));
-    }
+            console.log('🟨  🟨  🟨  🟨  🟨  🟨  🟨  🟨  🟨  🟨  🟨  🟨  🟨  🟨  🟨  🟨  🟨  🟨 ');
+        }
 
     requestLocationPermission = () => {
         if (Platform.OS === 'ios') return;
+        console.log('⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️');
 
         return PermissionsAndroid.request(
             PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
@@ -100,42 +101,43 @@ export class NokeServiceTestCode extends Component {
     };
 
     onUnlock = (data: any) => {
+        console.log('🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨');
         RNNoke.offlineUnlock(data).then(console.log).catch(console.error);
     };
 
     // onAddNoke = (data: any) => { RNNoke.addNokeDeviceOnce(data).then(console.log).catch(console.error); };
 
     onSendCommands = (data: any) => {
+        console.log('🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫');
         RNNoke.sendCommands(data).then(console.log).catch(console.error);
     };
 
     onRemoveAllNokes = () => {
+        console.log('🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥');
         RNNoke.removeAllNokes().then(console.log).catch(console.error);
     };
 
     // getDeviceInfo = () => { RNNoke.getDeviceInfo().then(console.log).catch(console.error); };
-
     onStartScan = () => {
+        console.log('🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪');
         RNNoke.startScan().then(console.log).catch(console.error);
     };
 
     onStopScan = () => {
+        console.log('🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪');
         RNNoke.stopScan().then(console.log).catch(console.error);
     };
 
     render() {
         return (
             <View>
-                <Button
-                    onPress={this.onSendCommands}
-                    title="Unlock noke by commands"
-                />
-                <Button onPress={this.onUnlock} title="Unlock noke offline" />
-                <Button onPress={this.onAddNoke} title="Add noke" />
+                {/* <Button onPress={this.onSendCommands} title="Unlock noke by commands" /> */}
+                {/* <Button onPress={this.onUnlock} title="Unlock noke offline" /> */}
+                {/* <Button onPress={this.onAddNoke} title="Add noke" /> */}
                 <Button onPress={this.onRemoveAllNokes} title="Remove noke" />
             </View>
         );
     }
 }
 
-export default NokeServiceTestCode;
+export default NokeServiceButtons;

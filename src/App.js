@@ -15,6 +15,7 @@ import {
     ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 import NewModuleButton from './NewModuleButton';
+// import NokeServiceButtons from './services/noke-service/noke-service';
 
 const App: () => React$Node = () => {
     return (
@@ -50,6 +51,9 @@ const App: () => React$Node = () => {
                             <Text style={styles.sectionDescription}>
                                 <ReloadInstructions />
                             </Text>
+                            {/* <View>
+                                <NokeServiceButtons />
+                            </View> */}
                         </View>
                         <View style={styles.sectionContainer}>
                             <Text style={styles.sectionTitle}>Debug</Text>

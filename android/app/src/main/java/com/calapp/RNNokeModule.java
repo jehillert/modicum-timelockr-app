@@ -61,23 +61,23 @@ public class RNNokeModule extends ReactContextBaseJavaModule {
     return event;
   }
 
-  @ReactMethod
-  private void setApiKey(String key, Promise promise) {
-    Log.d("•🟧🟧🟧", "Calling setApiKey(String key, Promise promise). . .");
-    try {
-      if(mNokeService == null) {
-        promise.reject("message", "mNokeService is null");
-        return;
-      }
-      mNokeService.setApiKey(key);
-      final WritableMap event = Arguments.createMap();
-      event.putBoolean("status", true);
+  // @ReactMethod
+  // private void setApiKey(String key, Promise promise) {
+  //   Log.d("•🟧🟧🟧", "Calling setApiKey(String key, Promise promise). . .");
+  //   try {
+  //     if(mNokeService == null) {
+  //       promise.reject("message", "mNokeService is null");
+  //       return;
+  //     }
+  //     mNokeService.setApiKey(key);
+  //     final WritableMap event = Arguments.createMap();
+  //     event.putBoolean("status", true);
 
-      promise.resolve(event);
-    } catch (IllegalViewOperationException e) {
-      promise.reject("message", e.getMessage());
-    }
-  }
+  //     promise.resolve(event);
+  //   } catch (IllegalViewOperationException e) {
+  //     promise.reject("message", e.getMessage());
+  //   }
+  // }
 
   @ReactMethod
   private void setBluetoothDelayDefault(int delay, Promise promise) {
@@ -149,23 +149,23 @@ public class RNNokeModule extends ReactContextBaseJavaModule {
     }
   }
 
-  @ReactMethod
-  public void isBluetoothEnabled(Promise promise) {
-    Log.d("•🟧🟧🟧", "Calling sBluetoothEnabled(Promise promise). . .");
-    try {
-      if (mNokeService == null) {
-        promise.reject("message", "mNokeService is null");
-        return;
-      }
-      final Boolean enabled = mNokeService.isBluetoothEnabled();
-      final WritableMap event = Arguments.createMap();
-      event.putBoolean("enabled", enabled);
+  // @ReactMethod
+  // public void isBluetoothEnabled(Promise promise) {
+  //   Log.d("•🟧🟧🟧", "Calling sBluetoothEnabled(Promise promise). . .");
+  //   try {
+  //     if (mNokeService == null) {
+  //       promise.reject("message", "mNokeService is null");
+  //       return;
+  //     }
+  //     final Boolean enabled = mNokeService.isBluetoothEnabled();
+  //     final WritableMap event = Arguments.createMap();
+  //     event.putBoolean("enabled", enabled);
 
-      promise.resolve(event);
-    } catch (IllegalViewOperationException e) {
-      promise.reject("message", e.getMessage());
-    }
-  }
+  //     promise.resolve(event);
+  //   } catch (IllegalViewOperationException e) {
+  //     promise.reject("message", e.getMessage());
+  //   }
+  // }
 
   @ReactMethod
   public void startScan(Promise promise) {
@@ -384,6 +384,8 @@ public class RNNokeModule extends ReactContextBaseJavaModule {
 
   @Override
   public Map<String, Object> getConstants() {
+    Log.d("•🟥🟥🟥🟥🟥🟥🟥🟥🟥", "getConstants");
+
     // Export any constants to be used in your native module
     // https://facebook.github.io/react-native/docs/native-modules-android.html#the-toast-module
     final Map<String, Object> constants = new HashMap<>();
@@ -395,6 +397,8 @@ public class RNNokeModule extends ReactContextBaseJavaModule {
   private ServiceConnection mServiceConnection = new ServiceConnection() {
 
     public void onServiceConnected(ComponentName className, IBinder rawBinder) {
+      Log.d("•🟧     🟧      🟧     ", "private ServiceConnection mServiceConnection = new ServiceConnection()");
+
       Log.w(TAG, "ON SERVICE CONNECTED");
 
       //Store reference to service
@@ -419,6 +423,7 @@ public class RNNokeModule extends ReactContextBaseJavaModule {
     }
 
     public void onServiceDisconnected(ComponentName classname) {
+      Log.d("•🟧     🟧      🟧     ", "Calling onBluetoothStatusChanged(int bluetoothStatus). . .");
       mNokeService = null;
       final WritableMap event = Arguments.createMap();
       event.putBoolean("status", true);

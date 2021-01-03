@@ -1,6 +1,6 @@
 import React from 'react';
 import { NativeModules, Button } from 'react-native';
-const { CalendarModule, RNNoke } = NativeModules;
+const { CalendarModule } = NativeModules;
 
 const NewModuleButton = () => {
     const onPress = () => {
