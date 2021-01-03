@@ -15,7 +15,10 @@ import {
     ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 import NewModuleButton from './NewModuleButton';
+import initializeBridgeSpy from './bridgeSpyConfig';
 // import NokeServiceButtons from './services/noke-service/noke-service';
+
+initializeBridgeSpy();
 
 const App: () => React$Node = () => {
     return (
