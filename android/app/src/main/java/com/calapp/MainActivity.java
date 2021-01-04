@@ -1,5 +1,4 @@
 package com.calapp;
-// import com.lynkxyz.noke.RNNokePackage;
 import com.facebook.react.ReactActivity;
 public class MainActivity extends ReactActivity {
 

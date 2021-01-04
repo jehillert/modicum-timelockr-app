@@ -6,7 +6,8 @@
     "start": "react-native start",
     "clean": "./clean.sh",
     "clean-cache": "npm start -- --reset-cache",
-    "android": "react-native run-android"
+    "android": "react-native run-android",
+    "clean-cache:rnd": "open 'rndebugger://set-debugger-loc?host=localhost&port=8081' && npm start -- --reset-cache"
   },
   "dependencies": {
     "react": "16.13.1",

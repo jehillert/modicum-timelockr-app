@@ -16,7 +16,7 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 import NewModuleButton from './NewModuleButton';
 import initializeBridgeSpy from './bridgeSpyConfig';
-// import NokeServiceButtons from './services/noke-service/noke-service';
+import NokeServiceButtons from './services/noke-service/noke-service';
 
 initializeBridgeSpy();
 
@@ -54,9 +54,9 @@ const App: () => React$Node = () => {
                             <Text style={styles.sectionDescription}>
                                 <ReloadInstructions />
                             </Text>
-                            {/* <View>
+                            <View>
                                 <NokeServiceButtons />
-                            </View> */}
+                            </View>
                         </View>
                         <View style={styles.sectionContainer}>
                             <Text style={styles.sectionTitle}>Debug</Text>

@@ -1,6 +1,13 @@
 import MessageQueue from 'react-native/Libraries/BatchedBridge/MessageQueue.js';
 
-const methodsToWatch = ['createCalendarEvent'];
+const methodsToWatch = ['createCalendarEvent', 'getConstants'];
+
+// {
+//     type: int (0=N->JS | 1=JS->N)
+//     method: string,
+//     module: string,
+//     args: object,
+// }
 
 export default function initializeBridgeSpy() {
     const spyFunction = msg => {
