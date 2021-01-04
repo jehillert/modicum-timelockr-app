@@ -24,9 +24,9 @@ import android.os.Looper;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+// import android.widget.EditText;
+// import android.widget.LinearLayout;
+// import android.widget.TextView;
 
 
 import com.noke.nokemobilelibrary.NokeDefines;
@@ -48,8 +48,8 @@ import com.facebook.react.bridge.ReactMethod;
 
 public class NokeMobileLibAndroid extends ReactContextBaseJavaModule {
     public static final String TAG = MainActivity.class.getSimpleName();
-    TextView lockNameText, statusText;
-    LinearLayout lockLayout;
+    // TextView lockNameText, statusText;
+    // LinearLayout lockLayout;
     private NokeDeviceManagerService mNokeService = null;
     // private static final int PERMISSION_REQUEST_COARSE_LOCATION = 1;
     private NokeDevice currentNoke;
@@ -132,7 +132,9 @@ public class NokeMobileLibAndroid extends ReactContextBaseJavaModule {
 
             // Start bluetooth scanning
             mNokeService.startScanningForNokeDevices();
-            setStatusText("Scanning for Noke Devices");
+            // setStatusText("Scanning for Noke Devices");
+            Log.d("mServiceConnection", "Scanning for Noke Devices");
+
 
             if (!mNokeService.initialize()) {
                 Log.e(TAG, "Unable to initialize Bluetooth");
@@ -168,20 +170,24 @@ public class NokeMobileLibAndroid extends ReactContextBaseJavaModule {
             }
 
             currentNoke = noke;
-            setStatusText("NOKE DISCOVERED: " + noke.getName() + " (" + lockState + ")");
+            // setStatusText("NOKE DISCOVERED: " + noke.getName() + " (" + lockState + ")");
+            Log.d("NokeServiceListener", "NOKE DISCOVERED: " + noke.getName() + " (" + lockState + ")");
             mNokeService.connectToNoke(currentNoke);
 
         }
 
         @Override
         public void onNokeConnecting(NokeDevice noke) {
-            setStatusText("NOKE CONNECTING: " + noke.getName());
+            // setStatusText("NOKE CONNECTING: " + noke.getName());
+            Log.d("onNokeConnecting", "NOKE CONNECTING: " + noke.getName());
         }
 
         @Override
         public void onNokeConnected(NokeDevice noke) {
-            setStatusText("NOKE CONNECTED: " + noke.getName());
-            setLockNameText(noke.getName());
+            // setStatusText("NOKE CONNECTED: " + noke.getName());
+            Log.d("onNokeConnected", "NOKE CONNECTED: " + noke.getName());
+            // setLockNameText(noke.getName());
+            Log.d("onNokeConnected", "setLockNameText(): " + noke.getName());
             // setLockLayoutColor(getResources().getColor(R.color.nokeBlue));
             currentNoke = noke;
             mNokeService.stopScanning();
@@ -189,25 +195,31 @@ public class NokeMobileLibAndroid extends ReactContextBaseJavaModule {
 
         @Override
         public void onNokeSyncing(NokeDevice noke) {
-            setStatusText("NOKE SYNCING: " + noke.getName());
+            // setStatusText("NOKE SYNCING: " + noke.getName());
+            Log.d("onNokeSyncing", "NOKE SYNCING: " + noke.getName());
+
         }
 
         @Override
         public void onNokeUnlocked(NokeDevice noke) {
-            setStatusText("NOKE UNLOCKED: " + noke.getName());
+            // setStatusText("NOKE UNLOCKED: " + noke.getName());
+            Log.d("onNokeUnlocked", "NOKE UNLOCKED: " + noke.getName());
             // setLockLayoutColor(getResources().getColor(R.color.unlockGreen));
         }
 
         @Override
         public void onNokeShutdown(NokeDevice noke, Boolean isLocked, Boolean didTimeout) {
-            setStatusText("NOKE SHUTDOWN: " + noke.getName() + " LOCKED: " + isLocked + " TIMEOUT: " + didTimeout);
+            // setStatusText("NOKE SHUTDOWN: " + noke.getName() + " LOCKED: " + isLocked + " TIMEOUT: " + didTimeout);
+            Log.d("onNokeShutdown", "NOKE SHUTDOWN: " + noke.getName() + " LOCKED: " + isLocked + " TIMEOUT: " + didTimeout);
         }
 
         @Override
         public void onNokeDisconnected(NokeDevice noke) {
-            setStatusText("NOKE DISCONNECTED: " + noke.getName());
+            // setStatusText("NOKE DISCONNECTED: " + noke.getName());
+            Log.d("onNokeDisconnected", "NOKE DISCONNECTED: " + noke.getName());
             // setLockLayoutColor(getResources().getColor(R.color.disconnectGray));
-            setLockNameText("No Lock Connected");
+            // setLockNameText("No Lock Connected");
+            Log.d("onNokeConnected", "setLockNameText(): No Lock Connected");
             currentNoke = null;
             //mNokeService.uploadData();
             mNokeService.startScanningForNokeDevices();
@@ -217,7 +229,8 @@ public class NokeMobileLibAndroid extends ReactContextBaseJavaModule {
         @Override
         public void onDataUploaded(int result, String message) {
             Log.w(TAG, "DATA UPLOADED: " + message);
-            setStatusText(message);
+            // setStatusText(message);
+            Log.d("onDataUploaded", message);
         }
 
         @Override
@@ -270,35 +283,35 @@ public class NokeMobileLibAndroid extends ReactContextBaseJavaModule {
         }
     };
 
-    public void setStatusText(final String message) {
-        Log.d(TAG, message);
-        Handler handler = new Handler(Looper.getMainLooper());
-        handler.post(new Runnable() {
-            @Override
-            public void run() {
-                statusText.setText(message);
-            }
-        });
-    }
+    // public void setStatusText(final String message) {
+    //     Log.d(TAG, message);
+    //     Handler handler = new Handler(Looper.getMainLooper());
+    //     handler.post(new Runnable() {
+    //         @Override
+    //         public void run() {
+    //             statusText.setText(message);
+    //         }
+    //     });
+    // }
 
-    public void setLockNameText(final String message){
-        Handler handler = new Handler(Looper.getMainLooper());
-        handler.post(new Runnable() {
-            @Override
-            public void run() {
-                lockNameText.setText(message);
-            }
-        });
-    }
+    // public void setLockNameText(final String message){
+    //     Handler handler = new Handler(Looper.getMainLooper());
+    //     handler.post(new Runnable() {
+    //         @Override
+    //         public void run() {
+    //             lockNameText.setText(message);
+    //         }
+    //     });
+    // }
 
-    public void setLockLayoutColor(final int color){
-        Handler handler = new Handler(Looper.getMainLooper());
-        handler.post(new Runnable() {
-            @Override
-            public void run() {
-                lockLayout.setBackgroundColor(color);
-            }
-        });
-    }
+    // public void setLockLayoutColor(final int color){
+    //     Handler handler = new Handler(Looper.getMainLooper());
+    //     handler.post(new Runnable() {
+    //         @Override
+    //         public void run() {
+    //             lockLayout.setBackgroundColor(color);
+    //         }
+    //     });
+    // }
 
 }
