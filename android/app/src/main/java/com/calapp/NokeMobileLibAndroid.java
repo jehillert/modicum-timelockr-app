@@ -19,15 +19,9 @@ import android.annotation.TargetApi;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.os.Looper;
-// import android.support.annotation.NonNull;
-// import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-// import android.widget.EditText;
-// import android.widget.LinearLayout;
-// import android.widget.TextView;
-
 
 import com.noke.nokemobilelibrary.NokeDefines;
 import com.noke.nokemobilelibrary.NokeDeviceManagerService;
@@ -35,10 +29,6 @@ import com.noke.nokemobilelibrary.NokeDevice;
 import com.noke.nokemobilelibrary.NokeMobileError;
 import com.noke.nokemobilelibrary.NokeServiceListener;
 
-// import com.facebook.react.bridge.Arguments;
-// import com.facebook.react.bridge.ReadableMap;
-// import com.facebook.react.bridge.WritableMap;
-// import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -51,13 +41,12 @@ public class NokeMobileLibAndroid extends ReactContextBaseJavaModule {
     // TextView lockNameText, statusText;
     // LinearLayout lockLayout;
     private NokeDeviceManagerService mNokeService = null;
-    // private static final int PERMISSION_REQUEST_COARSE_LOCATION = 1;
     private NokeDevice currentNoke;
 
     NokeMobileLibAndroid(ReactApplicationContext reactContext) {
         super(reactContext);
 
-        Log.d("NokeMobileLibAndroid", "🔸🔸🔸 ReactApplicationContext()");
+        Log.d("NokeMobileLibAndroid", "🔸🔸 ReactApplicationContext()");
     }
 
     @Override
@@ -72,7 +61,7 @@ public class NokeMobileLibAndroid extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void initiateNokeService(Promise promise) {
-        Log.d("NokeMobileLibAndroid", "🔸🔸🔸 initiateNokeService()");
+        Log.d("NokeMobileLibAndroid", "🔸🔸 initiateNokeService()");
         try {
             ReactApplicationContext reactApplicationContext = super.getReactApplicationContextIfActiveOrWarn();
             Intent nokeServiceIntent = new Intent(reactApplicationContext, NokeDeviceManagerService.class);

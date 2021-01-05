@@ -3,18 +3,24 @@ import { Button, NativeModules, PermissionsAndroid } from 'react-native';
 const { NokeMobileLibAndroid } = NativeModules;
 // import { Observable } from 'rxjs/Observable';
 
-// NokeMobileLibAndroid.initiateNokeService();
-
 function NokeServiceButtons() {
     useEffect(() => {
-        NokeMobileLibAndroid.initiateNokeService();
+        (async () => {
+            try {
+                const serviceInitialized = await NokeMobileLibAndroid.initiateNokeService();
+                console.log(`serviceInitialized: ${serviceInitialized}`);
+            } catch (e) {
+                console.error(e);
+            }
+        })();
     }, []);
 
     useEffect(() => {
         const requestLocationPermission = async () => {
             try {
+                // wrapp and add for COARSE
                 const granted = await PermissionsAndroid.request(
-                    PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+                    PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION,
                     {
                         title: 'Timelockr Permissions Request',
                         message: 'Timelockr needs access to your location',
