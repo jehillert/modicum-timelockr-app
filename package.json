@@ -3,15 +3,15 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "react-native start",
     "clean": "./clean.sh",
-    "clean-cache": "npm start -- --reset-cache",
+    "start": "react-native start",
     "android": "react-native run-android",
+    "clean-cache": "npm start -- --reset-cache",
     "clean-cache:rnd": "open 'rndebugger://set-debugger-loc?host=localhost&port=8081' && npm start -- --reset-cache",
     "clean-baber-loader-cache": "rm -rf node_modules/.cache/babel-loader/*"
   },
   "dependencies": {
-    "debug": "^4.3.1",
+    "@react-navigation/drawer": "^5.11.4",
     "react": "17.0.1",
     "react-native": "0.63.4",
     "react-native-dotenv": "^2.4.3",
