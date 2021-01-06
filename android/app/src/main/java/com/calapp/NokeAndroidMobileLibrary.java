@@ -12,10 +12,10 @@ CORE MOBILE FUNCTIONALITY
 initiateNokeService()           | Promise
 mNokeServiceListener            | new NokeServiceListener() {...
 mServiceConnection              | new ServiceConnection() {...
-NokeMobileLibAndroid()          | ReactApplicationContext
+NokeAndroidMobileLibrary()          | ReactApplicationContext
 
 ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-LISTEN & FORWARD
+NOKE SERVICE LISTENER - NokeServiceListener()
 ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 onBluetoothStatusChanged()      | int
 onDataUploaded()                | int,String
@@ -97,22 +97,24 @@ import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.facebook.react.uimanager.IllegalViewOperationException;
 
-public class NokeMobileLibAndroid extends ReactContextBaseJavaModule {
-
-    public static final String TAG = MainActivity.class.getSimpleName();
+public class NokeAndroidMobileLibrary extends ReactContextBaseJavaModule {
+    // public static final String TAG = "NOKE_ANDROID";
+    public static final String TAG = "🔸🔸🔸 @NOKE_ANDROID";
+    public static final String TAG_LISTEN = "🔸🔸🔸 @RN_Listen";
+    public static final String TAG_RN_METHOD = "🔸🔸🔸 @RN_Method";
     private NokeDeviceManagerService mNokeService = null;
     private NokeDevice currentNoke;
     static ReactApplicationContext reactContext;
 
-    NokeMobileLibAndroid(ReactApplicationContext context) {
+    NokeAndroidMobileLibrary(ReactApplicationContext context) {
         super(context);
         this.reactContext = context;
-        Log.d("NokeMobileLibAndroid", "🔸🔸 ReactApplicationContext()");
+        Log.i(TAG, "ReactApplicationContext()");
     }
 
     @Override
     public String getName() {
-        return "NokeMobileLibAndroid";
+        return "NokeAndroidMobileLibrary";
     }
 
     @Override
@@ -145,7 +147,7 @@ public class NokeMobileLibAndroid extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void initiateNokeService(Promise promise) {
-        Log.d("NokeMobileLibAndroid", "🔸🔸 initiateNokeService()");
+        Log.i(TAG, "NOKE SERVICE INITIATED");
         try {
             Intent nokeServiceIntent = new Intent(reactContext, NokeDeviceManagerService.class);
             reactContext.bindService(nokeServiceIntent, mServiceConnection, Context.BIND_AUTO_CREATE);
@@ -158,6 +160,7 @@ public class NokeMobileLibAndroid extends ReactContextBaseJavaModule {
 
     @ReactMethod
     private void setBluetoothDelayDefault(int delay, Promise promise) {
+        Log.i(TAG_RN_METHOD, "setBluetoothDelayDefault()");
         try {
             if (mNokeService == null) {
                 promise.reject("message", "mNokeService is null");
@@ -175,6 +178,7 @@ public class NokeMobileLibAndroid extends ReactContextBaseJavaModule {
 
     @ReactMethod
     private void setBluetoothDelayBackgroundDefault(int delay, Promise promise) {
+        Log.i(TAG_RN_METHOD, "setBluetoothDelayBackgroundDefault()");
         try {
             if (mNokeService == null) {
                 promise.reject("message", "mNokeService is null");
@@ -192,6 +196,7 @@ public class NokeMobileLibAndroid extends ReactContextBaseJavaModule {
 
     @ReactMethod
     private void setBluetoothScanDuration(int duration, Promise promise) {
+        Log.i(TAG_RN_METHOD, "setBluetoothScanDuration()");
         try {
             if (mNokeService == null) {
                 promise.reject("message", "mNokeService is null");
@@ -209,6 +214,7 @@ public class NokeMobileLibAndroid extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void startScan(Promise promise) {
+        Log.i(TAG_RN_METHOD, "startScan()");
         try {
             mNokeService.startScanningForNokeDevices();
             final WritableMap event = Arguments.createMap();
@@ -222,6 +228,7 @@ public class NokeMobileLibAndroid extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void stopScan(Promise promise) {
+        Log.i(TAG_RN_METHOD, "stopScan()");
         try {
             mNokeService.stopScanning();
             final WritableMap event = Arguments.createMap();
@@ -235,6 +242,7 @@ public class NokeMobileLibAndroid extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void addNokeDevice(ReadableMap data, Promise promise) {
+        Log.i(TAG_RN_METHOD, "addNokeDevice()");
         try {
             /**
              * name: "Lock Name"
@@ -264,6 +272,7 @@ public class NokeMobileLibAndroid extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void addNokeOfflineValues(ReadableMap data, Promise promise) {
+        Log.i(TAG_RN_METHOD, "addNokeOfflineValues()");
         try {
             /**
              * name: "Lock Name"
@@ -297,6 +306,7 @@ public class NokeMobileLibAndroid extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void sendCommands(String mac, String command, Promise promise) {
+        Log.i(TAG_RN_METHOD, "sendCommands()");
         try {
             NokeDevice daNoke = mNokeService.nokeDevices.get(mac);
             if (daNoke == null) {
@@ -312,6 +322,7 @@ public class NokeMobileLibAndroid extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void connect(String mac, Promise promise) {
+        Log.i(TAG_RN_METHOD, "connect()");
         if (mNokeService == null) {
             promise.reject("message", "mNokeService is null");
             return;
@@ -331,6 +342,7 @@ public class NokeMobileLibAndroid extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void disconnect(String mac, Promise promise) {
+        Log.i(TAG_RN_METHOD, "disconnect()");
         if (mNokeService == null) {
             promise.reject("message", "mNokeService is null");
             return;
@@ -350,6 +362,7 @@ public class NokeMobileLibAndroid extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void removeAllNokes(Promise promise) {
+        Log.i(TAG_RN_METHOD, "removeAllNokes()");
         try {
             mNokeService.removeAllNoke();
             final WritableMap event = Arguments.createMap();
@@ -363,6 +376,7 @@ public class NokeMobileLibAndroid extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void removeNokeDevice(String mac, Promise promise) {
+        Log.i(TAG_RN_METHOD, "removeNokeDevice()");
         try {
             mNokeService.removeNokeDevice(mac);
 
@@ -377,6 +391,7 @@ public class NokeMobileLibAndroid extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void offlineUnlock(String mac, Promise promise) {
+        Log.i(TAG_RN_METHOD, "offlineUnlock()");
         try {
             NokeDevice daNoke = mNokeService.nokeDevices.get(mac);
             if (daNoke == null) {
@@ -400,7 +415,7 @@ public class NokeMobileLibAndroid extends ReactContextBaseJavaModule {
 
     private ServiceConnection mServiceConnection = new ServiceConnection() {
         public void onServiceConnected(ComponentName className, IBinder rawBinder) {
-            Log.w(TAG, "ON SERVICE CONNECTED");
+            Log.i(TAG, "ON SERVICE CONNECTED");
 
             mNokeService = ((NokeDeviceManagerService.LocalBinder) rawBinder).getService(NokeDefines.NOKE_LIBRARY_SANDBOX);
             mNokeService.setAllowAllDevices(true);
@@ -431,7 +446,7 @@ public class NokeMobileLibAndroid extends ReactContextBaseJavaModule {
         @Override
         public void onNokeDiscovered(NokeDevice noke) {
             // maybe console whole map...
-            Log.d("NokeServiceListener", "NOKE DISCOVERED: " + noke.getName());
+            Log.i(TAG_LISTEN, "NOKE DISCOVERED: " + noke.getName());
             final WritableMap event = Arguments.createMap();
             event.putString("name", noke.getName());
             event.putString("mac", noke.getMac());
@@ -443,7 +458,7 @@ public class NokeMobileLibAndroid extends ReactContextBaseJavaModule {
 
         @Override
         public void onNokeConnecting(NokeDevice noke) {
-            Log.d("NokeServiceListener", "NOKE CONNECTING: " + noke.getName());
+            Log.i(TAG_LISTEN, "NOKE CONNECTING: " + noke.getName());
             final WritableMap event = Arguments.createMap();
             event.putString("name", noke.getName());
             event.putString("mac", noke.getMac());
@@ -453,6 +468,7 @@ public class NokeMobileLibAndroid extends ReactContextBaseJavaModule {
 
         @Override
         public void onNokeConnected(NokeDevice noke) {
+            Log.i(TAG_LISTEN, "NOKE CONNECTED: " + noke.getName());
             final WritableMap event = Arguments.createMap();
             event.putString("name", noke.getName());
             event.putString("mac", noke.getMac());
@@ -464,6 +480,7 @@ public class NokeMobileLibAndroid extends ReactContextBaseJavaModule {
 
         @Override
         public void onNokeSyncing(NokeDevice noke) {
+            Log.i(TAG_LISTEN, "NOKE SYNCING");
             final WritableMap event = Arguments.createMap();
             event.putString("name", noke.getName());
             event.putString("mac", noke.getMac());
@@ -473,6 +490,7 @@ public class NokeMobileLibAndroid extends ReactContextBaseJavaModule {
 
         @Override
         public void onNokeUnlocked(NokeDevice noke) {
+            Log.i(TAG_LISTEN, "NOKE UNLOCKED");
             final WritableMap event = Arguments.createMap();
             event.putString("name", noke.getName());
             event.putString("mac", noke.getMac());
@@ -482,6 +500,7 @@ public class NokeMobileLibAndroid extends ReactContextBaseJavaModule {
 
         @Override
         public void onNokeDisconnected(NokeDevice noke) {
+            Log.i(TAG_LISTEN, "DISCONNECTED");
             final WritableMap event = Arguments.createMap();
             event.putString("name", noke.getName());
             event.putString("mac", noke.getMac());
@@ -492,6 +511,7 @@ public class NokeMobileLibAndroid extends ReactContextBaseJavaModule {
 
         @Override
         public void onNokeShutdown(NokeDevice noke, Boolean isLocked, Boolean didTimeout) {
+            Log.i(TAG_LISTEN, "SHUT DOWN");
             final WritableMap event = Arguments.createMap();
             event.putString("name", noke.getName());
             event.putString("mac", noke.getMac());
@@ -502,10 +522,12 @@ public class NokeMobileLibAndroid extends ReactContextBaseJavaModule {
 
         @Override
         public void onDataUploaded(int i, String s) {
+            Log.i(TAG_LISTEN, "DATA UPLOADED");
         }
 
         @Override
         public void onBluetoothStatusChanged(int bluetoothStatus) {
+            Log.i(TAG_LISTEN, "BLUETOOTH STATUS CHANGE");
             final WritableMap event = Arguments.createMap();
             event.putInt("code", bluetoothStatus);
             emitDeviceEvent("onBluetoothStatusChanged", event);

@@ -9,7 +9,7 @@
 package com.calapp;
 
 import com.calapp.CalendarModule;
-import com.calapp.NokeMobileLibAndroid;
+import com.calapp.NokeAndroidMobileLibrary;
 
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.NativeModule;
@@ -36,7 +36,7 @@ public class MyAppPackage implements ReactPackage {
 
         // add custom modules
         modules.add(new CalendarModule(reactContext));
-        modules.add(new NokeMobileLibAndroid(reactContext));
+        modules.add(new NokeAndroidMobileLibrary(reactContext));
 
         return modules;
     }

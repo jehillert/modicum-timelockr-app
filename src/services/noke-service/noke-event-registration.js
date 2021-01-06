@@ -13,8 +13,8 @@
 import { NativeEventEmitter, NativeModules } from 'react-native';
 import { Observable } from 'rxjs/Observable';
 
-const { NokeMobileLibAndroid } = NativeModules;
-const NokeEmitter = new NativeEventEmitter(NokeMobileLibAndroid);
+const { NokeAndroidMobileLibrary } = NativeModules;
+const NokeEmitter = new NativeEventEmitter(NokeAndroidMobileLibrary);
 
 export const onEvent = function (eventName, callback) {
     NokeEmitter.addListener(eventName, callback);

@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { Button, NativeModules, PermissionsAndroid } from 'react-native';
-const { NokeMobileLibAndroid } = NativeModules;
+const { NokeAndroidMobileLibrary } = NativeModules;
 
 function NokeServiceButtons() {
     useEffect(() => {
         const initializeNokeService = async () => {
             try {
-                const serviceInitialized = await NokeMobileLibAndroid.initiateNokeService();
+                const serviceInitialized = await NokeAndroidMobileLibrary.initiateNokeService();
                 console.log(`serviceInitialized: ${serviceInitialized}`);
             } catch (e) {
                 console.error(e);
@@ -43,17 +43,13 @@ function NokeServiceButtons() {
     }, []);
 
     const handleOnPress = () => event => {
-        const { NOKE_LOCK_STATE_UNKNOWN } = NokeMobileLibAndroid.getConstants();
+        const { NOKE_LOCK_STATE_UNKNOWN } = NokeAndroidMobileLibrary.getConstants();
         console.log(NOKE_LOCK_STATE_UNKNOWN);
     };
 
     return (
         <>
-            <Button
-                title="lockStateUnknown"
-                onPress={handleOnPress()}
-                data-user="🟧🟧🟧🟧"
-            />
+            <Button title="lockStateUnknown" onPress={handleOnPress()} />
         </>
     );
 }
