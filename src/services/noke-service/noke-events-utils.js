@@ -1,6 +1,6 @@
 import { nokeEvents } from './constants';
 import { NativeEventEmitter, NativeModules } from 'react-native';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 const { NokeAndroidMobileLibrary } = NativeModules;
 const NokeEmitter = new NativeEventEmitter(NokeAndroidMobileLibrary);
@@ -33,7 +33,7 @@ export const fromNokeEvents = () => {
 
     let lastEvent = '';
 
-    return Observable.create(observer => {
+    return new Observable(observer => {
         nokeEvents.forEach(eventName => {
             onEvent(eventName, data => {
                 observer.next({
@@ -45,3 +45,13 @@ export const fromNokeEvents = () => {
         });
     });
 };
+
+const nokeEventUtils = {
+    onEvent,
+    onEventOnce,
+    offEvent,
+    getEventListeners,
+    fromNokeEvents,
+};
+
+export default nokeEventUtils;

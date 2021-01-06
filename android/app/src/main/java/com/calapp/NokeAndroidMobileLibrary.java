@@ -1,60 +1,59 @@
 /*
-▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 REACT NATIVE HELPERS
-▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-getConstants()                  | (n/a)
-getName()                       | (n/a)
-emitDeviceEvent()               | eventName,params
+▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+getConstants()               public | (n/a)
+getName()                    public | (n/a)
+emitDeviceEvent()           private | eventName,params
 
-▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 CORE MOBILE FUNCTIONALITY
-▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-initiateNokeService()           | Promise
-mNokeServiceListener            | new NokeServiceListener() {...
-mServiceConnection              | new ServiceConnection() {...
-NokeAndroidMobileLibrary()          | ReactApplicationContext
+▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+initiateNokeService()        public | Promise ==> void
+mNokeServiceListener         Initialized immediately in Android.
+mServiceConnection           Initialized immediately in Android.
 
-▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-NOKE SERVICE LISTENER - NokeServiceListener()
-▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-onBluetoothStatusChanged()      | int
-onDataUploaded()                | int,String
-onError()                       | NokeDevice,int,String
-onNokeConnected()               | NokeDevice
-onNokeConnecting()              | NokeDevice
-onNokeDisconnected()            | NokeDevice noke
-onNokeDiscovered()              | NokeDevice
-onNokeShutdown()                | NokeDevice,Boolean,Boolean
-onNokeSyncing()                 | NokeDevice
-onNokeUnlocked()                | NokeDevice
+▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+NOKE SERVICE LISTENER - Private NokeServiceListener()
+▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+onBluetoothStatusChanged()    public | int
+onDataUploaded()              public | int,String
+onError()                     public | NokeDevice,int,String
+onNokeConnected()             public | NokeDevice
+onNokeConnecting()            public | NokeDevice
+onNokeDisconnected()          public | NokeDevice noke
+onNokeDiscovered()            public | NokeDevice
+onNokeShutdown()              public | NokeDevice,Boolean,Boolean
+onNokeSyncing()               public | NokeDevice
+onNokeUnlocked()              public | NokeDevice
 
-▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-REACT METHODS
-▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-setBluetoothDelayDefault()               | int,Promise
-setBluetoothDelayBackgroundDefault()     | int,Promise
-setBluetoothScanDuration()               | int,Promise
-startScan()                              | Promise
-stopScan()                               | Promise
-sendCommands()                           | String,String,Promise
-addNokeDevice()                          |ReadableMap,Promise
-addNokeOfflineValues()                   | ReadableMap,Promise
-connect()                                | String,Promise
-disconnect()                             | String,Promise
-removeAllNokes()                         | Promise
-removeNokeDevice()                       | String,Promise
-offlineUnlock()                          | String,Promise
+▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+REACT METHODS (all void)
+▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+setBluetoothDelayDefault()            public | int,Promise
+setBluetoothDelayBackgroundDefault()  public | int,Promise
+setBluetoothScanDuration()            public | int,Promise
+startScan()                           public | Promise
+stopScan()                            public | Promise
+sendCommands()                        public | String,String,Promise
+addNokeDevice()                       public | ReadableMap,Promise
+addNokeOfflineValues()                public | ReadableMap,Promise
+connect()                             public | String,Promise
+disconnect()                          public | String,Promise
+removeAllNokes()                      public | Promise
+removeNokeDevice()                    public | String,Promise
+offlineUnlock()                       public | String,Promise
 
-▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 SERVICE CONNECTION - private ServiceConnection...
-▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-onServiceConnected()            | ComponentName,IBinder
-onServiceDisconnected           | ComponentName
+▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+onServiceConnected()          public | ComponentName,IBinder
+onServiceDisconnected         public | ComponentName
 
-▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 HELPERS
-▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-createCommonEvents
+▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+createCommonEvents       private | NokeDevice => WritableMap
 */
 package com.calapp;
 
@@ -141,9 +140,7 @@ public class NokeAndroidMobileLibrary extends ReactContextBaseJavaModule {
     }
 
     private void emitDeviceEvent(String eventName, @Nullable WritableMap params) {
-        reactContext
-            .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
-            .emit(eventName, params);
+        reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit(eventName, params);
     }
 
     @ReactMethod
@@ -418,7 +415,8 @@ public class NokeAndroidMobileLibrary extends ReactContextBaseJavaModule {
         public void onServiceConnected(ComponentName className, IBinder rawBinder) {
             Log.i(TAG, "ON SERVICE CONNECTED");
 
-            mNokeService = ((NokeDeviceManagerService.LocalBinder) rawBinder).getService(NokeDefines.NOKE_LIBRARY_SANDBOX);
+            mNokeService = ((NokeDeviceManagerService.LocalBinder) rawBinder)
+                    .getService(NokeDefines.NOKE_LIBRARY_SANDBOX);
             mNokeService.setAllowAllDevices(true);
             mNokeService.registerNokeListener(mNokeServiceListener);
 

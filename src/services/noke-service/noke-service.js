@@ -1,20 +1,12 @@
 import React, { useEffect } from 'react';
 import { Button, PermissionsAndroid } from 'react-native';
 import Noke from './index';
+import { useNokeService } from '../../hooks';
+// import { useNokeService, usePermissionsRequest } from '../../hooks';
 
 function NokeServiceButtons() {
-    useEffect(() => {
-        const initializeNokeService = async () => {
-            try {
-                const serviceInitialized = await Noke.initiateNokeService();
-                console.log(`serviceInitialized: ${serviceInitialized}`);
-            } catch (e) {
-                console.error(e);
-            }
-        };
-
-        initializeNokeService();
-    }, []);
+    useNokeService();
+    // usePermissionsRequest();
 
     useEffect(() => {
         const requestLocationPermission = async () => {
@@ -43,13 +35,16 @@ function NokeServiceButtons() {
     }, []);
 
     const handleOnPress = () => event => {
-        const { NOKE_LOCK_STATE_UNKNOWN } = Noke.getConstants();
-        console.log(NOKE_LOCK_STATE_UNKNOWN);
+        const lockData = {
+            name: 'LOCK 1',
+            mac: 'D0:07:69:1B:8A:3A',
+        };
+        Noke.addNokeDevice(lockData);
     };
 
     return (
         <>
-            <Button title="lockStateUnknown" onPress={handleOnPress()} />
+            <Button title="Add Noke Device" onPress={handleOnPress()} />
         </>
     );
 }

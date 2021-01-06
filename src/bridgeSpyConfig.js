@@ -1,19 +1,26 @@
 import MessageQueue from 'react-native/Libraries/BatchedBridge/MessageQueue.js';
 
-const methodsToWatch = ['createCalendarEvent', 'getConstants'];
-
-const colors = [
-    'color: orange',
-    'color: hotpink',
-    'color: white',
-    'color: hotpink',
+const methodsToWatch = [
+    'getConstants',
+    'setBluetoothDelayDefault',
+    'setBluetoothDelayBackgroundDefault',
+    'setBluetoothScanDuration',
+    'startScan',
+    'stopScan',
+    'sendCommands',
+    'addNokeDevice',
+    'addNokeOfflineValues',
+    'connect',
+    'disconnect',
+    'removeAllNokes',
+    'removeNokeDevice',
+    'offlineUnlock',
 ];
 
+const colors = ['color: orange', 'color: hotpink', 'color: white', 'color: hotpink'];
+
 const logDivider = () => {
-    console.log(
-        `%c———————————————————————————————————————————————————————————————————————————————`,
-        'color: hotpink',
-    );
+    console.log(`%c———————————————————————————————————————————————————————————————————————————————`, 'color: hotpink');
 };
 
 const logMsgObj = msg => {
@@ -33,10 +40,7 @@ const logMethod = ({ method }) => {
 };
 
 const logArgs = ({ args }) => {
-    console.log(
-        `%cargs%c: [%c${String(args).replace(/,/gi, '|')}%c];`,
-        ...colors,
-    );
+    console.log(`%cargs%c: [%c${String(args).replace(/,/gi, '|')}%c];`, ...colors);
 };
 
 export function initializeBridgeSpyHermes() {

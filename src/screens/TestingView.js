@@ -1,14 +1,6 @@
 import React from 'react';
-import {
-    SafeAreaView,
-    StyleSheet,
-    ScrollView,
-    View,
-    Text,
-    StatusBar,
-} from 'react-native';
+import { SafeAreaView, StyleSheet, ScrollView, View, Text, StatusBar } from 'react-native';
 import { Header, Colors } from 'react-native/Libraries/NewAppScreen';
-import NewModuleButton from '../NewModuleButton';
 import NokeServiceButtons from '../services/noke-service/noke-service';
 
 function TestingView() {
@@ -16,9 +8,7 @@ function TestingView() {
         <>
             <StatusBar barStyle="dark-content" />
             <SafeAreaView>
-                <ScrollView
-                    contentInsetAdjustmentBehavior="automatic"
-                    style={styles.scrollView}>
+                <ScrollView contentInsetAdjustmentBehavior="automatic" style={styles.scrollView}>
                     <Header />
                     {global.HermesInternal == null ? null : (
                         <View style={styles.engine}>
@@ -27,10 +17,7 @@ function TestingView() {
                     )}
                     <View style={styles.body}>
                         <View style={styles.sectionContainer}>
-                            <NewModuleButton />
-                            <View>
-                                <NokeServiceButtons />
-                            </View>
+                            <NokeServiceButtons />
                         </View>
                     </View>
                 </ScrollView>
