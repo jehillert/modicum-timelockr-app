@@ -10,6 +10,8 @@ import {
 const { NokeAndroidMobileLibrary } = NativeModules;
 
 const {
+    getConstants,
+    getName,
     addNokeDevice,
     addNokeOfflineValues,
     connect,
@@ -26,16 +28,18 @@ const {
     stopScan,
 } = NokeAndroidMobileLibrary;
 
-export default {
-    on: onEvent,
+const Noke = {
+    on: onEvent, // Event Handling
     once: onEventOnce,
     off: offEvent,
-    addNokeDevice,
+    fromNokeEvents,
+    getEventListeners,
+    addNokeDevice, // @ReactMethod
     addNokeOfflineValues,
     connect,
     disconnect,
-    fromNokeEvents,
-    getEventListeners,
+    getConstants,
+    getName,
     initiateNokeService,
     offlineUnlock,
     removeAllNokes,
@@ -43,8 +47,9 @@ export default {
     sendCommands,
     startScan,
     stopScan,
-    /*** Only android methods*/
-    setBluetoothDelayDefault,
+    setBluetoothDelayDefault, // Android-Only
     setBluetoothDelayBackgroundDefault,
     setBluetoothScanDuration,
 };
+
+export default Noke;
