@@ -235,7 +235,6 @@ public class NokeMobileLibAndroid extends ReactContextBaseJavaModule {
           emitDeviceEvent("onNokeSyncing", event);
         }
 
-
         @Override
         public void onNokeUnlocked(NokeDevice noke) {
           final WritableMap event = Arguments.createMap();
