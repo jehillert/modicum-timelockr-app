@@ -39,7 +39,7 @@ const logArgs = ({ args }) => {
     );
 };
 
-export default function initializeBridgeSpy() {
+export function initializeBridgeSpyHermes() {
     const spyFunction = msg => {
         const { type = null, method = '', module = '', args = null } = msg;
         if (methodsToWatch.includes(msg.method)) {
@@ -53,5 +53,14 @@ export default function initializeBridgeSpy() {
         }
     };
 
+    MessageQueue.spy(spyFunction);
+}
+
+export function initializeBridgeSpy() {
+    const spyFunction = msg => {
+        if (methodsToWatch.includes(msg.method)) {
+            console.log(JSON.stringify(msg, undefined, 2));
+        }
+    };
     MessageQueue.spy(spyFunction);
 }

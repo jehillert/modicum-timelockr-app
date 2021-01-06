@@ -1,54 +1,59 @@
 /*
-▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 REACT NATIVE HELPERS
-▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-getConstants()                | (n/a)
-getName()                     | (n/a)
-emitDeviceEvent()             | eventName,params
+▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+getConstants()                  | (n/a)
+getName()                       | (n/a)
+emitDeviceEvent()               | eventName,params
 
-▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 CORE MOBILE FUNCTIONALITY
-▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-initiateNokeService()         | Promise
-mNokeServiceListener          | new NokeServiceListener() {...
-mServiceConnection            | new ServiceConnection() {...
-NokeMobileLibAndroid()        | ReactApplicationContext
+▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+initiateNokeService()           | Promise
+mNokeServiceListener            | new NokeServiceListener() {...
+mServiceConnection              | new ServiceConnection() {...
+NokeMobileLibAndroid()          | ReactApplicationContext
 
-▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-LISTENERS
-▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-onBluetoothStatusChanged()    | int
-onDataUploaded()              | int,String
-onError()                     | NokeDevice,int,String
-onNokeConnected()             | NokeDevice
-onNokeConnecting()            | NokeDevice
-onNokeDisconnected()          | NokeDevice noke
-onNokeDiscovered()            | NokeDevice
-onNokeShutdown()              | NokeDevice,Boolean,Boolean
-onNokeSyncing()               | NokeDevice
-onNokeUnlocked()              | NokeDevice
-onServiceConnected()          | ComponentName,IBinder
-onServiceDisconnected()       | ComponentName
+▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+LISTEN & FORWARD
+▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+onBluetoothStatusChanged()      | int
+onDataUploaded()                | int,String
+onError()                       | NokeDevice,int,String
+onNokeConnected()               | NokeDevice
+onNokeConnecting()              | NokeDevice
+onNokeDisconnected()            | NokeDevice noke
+onNokeDiscovered()              | NokeDevice
+onNokeShutdown()                | NokeDevice,Boolean,Boolean
+onNokeSyncing()                 | NokeDevice
+onNokeUnlocked()                | NokeDevice
 
-▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 REACT METHODS
-▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+setBluetoothDelayDefault()               | int,Promise
+setBluetoothDelayBackgroundDefault()     | int,Promise
+setBluetoothScanDuration()               | int,Promise
+startScan()                              | Promise
+stopScan()                               | Promise
+sendCommands()                           | String,String,Promise
+addNokeOfflineValues()                   | ReadableMap,Promise
+connect()                                | String,Promise
+disconnect()                             | String,Promise
+removeAllNokes()                         | Promise
+removeNokeDevice()                       | String,Promise
+offlineUnlock()                          | String,Promise
 
-▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-EMITTED EVENTS
-▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-onBluetoothStatusChanged
-onError
-onNokeConnected
-onNokeConnecting
-onNokeDisconnected
-onNokeDiscovered
-onNokeShutdown
-onNokeSyncing
-onNokeUnlocked
-onServiceConnected
-onServiceDisconnected
+▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+SERVICE CONNECTION - private ServiceConnection...
+▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+onServiceConnected()            | ComponentName,IBinder
+onServiceDisconnected           | ComponentName
 
+▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+HELPERS
+▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+createCommonEvents
 */
 package com.calapp;
 
@@ -87,10 +92,13 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
+import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
+import com.facebook.react.uimanager.IllegalViewOperationException;
 
 public class NokeMobileLibAndroid extends ReactContextBaseJavaModule {
+
     public static final String TAG = MainActivity.class.getSimpleName();
     private NokeDeviceManagerService mNokeService = null;
     private NokeDevice currentNoke;
@@ -139,11 +147,6 @@ public class NokeMobileLibAndroid extends ReactContextBaseJavaModule {
     public void initiateNokeService(Promise promise) {
         Log.d("NokeMobileLibAndroid", "🔸🔸 initiateNokeService()");
         try {
-            // ReactApplicationContext reactApplicationContext = super.getReactApplicationContextIfActiveOrWarn();
-            // Intent nokeServiceIntent = new Intent(reactApplicationContext, NokeDeviceManagerService.class);
-            // reactApplicationContext.bindService(nokeServiceIntent, mServiceConnection, Context.BIND_AUTO_CREATE);
-            // boolean event = true;
-            // promise.resolve(event);
             Intent nokeServiceIntent = new Intent(reactContext, NokeDeviceManagerService.class);
             reactContext.bindService(nokeServiceIntent, mServiceConnection, Context.BIND_AUTO_CREATE);
             boolean event = true;
@@ -153,44 +156,277 @@ public class NokeMobileLibAndroid extends ReactContextBaseJavaModule {
         }
     }
 
+    @ReactMethod
+    private void setBluetoothDelayDefault(int delay, Promise promise) {
+        try {
+            if (mNokeService == null) {
+                promise.reject("message", "mNokeService is null");
+                return;
+            }
+            mNokeService.setBluetoothDelayDefault(delay);
+            final WritableMap event = Arguments.createMap();
+            event.putBoolean("status", true);
+
+            promise.resolve(event);
+        } catch (IllegalViewOperationException e) {
+            promise.reject("message", e.getMessage());
+        }
+    }
+
+    @ReactMethod
+    private void setBluetoothDelayBackgroundDefault(int delay, Promise promise) {
+        try {
+            if (mNokeService == null) {
+                promise.reject("message", "mNokeService is null");
+                return;
+            }
+            mNokeService.setBluetoothDelayBackgroundDefault(delay);
+            final WritableMap event = Arguments.createMap();
+            event.putBoolean("status", true);
+
+            promise.resolve(event);
+        } catch (IllegalViewOperationException e) {
+            promise.reject("message", e.getMessage());
+        }
+    }
+
+    @ReactMethod
+    private void setBluetoothScanDuration(int duration, Promise promise) {
+        try {
+            if (mNokeService == null) {
+                promise.reject("message", "mNokeService is null");
+                return;
+            }
+            mNokeService.setBluetoothScanDuration(duration);
+            final WritableMap event = Arguments.createMap();
+            event.putBoolean("status", true);
+
+            promise.resolve(event);
+        } catch (IllegalViewOperationException e) {
+            promise.reject("message", e.getMessage());
+        }
+    }
+
+    @ReactMethod
+    public void startScan(Promise promise) {
+        try {
+            mNokeService.startScanningForNokeDevices();
+            final WritableMap event = Arguments.createMap();
+            event.putBoolean("status", true);
+
+            promise.resolve(event);
+        } catch (IllegalViewOperationException e) {
+            promise.reject("message", e.getMessage());
+        }
+    }
+
+    @ReactMethod
+    public void stopScan(Promise promise) {
+        try {
+            mNokeService.stopScanning();
+            final WritableMap event = Arguments.createMap();
+            event.putBoolean("status", true);
+
+            promise.resolve(event);
+        } catch (IllegalViewOperationException e) {
+            promise.reject("message", e.getMessage());
+        }
+    }
+
+    @ReactMethod
+    public void addNokeDevice(ReadableMap data, Promise promise) {
+        try {
+            /**
+             * name: "Lock Name"
+             * mac: "XX:XX:XX:XX:XX:XX"
+             */
+            if (data == null) {
+                promise.reject("message", "data is null");
+                return;
+            }
+
+            NokeDevice noke = new NokeDevice(data.getString("name"), data.getString("mac"));
+
+            if (mNokeService == null) {
+                promise.reject("message", "mNokeService is null");
+                return;
+            }
+            mNokeService.addNokeDevice(noke);
+
+            final WritableMap event = Arguments.createMap();
+            event.putBoolean("status", true);
+
+            promise.resolve(event);
+        } catch (IllegalViewOperationException e) {
+            promise.reject("message", e.getMessage());
+        }
+    }
+
+    @ReactMethod
+    public void addNokeOfflineValues(ReadableMap data, Promise promise) {
+        try {
+            /**
+             * name: "Lock Name"
+             * mac: "XX:XX:XX:XX:XX:XX"
+             * key: "OFFLINE_KEY"
+             * cmd: "OFFLINE_COMMAND"
+             */
+            if (data == null) {
+                promise.reject("message", "data is null");
+                return;
+            }
+
+            NokeDevice noke = new NokeDevice(data.getString("name"), data.getString("mac"));
+            noke.setOfflineKey(data.getString("key"));
+            noke.setOfflineUnlockCmd(data.getString("cmd"));
+
+            if (mNokeService == null) {
+                promise.reject("message", "mNokeService is null");
+                return;
+            }
+            mNokeService.addNokeDevice(noke);
+
+            final WritableMap event = Arguments.createMap();
+            event.putBoolean("status", true);
+
+            promise.resolve(event);
+        } catch (IllegalViewOperationException e) {
+            promise.reject("message", e.getMessage());
+        }
+    }
+
+    @ReactMethod
+    public void sendCommands(String mac, String command, Promise promise) {
+        try {
+            NokeDevice daNoke = mNokeService.nokeDevices.get(mac);
+            if (daNoke == null) {
+                promise.reject("message", "unable to sendCommands, noke not found");
+                return;
+            }
+            daNoke.sendCommands(command);
+            promise.resolve(createCommonEvents(daNoke));
+        } catch (IllegalViewOperationException e) {
+            promise.reject("message", e.getMessage());
+        }
+    }
+
+    @ReactMethod
+    public void connect(String mac, Promise promise) {
+        if (mNokeService == null) {
+            promise.reject("message", "mNokeService is null");
+            return;
+        }
+        NokeDevice daNoke = mNokeService.nokeDevices.get(mac);
+        if (daNoke == null) {
+            promise.reject("message", "unable to connect, noke not found");
+            return;
+        }
+
+        mNokeService.connectToNoke(daNoke);
+
+        final WritableMap event = Arguments.createMap();
+        event.putBoolean("status", true);
+        promise.resolve(event);
+    }
+
+    @ReactMethod
+    public void disconnect(String mac, Promise promise) {
+        if (mNokeService == null) {
+            promise.reject("message", "mNokeService is null");
+            return;
+        }
+        NokeDevice daNoke = mNokeService.nokeDevices.get(mac);
+        if (daNoke == null) {
+            promise.reject("message", "unable to disconnect, noke not found");
+            return;
+        }
+
+        mNokeService.disconnectNoke(daNoke);
+
+        final WritableMap event = Arguments.createMap();
+        event.putBoolean("status", true);
+        promise.resolve(event);
+    }
+
+    @ReactMethod
+    public void removeAllNokes(Promise promise) {
+        try {
+            mNokeService.removeAllNoke();
+            final WritableMap event = Arguments.createMap();
+            event.putBoolean("status", true);
+
+            promise.resolve(event);
+        } catch (IllegalViewOperationException e) {
+            promise.reject("message", e.getMessage());
+        }
+    }
+
+    @ReactMethod
+    public void removeNokeDevice(String mac, Promise promise) {
+        try {
+            mNokeService.removeNokeDevice(mac);
+
+            final WritableMap event = Arguments.createMap();
+            event.putBoolean("status", true);
+
+            promise.resolve(event);
+        } catch (IllegalViewOperationException e) {
+            promise.reject("message", e.getMessage());
+        }
+    }
+
+    @ReactMethod
+    public void offlineUnlock(String mac, Promise promise) {
+        try {
+            NokeDevice daNoke = mNokeService.nokeDevices.get(mac);
+            if (daNoke == null) {
+                promise.reject("message", "unable to offlineUnlock, noke not found");
+                return;
+            }
+
+            WritableMap event = createCommonEvents(daNoke);
+
+            if (daNoke == null) {
+                event.putBoolean("success", false);
+            } else {
+                event.putBoolean("success", true);
+                daNoke.offlineUnlock();
+            }
+            promise.resolve(event);
+        } catch (IllegalViewOperationException e) {
+            promise.reject("message", e.getMessage());
+        }
+    }
+
     private ServiceConnection mServiceConnection = new ServiceConnection() {
         public void onServiceConnected(ComponentName className, IBinder rawBinder) {
             Log.w(TAG, "ON SERVICE CONNECTED");
 
-            //Store reference to service
             mNokeService = ((NokeDeviceManagerService.LocalBinder) rawBinder).getService(NokeDefines.NOKE_LIBRARY_SANDBOX);
-
-            // mNokeService.setAllowAllDevices(true); // Uncomment to allow devices that aren't in the device array
-            // String[] macs = { "D0:07:69:1B:8A:3A", "D6:B1:8B:99:A7:D3", "EA:EC:51:08:21:CF" };
-            String[] macs = { "D6:B1:8B:99:A7:D3" };
-
-            // Register callback listener
+            mNokeService.setAllowAllDevices(true);
             mNokeService.registerNokeListener(mNokeServiceListener);
 
-            for (String mac:macs) {
-                // Add locks to device manager
-                NokeDevice nokeA = new NokeDevice("LOCK A", mac);
-                mNokeService.addNokeDevice(nokeA);
-                // NokeDevice nokeB = new NokeDevice("LOCK B", mac);
-                // mNokeService.addNokeDevice(nokeB);
-                // NokeDevice nokeLegacy = new NokeDevice("LEGACY LOCK", mac);
-                // mNokeService.addNokeDevice(nokeLegacy);
-            }
-
-            // Start bluetooth scanning
-            mNokeService.startScanningForNokeDevices();
-            Log.d("mServiceConnection", "Scanning for Noke Devices");
+            String message = "Service is connected";
 
             if (!mNokeService.initialize()) {
                 Log.e(TAG, "Unable to initialize Bluetooth");
+                message = "Unable to initialize Bluetooth";
             }
+            final WritableMap event = Arguments.createMap();
+            event.putString("message", message);
+            event.putBoolean("status", true);
+            emitDeviceEvent("onServiceConnected", event);
         }
 
         public void onServiceDisconnected(ComponentName classname) {
             mNokeService = null;
+            final WritableMap event = Arguments.createMap();
+            event.putBoolean("status", true);
+            emitDeviceEvent("onServiceDisconnected", event);
         }
     };
 
+    // LISTEN & FORWARD (to RN)
     private NokeServiceListener mNokeServiceListener = new NokeServiceListener() {
         @Override
         public void onNokeDiscovered(NokeDevice noke) {
@@ -217,51 +453,51 @@ public class NokeMobileLibAndroid extends ReactContextBaseJavaModule {
 
         @Override
         public void onNokeConnected(NokeDevice noke) {
-          final WritableMap event = Arguments.createMap();
-          event.putString("name", noke.getName());
-          event.putString("mac", noke.getMac());
-          event.putString("session", noke.getSession());
-          event.putInt("battery", noke.getBattery());
-          event.putString("hwVersion", noke.getVersion());
-          emitDeviceEvent("onNokeConnected", event);
+            final WritableMap event = Arguments.createMap();
+            event.putString("name", noke.getName());
+            event.putString("mac", noke.getMac());
+            event.putString("session", noke.getSession());
+            event.putInt("battery", noke.getBattery());
+            event.putString("hwVersion", noke.getVersion());
+            emitDeviceEvent("onNokeConnected", event);
         }
 
         @Override
         public void onNokeSyncing(NokeDevice noke) {
-          final WritableMap event = Arguments.createMap();
-          event.putString("name", noke.getName());
-          event.putString("mac", noke.getMac());
-          event.putString("session", noke.getSession());
-          emitDeviceEvent("onNokeSyncing", event);
+            final WritableMap event = Arguments.createMap();
+            event.putString("name", noke.getName());
+            event.putString("mac", noke.getMac());
+            event.putString("session", noke.getSession());
+            emitDeviceEvent("onNokeSyncing", event);
         }
 
         @Override
         public void onNokeUnlocked(NokeDevice noke) {
-          final WritableMap event = Arguments.createMap();
-          event.putString("name", noke.getName());
-          event.putString("mac", noke.getMac());
-          event.putString("session", noke.getSession());
-          emitDeviceEvent("onNokeUnlocked", event);
+            final WritableMap event = Arguments.createMap();
+            event.putString("name", noke.getName());
+            event.putString("mac", noke.getMac());
+            event.putString("session", noke.getSession());
+            emitDeviceEvent("onNokeUnlocked", event);
         }
 
         @Override
         public void onNokeDisconnected(NokeDevice noke) {
-          final WritableMap event = Arguments.createMap();
-          event.putString("name", noke.getName());
-          event.putString("mac", noke.getMac());
-          event.putString("session", noke.getSession());
-          emitDeviceEvent("onNokeDisconnected", event);
-          mNokeService.uploadData();
+            final WritableMap event = Arguments.createMap();
+            event.putString("name", noke.getName());
+            event.putString("mac", noke.getMac());
+            event.putString("session", noke.getSession());
+            emitDeviceEvent("onNokeDisconnected", event);
+            mNokeService.uploadData();
         }
 
         @Override
         public void onNokeShutdown(NokeDevice noke, Boolean isLocked, Boolean didTimeout) {
-          final WritableMap event = Arguments.createMap();
-          event.putString("name", noke.getName());
-          event.putString("mac", noke.getMac());
-          event.putBoolean("isLocked", isLocked);
-          event.putBoolean("didTimeout", didTimeout);
-          emitDeviceEvent("onNokeShutdown", event);
+            final WritableMap event = Arguments.createMap();
+            event.putString("name", noke.getName());
+            event.putString("mac", noke.getMac());
+            event.putBoolean("isLocked", isLocked);
+            event.putBoolean("didTimeout", didTimeout);
+            emitDeviceEvent("onNokeShutdown", event);
         }
 
         @Override
@@ -270,15 +506,49 @@ public class NokeMobileLibAndroid extends ReactContextBaseJavaModule {
 
         @Override
         public void onBluetoothStatusChanged(int bluetoothStatus) {
-          final WritableMap event = Arguments.createMap();
-          event.putInt("code", bluetoothStatus);
-          emitDeviceEvent("onBluetoothStatusChanged", event);
+            final WritableMap event = Arguments.createMap();
+            event.putInt("code", bluetoothStatus);
+            emitDeviceEvent("onBluetoothStatusChanged", event);
         }
 
         @Override
         public void onError(NokeDevice noke, int error, String message) {
             Log.e(TAG, "NOKE SERVICE ERROR " + error + ": " + message);
+            switch (error) {
+                case NokeMobileError.ERROR_LOCATION_PERMISSIONS_NEEDED:
+                    break;
+                case NokeMobileError.ERROR_LOCATION_SERVICES_DISABLED:
+                    break;
+                case NokeMobileError.ERROR_BLUETOOTH_DISABLED:
+                    break;
+                case NokeMobileError.ERROR_BLUETOOTH_GATT:
+                    break;
+            }
+            final WritableMap event = Arguments.createMap();
+            event.putInt("code", error);
+            String mac = "";
+            String name = "";
+            if (noke != null) {
+                mac = noke.getMac();
+                name = noke.getName();
+            }
+            event.putString("mac", mac);
+            event.putString("name", name);
+            event.putString("message", message);
+            emitDeviceEvent("onError", event);
+        }
+    };
+
+    private WritableMap createCommonEvents(NokeDevice nokeDevice) {
+        final WritableMap event = Arguments.createMap();
+
+        if (nokeDevice == null) {
+            return event;
         }
 
-    };
+        event.putString("name", nokeDevice.getName());
+        event.putString("mac", nokeDevice.getMac());
+
+        return event;
+    }
 };

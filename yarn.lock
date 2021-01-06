@@ -6422,6 +6422,14 @@
   "resolved" "https://registry.npmjs.org/rxjs-compat/-/rxjs-compat-6.6.3.tgz"
   "version" "6.6.3"
 
+"rxjs-hooks@^0.6.2":
+  "integrity" "sha512-oFyjJhhZ4D8bWVNT36J9iCr7p+qVCO7Y6T3XzypXqJf2qxCuURJaCAmARy0mAKbckNQv/0R78mhQxfTcGgECjQ=="
+  "resolved" "https://registry.npmjs.org/rxjs-hooks/-/rxjs-hooks-0.6.2.tgz"
+  "version" "0.6.2"
+  dependencies:
+    "tslib" "^1.10.0"
+    "use-constant" "^1.0.0"
+
 "rxjs@^5.4.3":
   "integrity" "sha512-xx2itnL5sBbqeeiVgNPVuQQ1nC8Jp2WfNJhXWHmElW9YmrpS9UVnNzhP3EH3HFqexO5Tlp8GhYY+WEcqcVMvGw=="
   "resolved" "https://registry.npmjs.org/rxjs/-/rxjs-5.5.12.tgz"
@@ -7230,7 +7238,7 @@
   dependencies:
     "punycode" "^2.1.1"
 
-"tslib@^1.8.1", "tslib@^1.9.0":
+"tslib@^1.10.0", "tslib@^1.8.1", "tslib@^1.9.0":
   "integrity" "sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg=="
   "resolved" "https://registry.npmjs.org/tslib/-/tslib-1.14.1.tgz"
   "version" "1.14.1"
@@ -7390,6 +7398,11 @@
   "integrity" "sha1-2pN/emLiH+wf0Y1Js1wpNQZ6bHI="
   "resolved" "https://registry.npmjs.org/urix/-/urix-0.1.0.tgz"
   "version" "0.1.0"
+
+"use-constant@^1.0.0":
+  "integrity" "sha512-yrflEfv7Xv/W8WlYV6nwRH01K+2BpR4cWxuzY03yPRjYZuHixhGlvnJN5O2bRYrXGpJ4zy8QjFABGIQ2QXeBOA=="
+  "resolved" "https://registry.npmjs.org/use-constant/-/use-constant-1.1.0.tgz"
+  "version" "1.1.0"
 
 "use-subscription@^1.0.0":
   "integrity" "sha512-Xv2a1P/yReAjAbhylMfFplFKj9GssgTwN7RlcTxBujFQcloStWNDQdc4g4NRWH9xS4i/FDk04vQBptAXoF3VcA=="

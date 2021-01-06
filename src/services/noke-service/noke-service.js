@@ -1,18 +1,19 @@
 import React, { useEffect } from 'react';
 import { Button, NativeModules, PermissionsAndroid } from 'react-native';
 const { NokeMobileLibAndroid } = NativeModules;
-// import { Observable } from 'rxjs/Observable';
 
 function NokeServiceButtons() {
     useEffect(() => {
-        (async () => {
+        const initializeNokeService = async () => {
             try {
                 const serviceInitialized = await NokeMobileLibAndroid.initiateNokeService();
                 console.log(`serviceInitialized: ${serviceInitialized}`);
             } catch (e) {
                 console.error(e);
             }
-        })();
+        };
+
+        initializeNokeService();
     }, []);
 
     useEffect(() => {
@@ -37,6 +38,7 @@ function NokeServiceButtons() {
                 console.warn(err);
             }
         };
+
         requestLocationPermission();
     }, []);
 
