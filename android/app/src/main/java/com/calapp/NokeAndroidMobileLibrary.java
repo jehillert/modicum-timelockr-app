@@ -37,6 +37,7 @@ setBluetoothScanDuration()               | int,Promise
 startScan()                              | Promise
 stopScan()                               | Promise
 sendCommands()                           | String,String,Promise
+addNokeDevice()                          |ReadableMap,Promise
 addNokeOfflineValues()                   | ReadableMap,Promise
 connect()                                | String,Promise
 disconnect()                             | String,Promise
