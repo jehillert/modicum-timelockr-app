@@ -11,6 +11,20 @@
                 "safe": false,
                 "allowUndefined": true
             }
+        ],
+        [
+            "module-resolver",
+            {
+                "root": ["./src"],
+                "alias": {
+                    "src": "./src",
+                    "hooks": "./src/hooks/index",
+                    "screens": "./src/screens/index",
+                    "utilities": "./src/utilities/index",
+                    "components": "./src/components/index",
+                    "noke": "./src/services/noke-service/index"
+                }
+            }
         ]
     ]
 }

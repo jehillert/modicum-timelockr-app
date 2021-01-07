@@ -24,7 +24,8 @@ echo "Removing Podfile.lock file"
 rm -f Podfile.lock && cd ..
 
 echo "NPM - Installing node modules"
-npm i
+# npm i
+npm install --force
 
 echo "Cocoapod - Installing pods"
 cd ios && pod install && cd ..

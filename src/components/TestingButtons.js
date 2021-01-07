@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Button, PermissionsAndroid } from 'react-native';
-import Noke from './index';
-import { useNokeService } from '../../hooks';
+import Noke from 'noke';
+import { useNokeService } from 'hooks';
 // import { useNokeService, usePermissionsRequest } from '../../hooks';
 
 function NokeServiceButtons() {

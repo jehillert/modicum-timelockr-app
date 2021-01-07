@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import styled from 'styled-components/native';
-import { Text } from 'react-native';
 
 const S = {};
 

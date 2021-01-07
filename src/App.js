@@ -2,9 +2,10 @@ import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { initializeBridgeSpy } from './bridgeSpyConfig';
+import { initializeBridgeSpy } from 'utilities';
 import TestingView from './screens/TestingView';
 import Duration from './screens/Duration';
+// import { Duration, TestingView } from 'screens';
 
 initializeBridgeSpy();
 
