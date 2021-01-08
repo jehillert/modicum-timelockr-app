@@ -8,17 +8,18 @@ function TestingView() {
         <>
             <StatusBar barStyle="dark-content" />
             <SafeAreaView>
-                <ScrollView contentInsetAdjustmentBehavior="automatic" style={styles.scrollView}>
+                <ScrollView
+                    nestedScrollEnabled={true}
+                    contentInsetAdjustmentBehavior="automatic"
+                    style={styles.scrollView}>
                     <Header />
                     {global.HermesInternal == null ? null : (
                         <View style={styles.engine}>
                             <Text style={styles.footer}>Engine: Hermes</Text>
                         </View>
                     )}
-                    <View style={styles.body}>
-                        <View style={styles.sectionContainer}>
-                            <NokeServiceButtons />
-                        </View>
+                    <View style={styles.sectionContainer}>
+                        <NokeServiceButtons />
                     </View>
                 </ScrollView>
             </SafeAreaView>
@@ -34,12 +35,11 @@ const styles = StyleSheet.create({
         position: 'absolute',
         right: 0,
     },
-    body: {
-        backgroundColor: Colors.white,
-    },
     sectionContainer: {
+        backgroundColor: Colors.black,
         marginTop: 32,
         paddingHorizontal: 24,
+        paddingVertical: 24,
     },
 });
 

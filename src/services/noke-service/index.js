@@ -3,25 +3,27 @@ import { nokeEvents } from './constants';
 import { Observable } from 'rxjs';
 
 const { NokeAndroidMobileLibrary: n } = NativeModules;
-
 const NokeEmitter = new NativeEventEmitter(n);
 
-const logEvent = eventObj => console.log(JSON.stringify(eventObj, undefined, 2));
+const logEvent = event => console.log(`EMITTED: ${JSON.stringify(event, undefined)}`);
 
-const nokeCommands = {
-    setBluetoothDelayDefault: delay => n.setBluetoothDelayDefault(delay).then(logEvent),
-    setBluetoothDelayBackgroundDefault: delay => n.setBluetoothDelayBackgroundDefault(delay).then(logEvent),
-    setBluetoothScanDuration: () => n.setBluetoothScanDuration().then(logEvent),
-    startScan: duration => n.startScan(duration).then(logEvent),
-    stopScan: () => n.stopScan().then(logEvent),
-    sendCommands: (mac, command) => n.sendCommands().then(logEvent),
-    addNokeDevice: data => n.addNokeDevice(data).then(logEvent),
-    addNokeOfflineValues: () => n.addNokeOfflineValues().then(logEvent),
-    connect: () => n.connect().then(logEvent),
-    disconnect: () => n.disconnect().then(logEvent),
-    removeAllNokes: () => n.removeAllNokes().then(logEvent),
-    removeNokeDevice: () => n.removeNokeDevice().then(logEvent),
-    offlineUnlock: () => n.offlineUnlock().then(logEvent),
+export const nokeUtils = {
+    handleAddNokeDevice: lockData => n.addNokeDevice(lockData).then(logEvent),
+    handleAddNokeOfflineValues: lockData => n.addNokeOfflineValues(lockData).then(logEvent),
+    handleConnect: mac => n.connect(mac).then(logEvent),
+    handleDisconnect: mac => n.disconnect(mac).then(logEvent),
+    handleOfflineUnlock: mac => n.offlineUnlock(mac).then(logEvent),
+    handleOnBluetoothStatusChanged: delay => n.onBluetoothStatusChanged(delay).then(logEvent),
+    handleOnError: () => n.onError().then(logEvent),
+    handleOnNokeShutDown: () => n.onNokeShutDown().then(logEvent),
+    handleRemoveAllNokes: () => n.removeAllNokes().then(logEvent),
+    handleRemoveNokeDevice: mac => n.removeNokeDevice(mac).then(logEvent),
+    handleSendCommands: (mac, command) => n.sendCommands(mac, command).then(logEvent),
+    handleSetBluetoothDelayBackgroundDefault: delay => n.setBluetoothDelayBackgroundDefault(delay).then(logEvent),
+    handleSetBluetoothDelayDefault: delay => n.setBluetoothDelayDefault(delay).then(logEvent),
+    handleSetBluetoothScanDuration: duration => n.setBluetoothScanDuration(duration).then(logEvent),
+    handleStartScan: () => n.startScan().then(logEvent),
+    handleStopScan: () => n.stopScan().then(logEvent),
 };
 
 export const onEvent = function (eventName, callback) {
@@ -68,7 +70,7 @@ export const fromNokeEvents = () => {
 const Noke = {
     getConstants: n.getConstants,
     getName: n.getName,
-    ...nokeCommands,
+    ...nokeUtils,
 };
 
 export const nokeEventUtils = {
@@ -78,5 +80,7 @@ export const nokeEventUtils = {
     getEventListeners,
     fromNokeEvents,
 };
+
+export { unlockReducer } from './nokeSlice';
 
 export default Noke;
