@@ -47,22 +47,17 @@ function NokeServiceButtons() {
         <>
             <S.View><S.Button title="Add Noke Device" color="#2196F3" onPress={() => nokeUtils.handleAddNokeDevice({ name: 'LOCK 1', mac: LOCK_MAC_1 })} /></S.View>
             <S.View><S.Button title="Start Scanning" color="#ff8000" onPress={() => nokeUtils.handleStartScan()} /></S.View>
-            <S.View><S.Button title="Connect Device" color="#ff3421" onPress={() => nokeUtils.handleConnect(LOCK_MAC_1)} /></S.View>
-            <S.View><S.Button title="AddNokeOfflineValues" color="darkcyan" onPress={() => nokeUtils.handleAddNokeOfflineValues({ name: 'LOCK 1', mac: LOCK_MAC_1 })} /></S.View>
-            <S.View><S.Button title="Connect" color="darkgray" onPress={() => nokeUtils.handleConnect(LOCK_MAC_1 )} /></S.View>
+            <S.View><S.Button title="Stop Scanning" color="#ff3421" onPress={() => nokeUtils.handleStopScan()} /></S.View>
+            <S.View><S.Button title="Connect Device" color="green" onPress={() => nokeUtils.handleConnect(LOCK_MAC_1)} /></S.View>
             <S.View><S.Button title="Disconnect" color="darkkhaki" onPress={() => nokeUtils.handleDisconnect(LOCK_MAC_1)} /></S.View>
-            <S.View><S.Button title="OfflineUnlock" color="olivedrab" onPress={() => nokeUtils.handleOfflineUnlock(LOCK_MAC_1)} /></S.View>
-            <S.View><S.Button title="OnBluetoothStatusChanged" color="darkred" onPress={() => nokeUtils.handleOnBluetoothStatusChanged(1)} /></S.View>
-            <S.View><S.Button title="OnError" color="darkgoldenrod" onPress={() => nokeUtils.handleOnError()} /></S.View>
-            <S.View><S.Button title="OnNokeShutDown" color="darkorange" onPress={() => nokeUtils.handleOnNokeShutDown()} /></S.View>
-            <S.View><S.Button title="RemoveAllNokes" color="darksalmon" onPress={() => nokeUtils.handleRemoveAllNokes()} /></S.View>
-            <S.View><S.Button title="RemoveNokeDevice" color="darkorchid" onPress={() => nokeUtils.handleRemoveNokeDevice(LOCK_MAC_1)} /></S.View>
-            <S.View><S.Button title="SendCommands" color="darkmagenta" onPress={() => nokeUtils.handleSendCommands(LOCK_MAC_1, command)} /></S.View>
-            <S.View><S.Button title="SetBluetoothDelayBackgroundDefault" color="darkslateblue" onPress={() => nokeUtils.handleSetBluetoothDelayBackgroundDefault(1)} /></S.View>
-            <S.View><S.Button title="SetBluetoothDelayDefault" color="darkslategrey" onPress={() => nokeUtils.handleSetBluetoothDelayDefault(1)} /></S.View>
-            <S.View><S.Button title="SetBluetoothScanDuration" color="darkseagreen" onPress={() => nokeUtils.handleSetBluetoothScanDuration(1)} /></S.View>
-            <S.View><S.Button title="StartScan" color="darkolivegreen" onPress={() => nokeUtils.handleStartScan()} /></S.View>
-            <S.View><S.Button title="StopScan" color="darkgreen" onPress={() => nokeUtils.handleStopScan()} /></S.View>
+            <S.View><S.Button title="Offline Unlock" color="olivedrab" onPress={() => nokeUtils.handleOfflineUnlock(LOCK_MAC_1)} /></S.View>
+            <S.View><S.Button title="Remove All Nokes" color="darksalmon" onPress={() => nokeUtils.handleRemoveAllNokes()} /></S.View>
+            <S.View><S.Button title="Remove Noke Device" color="darkorchid" onPress={() => nokeUtils.handleRemoveNokeDevice(LOCK_MAC_1)} /></S.View>
+            <S.View><S.Button title="Send Commands" color="darkmagenta" onPress={() => nokeUtils.handleSendCommands(LOCK_MAC_1, command)} /></S.View>
+            <S.View><S.Button title="Add Noke Offline Values" color="darkcyan" onPress={() => nokeUtils.handleAddNokeOfflineValues({ name: 'LOCK 1', mac: LOCK_MAC_1 })} /></S.View>
+            <S.View><S.Button title="Set Default Bluetooth Background Delay " color="darkslateblue" onPress={() => nokeUtils.handleSetBluetoothDelayBackgroundDefault(1)} /></S.View>
+            <S.View><S.Button title="Set Default Bluetooth Delay" color="darkslategrey" onPress={() => nokeUtils.handleSetBluetoothDelayDefault(1)} /></S.View>
+            <S.View><S.Button title="Set Bluetooth Scan Duration" color="darkseagreen" onPress={() => nokeUtils.handleSetBluetoothScanDuration(1)} /></S.View>
         </>
     );
 }

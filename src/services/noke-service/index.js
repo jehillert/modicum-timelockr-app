@@ -8,22 +8,19 @@ const NokeEmitter = new NativeEventEmitter(n);
 const logEvent = event => console.log(`EMITTED: ${JSON.stringify(event, undefined)}`);
 
 export const nokeUtils = {
-    handleAddNokeDevice: lockData => n.addNokeDevice(lockData).then(logEvent),
-    handleAddNokeOfflineValues: lockData => n.addNokeOfflineValues(lockData).then(logEvent),
-    handleConnect: mac => n.connect(mac).then(logEvent),
-    handleDisconnect: mac => n.disconnect(mac).then(logEvent),
-    handleOfflineUnlock: mac => n.offlineUnlock(mac).then(logEvent),
-    handleOnBluetoothStatusChanged: delay => n.onBluetoothStatusChanged(delay).then(logEvent),
-    handleOnError: () => n.onError().then(logEvent),
-    handleOnNokeShutDown: () => n.onNokeShutDown().then(logEvent),
-    handleRemoveAllNokes: () => n.removeAllNokes().then(logEvent),
-    handleRemoveNokeDevice: mac => n.removeNokeDevice(mac).then(logEvent),
-    handleSendCommands: (mac, command) => n.sendCommands(mac, command).then(logEvent),
-    handleSetBluetoothDelayBackgroundDefault: delay => n.setBluetoothDelayBackgroundDefault(delay).then(logEvent),
-    handleSetBluetoothDelayDefault: delay => n.setBluetoothDelayDefault(delay).then(logEvent),
-    handleSetBluetoothScanDuration: duration => n.setBluetoothScanDuration(duration).then(logEvent),
-    handleStartScan: () => n.startScan().then(logEvent),
-    handleStopScan: () => n.stopScan().then(logEvent),
+    handleAddNokeDevice: lockData => n.addNokeDevice(lockData).then(logEvent).catch(console.error),
+    handleAddNokeOfflineValues: lockData => n.addNokeOfflineValues(lockData).then(logEvent).catch(console.error),
+    handleConnect: mac => n.connect(mac).then(logEvent).catch(console.error),
+    handleDisconnect: mac => n.disconnect(mac).then(logEvent).catch(console.error),
+    handleOfflineUnlock: mac => n.offlineUnlock(mac).then(logEvent).catch(console.error),
+    handleRemoveAllNokes: () => n.removeAllNokes().then(logEvent).catch(console.error),
+    handleRemoveNokeDevice: mac => n.removeNokeDevice(mac).then(logEvent).catch(console.error),
+    handleSendCommands: (mac, command) => n.sendCommands(mac, command).then(logEvent).catch(console.error),
+    handleSetBluetoothDelayBackgroundDefault: delay => n.setBluetoothDelayBackgroundDefault(delay).then(logEvent).catch(console.error),
+    handleSetBluetoothDelayDefault: delay => n.setBluetoothDelayDefault(delay).then(logEvent).catch(console.error),
+    handleSetBluetoothScanDuration: duration => n.setBluetoothScanDuration(duration).then(logEvent).catch(console.error),
+    handleStartScan: () => n.startScan().then(logEvent).catch(console.error),
+    handleStopScan: () => n.stopScan().then(logEvent).catch(console.error),
 };
 
 export const onEvent = function (eventName, callback) {
