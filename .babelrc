@@ -16,8 +16,11 @@
             "module-resolver",
             {
                 "root": ["./src"],
+                "extensions": [".js", ".ios.js", ".android.js"],
                 "alias": {
                     "src": "./src",
+                    "store": "./src/store.js",
+                    "api": "./src/api/index",
                     "hooks": "./src/hooks/index",
                     "screens": "./src/screens/index",
                     "utilities": "./src/utilities/index",
