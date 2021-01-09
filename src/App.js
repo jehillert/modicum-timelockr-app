@@ -8,7 +8,7 @@ import store from 'store';
 import TestingView from './screens/TestingView';
 import Duration from './screens/Duration';
 
-initializeBridgeSpy();
+// initializeBridgeSpy();
 
 const Drawer = createDrawerNavigator();
 

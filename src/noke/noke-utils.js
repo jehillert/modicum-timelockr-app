@@ -1,16 +1,53 @@
 import { PermissionsAndroid } from 'react-native';
-import { NokeAndroid } from 'noke';
+import { NokeAndroid, nokeConstants } from 'noke';
+
+const { permReqFieldConstants: PRFC } = nokeConstants;
 
 const logEvent = event => console.log(`COMMAND CALLBACK: ${JSON.stringify(event, undefined)}`);
+
+const requestLocPermission = async (
+    permissions = 'ACCESS_COARSE_LOCATION',
+    permissionsLabel = 'Location',
+    title = PRFC.PERMISSIONS_TITLE_TXT,
+    message = PRFC.PERMISSIONS_REQUEST_MSG,
+    buttonNeutral = PRFC.BUTTON_NEGATIVE_TXT,
+    buttonNegative = PRFC.BUTTON_NEUTRAL_TXT,
+    buttonPositive = PRFC.BUTTON_POSITIVETXT,
+) => {
+    const isReqMult = Array.isArray(permissions);
+
+    try {
+        if (isReqMult) {
+            const multPermissions = permissions.map(permission => PermissionsAndroid.PERMISSIONS[permission]);
+            const results = await PermissionsAndroid.requestMultiple(multPermissions);
+            console.log(JSON.stringify(results, undefined, 2));
+        } else {
+            const rationale = {
+                title: `${title} ${permissionsLabel}`,
+                message,
+                buttonNeutral,
+                buttonNegative,
+                buttonPositive,
+            };
+            const granted = await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS[permissions], rationale);
+
+            if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+                console.log(`${permissionsLabel} Access permission granted`);
+            } else {
+                console.log(`${permissionsLabel} Access permission denied`);
+            }
+        }
+    } catch (err) {
+        console.warn(err);
+    }
+};
 
 const requestPermissions = async permissions => {
     const isReqMult = Array.isArray(permissions);
 
     try {
         if (isReqMult) {
-            const multPermissions = permissions.map(
-                permission => PermissionsAndroid.PERMISSIONS[permission],
-            );
+            const multPermissions = permissions.map(permission => PermissionsAndroid.PERMISSIONS[permission]);
             const results = await PermissionsAndroid.requestMultiple(multPermissions);
             console.log(JSON.stringify(results, undefined, 2));
             return results;
