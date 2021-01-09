@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { useEffect } from 'react';
 import { NativeEventEmitter, NativeModules } from 'react-native';
-import Noke from '../services/noke-service/index';
+import NokeAndroid from 'noke';
 
 const { NokeAndroidMobileLibrary } = NativeModules;
 
@@ -28,7 +28,7 @@ export function useNokeService() {
     useEffect(() => {
         const initializeNokeService = async () => {
             try {
-                const serviceInitialized = await Noke.initiateNokeService();
+                const serviceInitialized = await NokeAndroid.initiateNokeService();
                 console.log(`serviceInitialized: ${serviceInitialized}`);
             } catch (e) {
                 console.error(e);

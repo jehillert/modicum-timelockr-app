@@ -1,9 +1,9 @@
-package com.calapp;
+package com.timelockr;
 import com.facebook.react.ReactActivity;
 public class MainActivity extends ReactActivity {
 
   @Override
   protected String getMainComponentName() {
-    return "calapp";
+    return "timelockr";
   }
 }

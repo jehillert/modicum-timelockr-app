@@ -1,6 +1,6 @@
-package com.calapp;
+package com.timelockr;
 
-import com.calapp.NokeAndroidMobileLibrary;
+import com.timelockr.NokeAndroidMobileLibrary;
 
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.NativeModule;

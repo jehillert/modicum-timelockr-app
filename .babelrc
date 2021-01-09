@@ -25,7 +25,7 @@
                     "screens": "./src/screens/index",
                     "utilities": "./src/utilities/index",
                     "components": "./src/components/index",
-                    "noke": "./src/services/noke-service/index"
+                    "noke": "./src/noke/noke"
                 }
             }
         ]

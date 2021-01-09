@@ -1,13 +1,11 @@
 import { useEffect } from 'react';
-import { NativeModules } from 'react-native';
-
-const { NokeAndroidMobileLibrary } = NativeModules;
+import { NokeAndroid } from 'noke';
 
 export function useNokeService() {
     useEffect(() => {
         const initializeNokeService = async () => {
             try {
-                const serviceInitialized = await NokeAndroidMobileLibrary.initiateNokeService();
+                const serviceInitialized = await NokeAndroid.initiateNokeService();
                 console.log(`serviceInitialized: ${serviceInitialized}`);
             } catch (e) {
                 console.error(e);

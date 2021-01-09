@@ -56,7 +56,7 @@ HELPERS
 createCommonEvents       private | NokeDevice => WritableMap
 
 */
-package com.calapp;
+package com.timelockr;
 
 import java.util.Map;
 import java.util.HashMap;

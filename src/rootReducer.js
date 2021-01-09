@@ -1,5 +1,5 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import nokeReducer from './services/noke-service/nokeSlice';
+import nokeReducer from './noke/nokeSlice';
 
 const rootReducer = combineReducers({
     unlock: nokeReducer,

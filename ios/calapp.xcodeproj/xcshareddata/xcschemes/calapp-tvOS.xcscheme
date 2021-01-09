@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-               BuildableName = "calapp-tvOS.app"
-               BlueprintName = "calapp-tvOS"
-               ReferencedContainer = "container:calapp.xcodeproj">
+               BuildableName = "timelockr-tvOS.app"
+               BlueprintName = "timelockr-tvOS"
+               ReferencedContainer = "container:timelockr.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
-               BuildableName = "calapp-tvOSTests.xctest"
-               BlueprintName = "calapp-tvOSTests"
-               ReferencedContainer = "container:calapp.xcodeproj">
+               BuildableName = "timelockr-tvOSTests.xctest"
+               BlueprintName = "timelockr-tvOSTests"
+               ReferencedContainer = "container:timelockr.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "calapp-tvOS.app"
-            BlueprintName = "calapp-tvOS"
-            ReferencedContainer = "container:calapp.xcodeproj">
+            BuildableName = "timelockr-tvOS.app"
+            BlueprintName = "timelockr-tvOS"
+            ReferencedContainer = "container:timelockr.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "calapp-tvOS.app"
-            BlueprintName = "calapp-tvOS"
-            ReferencedContainer = "container:calapp.xcodeproj">
+            BuildableName = "timelockr-tvOS.app"
+            BlueprintName = "timelockr-tvOS"
+            ReferencedContainer = "container:timelockr.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

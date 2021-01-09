@@ -7,19 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00E356F31AD99517003FC87E /* calappTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* calappTests.m */; };
+		00E356F31AD99517003FC87E /* timelockrTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* timelockrTests.m */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		2DCD954D1E0B4F2C00145EB5 /* calappTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* calappTests.m */; };
-		672DEBDF7F8BA56014DE95BB /* libPods-calapp-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ABA8FC052438F5D6A0A431FB /* libPods-calapp-tvOSTests.a */; };
-		73E6669C3A0E279998A7122E /* libPods-calapp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C1B8C63DBE4B790C3E9B9170 /* libPods-calapp.a */; };
+		2DCD954D1E0B4F2C00145EB5 /* timelockrTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* timelockrTests.m */; };
+		672DEBDF7F8BA56014DE95BB /* libPods-timelockr-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ABA8FC052438F5D6A0A431FB /* libPods-timelockr-tvOSTests.a */; };
+		73E6669C3A0E279998A7122E /* libPods-timelockr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C1B8C63DBE4B790C3E9B9170 /* libPods-timelockr.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		DF1F49AEC483A505C7145916 /* libPods-calapp-calappTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D865B7621618A359C6C4E78 /* libPods-calapp-calappTests.a */; };
-		E28D2F2F16C2217EBAC59685 /* libPods-calapp-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A20786011622CEA00BD8D511 /* libPods-calapp-tvOS.a */; };
+		DF1F49AEC483A505C7145916 /* libPods-timelockr-timelockrTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D865B7621618A359C6C4E78 /* libPods-timelockr-timelockrTests.a */; };
+		E28D2F2F16C2217EBAC59685 /* libPods-timelockr-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A20786011622CEA00BD8D511 /* libPods-timelockr-tvOS.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,45 +28,45 @@
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
-			remoteInfo = calapp;
+			remoteInfo = timelockr;
 		};
 		2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 2D02E47A1E0B4A5D006451C7;
-			remoteInfo = "calapp-tvOS";
+			remoteInfo = "timelockr-tvOS";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
-		00E356EE1AD99517003FC87E /* calappTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = calappTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356EE1AD99517003FC87E /* timelockrTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = timelockrTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00E356F21AD99517003FC87E /* calappTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = calappTests.m; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* calapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = calapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = calapp/AppDelegate.h; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = calapp/AppDelegate.m; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = calapp/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = calapp/Info.plist; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = calapp/main.m; sourceTree = "<group>"; };
-		2D02E47B1E0B4A5D006451C7 /* calapp-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "calapp-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D02E4901E0B4A5D006451C7 /* calapp-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "calapp-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3BE81C92BA3A05AA8921F02B /* Pods-calapp-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-calapp-tvOS.release.xcconfig"; path = "Target Support Files/Pods-calapp-tvOS/Pods-calapp-tvOS.release.xcconfig"; sourceTree = "<group>"; };
-		7ABD4E2614405BB604618886 /* Pods-calapp-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-calapp-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-calapp-tvOSTests/Pods-calapp-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
-		7B0BBDCC54A211B36C279356 /* Pods-calapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-calapp.debug.xcconfig"; path = "Target Support Files/Pods-calapp/Pods-calapp.debug.xcconfig"; sourceTree = "<group>"; };
-		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = calapp/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		8D865B7621618A359C6C4E78 /* libPods-calapp-calappTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-calapp-calappTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9CEC55235F462D6E447D1E5B /* Pods-calapp-calappTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-calapp-calappTests.debug.xcconfig"; path = "Target Support Files/Pods-calapp-calappTests/Pods-calapp-calappTests.debug.xcconfig"; sourceTree = "<group>"; };
-		A20786011622CEA00BD8D511 /* libPods-calapp-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-calapp-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A4D82D2C99EF3BD109F6CB46 /* Pods-calapp-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-calapp-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-calapp-tvOSTests/Pods-calapp-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
-		ABA8FC052438F5D6A0A431FB /* libPods-calapp-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-calapp-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		AC58F7E7F445C30986C79D38 /* Pods-calapp-calappTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-calapp-calappTests.release.xcconfig"; path = "Target Support Files/Pods-calapp-calappTests/Pods-calapp-calappTests.release.xcconfig"; sourceTree = "<group>"; };
-		C1B8C63DBE4B790C3E9B9170 /* libPods-calapp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-calapp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E705E872CF476D64D5B33E91 /* Pods-calapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-calapp.release.xcconfig"; path = "Target Support Files/Pods-calapp/Pods-calapp.release.xcconfig"; sourceTree = "<group>"; };
+		00E356F21AD99517003FC87E /* timelockrTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = timelockrTests.m; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* timelockr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = timelockr.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = timelockr/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = timelockr/AppDelegate.m; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = timelockr/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = timelockr/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = timelockr/main.m; sourceTree = "<group>"; };
+		2D02E47B1E0B4A5D006451C7 /* timelockr-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "timelockr-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D02E4901E0B4A5D006451C7 /* timelockr-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "timelockr-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3BE81C92BA3A05AA8921F02B /* Pods-timelockr-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-timelockr-tvOS.release.xcconfig"; path = "Target Support Files/Pods-timelockr-tvOS/Pods-timelockr-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		7ABD4E2614405BB604618886 /* Pods-timelockr-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-timelockr-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-timelockr-tvOSTests/Pods-timelockr-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		7B0BBDCC54A211B36C279356 /* Pods-timelockr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-timelockr.debug.xcconfig"; path = "Target Support Files/Pods-timelockr/Pods-timelockr.debug.xcconfig"; sourceTree = "<group>"; };
+		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = timelockr/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8D865B7621618A359C6C4E78 /* libPods-timelockr-timelockrTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-timelockr-timelockrTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9CEC55235F462D6E447D1E5B /* Pods-timelockr-timelockrTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-timelockr-timelockrTests.debug.xcconfig"; path = "Target Support Files/Pods-timelockr-timelockrTests/Pods-timelockr-timelockrTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A20786011622CEA00BD8D511 /* libPods-timelockr-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-timelockr-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4D82D2C99EF3BD109F6CB46 /* Pods-timelockr-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-timelockr-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-timelockr-tvOSTests/Pods-timelockr-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		ABA8FC052438F5D6A0A431FB /* libPods-timelockr-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-timelockr-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC58F7E7F445C30986C79D38 /* Pods-timelockr-timelockrTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-timelockr-timelockrTests.release.xcconfig"; path = "Target Support Files/Pods-timelockr-timelockrTests/Pods-timelockr-timelockrTests.release.xcconfig"; sourceTree = "<group>"; };
+		C1B8C63DBE4B790C3E9B9170 /* libPods-timelockr.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-timelockr.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E705E872CF476D64D5B33E91 /* Pods-timelockr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-timelockr.release.xcconfig"; path = "Target Support Files/Pods-timelockr/Pods-timelockr.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
-		FC0FD7AE42B4BA8B24F5C42D /* Pods-calapp-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-calapp-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-calapp-tvOS/Pods-calapp-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		FC0FD7AE42B4BA8B24F5C42D /* Pods-timelockr-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-timelockr-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-timelockr-tvOS/Pods-timelockr-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF1F49AEC483A505C7145916 /* libPods-calapp-calappTests.a in Frameworks */,
+				DF1F49AEC483A505C7145916 /* libPods-timelockr-timelockrTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,7 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				73E6669C3A0E279998A7122E /* libPods-calapp.a in Frameworks */,
+				73E6669C3A0E279998A7122E /* libPods-timelockr.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,7 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E28D2F2F16C2217EBAC59685 /* libPods-calapp-tvOS.a in Frameworks */,
+				E28D2F2F16C2217EBAC59685 /* libPods-timelockr-tvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,20 +98,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				672DEBDF7F8BA56014DE95BB /* libPods-calapp-tvOSTests.a in Frameworks */,
+				672DEBDF7F8BA56014DE95BB /* libPods-timelockr-tvOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		00E356EF1AD99517003FC87E /* calappTests */ = {
+		00E356EF1AD99517003FC87E /* timelockrTests */ = {
 			isa = PBXGroup;
 			children = (
-				00E356F21AD99517003FC87E /* calappTests.m */,
+				00E356F21AD99517003FC87E /* timelockrTests.m */,
 				00E356F01AD99517003FC87E /* Supporting Files */,
 			);
-			path = calappTests;
+			path = timelockrTests;
 			sourceTree = "<group>";
 		};
 		00E356F01AD99517003FC87E /* Supporting Files */ = {
@@ -122,7 +122,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		13B07FAE1A68108700A75B9A /* calapp */ = {
+		13B07FAE1A68108700A75B9A /* timelockr */ = {
 			isa = PBXGroup;
 			children = (
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
@@ -133,7 +133,7 @@
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
-			name = calapp;
+			name = timelockr;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
@@ -141,10 +141,10 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				C1B8C63DBE4B790C3E9B9170 /* libPods-calapp.a */,
-				8D865B7621618A359C6C4E78 /* libPods-calapp-calappTests.a */,
-				A20786011622CEA00BD8D511 /* libPods-calapp-tvOS.a */,
-				ABA8FC052438F5D6A0A431FB /* libPods-calapp-tvOSTests.a */,
+				C1B8C63DBE4B790C3E9B9170 /* libPods-timelockr.a */,
+				8D865B7621618A359C6C4E78 /* libPods-timelockr-timelockrTests.a */,
+				A20786011622CEA00BD8D511 /* libPods-timelockr-tvOS.a */,
+				ABA8FC052438F5D6A0A431FB /* libPods-timelockr-tvOSTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -159,9 +159,9 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				13B07FAE1A68108700A75B9A /* calapp */,
+				13B07FAE1A68108700A75B9A /* timelockr */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
-				00E356EF1AD99517003FC87E /* calappTests */,
+				00E356EF1AD99517003FC87E /* timelockrTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				F9FEE4C561DEDE4571BCC15B /* Pods */,
@@ -174,10 +174,10 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* calapp.app */,
-				00E356EE1AD99517003FC87E /* calappTests.xctest */,
-				2D02E47B1E0B4A5D006451C7 /* calapp-tvOS.app */,
-				2D02E4901E0B4A5D006451C7 /* calapp-tvOSTests.xctest */,
+				13B07F961A680F5B00A75B9A /* timelockr.app */,
+				00E356EE1AD99517003FC87E /* timelockrTests.xctest */,
+				2D02E47B1E0B4A5D006451C7 /* timelockr-tvOS.app */,
+				2D02E4901E0B4A5D006451C7 /* timelockr-tvOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -185,14 +185,14 @@
 		F9FEE4C561DEDE4571BCC15B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				7B0BBDCC54A211B36C279356 /* Pods-calapp.debug.xcconfig */,
-				E705E872CF476D64D5B33E91 /* Pods-calapp.release.xcconfig */,
-				9CEC55235F462D6E447D1E5B /* Pods-calapp-calappTests.debug.xcconfig */,
-				AC58F7E7F445C30986C79D38 /* Pods-calapp-calappTests.release.xcconfig */,
-				FC0FD7AE42B4BA8B24F5C42D /* Pods-calapp-tvOS.debug.xcconfig */,
-				3BE81C92BA3A05AA8921F02B /* Pods-calapp-tvOS.release.xcconfig */,
-				7ABD4E2614405BB604618886 /* Pods-calapp-tvOSTests.debug.xcconfig */,
-				A4D82D2C99EF3BD109F6CB46 /* Pods-calapp-tvOSTests.release.xcconfig */,
+				7B0BBDCC54A211B36C279356 /* Pods-timelockr.debug.xcconfig */,
+				E705E872CF476D64D5B33E91 /* Pods-timelockr.release.xcconfig */,
+				9CEC55235F462D6E447D1E5B /* Pods-timelockr-timelockrTests.debug.xcconfig */,
+				AC58F7E7F445C30986C79D38 /* Pods-timelockr-timelockrTests.release.xcconfig */,
+				FC0FD7AE42B4BA8B24F5C42D /* Pods-timelockr-tvOS.debug.xcconfig */,
+				3BE81C92BA3A05AA8921F02B /* Pods-timelockr-tvOS.release.xcconfig */,
+				7ABD4E2614405BB604618886 /* Pods-timelockr-tvOSTests.debug.xcconfig */,
+				A4D82D2C99EF3BD109F6CB46 /* Pods-timelockr-tvOSTests.release.xcconfig */,
 			);
 			name = Pods;
 			path = Pods;
@@ -201,9 +201,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		00E356ED1AD99517003FC87E /* calappTests */ = {
+		00E356ED1AD99517003FC87E /* timelockrTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "calappTests" */;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "timelockrTests" */;
 			buildPhases = (
 				E8024C040C3C61B102747B89 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
@@ -216,14 +216,14 @@
 			dependencies = (
 				00E356F51AD99517003FC87E /* PBXTargetDependency */,
 			);
-			name = calappTests;
-			productName = calappTests;
-			productReference = 00E356EE1AD99517003FC87E /* calappTests.xctest */;
+			name = timelockrTests;
+			productName = timelockrTests;
+			productReference = 00E356EE1AD99517003FC87E /* timelockrTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		13B07F861A680F5B00A75B9A /* calapp */ = {
+		13B07F861A680F5B00A75B9A /* timelockr */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "calapp" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "timelockr" */;
 			buildPhases = (
 				DC014277EC1F0F6E2937F615 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
@@ -237,14 +237,14 @@
 			);
 			dependencies = (
 			);
-			name = calapp;
-			productName = calapp;
-			productReference = 13B07F961A680F5B00A75B9A /* calapp.app */;
+			name = timelockr;
+			productName = timelockr;
+			productReference = 13B07F961A680F5B00A75B9A /* timelockr.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D02E47A1E0B4A5D006451C7 /* calapp-tvOS */ = {
+		2D02E47A1E0B4A5D006451C7 /* timelockr-tvOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "calapp-tvOS" */;
+			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "timelockr-tvOS" */;
 			buildPhases = (
 				F0C783080CAF1E9B37194B91 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F122414F3F0027D42C /* Start Packager */,
@@ -257,14 +257,14 @@
 			);
 			dependencies = (
 			);
-			name = "calapp-tvOS";
-			productName = "calapp-tvOS";
-			productReference = 2D02E47B1E0B4A5D006451C7 /* calapp-tvOS.app */;
+			name = "timelockr-tvOS";
+			productName = "timelockr-tvOS";
+			productReference = 2D02E47B1E0B4A5D006451C7 /* timelockr-tvOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D02E48F1E0B4A5D006451C7 /* calapp-tvOSTests */ = {
+		2D02E48F1E0B4A5D006451C7 /* timelockr-tvOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "calapp-tvOSTests" */;
+			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "timelockr-tvOSTests" */;
 			buildPhases = (
 				2642B6878FB351156A4E82F4 /* [CP] Check Pods Manifest.lock */,
 				2D02E48C1E0B4A5D006451C7 /* Sources */,
@@ -276,9 +276,9 @@
 			dependencies = (
 				2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */,
 			);
-			name = "calapp-tvOSTests";
-			productName = "calapp-tvOSTests";
-			productReference = 2D02E4901E0B4A5D006451C7 /* calapp-tvOSTests.xctest */;
+			name = "timelockr-tvOSTests";
+			productName = "timelockr-tvOSTests";
+			productReference = 2D02E4901E0B4A5D006451C7 /* timelockr-tvOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -307,7 +307,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "calapp" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "timelockr" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -320,10 +320,10 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* calapp */,
-				00E356ED1AD99517003FC87E /* calappTests */,
-				2D02E47A1E0B4A5D006451C7 /* calapp-tvOS */,
-				2D02E48F1E0B4A5D006451C7 /* calapp-tvOSTests */,
+				13B07F861A680F5B00A75B9A /* timelockr */,
+				00E356ED1AD99517003FC87E /* timelockrTests */,
+				2D02E47A1E0B4A5D006451C7 /* timelockr-tvOS */,
+				2D02E48F1E0B4A5D006451C7 /* timelockr-tvOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -392,7 +392,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-calapp-tvOSTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-timelockr-tvOSTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -419,7 +419,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-calapp/Pods-calapp-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-timelockr/Pods-timelockr-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -428,7 +428,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-calapp/Pods-calapp-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-timelockr/Pods-timelockr-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DC014277EC1F0F6E2937F615 /* [CP] Check Pods Manifest.lock */ = {
@@ -446,7 +446,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-calapp-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-timelockr-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -459,7 +459,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-calapp-calappTests/Pods-calapp-calappTests-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-timelockr-timelockrTests/Pods-timelockr-timelockrTests-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -468,7 +468,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-calapp-calappTests/Pods-calapp-calappTests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-timelockr-timelockrTests/Pods-timelockr-timelockrTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E8024C040C3C61B102747B89 /* [CP] Check Pods Manifest.lock */ = {
@@ -486,7 +486,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-calapp-calappTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-timelockr-timelockrTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -508,7 +508,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-calapp-tvOS-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-timelockr-tvOS-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -560,7 +560,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00E356F31AD99517003FC87E /* calappTests.m in Sources */,
+				00E356F31AD99517003FC87E /* timelockrTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -586,7 +586,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DCD954D1E0B4F2C00145EB5 /* calappTests.m in Sources */,
+				2DCD954D1E0B4F2C00145EB5 /* timelockrTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -595,12 +595,12 @@
 /* Begin PBXTargetDependency section */
 		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 13B07F861A680F5B00A75B9A /* calapp */;
+			target = 13B07F861A680F5B00A75B9A /* timelockr */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
 		2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2D02E47A1E0B4A5D006451C7 /* calapp-tvOS */;
+			target = 2D02E47A1E0B4A5D006451C7 /* timelockr-tvOS */;
 			targetProxy = 2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -608,14 +608,14 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9CEC55235F462D6E447D1E5B /* Pods-calapp-calappTests.debug.xcconfig */;
+			baseConfigurationReference = 9CEC55235F462D6E447D1E5B /* Pods-timelockr-timelockrTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = calappTests/Info.plist;
+				INFOPLIST_FILE = timelockrTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -625,17 +625,17 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/calapp.app/calapp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/timelockr.app/timelockr";
 			};
 			name = Debug;
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AC58F7E7F445C30986C79D38 /* Pods-calapp-calappTests.release.xcconfig */;
+			baseConfigurationReference = AC58F7E7F445C30986C79D38 /* Pods-timelockr-timelockrTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
-				INFOPLIST_FILE = calappTests/Info.plist;
+				INFOPLIST_FILE = timelockrTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -645,19 +645,19 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/calapp.app/calapp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/timelockr.app/timelockr";
 			};
 			name = Release;
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7B0BBDCC54A211B36C279356 /* Pods-calapp.debug.xcconfig */;
+			baseConfigurationReference = 7B0BBDCC54A211B36C279356 /* Pods-timelockr.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = calapp/Info.plist;
+				INFOPLIST_FILE = timelockr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -665,7 +665,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = calapp;
+				PRODUCT_NAME = timelockr;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -674,12 +674,12 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E705E872CF476D64D5B33E91 /* Pods-calapp.release.xcconfig */;
+			baseConfigurationReference = E705E872CF476D64D5B33E91 /* Pods-timelockr.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				INFOPLIST_FILE = calapp/Info.plist;
+				INFOPLIST_FILE = timelockr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -687,7 +687,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = calapp;
+				PRODUCT_NAME = timelockr;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -695,7 +695,7 @@
 		};
 		2D02E4971E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FC0FD7AE42B4BA8B24F5C42D /* Pods-calapp-tvOS.debug.xcconfig */;
+			baseConfigurationReference = FC0FD7AE42B4BA8B24F5C42D /* Pods-timelockr-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -706,14 +706,14 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "calapp-tvOS/Info.plist";
+				INFOPLIST_FILE = "timelockr-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.calapp-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.timelockr-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -723,7 +723,7 @@
 		};
 		2D02E4981E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3BE81C92BA3A05AA8921F02B /* Pods-calapp-tvOS.release.xcconfig */;
+			baseConfigurationReference = 3BE81C92BA3A05AA8921F02B /* Pods-timelockr-tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -734,14 +734,14 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "calapp-tvOS/Info.plist";
+				INFOPLIST_FILE = "timelockr-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.calapp-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.timelockr-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -751,7 +751,7 @@
 		};
 		2D02E4991E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7ABD4E2614405BB604618886 /* Pods-calapp-tvOSTests.debug.xcconfig */;
+			baseConfigurationReference = 7ABD4E2614405BB604618886 /* Pods-timelockr-tvOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -761,24 +761,24 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "calapp-tvOSTests/Info.plist";
+				INFOPLIST_FILE = "timelockr-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.calapp-tvOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.timelockr-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/calapp-tvOS.app/calapp-tvOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/timelockr-tvOS.app/timelockr-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Debug;
 		};
 		2D02E49A1E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A4D82D2C99EF3BD109F6CB46 /* Pods-calapp-tvOSTests.release.xcconfig */;
+			baseConfigurationReference = A4D82D2C99EF3BD109F6CB46 /* Pods-timelockr-tvOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -788,17 +788,17 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "calapp-tvOSTests/Info.plist";
+				INFOPLIST_FILE = "timelockr-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.calapp-tvOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.timelockr-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/calapp-tvOS.app/calapp-tvOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/timelockr-tvOS.app/timelockr-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Release;
@@ -919,7 +919,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "calappTests" */ = {
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "timelockrTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00E356F61AD99517003FC87E /* Debug */,
@@ -928,7 +928,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "calapp" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "timelockr" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -937,7 +937,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "calapp-tvOS" */ = {
+		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "timelockr-tvOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D02E4971E0B4A5E006451C7 /* Debug */,
@@ -946,7 +946,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "calapp-tvOSTests" */ = {
+		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "timelockr-tvOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D02E4991E0B4A5E006451C7 /* Debug */,
@@ -955,7 +955,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "calapp" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "timelockr" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,

@@ -1,8 +1,8 @@
-package com.calapp;
+package com.timelockr;
 
 import android.app.Application;
 import android.content.Context;
-import com.calapp.MyAppPackage;
+import com.timelockr.MyAppPackage;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactInstanceManager;
@@ -65,7 +65,7 @@ public class MainApplication extends Application implements ReactApplication {
         since Flipper library is not available in release mode
         */
                 Class<?> aClass = Class.forName(
-                    "com.calapp.ReactNativeFlipper"
+                    "com.timelockr.ReactNativeFlipper"
                 );
                 aClass
                     .getMethod(

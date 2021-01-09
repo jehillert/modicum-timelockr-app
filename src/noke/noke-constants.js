@@ -12,3 +12,9 @@ export const nokeEvents = [
     'onServiceConnected',
     'onServiceDisconnected',
 ];
+
+const nokeConstants = {
+    nokeEvents,
+};
+
+export default nokeConstants;

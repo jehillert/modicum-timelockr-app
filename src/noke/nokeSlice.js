@@ -8,7 +8,7 @@ const initialState = {
     error: null,
 };
 
-const noke = createSlice({
+const unlock = createSlice({
     name: 'unlock',
     initialState,
     reducers: {
@@ -30,8 +30,8 @@ const noke = createSlice({
 });
 
 // const reducer:
-export const { requestUnlockStart, requestUnlockSuccess, requestUnlockFailure } = noke.actions;
-export default noke.reducer;
+export const { requestUnlockStart, requestUnlockSuccess, requestUnlockFailure } = unlock.actions;
+export default unlock.reducer;
 
 export const fetchUnlock = () => async dispatch => {
     try {

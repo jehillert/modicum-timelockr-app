@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "calapp.app"
-               BlueprintName = "calapp"
-               ReferencedContainer = "container:calapp.xcodeproj">
+               BuildableName = "timelockr.app"
+               BlueprintName = "timelockr"
+               ReferencedContainer = "container:timelockr.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "calappTests.xctest"
-               BlueprintName = "calappTests"
-               ReferencedContainer = "container:calapp.xcodeproj">
+               BuildableName = "timelockrTests.xctest"
+               BlueprintName = "timelockrTests"
+               ReferencedContainer = "container:timelockr.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "calapp.app"
-            BlueprintName = "calapp"
-            ReferencedContainer = "container:calapp.xcodeproj">
+            BuildableName = "timelockr.app"
+            BlueprintName = "timelockr"
+            ReferencedContainer = "container:timelockr.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "calapp.app"
-            BlueprintName = "calapp"
-            ReferencedContainer = "container:calapp.xcodeproj">
+            BuildableName = "timelockr.app"
+            BlueprintName = "timelockr"
+            ReferencedContainer = "container:timelockr.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
