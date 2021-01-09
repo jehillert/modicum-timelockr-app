@@ -1,9 +1,8 @@
 /* eslint-disable prettier/prettier */
-import React, { useEffect } from 'react';
-import { PermissionsAndroid } from 'react-native';
+import React from 'react';
 import styled from 'styled-components';
 import { nokeUtils } from 'noke';
-import { useNokeService } from 'hooks';
+import { useNokeService, useRequestUnlock, usePermissionsRequest, useNokeEmitter } from 'hooks';
 import { MAC_ADDRESS_1 } from '@env';
 
 const S = {};
@@ -16,32 +15,9 @@ S.Button = styled.Button``;
 
 function NokeServiceButtons() {
     useNokeService();
-
-    useEffect(() => {
-        const requestLocationPermission = async () => {
-            try {
-                // wrapp and add for COARSE
-                const granted = await PermissionsAndroid.request(
-                    PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION,
-                    {
-                        title: 'Timelockr Permissions Request',
-                        message: 'Timelockr needs access to your location',
-                        buttonNegative: 'Cancel',
-                        buttonPositive: 'OK',
-                    },
-                );
-                if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-                    console.log('Location Access permission granted');
-                } else {
-                    console.log('Location Access permission denied');
-                }
-            } catch (err) {
-                console.warn(err);
-            }
-        };
-
-        requestLocationPermission();
-    }, []);
+    // usePermissionsRequest(['ACCESS_COARSE_LOCATION', 'ACCESS_FINE_LOCATION']);
+    // useRequestUnlock();
+    useNokeEmitter();
 
     return (
         <>

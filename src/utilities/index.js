@@ -40,9 +40,10 @@ export function initializeBridgeSpyHermes() {
 }
 
 export function initializeBridgeSpy() {
-    const spyFunction = ({ method, args }) => {
-        if (methodsToWatch.includes(method)) {
-            console.log(`BRIDGE: { method: ${method}}, args: ${args} }`);
+    const spyFunction = msg => {
+        if (methodsToWatch.includes(msg.method)) {
+            // console.log(`BRIDGE: { method: ${msg.method}}, args: ${msg.args} }`);
+            console.log(JSON.stringify(msg, undefined, 2));
         }
     };
     MessageQueue.spy(spyFunction);

@@ -4,7 +4,7 @@ REACT NATIVE HELPERS
 ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 getConstants()               public | (n/a)
 getName()                    public | (n/a)
-emitDeviceEvent()           private | eventName,params
+sendEvent(reactContext, )           private | eventName,params
 
 ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 CORE MOBILE FUNCTIONALITY
@@ -153,7 +153,7 @@ public class NokeAndroidMobileLibrary extends ReactContextBaseJavaModule {
             boolean event = true;
             promise.resolve(event);
         } catch (Exception e) {
-            promise.reject("RNNM_ERROR", "initiateMokeService() failed.", e);
+            promise.reject("RNNM_ERROR", "initiateNokeService() failed.", e);
         }
     }
 
@@ -416,7 +416,7 @@ public class NokeAndroidMobileLibrary extends ReactContextBaseJavaModule {
 
     private ServiceConnection mServiceConnection = new ServiceConnection() {
         public void onServiceConnected(ComponentName className, IBinder rawBinder) {
-            Log.i(TAG, "ON SERVICE CONNECTED");
+            Log.i(TAG_LISTEN, "ON SERVICE CONNECTED");
 
             mNokeService = ((NokeDeviceManagerService.LocalBinder) rawBinder)
                     .getService(NokeDefines.NOKE_LIBRARY_SANDBOX);
@@ -436,6 +436,7 @@ public class NokeAndroidMobileLibrary extends ReactContextBaseJavaModule {
         }
 
         public void onServiceDisconnected(ComponentName classname) {
+            Log.i(TAG_LISTEN, "ON SERVICE DISCONNECTED");
             mNokeService = null;
             final WritableMap event = Arguments.createMap();
             event.putBoolean("status", true);
@@ -477,6 +478,7 @@ public class NokeAndroidMobileLibrary extends ReactContextBaseJavaModule {
             event.putString("session", noke.getSession());
             event.putInt("battery", noke.getBattery());
             event.putString("hwVersion", noke.getVersion());
+            currentNoke = noke;
             emitDeviceEvent("onNokeConnected", event);
         }
 
@@ -508,7 +510,9 @@ public class NokeAndroidMobileLibrary extends ReactContextBaseJavaModule {
             event.putString("mac", noke.getMac());
             event.putString("session", noke.getSession());
             emitDeviceEvent("onNokeDisconnected", event);
-            mNokeService.uploadData();
+            // mNokeService.uploadData();
+            mNokeService.startScanningForNokeDevices();
+            mNokeService.setBluetoothScanDuration(8000);
         }
 
         @Override
@@ -529,7 +533,7 @@ public class NokeAndroidMobileLibrary extends ReactContextBaseJavaModule {
 
         @Override
         public void onBluetoothStatusChanged(int bluetoothStatus) {
-            Log.i(TAG_LISTEN, "BLUETOOTH STATUS CHANGE");
+            Log.i(TAG_LISTEN, "BLUETOOTH STATUS CHANGE" + bluetoothStatus);
             final WritableMap event = Arguments.createMap();
             event.putInt("code", bluetoothStatus);
             emitDeviceEvent("onBluetoothStatusChanged", event);

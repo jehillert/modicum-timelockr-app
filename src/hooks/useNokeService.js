@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { NokeAndroid } from 'noke';
 
-export function useNokeService() {
+function useNokeService() {
     useEffect(() => {
         const initializeNokeService = async () => {
             try {
@@ -15,3 +15,5 @@ export function useNokeService() {
         initializeNokeService();
     }, []);
 }
+
+export default useNokeService;
