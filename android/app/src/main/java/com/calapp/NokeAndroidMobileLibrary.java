@@ -363,21 +363,8 @@ public class NokeAndroidMobileLibrary extends ReactContextBaseJavaModule {
 
             mNokeService = ((NokeDeviceManagerService.LocalBinder) rawBinder)
                     .getService(NokeDefines.NOKE_LIBRARY_SANDBOX);
-            // mNokeService.setAllowAllDevices(true);
+            mNokeService.setAllowAllDevices(true);
             mNokeService.registerNokeListener(mNokeServiceListener);
-
-            String[] macs = {
-                "D0:07:69:1B:8A:3A",
-                "D6:B1:8B:99:A7:D3",
-                "EA:EC:51:08:21:CF"
-            };
-
-            for (String mac:macs
-                 ) {
-                //Add locks to device manager
-                NokeDevice noke1 = new NokeDevice(mac, mac);
-                mNokeService.addNokeDevice(noke1);
-            }
 
             String message = "Service is connected";
 
@@ -386,44 +373,12 @@ public class NokeAndroidMobileLibrary extends ReactContextBaseJavaModule {
                 message = "Unable to initialize Bluetooth";
             }
 
-            mNokeService.startScanningForNokeDevices();
-
             final WritableMap event = Arguments.createMap();
 
             event.putString("message", message);
             event.putBoolean("status", true);
             emitDeviceEvent("onServiceConnected", event);
         }
-
-    //     public void onServiceConnected(ComponentName className, IBinder rawBinder) {
-    //         Log.i(TAG_LISTEN, "ON SERVICE CONNECTED");
-
-    //         //Store reference to service
-    //         mNokeService = ((NokeDeviceManagerService.LocalBinder) rawBinder).getService(NokeDefines.NOKE_LIBRARY_SANDBOX);
-
-    //         //Uncomment to allow devices that aren't in the device array
-    //         //mNokeService.setAllowAllDevices(true);
-
-    //         //Register callback listener
-    //         mNokeService.registerNokeListener(mNokeServiceListener);
-
-    //         String[] macs = {"D6:B1:8B:99:A7:D3"};
-
-    //         for (String mac:macs
-    //              ) {
-    //             //Add locks to device manager
-    //             NokeDevice noke1 = new NokeDevice(mac, mac);
-    //             mNokeService.addNokeDevice(noke1);
-    //         }
-
-    //         //Start bluetooth scanning
-    //         mNokeService.startScanningForNokeDevices();
-    //         Log.i(TAG_LISTEN, "Scanning for Noke Devices");
-
-    //         if (!mNokeService.initialize()) {
-    //             Log.i(TAG_LISTEN, "Unable to initialize Bluetooth");
-    //         }
-    //     }
 
         public void onServiceDisconnected(ComponentName classname) {
             Log.i(TAG_LISTEN, "ON SERVICE DISCONNECTED");

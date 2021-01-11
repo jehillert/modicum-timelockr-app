@@ -236,8 +236,6 @@ PODS:
     - React-cxxreact (= 0.63.4)
     - React-jsi (= 0.63.4)
   - React-jsinspector (0.63.4)
-  - react-native-bluetooth-status (1.5.1):
-    - React
   - react-native-flipper (0.69.0):
     - React
   - react-native-safe-area-context (3.1.9):
@@ -349,7 +347,6 @@ DEPENDENCIES:
   - React-jsi (from `../node_modules/react-native/ReactCommon/jsi`)
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
-  - react-native-bluetooth-status (from `../node_modules/react-native-bluetooth-status`)
   - react-native-flipper (from `../node_modules/react-native-flipper`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
@@ -413,8 +410,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsiexecutor"
   React-jsinspector:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
-  react-native-bluetooth-status:
-    :path: "../node_modules/react-native-bluetooth-status"
   react-native-flipper:
     :path: "../node_modules/react-native-flipper"
   react-native-safe-area-context:
@@ -475,7 +470,6 @@ SPEC CHECKSUMS:
   React-jsi: a0418934cf48f25b485631deb27c64dc40fb4c31
   React-jsiexecutor: 93bd528844ad21dc07aab1c67cb10abae6df6949
   React-jsinspector: 58aef7155bc9a9683f5b60b35eccea8722a4f53a
-  react-native-bluetooth-status: 306a9e5311c377813ea68066dd81b66165b3026f
   react-native-flipper: 9d5738fbde235d9e2c922783e0e4657e665fe8ab
   react-native-safe-area-context: b6e0e284002381d2ff29fa4fff42b4d8282e3c94
   React-RCTActionSheet: 89a0ca9f4a06c1f93c26067af074ccdce0f40336
