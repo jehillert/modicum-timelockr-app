@@ -55,18 +55,8 @@ function useNokeEmitter() {
             console.log('NOKE_EMITTER: onNokeUnlocked', data);
         });
 
-        console.log('onServiceConnected listener added');
-        console.log('onServiceDisconnected listener added');
-        console.log('onBluetoothStatusChanged listener added');
-        console.log('onDataUploaded listener added');
-        console.log('onError listener added');
-        console.log('onNokeConnected listener added');
-        console.log('onNokeConnecting listener added');
-        console.log('onNokeDisconnected listener added');
-        console.log('onNokeDiscovered listener added');
-        console.log('onNokeShutdown listener added');
-        console.log('onNokeSyncing listener added');
-        console.log('onNokeUnlocked listener added');
+        console.log('LISTENERS ADDED');
+
     }, []);
 }
 

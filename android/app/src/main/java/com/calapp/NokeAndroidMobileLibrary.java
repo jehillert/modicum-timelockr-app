@@ -1,61 +1,3 @@
-/*
-▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-REACT NATIVE HELPERS
-▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-getConstants()               public | (n/a)
-getName()                    public | (n/a)
-sendEvent(reactContext, )           private | eventName,params
-
-▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-CORE MOBILE FUNCTIONALITY
-▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-initiateNokeService()        public | Promise ==> void
-mNokeServiceListener         Initialized immediately in Android.
-mServiceConnection           Initialized immediately in Android.
-
-▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-NOKE SERVICE LISTENER - Private NokeServiceListener()
-▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-onBluetoothStatusChanged()    public | int
-onDataUploaded()              public | int,String
-onError()                     public | NokeDevice,int,String
-onNokeConnected()             public | NokeDevice
-onNokeConnecting()            public | NokeDevice
-onNokeDisconnected()          public | NokeDevice noke
-onNokeDiscovered()            public | NokeDevice
-onNokeShutdown()              public | NokeDevice,Boolean,Boolean
-onNokeSyncing()               public | NokeDevice
-onNokeUnlocked()              public | NokeDevice
-
-▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-REACT METHODS (all void)
-▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-setBluetoothDelayDefault()            public | int,Promise
-setBluetoothDelayBackgroundDefault()  public | int,Promise
-setBluetoothScanDuration()            public | int,Promise
-startScan()                           public | Promise
-stopScan()                            public | Promise
-sendCommands()                        public | String,String,Promise
-addNokeDevice()                       public | ReadableMap,Promise
-addNokeOfflineValues()                public | ReadableMap,Promise
-connect()                             public | String,Promise
-disconnect()                          public | String,Promise
-removeAllNokes()                      public | Promise
-removeNokeDevice()                    public | String,Promise
-offlineUnlock()                       public | String,Promise
-
-▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-SERVICE CONNECTION - private ServiceConnection...
-▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-onServiceConnected()          public | ComponentName,IBinder
-onServiceDisconnected         public | ComponentName
-
-▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-HELPERS
-▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-createCommonEvents       private | NokeDevice => WritableMap
-
-*/
 package com.timelockr;
 
 import java.util.Map;
@@ -75,10 +17,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
-import androidx.annotation.Nullable;
-import android.util.Log;
 import android.util.Log;
 import android.view.View;
+import androidx.annotation.Nullable;
+import androidx.annotation.NonNull;
 
 import com.noke.nokemobilelibrary.NokeDefines;
 import com.noke.nokemobilelibrary.NokeDeviceManagerService;
@@ -103,6 +45,7 @@ public class NokeAndroidMobileLibrary extends ReactContextBaseJavaModule {
     public static final String TAG = "🔸🔸🔸 @RN_NOKE_ANDROID";
     public static final String TAG_LISTEN = "🔹🔹🔹 @RN_Listen";
     public static final String TAG_RN_METHOD = "🔸🔸🔸 @RN_Method";
+    private static final int PERMISSION_REQUEST_COARSE_LOCATION = 1;
     private NokeDeviceManagerService mNokeService = null;
     private NokeDevice currentNoke;
     static ReactApplicationContext reactContext;
@@ -420,8 +363,21 @@ public class NokeAndroidMobileLibrary extends ReactContextBaseJavaModule {
 
             mNokeService = ((NokeDeviceManagerService.LocalBinder) rawBinder)
                     .getService(NokeDefines.NOKE_LIBRARY_SANDBOX);
-            mNokeService.setAllowAllDevices(true);
+            // mNokeService.setAllowAllDevices(true);
             mNokeService.registerNokeListener(mNokeServiceListener);
+
+            String[] macs = {
+                "D0:07:69:1B:8A:3A",
+                "D6:B1:8B:99:A7:D3",
+                "EA:EC:51:08:21:CF"
+            };
+
+            for (String mac:macs
+                 ) {
+                //Add locks to device manager
+                NokeDevice noke1 = new NokeDevice(mac, mac);
+                mNokeService.addNokeDevice(noke1);
+            }
 
             String message = "Service is connected";
 
@@ -429,11 +385,45 @@ public class NokeAndroidMobileLibrary extends ReactContextBaseJavaModule {
                 Log.e(TAG, "Unable to initialize Bluetooth");
                 message = "Unable to initialize Bluetooth";
             }
+
+            mNokeService.startScanningForNokeDevices();
+
             final WritableMap event = Arguments.createMap();
+
             event.putString("message", message);
             event.putBoolean("status", true);
             emitDeviceEvent("onServiceConnected", event);
         }
+
+    //     public void onServiceConnected(ComponentName className, IBinder rawBinder) {
+    //         Log.i(TAG_LISTEN, "ON SERVICE CONNECTED");
+
+    //         //Store reference to service
+    //         mNokeService = ((NokeDeviceManagerService.LocalBinder) rawBinder).getService(NokeDefines.NOKE_LIBRARY_SANDBOX);
+
+    //         //Uncomment to allow devices that aren't in the device array
+    //         //mNokeService.setAllowAllDevices(true);
+
+    //         //Register callback listener
+    //         mNokeService.registerNokeListener(mNokeServiceListener);
+
+    //         String[] macs = {"D6:B1:8B:99:A7:D3"};
+
+    //         for (String mac:macs
+    //              ) {
+    //             //Add locks to device manager
+    //             NokeDevice noke1 = new NokeDevice(mac, mac);
+    //             mNokeService.addNokeDevice(noke1);
+    //         }
+
+    //         //Start bluetooth scanning
+    //         mNokeService.startScanningForNokeDevices();
+    //         Log.i(TAG_LISTEN, "Scanning for Noke Devices");
+
+    //         if (!mNokeService.initialize()) {
+    //             Log.i(TAG_LISTEN, "Unable to initialize Bluetooth");
+    //         }
+    //     }
 
         public void onServiceDisconnected(ComponentName classname) {
             Log.i(TAG_LISTEN, "ON SERVICE DISCONNECTED");
@@ -479,6 +469,7 @@ public class NokeAndroidMobileLibrary extends ReactContextBaseJavaModule {
             event.putInt("battery", noke.getBattery());
             event.putString("hwVersion", noke.getVersion());
             currentNoke = noke;
+            mNokeService.stopScanning();
             emitDeviceEvent("onNokeConnected", event);
         }
 
@@ -533,7 +524,7 @@ public class NokeAndroidMobileLibrary extends ReactContextBaseJavaModule {
 
         @Override
         public void onBluetoothStatusChanged(int bluetoothStatus) {
-            Log.i(TAG_LISTEN, "BLUETOOTH STATUS CHANGE" + bluetoothStatus);
+            Log.i(TAG_LISTEN, "BLUETOOTH STATUS CHANGE: CODE " + bluetoothStatus);
             final WritableMap event = Arguments.createMap();
             event.putInt("code", bluetoothStatus);
             emitDeviceEvent("onBluetoothStatusChanged", event);
@@ -578,5 +569,19 @@ public class NokeAndroidMobileLibrary extends ReactContextBaseJavaModule {
         event.putString("mac", nokeDevice.getMac());
 
         return event;
+    }
+
+    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case PERMISSION_REQUEST_COARSE_LOCATION: {
+                Log.i(TAG_LISTEN, "GRANT RESULTS: " + grantResults[0]);
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED)
+                {
+                    mNokeService.startScanningForNokeDevices();
+                } else {
+                    Log.e(TAG_LISTEN, "RESULTS NOT GRANTED: " + grantResults[0]);
+                };
+            }
+        }
     }
 };

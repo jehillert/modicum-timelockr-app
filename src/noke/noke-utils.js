@@ -5,8 +5,8 @@ const { permReqFieldConstants: PRFC } = nokeConstants;
 
 const logEvent = event => console.log(`COMMAND CALLBACK: ${JSON.stringify(event, undefined)}`);
 
-const requestLocPermission = async (
-    permissions = 'ACCESS_COARSE_LOCATION',
+const requestLocPermissionAsync = async (
+    permissions = 'ACCESS_FINE_LOCATION',
     permissionsLabel = 'Location',
     title = PRFC.PERMISSIONS_TITLE_TXT,
     message = PRFC.PERMISSIONS_REQUEST_MSG,
@@ -36,6 +36,7 @@ const requestLocPermission = async (
             } else {
                 console.log(`${permissionsLabel} Access permission denied`);
             }
+            return granted === PermissionsAndroid.RESULTS.GRANTED;
         }
     } catch (err) {
         console.warn(err);
@@ -50,6 +51,10 @@ const requestPermissions = async permissions => {
             const multPermissions = permissions.map(permission => PermissionsAndroid.PERMISSIONS[permission]);
             const results = await PermissionsAndroid.requestMultiple(multPermissions);
             console.log(JSON.stringify(results, undefined, 2));
+            // return (
+            //     results['android.permission.ACCESS_FINE_LOCATION'] === 'granted' &&
+            //     results['android.permission.ACCESS_COARSE_LOCATION'] === 'granted'
+            // );
             return results;
         }
     } catch (err) {
@@ -57,7 +62,7 @@ const requestPermissions = async permissions => {
     }
 };
 
-const requestLocationPermissions = async () =>
+const requestLocPermissionsAsync = async () =>
     await requestPermissions(['ACCESS_COARSE_LOCATION', 'ACCESS_FINE_LOCATION']);
 
 function addNokeDevice(lockData) {
@@ -105,12 +110,18 @@ function setBluetoothScanDuration(duration) {
 }
 
 function startScan() {
-    requestPermissions(['ACCESS_COARSE_LOCATION', 'ACCESS_FINE_LOCATION']).then(results => {
-        if (results['android.permission.ACCESS_FINE_LOCATION']) {
-            NokeAndroid.startScan().then(logEvent).catch(console.error);
-        }
-    });
+    NokeAndroid.startScan().then(logEvent).catch(console.error);
 }
+// async function startScanAsync() {
+//     const isGranted = await requestLocPermissionAsync();
+//     if (isGranted) {
+//         NokeAndroid.startScan().then(logEvent).catch(console.error);
+//     }
+//     const result = await requestPermissions(['ACCESS_COARSE_LOCATION', 'ACCESS_FINE_LOCATION'])
+//     if (results['android.permission.ACCESS_FINE_LOCATION']) {
+//         NokeAndroid.startScan().then(logEvent).catch(console.error);
+//     }
+// }
 
 function stopScan() {
     return NokeAndroid.stopScan().then(logEvent).catch(console.error);
@@ -124,7 +135,8 @@ const nokeUtils = {
     offlineUnlock,
     removeAllNokes,
     removeNokeDevice,
-    requestLocationPermissions,
+    requestLocPermissionsAsync,
+    requestLocPermissionAsync,
     sendCommands,
     setBluetoothDelayBackgroundDefault,
     setBluetoothDelayDefault,

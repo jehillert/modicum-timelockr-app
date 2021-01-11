@@ -3,10 +3,10 @@ import nokeConstants from './noke-constants';
 import nokeUtils from './noke-utils';
 import { Observable } from 'rxjs';
 
-export const { NokeAndroidMobileLibrary: NokeAndroid } = NativeModules;
+const { NokeAndroidMobileLibrary } = NativeModules;
 
 // EVENT UTILITIES
-const NokeEmitter = new NativeEventEmitter(NokeAndroid);
+const NokeEmitter = new NativeEventEmitter(NokeAndroidMobileLibrary);
 
 export const onEvent = function (eventName, callback) {
     console.log(`eventName: ${eventName}`);
@@ -65,13 +65,15 @@ export const nokeEventUtils = {
 };
 
 const Noke = {
-    getConstants: NokeAndroid.getConstants,
-    getName: NokeAndroid.getName,
+    getConstants: NokeAndroidMobileLibrary.getConstants,
+    getName: NokeAndroidMobileLibrary.getName,
     nokeConstants,
     ...nokeUtils,
     ...nokeEventUtils,
 };
 
 export { unlockReducer } from './nokeSlice';
+
+export { NokeAndroidMobileLibrary as NokeAndroid };
 
 export default Noke;

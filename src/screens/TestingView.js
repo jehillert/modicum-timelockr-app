@@ -1,7 +1,7 @@
 import React from 'react';
 import { SafeAreaView, StyleSheet, ScrollView, View, Text, StatusBar } from 'react-native';
 import { Header, Colors } from 'react-native/Libraries/NewAppScreen';
-import NokeServiceButtons from '../components/TestingButtons';
+import NokeServiceButtons from '../noke/TestingButtons';
 
 function TestingView() {
     return (
