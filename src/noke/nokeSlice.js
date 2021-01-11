@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { requestUnlock } from 'api';
+import { requestUnlock } from 'noke-api';
 
 const initialState = {
     dummy: 'empty',

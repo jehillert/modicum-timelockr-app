@@ -1,5 +1,6 @@
 import { PermissionsAndroid } from 'react-native';
 import { NokeAndroid, nokeConstants } from 'noke';
+import { requestUnlock } from 'noke-api';
 
 const { permReqFieldConstants: PRFC } = nokeConstants;
 
@@ -112,20 +113,14 @@ function setBluetoothScanDuration(duration) {
 function startScan() {
     NokeAndroid.startScan().then(logEvent).catch(console.error);
 }
-// async function startScanAsync() {
-//     const isGranted = await requestLocPermissionAsync();
-//     if (isGranted) {
-//         NokeAndroid.startScan().then(logEvent).catch(console.error);
-//     }
-//     const result = await requestPermissions(['ACCESS_COARSE_LOCATION', 'ACCESS_FINE_LOCATION'])
-//     if (results['android.permission.ACCESS_FINE_LOCATION']) {
-//         NokeAndroid.startScan().then(logEvent).catch(console.error);
-//     }
-// }
 
 function stopScan() {
     return NokeAndroid.stopScan().then(logEvent).catch(console.error);
 }
+
+const unlock = () => {
+    requestUnlock();
+};
 
 const nokeUtils = {
     addNokeDevice,
@@ -143,6 +138,7 @@ const nokeUtils = {
     setBluetoothScanDuration,
     startScan,
     stopScan,
+    unlock,
 };
 
 export default nokeUtils;
