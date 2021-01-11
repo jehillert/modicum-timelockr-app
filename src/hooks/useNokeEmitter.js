@@ -1,9 +1,13 @@
 /* eslint-disable prettier/prettier */
 import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { NativeEventEmitter } from 'react-native';
 import NokeAndroid from 'noke';
+import { updateNokeDevice } from '../redux/devicesSlice';
 
 function useNokeEmitter() {
+    const dispatch = useDispatch();
+
     useEffect(() => {
         const NokeEmitter = new NativeEventEmitter(NokeAndroid);
 
@@ -28,7 +32,9 @@ function useNokeEmitter() {
         });
 
         const onNokeConnected = NokeEmitter.addListener('onNokeConnected', data => {
-            console.log('NOKE_EMITTER: onNokeConnected', data);
+            // console.log(data);
+            dispatch(updateNokeDevice(data));
+            // console.log('NOKE_EMITTER: onNokeConnected', data);
         });
 
         const onNokeConnecting = NokeEmitter.addListener('onNokeConnecting', data => {

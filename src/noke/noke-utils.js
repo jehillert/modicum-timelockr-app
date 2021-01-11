@@ -1,7 +1,6 @@
 import { PermissionsAndroid } from 'react-native';
 import { NokeAndroid, nokeConstants } from 'noke';
 import { requestUnlock } from 'noke-api';
-
 const { permReqFieldConstants: PRFC } = nokeConstants;
 
 const logEvent = event => console.log(`COMMAND CALLBACK: ${JSON.stringify(event, undefined)}`);
@@ -19,7 +18,9 @@ const requestLocPermissionAsync = async (
 
     try {
         if (isReqMult) {
-            const multPermissions = permissions.map(permission => PermissionsAndroid.PERMISSIONS[permission]);
+            const multPermissions = permissions.map(
+                permission => PermissionsAndroid.PERMISSIONS[permission]
+            );
             const results = await PermissionsAndroid.requestMultiple(multPermissions);
             console.log(JSON.stringify(results, undefined, 2));
         } else {
@@ -30,7 +31,10 @@ const requestLocPermissionAsync = async (
                 buttonNegative,
                 buttonPositive,
             };
-            const granted = await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS[permissions], rationale);
+            const granted = await PermissionsAndroid.request(
+                PermissionsAndroid.PERMISSIONS[permissions],
+                rationale,
+            );
 
             if (granted === PermissionsAndroid.RESULTS.GRANTED) {
                 console.log(`${permissionsLabel} Access permission granted`);
@@ -66,10 +70,6 @@ const requestPermissions = async permissions => {
 const requestLocPermissionsAsync = async () =>
     await requestPermissions(['ACCESS_COARSE_LOCATION', 'ACCESS_FINE_LOCATION']);
 
-function addNokeDevice(lockData) {
-    return NokeAndroid.addNokeDevice(lockData).then(logEvent).catch(console.error);
-}
-
 function addNokeOfflineValues(lockData) {
     return NokeAndroid.addNokeOfflineValues(lockData).then(logEvent).catch(console.error);
 }
@@ -88,10 +88,6 @@ function offlineUnlock(mac) {
 
 function removeAllNokes() {
     return NokeAndroid.removeAllNokes().then(logEvent).catch(console.error);
-}
-
-function removeNokeDevice(mac) {
-    return NokeAndroid.removeNokeDevice(mac).then(logEvent).catch(console.error);
 }
 
 function sendCommands(mac, command) {
@@ -123,13 +119,11 @@ const unlock = () => {
 };
 
 const nokeUtils = {
-    addNokeDevice,
     addNokeOfflineValues,
     connect,
     disconnect,
     offlineUnlock,
     removeAllNokes,
-    removeNokeDevice,
     requestLocPermissionsAsync,
     requestLocPermissionAsync,
     sendCommands,

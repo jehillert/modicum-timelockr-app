@@ -8,30 +8,34 @@ const initialState = {
     error: null,
 };
 
-const unlock = createSlice({
-    name: 'unlock',
+const unlockRequest = createSlice({
+    name: 'unlockRequest',
     initialState,
     reducers: {
         requestUnlockStart(state) {
             state.loading = true;
             state.error = null;
         },
-        requestUnlockSuccess(state, action) {
-            const { razzleDazzle } = action.payload;
+        requestUnlockSuccess(state, { payload }) {
+            const { razzleDazzle } = payload;
             state.dummy = razzleDazzle;
             state.loading = false;
             state.error = null;
         },
-        requestUnlockFailure(state, action) {
+        requestUnlockFailure(state, { payload }) {
             state.loading = false;
-            state.error = action.payload;
+            state.error = payload;
         },
     },
 });
 
-// const reducer:
-export const { requestUnlockStart, requestUnlockSuccess, requestUnlockFailure } = unlock.actions;
-export default unlock.reducer;
+export const {
+    requestUnlockStart,
+    requestUnlockSuccess,
+    requestUnlockFailure,
+} = unlockRequest.actions;
+
+export default unlockRequest.reducer;
 
 export const fetchUnlock = () => async dispatch => {
     try {

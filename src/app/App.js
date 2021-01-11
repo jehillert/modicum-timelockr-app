@@ -5,8 +5,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 // import { initializeBridgeSpy } from 'utilities';
 import store from 'store';
-import TestingView from './screens/TestingView';
-import Duration from './screens/Duration';
+import TestingView from '../screens/TestingView';
+import Duration from '../screens/Duration';
 
 // initializeBridgeSpy();
 

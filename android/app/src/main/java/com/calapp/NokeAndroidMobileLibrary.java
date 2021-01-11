@@ -65,20 +65,20 @@ public class NokeAndroidMobileLibrary extends ReactContextBaseJavaModule {
     public Map<String, Object> getConstants() {
         final Charset charset = Charset.forName("UTF-8");
         final Map<String, Object> constants = new HashMap<>();
-        constants.put("NOKE_LOCK_STATE_UNKNOWN", "Unknown"); // NOKE_LOCK_STATE_UNKNOWN.NokeDefines (int -1)
-        constants.put("NOKE_LOCK_STATE_UNLOCKED", "Unlocked"); // NOKE_LOCK_STATE_UNLOCKED.NokeDefines (int 0)
-        constants.put("NOKE_LOCK_STATE_UNSHACKLED", "Unshackled"); // NOKE_LOCK_STATE_UNSHACKLED.NokeDefines (int 2)
-        constants.put("NOKE_LOCK_STATE_LOCKED", "Locked"); // NOKE_LOCK_STATE_LOCKED.NokeDefines (int 3)
-        constants.put("NOKE_HW_TYPE_1ST_GEN_PADLOCK", NokeDefines.NOKE_HW_TYPE_1ST_GEN_PADLOCK); // [String]
-        constants.put("NOKE_HW_TYPE_2ND_GEN_PADLOCK", NokeDefines.NOKE_HW_TYPE_2ND_GEN_PADLOCK); // [String]
-        constants.put("NOKE_HW_TYPE_ULOCK", NokeDefines.NOKE_HW_TYPE_ULOCK); // [String]
-        constants.put("NOKE_HW_TYPE_HD_LOCK", NokeDefines.NOKE_HW_TYPE_HD_LOCK); // [String]
-        constants.put("NOKE_HW_TYPE_DOOR_CONTROLLER", NokeDefines.NOKE_HW_TYPE_DOOR_CONTROLLER); // [String]
-        constants.put("NOKE_HW_TYPE_PB12", NokeDefines.NOKE_HW_TYPE_PB12); // [String]
-        constants.put("NOKE_LIBRARY_SANDBOX", NokeDefines.NOKE_LIBRARY_SANDBOX); // [int]
-        constants.put("NOKE_LIBRARY_PRODUCTION", NokeDefines.NOKE_LIBRARY_PRODUCTION); // [int]
-        constants.put("NOKE_LIBRARY_DEVELOP", NokeDefines.NOKE_LIBRARY_DEVELOP); // [int]
-        constants.put("NOKE_LIBRARY_OPEN", NokeDefines.NOKE_LIBRARY_OPEN); // [int]
+        constants.put("NOKE_LOCK_STATE_UNKNOWN", NokeDefines.NOKE_LOCK_STATE_UNKNOWN);                    // [int]
+        constants.put("NOKE_LOCK_STATE_UNLOCKED", NokeDefines.NOKE_LOCK_STATE_UNLOCKED);                  // [int]
+        constants.put("NOKE_LOCK_STATE_UNSHACKLED", NokeDefines.NOKE_LOCK_STATE_UNSHACKLED);              // [int]
+        constants.put("NOKE_LOCK_STATE_LOCKED", NokeDefines.NOKE_LOCK_STATE_LOCKED);                      // [int]
+        constants.put("NOKE_HW_TYPE_1ST_GEN_PADLOCK", NokeDefines.NOKE_HW_TYPE_1ST_GEN_PADLOCK);          // [String]
+        constants.put("NOKE_HW_TYPE_2ND_GEN_PADLOCK", NokeDefines.NOKE_HW_TYPE_2ND_GEN_PADLOCK);          // [String]
+        constants.put("NOKE_HW_TYPE_ULOCK", NokeDefines.NOKE_HW_TYPE_ULOCK);                              // [String]
+        constants.put("NOKE_HW_TYPE_HD_LOCK", NokeDefines.NOKE_HW_TYPE_HD_LOCK);                          // [String]
+        constants.put("NOKE_HW_TYPE_DOOR_CONTROLLER", NokeDefines.NOKE_HW_TYPE_DOOR_CONTROLLER);          // [String]
+        constants.put("NOKE_HW_TYPE_PB12", NokeDefines.NOKE_HW_TYPE_PB12);                                // [String]
+        constants.put("NOKE_LIBRARY_SANDBOX", NokeDefines.NOKE_LIBRARY_SANDBOX);                          // [int]
+        constants.put("NOKE_LIBRARY_PRODUCTION", NokeDefines.NOKE_LIBRARY_PRODUCTION);                    // [int]
+        constants.put("NOKE_LIBRARY_DEVELOP", NokeDefines.NOKE_LIBRARY_DEVELOP);                          // [int]
+        constants.put("NOKE_LIBRARY_OPEN", NokeDefines.NOKE_LIBRARY_OPEN);                                // [int]
 
         return constants;
     }
@@ -205,9 +205,7 @@ public class NokeAndroidMobileLibrary extends ReactContextBaseJavaModule {
             }
             mNokeService.addNokeDevice(noke);
 
-            final WritableMap event = Arguments.createMap();
-            event.putBoolean("status", true);
-
+            WritableMap event = createCommonEvents(noke);
             promise.resolve(event);
         } catch (IllegalViewOperationException e) {
             promise.reject("message", e.getMessage());
@@ -252,13 +250,13 @@ public class NokeAndroidMobileLibrary extends ReactContextBaseJavaModule {
     public void sendCommands(String mac, String command, Promise promise) {
         Log.i(TAG_RN_METHOD, "SENDING COMMAND " + command + " FOR DEVICE WITH MAC ADDRESS " + mac);
         try {
-            NokeDevice daNoke = mNokeService.nokeDevices.get(mac);
-            if (daNoke == null) {
+            NokeDevice noke = mNokeService.nokeDevices.get(mac);
+            if (noke == null) {
                 promise.reject("message", "unable to sendCommands, noke not found");
                 return;
             }
-            daNoke.sendCommands(command);
-            promise.resolve(createCommonEvents(daNoke));
+            noke.sendCommands(command);
+            promise.resolve(createCommonEvents(noke));
         } catch (IllegalViewOperationException e) {
             promise.reject("message", e.getMessage());
         }
@@ -395,34 +393,31 @@ public class NokeAndroidMobileLibrary extends ReactContextBaseJavaModule {
         public void onNokeDiscovered(NokeDevice noke) {
             // maybe console whole map...
             Log.i(TAG_LISTEN, "NOKE DISCOVERED: " + noke.getName());
-            final WritableMap event = Arguments.createMap();
-            event.putString("name", noke.getName());
-            event.putString("mac", noke.getMac());
-            event.putString("hwVersion", noke.getVersion());
-            event.putInt("lockState", noke.getLockState());
+            WritableMap event = createCommonEvents(noke);
             event.putInt("connectionState", noke.getConnectionState());
+            event.putInt("lockState", noke.getLockState());
+            event.putString("hwVersion", noke.getVersion());
+            event.putString("status", getLockStatus(noke));
             emitDeviceEvent("onNokeDiscovered", event);
         }
 
         @Override
         public void onNokeConnecting(NokeDevice noke) {
             Log.i(TAG_LISTEN, "NOKE CONNECTING: " + noke.getName());
-            final WritableMap event = Arguments.createMap();
-            event.putString("name", noke.getName());
-            event.putString("mac", noke.getMac());
+            WritableMap event = createCommonEvents(noke);
             event.putString("hwVersion", noke.getVersion());
+            event.putString("status", getLockStatus(noke));
             emitDeviceEvent("onNokeConnecting", event);
         }
 
         @Override
         public void onNokeConnected(NokeDevice noke) {
             Log.i(TAG_LISTEN, "NOKE CONNECTED: " + noke.getName());
-            final WritableMap event = Arguments.createMap();
-            event.putString("name", noke.getName());
-            event.putString("mac", noke.getMac());
-            event.putString("session", noke.getSession());
+            WritableMap event = createCommonEvents(noke);
             event.putInt("battery", noke.getBattery());
             event.putString("hwVersion", noke.getVersion());
+            event.putString("session", noke.getSession());
+            event.putString("status", getLockStatus(noke));
             currentNoke = noke;
             mNokeService.stopScanning();
             emitDeviceEvent("onNokeConnected", event);
@@ -431,30 +426,27 @@ public class NokeAndroidMobileLibrary extends ReactContextBaseJavaModule {
         @Override
         public void onNokeSyncing(NokeDevice noke) {
             Log.i(TAG_LISTEN, "NOKE SYNCING");
-            final WritableMap event = Arguments.createMap();
-            event.putString("name", noke.getName());
-            event.putString("mac", noke.getMac());
+            WritableMap event = createCommonEvents(noke);
             event.putString("session", noke.getSession());
+            event.putString("status", getLockStatus(noke));
             emitDeviceEvent("onNokeSyncing", event);
         }
 
         @Override
         public void onNokeUnlocked(NokeDevice noke) {
             Log.i(TAG_LISTEN, "NOKE UNLOCKED");
-            final WritableMap event = Arguments.createMap();
-            event.putString("name", noke.getName());
-            event.putString("mac", noke.getMac());
+            WritableMap event = createCommonEvents(noke);
             event.putString("session", noke.getSession());
+            event.putString("status", getLockStatus(noke));
             emitDeviceEvent("onNokeUnlocked", event);
         }
 
         @Override
         public void onNokeDisconnected(NokeDevice noke) {
             Log.i(TAG_LISTEN, "DISCONNECTED");
-            final WritableMap event = Arguments.createMap();
-            event.putString("name", noke.getName());
-            event.putString("mac", noke.getMac());
+            WritableMap event = createCommonEvents(noke);
             event.putString("session", noke.getSession());
+            event.putString("status", getLockStatus(noke));
             emitDeviceEvent("onNokeDisconnected", event);
             // mNokeService.uploadData();
             mNokeService.startScanningForNokeDevices();
@@ -464,11 +456,10 @@ public class NokeAndroidMobileLibrary extends ReactContextBaseJavaModule {
         @Override
         public void onNokeShutdown(NokeDevice noke, Boolean isLocked, Boolean didTimeout) {
             Log.i(TAG_LISTEN, "SHUT DOWN");
-            final WritableMap event = Arguments.createMap();
-            event.putString("name", noke.getName());
-            event.putString("mac", noke.getMac());
-            event.putBoolean("isLocked", isLocked);
+            WritableMap event = createCommonEvents(noke);
             event.putBoolean("didTimeout", didTimeout);
+            event.putBoolean("isLocked", isLocked);
+            event.putString("status", getLockStatus(noke));
             emitDeviceEvent("onNokeShutdown", event);
         }
 
@@ -498,32 +489,52 @@ public class NokeAndroidMobileLibrary extends ReactContextBaseJavaModule {
                 case NokeMobileError.ERROR_BLUETOOTH_GATT:
                     break;
             }
-            final WritableMap event = Arguments.createMap();
+            WritableMap event = createCommonEvents(noke);
             event.putInt("code", error);
-            String mac = "";
-            String name = "";
-            if (noke != null) {
-                mac = noke.getMac();
-                name = noke.getName();
-            }
-            event.putString("mac", mac);
-            event.putString("name", name);
             event.putString("message", message);
             emitDeviceEvent("onError", event);
         }
     };
 
-    private WritableMap createCommonEvents(NokeDevice nokeDevice) {
+    private WritableMap createCommonEvents(NokeDevice noke) {
         final WritableMap event = Arguments.createMap();
 
-        if (nokeDevice == null) {
-            return event;
+        String mac = "";
+        String name = "";
+
+        if (noke != null) {
+            mac = noke.getMac();
+            name = noke.getName();
         }
 
-        event.putString("name", nokeDevice.getName());
-        event.putString("mac", nokeDevice.getMac());
+        event.putString("mac", mac);
+        event.putString("name", name);
 
         return event;
+    }
+
+    public String getLockStatus(NokeDevice noke) {
+        String lockState = "";
+
+        switch (noke.getLockState()) {
+            case NokeDefines.NOKE_LOCK_STATE_UNKNOWN:
+                lockState = "unknown";
+                break;
+            case NokeDefines.NOKE_LOCK_STATE_UNLOCKED:
+                lockState = "unlocked";
+                break;
+            case NokeDefines.NOKE_LOCK_STATE_UNSHACKLED:
+                lockState = "unshackled";
+                break;
+            case NokeDefines.NOKE_LOCK_STATE_LOCKED:
+                lockState = "locked";
+                break;
+
+            default:
+                break;
+        }
+
+        return lockState;
     }
 
     public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {

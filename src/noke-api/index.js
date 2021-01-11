@@ -6,10 +6,7 @@ const instance = axios.create({
     headers: { Authorization: `Bearer ${MOBILE_KEY}` },
 });
 
-export const requestUnlock = (nokeLock, email) => {
-    const session = nokeLock.getSession();
-    const mac = nokeLock.getMac();
-
+export const requestUnlock = (mac, session, email) => {
     return instance
         .post('/unlock/', { session, mac, email })
         .then(response => response)

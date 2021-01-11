@@ -72,8 +72,6 @@ const Noke = {
     ...nokeEventUtils,
 };
 
-export { unlockReducer } from './nokeSlice';
-
 export { NokeAndroidMobileLibrary as NokeAndroid };
 
 export default Noke;

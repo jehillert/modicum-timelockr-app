@@ -48,3 +48,7 @@ export function initializeBridgeSpy() {
     };
     MessageQueue.spy(spyFunction);
 }
+
+export function removeColons(mac) {
+    return mac.replace(/(:)/g, '');
+}

@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import rootReducer from './rootReducer';
+import rootReducer from '../redux/rootReducer';
 
 const store = configureStore({
     reducer: rootReducer,
@@ -7,7 +7,7 @@ const store = configureStore({
 
 if (process.env.NODE_ENV === 'development' && module.hot) {
     module.hot.accept('./rootReducer', () => {
-        const newRootReducer = require('./rootReducer').default;
+        const newRootReducer = require('../redux/rootReducer').default;
         store.replaceReducer(newRootReducer);
     });
 }
