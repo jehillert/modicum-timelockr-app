@@ -2,9 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { NokeAndroid } from 'noke';
 import { removeColons } from 'utilities';
 
-const initialState = {
-    devices: {},
-};
+const initialState = {};
 
 const devices = createSlice({
     name: 'devices',
@@ -13,20 +11,17 @@ const devices = createSlice({
         addLock(state, { payload: newLockInfo }) {
             const { mac } = newLockInfo;
             const id = removeColons(mac);
-            state.devices[id] = newLockInfo;
+            state[id] = newLockInfo;
         },
         removeLock(state, { payload: mac }) {
             const id = removeColons(mac);
-            state.devices = {
-                ...state.devices,
-                [id]: null,
-            };
+            state[id] = null;
         },
         updateLock(state, { payload }) {
             const { mac } = payload;
             const id = removeColons(mac);
-            state.devices[id] = {
-                ...state.devices[id],
+            state[id] = {
+                ...state[id],
                 ...payload,
             };
         },

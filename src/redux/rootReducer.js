@@ -4,7 +4,7 @@ import devicesReducer from 'reducers/devicesSlice';
 
 const rootReducer = combineReducers({
     unlockRequestReducer,
-    devicesReducer,
+    devices: devicesReducer,
 });
 
 export default rootReducer;

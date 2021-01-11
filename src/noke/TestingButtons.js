@@ -52,7 +52,7 @@ function NokeServiceButtons() {
     };
 
     const handleUnlock = () => {
-        fetchUnlock()
+        fetchUnlock();
     };
 
     return (
