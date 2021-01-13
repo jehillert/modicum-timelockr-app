@@ -36,8 +36,14 @@ export const {
 
 export default unlockRequestSlice.reducer;
 
-export const fetchUnlock = (mac, session, email) => async dispatch => {
-    console.log(`%c███████████████████████████████████████████████████████████████████████████████`, 'color: darkred; background-color: gold');
+export const fetchUnlock = (requestPayload = null) => async (dispatch, getState) => {
+    const { activeLockId, locks } = getState().devicesReducer;
+    const { mac, session, email } = requestPayload ? requestPayload : locks[activeLockId];
+
+    console.log(
+        `%c███████████████████████████████████████████████████████████████████████████████`,
+        'color: darkred; background-color: gold',
+    );
     try {
         dispatch(requestUnlockStart());
         const reqResult = await requestUnlock(mac, session, email);

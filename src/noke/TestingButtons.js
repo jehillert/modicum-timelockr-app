@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { NokeAndroid, nokeUtils } from 'noke';
 import { useNokeEmitter } from 'hooks';
@@ -22,6 +22,10 @@ S.Button = styled.Button``;
 
 function NokeServiceButtons() {
     const dispatch = useDispatch();
+    const activeLockId = useSelector(state => state?.devicesReducer?.activeLockId) || '';
+    const mac = useSelector(state => state?.devicesReducer.locks[activeLockId]?.mac) || '';
+    const session = useSelector(state => state?.devicesReducer.locks[activeLockId]?.session) || '';
+    const email = 'john.hillert@gmail.com';
 
     useEffect(() => {
         const initializeNokeService = async () => {
@@ -47,7 +51,7 @@ function NokeServiceButtons() {
     };
 
     const handleUnlock = () => {
-        fetchUnlock();
+        dispatch(fetchUnlock({ mac, session, email }));
     };
 
     return (
@@ -61,7 +65,7 @@ function NokeServiceButtons() {
                 <S.Button title="Stop Scanning" color="#ff3421" onPress={() => nokeUtils.stopScan()} />
             </S.View>
             <S.View>
-                <S.Button title="Connect Device" color="hotpink" onPress={() => nokeUtils.connect(MAC_HD1)} />
+                <S.Button title="Connect Device" color="hotpink" onPress={() => nokeUtils.connect(mac)} />
                 <S.Button title="Disconnect" color="#ff3421" onPress={() => nokeUtils.disconnect(MAC_HD1)} />
             </S.View>
             <S.View>
