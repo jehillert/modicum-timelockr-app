@@ -2,13 +2,13 @@ import { createSlice } from '@reduxjs/toolkit';
 import { requestUnlock } from 'noke-api';
 
 const initialState = {
-    dummy: 'empty',
+    unlockCmd: null,
     success: false,
     loading: false,
     error: null,
 };
 
-const unlockRequest = createSlice({
+const unlockRequestSlice = createSlice({
     name: 'unlockRequest',
     initialState,
     reducers: {
@@ -17,8 +17,7 @@ const unlockRequest = createSlice({
             state.error = null;
         },
         requestUnlockSuccess(state, { payload }) {
-            const { razzleDazzle } = payload;
-            state.dummy = razzleDazzle;
+            state.unlockCmd = payload;
             state.loading = false;
             state.error = null;
         },
@@ -33,15 +32,16 @@ export const {
     requestUnlockStart,
     requestUnlockSuccess,
     requestUnlockFailure,
-} = unlockRequest.actions;
+} = unlockRequestSlice.actions;
 
-export default unlockRequest.reducer;
+export default unlockRequestSlice.reducer;
 
-export const fetchUnlock = () => async dispatch => {
+export const fetchUnlock = (mac, session, email) => async dispatch => {
+    console.log(`%c███████████████████████████████████████████████████████████████████████████████`, 'color: darkred; background-color: gold');
     try {
         dispatch(requestUnlockStart());
-        const Unlock = await requestUnlock(/* arguments */);
-        dispatch(requestUnlockSuccess(/* arguments */));
+        const reqResult = await requestUnlock(mac, session, email);
+        dispatch(requestUnlockSuccess(reqResult));
     } catch (err) {
         dispatch(requestUnlockFailure(err));
     }

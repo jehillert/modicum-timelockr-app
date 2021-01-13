@@ -42,13 +42,8 @@ function NokeServiceButtons() {
 
     useNokeEmitter();
 
-    const removeColons = mac => {
-        return mac.replace(/(:)/g, '');
-    };
-
     const handleAddNokeDevice = () => {
-        const name = removeColons(MAC_HD1);
-        dispatch(addNokeDevice({ name, mac: MAC_HD1 }));
+        dispatch(addNokeDevice());
     };
 
     const handleUnlock = () => {

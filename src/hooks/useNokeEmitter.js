@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { NativeEventEmitter } from 'react-native';
 import NokeAndroid from 'noke';
-import { updateNokeDevice } from '../redux/devicesSlice';
+import { updateNokeDevice, setDiscoveredDevice } from '../redux/devicesSlice';
 
 function useNokeEmitter() {
     const dispatch = useDispatch();
@@ -32,9 +32,7 @@ function useNokeEmitter() {
         });
 
         const onNokeConnected = NokeEmitter.addListener('onNokeConnected', data => {
-            // console.log(data);
             dispatch(updateNokeDevice(data));
-            // console.log('NOKE_EMITTER: onNokeConnected', data);
         });
 
         const onNokeConnecting = NokeEmitter.addListener('onNokeConnecting', data => {
@@ -46,7 +44,7 @@ function useNokeEmitter() {
         });
 
         const onNokeDiscovered = NokeEmitter.addListener('onNokeDiscovered', data => {
-            console.log('NOKE_EMITTER: onNokeDiscovered', data);
+            dispatch(setDiscoveredDevice(data));
         });
 
         const onNokeShutdown = NokeEmitter.addListener('onNokeShutdown', data => {

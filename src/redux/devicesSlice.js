@@ -1,55 +1,71 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { NokeAndroid } from 'noke';
 import { removeColons } from 'utilities';
 
-const initialState = {};
+const initialState = {
+    activeLockId: null,
+    discovered: {},
+    locks: {},
+};
 
-const devices = createSlice({
+const devicesSlice = createSlice({
     name: 'devices',
     initialState,
     reducers: {
-        addLock(state, { payload: newLockInfo }) {
-            const { mac } = newLockInfo;
+        addLock(state, { payload: lockData }) {
+            const { mac } = lockData;
             const id = removeColons(mac);
-            state[id] = newLockInfo;
+            state.locks[id] = { ...lockData };
+            state.activeLockId = id;
         },
-        removeLock(state, { payload: mac }) {
-            const id = removeColons(mac);
-            state[id] = null;
+        removeLock(state, { mac = null }) {
+            const id = mac ? removeColons(mac) : state.activeLockId;
+            state.locks[id] = null;
+        },
+        setDiscovered(state, { payload }) {
+            const discovered = { ...payload };
+            state.discovered = discovered;
         },
         updateLock(state, { payload }) {
             const { mac } = payload;
             const id = removeColons(mac);
-            state[id] = {
-                ...state[id],
+            state.locks[id] = {
+                ...state.locks[id],
                 ...payload,
             };
+            state.activeLockId = id;
         },
     },
 });
 
-// const reducer:
-export const { addLock, removeLock, updateLock } = devices.actions;
-export default devices.reducer;
+export const { addLock, removeLock, setDiscovered, updateLock } = devicesSlice.actions;
+export default devicesSlice.reducer;
 
-export const addNokeDevice = lockData => async dispatch => {
+export const addNokeDevice = (givenLockData = null) => async (dispatch, getState) => {
     try {
+        const { discovered } = getState()?.devicesReducer;
+        const lockData = givenLockData ? givenLockData : discovered;
+        if (!lockData) {
+            throw 'There is no lock data to add';
+        }
+
         const isSuccess = await NokeAndroid.addNokeDevice(lockData);
         if (isSuccess) {
             dispatch(addLock(lockData));
         } else {
-            console.error('Lock was not added');
+            throw 'Native call to NokeAndroid.addNokeDevice() failed.';
         }
     } catch (err) {
         console.error(err);
     }
 };
 
-export const removeNokeDevice = mac => async dispatch => {
+export const removeNokeDevice = (mac = null) => async (dispatch, getState) => {
     try {
-        const isSuccess = await NokeAndroid.removeNokeDevice(mac);
+        const m = mac || getState()?.devicesReducer?.discovered;
+        const isSuccess = await NokeAndroid.removeNokeDevice(m);
         if (isSuccess) {
-            dispatch(removeLock(mac));
+            dispatch(removeLock(m));
         } else {
             console.error('Lock was not removed');
         }
@@ -58,6 +74,9 @@ export const removeNokeDevice = mac => async dispatch => {
     }
 };
 
+export const setDiscoveredDevice = data => dispatch => {
+    dispatch(setDiscovered(data));
+};
 
 export const updateNokeDevice = data => async dispatch => {
     try {
@@ -66,10 +85,3 @@ export const updateNokeDevice = data => async dispatch => {
         console.error(err);
     }
 };
-// name:
-// mac:
-// battery:
-// hwVersion:
-// status:
-// connectionState:
-// lockState:
