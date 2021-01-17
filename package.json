@@ -3,13 +3,14 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "clean": "./clean.sh",
-    "start": "react-native start",
-    "start:rnd": "open 'rndebugger://set-debugger-loc?host=localhost&port=8081' && npm start",
     "android": "react-native run-android",
-    "clean-cache": "npm start -- --reset-cache",
+    "clean-baber-loader-cache": "rm -rf node_modules/.cache/babel-loader/*",
     "clean-cache:rnd": "open 'rndebugger://set-debugger-loc?host=localhost&port=8081' && npm start -- --reset-cache",
-    "clean-baber-loader-cache": "rm -rf node_modules/.cache/babel-loader/*"
+    "clean-cache": "npm start -- --reset-cache",
+    "clean": "./clean.sh",
+    "mirror-device": "./mirror-device.sh",
+    "start:rnd": "open 'rndebugger://set-debugger-loc?host=localhost&port=8081' && npm start",
+    "start": "react-native start"
   },
   "dependencies": {
     "@react-navigation/drawer": "^5.11.4",
