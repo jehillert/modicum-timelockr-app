@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { NokeAndroid } from 'noke';
+import { NokeAndroid } from '@noke';
 
 function useNokeService() {
     useEffect(() => {

@@ -1,6 +1,7 @@
+/* eslint-disable import/named */
 import { PermissionsAndroid } from 'react-native';
-import { NokeAndroid, nokeConstants } from 'noke';
-import { requestUnlock } from 'noke-api';
+import { NokeAndroid, nokeConstants } from '@noke';
+import { requestUnlock } from '@noke-api';
 const { permReqFieldConstants: PRFC } = nokeConstants;
 
 const logEvent = event => console.log(`COMMAND CALLBACK: ${JSON.stringify(event, undefined)}`);

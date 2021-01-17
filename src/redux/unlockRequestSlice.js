@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { requestUnlock } from 'noke-api';
+import { requestUnlock } from '@noke-api';
+import { NokeAndroid } from '@noke';
 
 const initialState = {
     unlockCmd: null,
@@ -42,8 +43,11 @@ export const fetchUnlock = (requestPayload = null) => async (dispatch, getState)
 
     try {
         dispatch(requestUnlockStart());
-        const reqResult = await requestUnlock(mac, session, email);
-        dispatch(requestUnlockSuccess(reqResult));
+        const { data } = await requestUnlock(mac, session, email);
+        const { commands } = data;
+        // add isSuccess here and in java, or "status"
+        const isSuccess = NokeAndroid.sendCommands(commands);
+        dispatch(requestUnlockSuccess(isSuccess));
     } catch (err) {
         dispatch(requestUnlockFailure(err));
     }

@@ -1,6 +1,6 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { NokeAndroid } from 'noke';
-import { removeColons } from 'utilities';
+import { createSlice } from '@reduxjs/toolkit';
+import { NokeAndroid } from '@noke';
+import { removeColons } from '@utilities';
 
 const initialState = {
     activeLockId: null,
@@ -8,6 +8,9 @@ const initialState = {
     locks: {},
 };
 
+// create class for the locks, this is a good place to use oop
+// think of just having one set of lockdata,each member having "connected", "discovered", "added" statuses
+// also make java getters, to prevent errors.  When a device is added, the full array of added devices should be returned.
 const devicesSlice = createSlice({
     name: 'devices',
     initialState,

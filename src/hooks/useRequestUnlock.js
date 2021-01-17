@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { nokeEventUtils, nokeConstants } from 'noke';
+import { nokeEventUtils, nokeConstants } from '@noke';
 
 // { String _name_, String _mac_, String _session_, Int _battery_, String _hwVersion_ }
 

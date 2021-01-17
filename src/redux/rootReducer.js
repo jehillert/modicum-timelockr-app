@@ -1,6 +1,6 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import unlockRequestReducer from 'reducers/unlockRequestSlice';
-import devicesReducer from 'reducers/devicesSlice';
+import unlockRequestReducer from './unlockRequestSlice';
+import devicesReducer from './devicesSlice';
 
 const rootReducer = combineReducers({
     unlockRequestReducer,
