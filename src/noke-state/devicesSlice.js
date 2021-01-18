@@ -30,9 +30,9 @@ const devicesSlice = createSlice({
                 return newLocks;
             }, {});
         },
-        updateDevices(state, { payload }) {
+        updateDevice(state, { payload: lockData }) {
             const { locks } = state;
-            const { id, lockData } = payload;
+            const { id } = lockData;
 
             if (!isEqual(locks[id], lockData[id])) {
                 locks[id] = {
@@ -50,7 +50,7 @@ const devicesSlice = createSlice({
     },
 });
 
-export const { addDevice, removeDevice, setConnectionState, updateDeviceState } = devicesSlice.actions;
+export const { addDevice, removeDevice, setConnectionState, updateDevice } = devicesSlice.actions;
 export default devicesSlice.reducer;
 
 const NO_LOCK_REFERENCE_ERROR = 'Must provide valid mac address or "activeLockId" must reference enumerated lock.';
@@ -87,15 +87,15 @@ export const removeNokeDevice = selectedMac => async (dispatch, getState) => {
     resolveDeviceChange(removeDevice, NokeAndroid.removeNokeDevice, selectedMac);
 };
 
-export const updateNokeDevice = lockData => async (dispatch, getState) => {
+export const updateDeviceState = lockData => async (dispatch, getState) => {
     try {
         const { mac = '' } = lockData;
         const id = removeColons(mac);
 
         if (mac) {
-            dispatch(updateDeviceState(id, lockData));
+            dispatch(updateDevice({ id, ...lockData }));
         } else {
-            throw `Error in call to updateNokeDevice()\n${NO_MAC_ERROR} ${JSON.stringify(lockData, undefined, 2)}`;
+            throw `Error in call to updateDeviceState()\n${NO_MAC_ERROR} ${JSON.stringify(lockData, undefined, 2)}`;
         }
     } catch (err) {
         console.error(err);

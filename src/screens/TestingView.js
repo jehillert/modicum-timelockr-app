@@ -1,7 +1,7 @@
 import React from 'react';
 import { SafeAreaView, StyleSheet, ScrollView, View, Text, StatusBar } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
-import NokeServiceButtons from '../noke/TestingButtons';
+import { TestingButtons } from '@components';
 
 function TestingView() {
     return (
@@ -18,7 +18,7 @@ function TestingView() {
                         </View>
                     )}
                     <View style={styles.sectionContainer}>
-                        <NokeServiceButtons />
+                        <TestingButtons />
                     </View>
                 </ScrollView>
             </SafeAreaView>

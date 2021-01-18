@@ -23,7 +23,7 @@ S.View = styled.View`
 
 S.Button = styled.Button``;
 
-function NokeServiceButtons() {
+function TestingButtons() {
     const dispatch = useDispatch();
     const activeLockId = useSelector(state => state?.devicesReducer?.activeLockId) || '';
     const mac = useSelector(state => state?.devicesReducer.locks[activeLockId]?.mac) || '';
@@ -74,4 +74,4 @@ function NokeServiceButtons() {
     );
 }
 
-export default NokeServiceButtons;
+export default TestingButtons;

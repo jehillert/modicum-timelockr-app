@@ -2486,6 +2486,11 @@
   "resolved" "https://registry.npmjs.org/csstype/-/csstype-3.0.5.tgz"
   "version" "3.0.5"
 
+"cycle@^1.0.3":
+  "integrity" "sha1-IegLK+hYD5i0aPN5QwZisEbDStI="
+  "resolved" "https://registry.npmjs.org/cycle/-/cycle-1.0.3.tgz"
+  "version" "1.0.3"
+
 "dashdash@^1.12.0":
   "integrity" "sha1-hTz6D3y+L+1d4gMmuN1YEDX24vA="
   "resolved" "https://registry.npmjs.org/dashdash/-/dashdash-1.14.1.tgz"
@@ -2502,7 +2507,7 @@
     "whatwg-mimetype" "^2.3.0"
     "whatwg-url" "^8.0.0"
 
-"dayjs@^1.8.15":
+"dayjs@^1.8.15", "dayjs@^1.8.29":
   "integrity" "sha512-2xg7JrHQeLBQFkvTumLoy62x1siyeocc98QwjtURgvRqOPYmAkMUdmSjrOA+MlmL6QMQn5MUhDf6rNZNuPc1LQ=="
   "resolved" "https://registry.npmjs.org/dayjs/-/dayjs-1.10.1.tgz"
   "version" "1.10.1"
@@ -6251,7 +6256,7 @@
   "resolved" "https://registry.npmjs.org/react-native-flipper/-/react-native-flipper-0.34.0.tgz"
   "version" "0.34.0"
 
-"react-native-flipper@^0.69.0":
+"react-native-flipper@^0.63.0", "react-native-flipper@^0.69.0":
   "integrity" "sha512-5ZqlNWCd5+h9G309sQiV/uSogATM3y2RRblsF8Lyx2NexmISeTYv8/oGxtBvq89Kysit8ZY1wExyF9laT4wx6w=="
   "resolved" "https://registry.npmjs.org/react-native-flipper/-/react-native-flipper-0.69.0.tgz"
   "version" "0.69.0"
@@ -6296,7 +6301,7 @@
   "resolved" "https://registry.npmjs.org/react-native-screens/-/react-native-screens-2.16.1.tgz"
   "version" "2.16.1"
 
-"react-native@*", "react-native@^0.62.0", "react-native@>=0.40.0", "react-native@>=0.42.0", "react-native@>=0.62.0-rc.0 <0.64.0", "react-native@>0.62.0", "react-native@0.63.4":
+"react-native@*", "react-native@^0.62.0", "react-native@^0.63.0", "react-native@>=0.40.0", "react-native@>=0.42.0", "react-native@>=0.62.0-rc.0 <0.64.0", "react-native@>0.62.0", "react-native@0.63.4":
   "integrity" "sha512-I4kM8kYO2mWEYUFITMcpRulcy4/jd+j9T6PbIzR0FuMcz/xwd+JwHoLPa1HmCesvR1RDOw9o4D+OFLwuXXfmGw=="
   "resolved" "https://registry.npmjs.org/react-native/-/react-native-0.63.4.tgz"
   "version" "0.63.4"
@@ -6446,6 +6451,14 @@
     "string_decoder" "~1.1.1"
     "util-deprecate" "~1.0.1"
 
+"redux-flipper@^1.4.2":
+  "integrity" "sha512-VfSdmWATaZD2BHAiMOEzxk+KSiSTAv/N5AyY64+dU+qif/KfinSHWW3+YVMCO+5rxne1Fr92YwsYJl8l9injDA=="
+  "resolved" "https://registry.npmjs.org/redux-flipper/-/redux-flipper-1.4.2.tgz"
+  "version" "1.4.2"
+  dependencies:
+    "cycle" "^1.0.3"
+    "dayjs" "^1.8.29"
+
 "redux-persist@^6.0.0":
   "integrity" "sha512-71LLMbUq2r02ng2We9S215LtPu3fY0KgaGE0k8WRgl6RkqxtGfl7HUozz1Dftwsb0D/5mZ8dwAaPbtnzfvbEwQ=="
   "resolved" "https://registry.npmjs.org/redux-persist/-/redux-persist-6.0.0.tgz"
@@ -6456,7 +6469,7 @@
   "resolved" "https://registry.npmjs.org/redux-thunk/-/redux-thunk-2.3.0.tgz"
   "version" "2.3.0"
 
-"redux@^2.0.0 || ^3.0.0 || ^4.0.0-0", "redux@^4.0.0", "redux@>4.0.0":
+"redux@^2.0.0 || ^3.0.0 || ^4.0.0-0", "redux@^4", "redux@^4.0.0", "redux@>4.0.0":
   "integrity" "sha512-VSz1uMAH24DM6MF72vcojpYPtrTUu3ByVWfPL1nPfVRb5mZVTve5GnNCUV53QM/BZ66xfWrm0CTWoM+Xlz8V1w=="
   "resolved" "https://registry.npmjs.org/redux/-/redux-4.0.5.tgz"
   "version" "4.0.5"

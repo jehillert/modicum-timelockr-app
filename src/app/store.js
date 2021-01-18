@@ -2,10 +2,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import rootReducer from '@root-reducer';
 
+const reduxDebugger = require('redux-flipper').default;
 // const persistConfig = { storage: AsyncStorage };
 
 const store = configureStore({
     reducer: rootReducer,
+    middleware: getDefaultMiddleware => getDefaultMiddleware().concat(reduxDebugger),
+    devTools: process.env.NODE_ENV !== 'production',
 });
 
 if (process.env.NODE_ENV === 'development' && module.hot) {
