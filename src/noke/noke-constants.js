@@ -1,19 +1,17 @@
-import { displayName } from '../../app.json';
-
-export const nokeEvents = {
-    onBluetoothStatusChanged: 'onBluetoothStatusChanged',
-    // onDataUploaded: 'onDataUploaded',
-    onError: 'onError',
-    onNokeConnected: 'onNokeConnected',
-    onNokeConnecting: 'onNokeConnecting',
-    onNokeDisconnected: 'onNokeDisconnected',
-    onNokeDiscovered: 'onNokeDiscovered',
-    onNokeShutdown: 'onNokeShutdown',
-    onNokeSyncing: 'onNokeSyncing',
-    onNokeUnlocked: 'onNokeUnlocked',
-    onServiceConnected: 'onServiceConnected',
-    onServiceDisconnected: 'onServiceDisconnected',
-};
+export const nokeEvents = [
+    'onNokeDiscovered',
+    'onNokeConnecting',
+    'onNokeConnected',
+    'onNokeDisconnected',
+    'onNokeShutdown',
+    'onNokeSyncing',
+    'onNokeUnlocked',
+    'onServiceConnected',
+    'onServiceDisconnected',
+    'onBluetoothStatusChanged',
+    'onError',
+    // 'onDataUploaded',
+];
 
 const nokeConstants = {
     nokeEvents,

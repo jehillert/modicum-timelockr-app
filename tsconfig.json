@@ -27,7 +27,7 @@
             // REDUX
             "@store": ["app/store"],
             "@reducers": ["redux"],
-            "@root-reducer": ["redux/rootReducer"],
+            "@root-reducer": ["app/rootReducer"],
             // NOKE
             "@noke": ["noke/noke"],
             "@noke-api": ["noke-api/noke-api"],

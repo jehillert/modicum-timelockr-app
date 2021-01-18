@@ -3,7 +3,24 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { NativeEventEmitter } from 'react-native';
 import NokeAndroid from '@noke';
-import { updateDeviceState, setDiscoveredDevice } from '@noke-state';
+import { updateDeviceState } from '@noke-state';
+
+export const nokeDeviceEvents = [
+    'onNokeDiscovered',
+    'onNokeConnecting',
+    'onNokeConnected',
+    'onNokeDisconnected',
+    'onNokeShutdown',
+    'onNokeSyncing',
+    'onNokeUnlocked',
+];
+
+export const otherNokeEvents = [
+    'onServiceConnected',
+    'onServiceDisconnected',
+    'onBluetoothStatusChanged',
+    'onError',
+]
 
 function useNokeEmitter() {
     const dispatch = useDispatch();
@@ -11,55 +28,28 @@ function useNokeEmitter() {
     useEffect(() => {
         const NokeEmitter = new NativeEventEmitter(NokeAndroid);
 
-        const onServiceConnected = NokeEmitter.addListener('onServiceConnected', data => {
-            console.log('NOKE_EMITTER: onServiceConnected', data);
-        });
-
-        const onServiceDisconnected = NokeEmitter.addListener('onServiceDisconnected', data => {
-            console.log('NOKE_EMITTER: onServiceDisconnected', data);
-        });
-
-        const onBluetoothStatusChanged = NokeEmitter.addListener('onBluetoothStatusChanged', data => {
-            console.log('NOKE_EMITTER: onBluetoothStatusChanged', data);
-        });
-
-        const onDataUploaded = NokeEmitter.addListener('onDataUploaded', data => {
-            console.log('NOKE_EMITTER: onDataUploaded', data);
-        });
-
-        const onError = NokeEmitter.addListener('onError', data => {
-            console.log('NOKE_EMITTER: onError', data);
-        });
-
-        const onNokeConnected = NokeEmitter.addListener('onNokeConnected', data => {
+        const handleDeviceEvent = event => data => {
             dispatch(updateDeviceState(data));
-        });
+            console.log(`[NOKE_EMITTER]: ${event}`);
+        };
 
-        const onNokeConnecting = NokeEmitter.addListener('onNokeConnecting', data => {
-            console.log('NOKE_EMITTER: onNokeConnecting', data);
-        });
+        const handleOtherEvent = event => data =>  {
+            console.log(`[NOKE_EMITTER]: ${event}`);
+        };
 
-        const onNokeDisconnected = NokeEmitter.addListener('onNokeDisconnected', data => {
-            console.log('NOKE_EMITTER: onNokeDisconnected', data);
-        });
-
-        const onNokeDiscovered = NokeEmitter.addListener('onNokeDiscovered', data => {
-            dispatch(updateDeviceState(data));
-        });
-
-        const onNokeShutdown = NokeEmitter.addListener('onNokeShutdown', data => {
-            console.log('NOKE_EMITTER: onNokeShutdown', data);
-        });
-
-        const onNokeSyncing = NokeEmitter.addListener('onNokeSyncing', data => {
-            console.log('NOKE_EMITTER: onNokeSyncing', data);
-        });
-
-        const onNokeUnlocked = NokeEmitter.addListener('onNokeUnlocked', data => {
-            console.log('NOKE_EMITTER: onNokeUnlocked', data);
-        });
+        nokeDeviceEvents
+            .forEach(event => NokeEmitter.addListener(event, handleDeviceEvent(event)));
+        otherNokeEvents
+            .forEach(event => NokeEmitter.addListener(event, handleOtherEvent(event)));
 
         console.log('LISTENERS ADDED');
+
+        return () => {
+            nokeDeviceEvents
+                .forEach(event => NokeEmitter.removeListener(event, handleDeviceEvent));
+            otherNokeEvents
+                .forEach(event => NokeEmitter.removeListener(event, handleOtherEvent));
+        }
 
     }, []);
 }

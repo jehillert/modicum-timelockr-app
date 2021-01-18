@@ -29,16 +29,12 @@ const unlockRequestSlice = createSlice({
     },
 });
 
-export const {
-    requestUnlockStart,
-    requestUnlockSuccess,
-    requestUnlockFailure,
-} = unlockRequestSlice.actions;
+export const { requestUnlockStart, requestUnlockSuccess, requestUnlockFailure } = unlockRequestSlice.actions;
 
 export default unlockRequestSlice.reducer;
 
 export const fetchUnlock = (requestPayload = null) => async (dispatch, getState) => {
-    const { activeLockId, locks } = getState().devicesReducer;
+    const { activeLockId, locks } = getState().nokeDevices;
     const { mac, session, email } = requestPayload ? requestPayload : locks[activeLockId];
 
     try {

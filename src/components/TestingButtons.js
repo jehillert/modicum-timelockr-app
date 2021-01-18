@@ -25,10 +25,14 @@ S.Button = styled.Button``;
 
 function TestingButtons() {
     const dispatch = useDispatch();
-    const activeLockId = useSelector(state => state?.devicesReducer?.activeLockId) || '';
-    const mac = useSelector(state => state?.devicesReducer.locks[activeLockId]?.mac) || '';
-    const session = useSelector(state => state?.devicesReducer.locks[activeLockId]?.session) || '';
+    const activeLockId = useSelector(state => state?.nokeDevices?.activeLockId) || '';
+    const nokeDevices = useSelector(state => state?.nokeDevices);
+    console.log(JSON.stringify(nokeDevices, undefined, 2));
+    const mac = useSelector(state => state?.nokeDevices.locks[activeLockId]?.mac) || '';
+    const session = useSelector(state => state?.nokeDevices.locks[activeLockId]?.session) || '';
     const email = 'john.hillert@gmail.com';
+
+
 
     useEffect(() => {
         const initializeNokeService = async () => {

@@ -1,18 +1,16 @@
-// import AsyncStorage from '@react-native-async-storage/async-storage';
 import { configureStore } from '@reduxjs/toolkit';
-import rootReducer from '@root-reducer';
+import rootReducer from './rootReducer';
 
-const reduxDebugger = require('redux-flipper').default;
-// const persistConfig = { storage: AsyncStorage };
+const createDebugger = require('redux-flipper').default;
 
 const store = configureStore({
     reducer: rootReducer,
-    middleware: getDefaultMiddleware => getDefaultMiddleware().concat(reduxDebugger),
+    middleware: getDefaultMiddleware => getDefaultMiddleware().concat(createDebugger()),
     devTools: process.env.NODE_ENV !== 'production',
 });
 
 if (process.env.NODE_ENV === 'development' && module.hot) {
-    module.hot.accept('./rootReducer', () => {
+    module.hot.accept(() => {
         const newRootReducer = require('./rootReducer').default;
         store.replaceReducer(newRootReducer);
     });

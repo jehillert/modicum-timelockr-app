@@ -395,9 +395,8 @@ public class NokeAndroidMobileLibrary extends ReactContextBaseJavaModule {
             Log.i(TAG_LISTEN, "NOKE DISCOVERED: " + noke.getName());
             WritableMap event = createCommonEvents(noke);
             event.putInt("connectionState", noke.getConnectionState());
-            event.putInt("lockState", noke.getLockState());
             event.putString("hwVersion", noke.getVersion());
-            event.putString("status", getLockStatus(noke));
+            event.putBoolean("isDiscovered", true);
             emitDeviceEvent("onNokeDiscovered", event);
         }
 
@@ -406,7 +405,7 @@ public class NokeAndroidMobileLibrary extends ReactContextBaseJavaModule {
             Log.i(TAG_LISTEN, "NOKE CONNECTING: " + noke.getName());
             WritableMap event = createCommonEvents(noke);
             event.putString("hwVersion", noke.getVersion());
-            event.putString("status", getLockStatus(noke));
+            event.putBoolean("isConnecting", true);
             emitDeviceEvent("onNokeConnecting", event);
         }
 
@@ -417,7 +416,8 @@ public class NokeAndroidMobileLibrary extends ReactContextBaseJavaModule {
             event.putInt("battery", noke.getBattery());
             event.putString("hwVersion", noke.getVersion());
             event.putString("session", noke.getSession());
-            event.putString("status", getLockStatus(noke));
+            event.putBoolean("isConnecting", false);
+            event.putBoolean("isConnected", true);
             currentNoke = noke;
             mNokeService.stopScanning();
             emitDeviceEvent("onNokeConnected", event);
@@ -428,7 +428,7 @@ public class NokeAndroidMobileLibrary extends ReactContextBaseJavaModule {
             Log.i(TAG_LISTEN, "NOKE SYNCING");
             WritableMap event = createCommonEvents(noke);
             event.putString("session", noke.getSession());
-            event.putString("status", getLockStatus(noke));
+            event.putBoolean("isSyncing", false);
             emitDeviceEvent("onNokeSyncing", event);
         }
 
@@ -437,7 +437,7 @@ public class NokeAndroidMobileLibrary extends ReactContextBaseJavaModule {
             Log.i(TAG_LISTEN, "NOKE UNLOCKED");
             WritableMap event = createCommonEvents(noke);
             event.putString("session", noke.getSession());
-            event.putString("status", getLockStatus(noke));
+            event.putBoolean("isLocked", false);
             emitDeviceEvent("onNokeUnlocked", event);
         }
 
@@ -446,7 +446,7 @@ public class NokeAndroidMobileLibrary extends ReactContextBaseJavaModule {
             Log.i(TAG_LISTEN, "DISCONNECTED");
             WritableMap event = createCommonEvents(noke);
             event.putString("session", noke.getSession());
-            event.putString("status", getLockStatus(noke));
+            event.putBoolean("isConnected", false);
             emitDeviceEvent("onNokeDisconnected", event);
             // mNokeService.uploadData();
             mNokeService.startScanningForNokeDevices();
@@ -459,7 +459,7 @@ public class NokeAndroidMobileLibrary extends ReactContextBaseJavaModule {
             WritableMap event = createCommonEvents(noke);
             event.putBoolean("didTimeout", didTimeout);
             event.putBoolean("isLocked", isLocked);
-            event.putString("status", getLockStatus(noke));
+            event.putBoolean("isShutdown", true);
             emitDeviceEvent("onNokeShutdown", event);
         }
 
@@ -472,7 +472,7 @@ public class NokeAndroidMobileLibrary extends ReactContextBaseJavaModule {
         public void onBluetoothStatusChanged(int bluetoothStatus) {
             Log.i(TAG_LISTEN, "BLUETOOTH STATUS CHANGE: CODE " + bluetoothStatus);
             final WritableMap event = Arguments.createMap();
-            event.putInt("code", bluetoothStatus);
+            event.putInt("bluetoothStatusCode", bluetoothStatus);
             emitDeviceEvent("onBluetoothStatusChanged", event);
         }
 
@@ -499,16 +499,11 @@ public class NokeAndroidMobileLibrary extends ReactContextBaseJavaModule {
     private WritableMap createCommonEvents(NokeDevice noke) {
         final WritableMap event = Arguments.createMap();
 
-        String mac = "";
-        String name = "";
-
         if (noke != null) {
-            mac = noke.getMac();
-            name = noke.getName();
+            event.putString("mac", noke.getMac());
+            event.putString("name", noke.getName());
+            event.putString("status", getLockStatus(noke));
         }
-
-        event.putString("mac", mac);
-        event.putString("name", name);
 
         return event;
     }
