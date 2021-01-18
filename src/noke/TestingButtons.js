@@ -49,54 +49,28 @@ function NokeServiceButtons() {
 
     useNokeEmitter();
 
-    const handleAddNokeDevice = () => {
-        dispatch(addNokeDevice());
-    };
-
-    const handleUnlock = () => {
-        dispatch(fetchUnlock({ mac, session, email }));
-    };
-
-    const handleNew = () => console.log('I am a new element');
-
     return (
         <>
-            <S.View>
-                <SButton bgColor="green" onPress={handleAddNokeDevice}>ADD</SButton>
-                <SButton bgColor="#ff3421" onPress={() => dispatch(removeNokeDevice(MAC_HD1))}>REMOVE</SButton>
-            </S.View>
             <S.View>
                 <SButton bgColor="#2196F3" onPress={() => nokeUtils.startScan()}>SCAN</SButton>
                 <SButton bgColor="#ff3421" onPress={() => nokeUtils.stopScan()}>STOP SCAN</SButton>
             </S.View>
             <S.View>
+                <SButton bgColor="green" onPress={() => dispatch(addNokeDevice())}>ADD</SButton>
+                <SButton bgColor="#ff3421" onPress={() => dispatch(removeNokeDevice())}>REMOVE</SButton>
+            </S.View>
+            <S.View>
                 <SButton bgColor="hotpink" onPress={() => nokeUtils.connect(mac)}>CONNECT</SButton>
                 <SButton bgColor="#ff3421" onPress={() => nokeUtils.disconnect(MAC_HD1)}>DISCONNECT</SButton>
             </S.View>
-            <S.View>
-                <SButton bgColor="blue" onPress={handleUnlock}>UNLOCK DEVICE</SButton>
-                </S.View>
-            <S.View>
-                <SButton bgColor="olivedrab" onPress={() => nokeUtils.offlineUnlock(MAC_HD1)}  css={`margin: 0`}>OFFLINE UNLOCK</SButton>
-            </S.View>
-            <S.View>
-                <SButton bgColor="#ff8000" onPress={() => nokeUtils.removeAllNokes()}>REMOVE ALL NOKES</SButton>
-            </S.View>
-            <S.View>
-                <SButton bgColor="darkmagenta" onPress={() => nokeUtils.sendCommands(MAC_HD1, command)}>SEND COMMANDS</SButton>
-            </S.View>
-            <S.View>
-                <SButton bgColor="darkcyan" onPress={() => nokeUtils.addNokeOfflineValues({ name: 'LOCK 1', mac: MAC_HD1 })}>ADD OFFLINE VAL</SButton>
-            </S.View>
-            <S.View>
-                <SButton bgColor="darkslateblue" onPress={() => nokeUtils.setBluetoothDelayBackgroundDefault(1)}>SET DEF BLUETOOTH BACKGROUND DELAY </SButton>
-            </S.View>
-            <S.View>
-                <SButton bgColor="darkslategrey" onPress={() => nokeUtils.setBluetoothDelayDefault(1)}>SET DEFAULT BLUETOOTH DELAY</SButton>
-            </S.View>
-            <S.View>
-                <SButton bgColor="darkseagreen" onPress={() => nokeUtils.setBluetoothScanDuration(1)}>SET BLUETOOTH SCAN DURATION</SButton>
-            </S.View>
+            <S.View><SButton bgColor="blue" onPress={() => dispatch(fetchUnlock({ mac, session, email }))}>UNLOCK DEVICE</SButton></S.View>
+            <S.View><SButton bgColor="olivedrab" onPress={() => nokeUtils.offlineUnlock(MAC_HD1)}>OFFLINE UNLOCK</SButton></S.View>
+            <S.View><SButton bgColor="#ff8000" onPress={() => nokeUtils.removeAllNokes()}>REMOVE ALL NOKES</SButton></S.View>
+            <S.View><SButton bgColor="darkmagenta" onPress={() => nokeUtils.sendCommands(MAC_HD1, command)}>SEND COMMANDS</SButton></S.View>
+            <S.View><SButton bgColor="darkcyan" onPress={() => nokeUtils.addNokeOfflineValues({ name: 'LOCK 1', mac: MAC_HD1 })}>ADD OFFLINE VAL</SButton></S.View>
+            <S.View><SButton bgColor="darkslateblue" onPress={() => nokeUtils.setBluetoothDelayBackgroundDefault(1)}>SET DEF BLUETOOTH BACKGROUND DELAY </SButton></S.View>
+            <S.View><SButton bgColor="darkslategrey" onPress={() => nokeUtils.setBluetoothDelayDefault(1)}>SET DEFAULT BLUETOOTH DELAY</SButton></S.View>
+            <S.View><SButton bgColor="darkseagreen" onPress={() => nokeUtils.setBluetoothScanDuration(1)}>SET BLUETOOTH SCAN DURATION</SButton></S.View>
         </>
     );
 }

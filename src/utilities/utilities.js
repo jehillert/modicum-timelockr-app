@@ -1,4 +1,4 @@
-import MessageQueue from 'react-native/Libraries/BatchedBridge/MessageQueue.js';
+import MessageQueue from 'react-native/Libraries/BatchedBridge/MessageQueue';
 
 const methodsToWatch = [
     'getConstants',
@@ -19,20 +19,14 @@ const methodsToWatch = [
 
 const colors = ['color: orange', 'color: hotpink', 'color: white', 'color: hotpink'];
 
-const logDivider = () => {
-    console.log(`%c———————————————————————————————————————————————————————————————————————————————`, 'color: hotpink');
-};
-
 export function initializeBridgeSpyHermes() {
     const spyFunction = msg => {
         if (methodsToWatch.includes(msg)) {
-            logDivider();
             console.log(`%ctype%c: %c${msg.type}%c;`, ...colors);
             console.log(`%cmodule%c: %c${msg.module}%c;`, ...colors);
             console.log(`%cmethod%c: %c${msg.method}%c;`, ...colors);
             console.log(`%cargs%c: [%c${String(msg.args).replace(/,/gi, '|')}%c];`, ...colors);
             console.log('%c⧭', 'color: red', msg);
-            logDivider();
         }
     };
 
@@ -51,4 +45,9 @@ export function initializeBridgeSpy() {
 
 export function removeColons(mac) {
     return mac.replace(/(:)/g, '');
+}
+
+export function isValidMac(mac) {
+    const macRegex = /^\w\w(:\w\w){5}$/;
+    return macRegex.test(mac);
 }

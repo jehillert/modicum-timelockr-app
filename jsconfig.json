@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@api": ["api/index"],
+            "@store": ["app/store"],
+            "@hooks": ["hooks/index"],
+            "@screens/*": ["screens/*"],
+            "@screens": ["screens/index"],
+            "@utilities": ["utilities/utilities"],
+            "@components": ["components/index"],
+            "@reducers": ["redux"],
+            "@noke": ["noke/noke"]
+        }
+    }
+}

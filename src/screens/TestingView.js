@@ -1,6 +1,6 @@
 import React from 'react';
 import { SafeAreaView, StyleSheet, ScrollView, View, Text, StatusBar } from 'react-native';
-import { Header, Colors } from 'react-native/Libraries/NewAppScreen';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 import NokeServiceButtons from '../noke/TestingButtons';
 
 function TestingView() {
@@ -12,10 +12,9 @@ function TestingView() {
                     nestedScrollEnabled={true}
                     contentInsetAdjustmentBehavior="automatic"
                     style={styles.scrollView}>
-                    <Header />
                     {global.HermesInternal == null ? null : (
                         <View style={styles.engine}>
-                            <Text style={styles.footer}>Engine: Hermes</Text>
+                            <Text style={{ color: "red", backgroundColor: "black" }}>Engine: Hermes</Text>
                         </View>
                     )}
                     <View style={styles.sectionContainer}>
@@ -29,15 +28,16 @@ function TestingView() {
 
 const styles = StyleSheet.create({
     scrollView: {
-        backgroundColor: Colors.lighter,
+        backgroundColor: Colors.black,
     },
     engine: {
         position: 'absolute',
-        right: 0,
+        top: 5,
+        right: 5,
     },
     sectionContainer: {
         backgroundColor: Colors.black,
-        marginTop: 32,
+        marginTop: 23,
         paddingHorizontal: 24,
         paddingVertical: 24,
     },

@@ -17,16 +17,14 @@
         "noUnusedParameters": false,
         "baseUrl": "./src",
         "paths": {
-            "@env": ["@env"],
-            "@src": ["./src"],
-            "@api": ["./src/api/index"],
-            "@store": ["./src/app/store.js"],
-            "@hooks": ["./src/hooks/index"],
-            "@screens": ["./src/screens/index"],
-            "@utilities": ["./src/utilities/index"],
-            "@components": ["./src/components/index"],
-            "@reducers": ["./src/redux"],
-            "@noke": ["./src/noke/noke"]
+            "@api": ["api/index"],
+            "@store": ["app/store.js"],
+            "@hooks": ["hooks/index"],
+            "@screens": ["screens/index"],
+            "@utilities": ["utilities/index"],
+            "@components": ["components/index"],
+            "@reducers": ["redux"],
+            "@noke": ["noke/noke"]
         }
     },
     "exclude": ["node_modules", "babel.config.js", "metro.config.js", "jest.config.js"]

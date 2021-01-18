@@ -5,7 +5,7 @@ const S = {};
 
 S.TouchableOpacity = styled.TouchableOpacity`
     flex: 1;
-    height: 60px;
+    height: 70px;
     margin: 15px;
     background: ${({ bgColor }) => (bgColor ? bgColor : 'darkgrey')};
 `;
