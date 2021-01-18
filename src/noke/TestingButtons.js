@@ -1,11 +1,11 @@
 /* eslint-disable prettier/prettier */
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
+import { useDispatch, useSelector } from 'react-redux';
+import { addNokeDevice, removeNokeDevice, fetchUnlock } from '@noke-state';
+import { requestLocPermissionAsync } from '@utilities';
 import { NokeAndroid, nokeUtils } from '@noke';
 import { useNokeEmitter } from '@hooks';
-import { addNokeDevice, removeNokeDevice } from '../redux/devicesSlice';
-import { fetchUnlock } from '../redux/unlockRequestSlice';
 import { SButton } from '@components';
 import { MAC_HD1 } from '@env';
 
@@ -33,11 +33,10 @@ function NokeServiceButtons() {
     useEffect(() => {
         const initializeNokeService = async () => {
             try {
-                const granted = nokeUtils.requestLocPermissionAsync();
+                const granted = requestLocPermissionAsync();
                 if (granted) {
                     const serviceInitialized = await NokeAndroid.initiateNokeService();
                     console.log(`serviceInitialized: ${serviceInitialized}`);
-                    console.log(MAC_HD1);
                 }
             } catch (e) {
                 console.error(e);

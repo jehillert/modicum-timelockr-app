@@ -1,6 +1,6 @@
 // import AsyncStorage from '@react-native-async-storage/async-storage';
 import { configureStore } from '@reduxjs/toolkit';
-import rootReducer from '../redux/rootReducer';
+import rootReducer from '@root-reducer';
 
 // const persistConfig = { storage: AsyncStorage };
 
@@ -10,7 +10,7 @@ const store = configureStore({
 
 if (process.env.NODE_ENV === 'development' && module.hot) {
     module.hot.accept('./rootReducer', () => {
-        const newRootReducer = require('../redux/rootReducer').default;
+        const newRootReducer = require('./rootReducer').default;
         store.replaceReducer(newRootReducer);
     });
 }

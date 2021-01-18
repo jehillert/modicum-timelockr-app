@@ -5,17 +5,6 @@
             "babel-plugin-styled-components"
         ],
         [
-            "module:react-native-dotenv",
-            {
-                "moduleName": "@env",
-                "path": ".env",
-                "blacklist": null,
-                "whitelist": null,
-                "safe": false,
-                "allowUndefined": true
-            }
-        ],
-        [
             "module-resolver",
             {
                 "root": ["./src"],
@@ -25,13 +14,26 @@
                     "@src": "./src",
                     "@noke-api": "./src/noke-api/index",
                     "@store": "./src/app/store",
+                    "@root-reducer": "./src/app/rootReducer",
                     "@hooks": "./src/hooks",
                     "@screens": "./src/screens",
-                    "@utilities": "./src/utilities/utilities",
+                    "@utilities": "./src/utilities",
                     "@components": "./src/components/index",
                     "@reducers": "./src/redux",
-                    "@noke": "./src/noke/noke"
+                    "@noke": "./src/noke/noke",
+                    "@noke-state": "./src/noke-state"
                 }
+            }
+        ],
+        [
+            "module:react-native-dotenv",
+            {
+                "moduleName": "@env",
+                "path": ".env",
+                "blacklist": null,
+                "whitelist": null,
+                "safe": false,
+                "allowUndefined": true
             }
         ]
     ]

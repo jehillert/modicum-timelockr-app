@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { NativeEventEmitter } from 'react-native';
 import NokeAndroid from '@noke';
-import { updateNokeDevice, setDiscoveredDevice } from '../redux/devicesSlice';
+import { updateNokeDevice, setDiscoveredDevice } from '@noke-state';
 
 function useNokeEmitter() {
     const dispatch = useDispatch();

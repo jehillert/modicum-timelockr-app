@@ -3,12 +3,8 @@ import { Provider } from 'react-redux';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-// import { initializeBridgeSpy } from 'utilities';
 import store from '@store';
-// import TestingView from '../screens/TestingView';
-// import Duration from '../screens/Duration';
 import { TestingView, Duration } from '@screens';
-// initializeBridgeSpy();
 
 const Drawer = createDrawerNavigator();
 

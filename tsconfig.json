@@ -18,13 +18,17 @@
         "baseUrl": "./src",
         "paths": {
             "@api": ["api/index"],
-            "@store": ["app/store.js"],
+            "@store": ["app/store"],
+            "@root-reducer": ["redux/rootReducer"],
             "@hooks": ["hooks/index"],
             "@screens": ["screens/index"],
             "@utilities": ["utilities/index"],
             "@components": ["components/index"],
             "@reducers": ["redux"],
-            "@noke": ["noke/noke"]
+            "@noke": ["noke/noke"],
+            "@noke-api": ["noke-api/noke-api"],
+            "@noke-state/*": ["noke-state/*"],
+            "@noke-state": ["noke-state/index"],
         }
     },
     "exclude": ["node_modules", "babel.config.js", "metro.config.js", "jest.config.js"]

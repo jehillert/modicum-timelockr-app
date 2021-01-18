@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/default
 import MessageQueue from 'react-native/Libraries/BatchedBridge/MessageQueue';
 
 const methodsToWatch = [
