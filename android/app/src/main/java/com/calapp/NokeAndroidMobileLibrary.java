@@ -160,8 +160,7 @@ public class NokeAndroidMobileLibrary extends ReactContextBaseJavaModule {
         try {
             mNokeService.startScanningForNokeDevices();
             final WritableMap event = Arguments.createMap();
-            event.putBoolean("status", true);
-
+            event.putBoolean("isScanning", true);
             promise.resolve(event);
         } catch (IllegalViewOperationException e) {
             promise.reject("message", e.getMessage());
@@ -174,8 +173,7 @@ public class NokeAndroidMobileLibrary extends ReactContextBaseJavaModule {
         try {
             mNokeService.stopScanning();
             final WritableMap event = Arguments.createMap();
-            event.putBoolean("status", true);
-
+            event.putBoolean("isScanning", false);
             promise.resolve(event);
         } catch (IllegalViewOperationException e) {
             promise.reject("message", e.getMessage());
@@ -206,6 +204,8 @@ public class NokeAndroidMobileLibrary extends ReactContextBaseJavaModule {
             mNokeService.addNokeDevice(noke);
 
             WritableMap event = createCommonEvents(noke);
+            event.putBoolean("isAdded", true);
+
             promise.resolve(event);
         } catch (IllegalViewOperationException e) {
             promise.reject("message", e.getMessage());
@@ -324,6 +324,7 @@ public class NokeAndroidMobileLibrary extends ReactContextBaseJavaModule {
 
             final WritableMap event = Arguments.createMap();
             event.putBoolean("status", true);
+            event.putBoolean("isAdded", false);
 
             promise.resolve(event);
         } catch (IllegalViewOperationException e) {

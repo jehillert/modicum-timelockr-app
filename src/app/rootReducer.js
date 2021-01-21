@@ -1,9 +1,9 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import { devicesReducer, unlockRequestReducer } from '@noke-state';
+import { devicesReducer, unlockReducer } from '@noke-state';
 
 const rootReducer = combineReducers({
-    unlockRequest: unlockRequestReducer,
-    nokeDevices: devicesReducer,
+    unlock: unlockReducer,
+    devices: devicesReducer,
 });
 
 export default rootReducer;

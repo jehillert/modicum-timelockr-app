@@ -10,18 +10,18 @@ const instance = axios.create({
     },
 });
 
-export const requestUnlock = (mac, session, email) => {
-    const data = { mac, session, email };
+// payload = { mac, session, email };
+export const requestUnlock = payload => {
     return instance
-        .post(PATH.UNLOCK, data)
+        .post(PATH.UNLOCK, payload)
         .then(res => res)
         .catch(error => console.log(error));
 };
 
-export const requestUnshackle = (mac, session, email) => {
-    const data = { mac, session, email };
+// payload = { mac, session, email };
+export const requestUnshackle = payload => {
     return instance
-        .post(PATH.UNSHACKLE, data)
-        .then(response => console.log(JSON.stringify(response.data, undefined, 2)))
+        .post(PATH.UNSHACKLE, payload)
+        .then(response => console.log(JSON.stringify(response.payload, undefined, 2)))
         .catch(error => console.log(error));
 };

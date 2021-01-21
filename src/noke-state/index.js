@@ -1,4 +1,4 @@
 export * from './devicesSlice';
-export * from './unlockRequestSlice';
+export * from './unlockSlice';
 export { default as devicesReducer } from './devicesSlice';
-export { default as unlockRequestReducer } from './unlockRequestSlice';
+export { default as unlockReducer } from './unlockSlice';

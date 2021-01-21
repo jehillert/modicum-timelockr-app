@@ -25,14 +25,10 @@ S.Button = styled.Button``;
 
 function TestingButtons() {
     const dispatch = useDispatch();
-    const activeLockId = useSelector(state => state?.nokeDevices?.activeLockId) || '';
-    const nokeDevices = useSelector(state => state?.nokeDevices);
-    console.log(JSON.stringify(nokeDevices, undefined, 2));
-    const mac = useSelector(state => state?.nokeDevices.locks[activeLockId]?.mac) || '';
-    const session = useSelector(state => state?.nokeDevices.locks[activeLockId]?.session) || '';
+    const activeLockId = useSelector(state => state?.devices?.activeLockId) || '';
+    const mac = useSelector(state => state?.devices.locks[activeLockId]?.mac) || '';
+    const session = useSelector(state => state?.devices.locks[activeLockId]?.session) || '';
     const email = 'john.hillert@gmail.com';
-
-
 
     useEffect(() => {
         const initializeNokeService = async () => {
@@ -59,7 +55,7 @@ function TestingButtons() {
                 <SButton bgColor="#ff3421" onPress={() => nokeUtils.stopScan()}>STOP SCAN</SButton>
             </S.View>
             <S.View>
-                <SButton bgColor="green" onPress={() => dispatch(addNokeDevice())}>ADD</SButton>
+                <SButton bgColor="green" onPress={() => dispatch(addNokeDevice(activeLockId))}>ADD</SButton>
                 <SButton bgColor="#ff3421" onPress={() => dispatch(removeNokeDevice())}>REMOVE</SButton>
             </S.View>
             <S.View>

@@ -2,11 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { NokeAndroid } from '@noke';
 import { isValidMac, removeColons } from '@utilities';
 
-const initialState = {
-    activeLockId: null,
-    discovered: {},
-    locks: {},
-};
+const NO_LOCK_REFERENCE_ERROR = 'Must provide valid mac address or "activeLockId" must reference enumerated lock.';
 
 const getNewLock = data => ({
     mac: '',
@@ -27,16 +23,17 @@ const getNewLock = data => ({
 });
 
 const devicesSlice = createSlice({
-    name: 'nokeDevices',
-    initialState,
+    name: 'devices',
+    initialState: {
+        activeLockId: null,
+        locks: {},
+    },
     reducers: {
         addDevice(state, { payload: id }) {
             state.locks[id].isAdded = true;
             state.activeLockId = id;
         },
-        removeDevice(state, { mac = null }) {
-            const id = mac ? removeColons(mac) : state.activeLockId;
-
+        removeDevice(state, { payload: id }) {
             state.locks = Object.keys(state.locks).reduce((newLocks, lockId) => {
                 if (lockId !== id) {
                     newLocks[lockId] = [lockId];
@@ -44,20 +41,25 @@ const devicesSlice = createSlice({
                 return newLocks;
             }, {});
         },
-        updateDevice(state, { payload: lockData }) {
-            const { locks } = state;
-            const { id } = lockData;
-
-            if (Object.keys(locks).includes(id)) {
-                locks[id] = {
-                    ...locks[id],
-                    ...lockData,
-                };
-            } else {
-                locks[id] = getNewLock(lockData);
-            }
-
-            state.activeLockId = id;
+        updateDevice: {
+            reducer: (state, { payload }) => {
+                const { locks } = state;
+                const { id, lockData } = payload;
+                if (Object.keys(locks).includes(id)) {
+                    locks[id] = {
+                        ...locks[id],
+                        ...lockData,
+                    };
+                } else {
+                    locks[id] = getNewLock(lockData);
+                }
+                state.activeLockId = id;
+            },
+            prepare: lockData => {
+                const { mac = '' } = lockData;
+                const id = removeColons(mac);
+                return { payload: { id, lockData } };
+            },
         },
     },
 });
@@ -65,49 +67,34 @@ const devicesSlice = createSlice({
 export const { addDevice, removeDevice, updateDevice } = devicesSlice.actions;
 export default devicesSlice.reducer;
 
-const NO_LOCK_REFERENCE_ERROR = 'Must provide valid mac address or "activeLockId" must reference enumerated lock.';
-const NO_MAC_ERROR = 'Argument "lockData" does not contain a valid mac address.';
-
-const resolveDeviceChange = async (actionCallback, nokeCallback, dispatch, getState, selectedMac = '') => {
+export const addNokeDevice = id => async (dispatch, getState) => {
     try {
-        const { locks, activeId = '' } = getState()?.nokeDevices;
-        const mac = selectedMac || locks[activeId].mac || '';
-        const isSuccess = await nokeCallback(mac);
-
-        if (isValidMac(mac) && isSuccess) {
-            const id = removeColons(mac);
-            dispatch(actionCallback(id));
+        const { name, mac } = getState()?.devices?.locks[id];
+        if (isValidMac(mac)) {
+            const { isAdded } = await NokeAndroid.addNokeDevice({ mac, name });
+            if (isAdded) {
+                dispatch(addDevice(id));
+            }
         } else {
-            throw { isSuccess, isValidMac: isValidMac(mac) };
+            throw NO_LOCK_REFERENCE_ERROR;
         }
-    } catch ({ isSuccess, mac }) {
-        console.log(`Error in call to resolveDeviceChange().`);
-        if (!isValidMac(mac)) {
-            console.error(NO_LOCK_REFERENCE_ERROR);
-        }
-        if (!isSuccess) {
-            console.error(`Native call to addDevice/removeDevice has failed.`);
-        }
+    } catch (err) {
+        console.error(err);
     }
 };
 
-export const addNokeDevice = selectedMac => async (dispatch, getState) => {
-    resolveDeviceChange(addDevice, NokeAndroid.addNokeDevice, dispatch, getState, selectedMac);
-};
-
-export const removeNokeDevice = selectedMac => async (dispatch, getState) => {
-    resolveDeviceChange(removeDevice, NokeAndroid.removeNokeDevice, selectedMac);
-};
-
-export const updateDeviceState = lockData => async (dispatch, getState) => {
+export const removeNokeDevice = id => async (dispatch, getState) => {
     try {
-        const { mac = '' } = lockData;
-        const id = removeColons(mac);
-        console.log(JSON.stringify(lockData, undefined, 2));
-        if (mac) {
-            dispatch(updateDevice({ id, ...lockData }));
+        const { mac } = getState()?.devices?.locks[id];
+
+        if (isValidMac(mac)) {
+            const isAdded = await NokeAndroid.removeNokeDevice(mac);
+
+            if (!isAdded) {
+                dispatch(removeDevice(id));
+            }
         } else {
-            throw `Error in call to updateDeviceState()\n${NO_MAC_ERROR} ${JSON.stringify(lockData, undefined, 2)}`;
+            throw NO_LOCK_REFERENCE_ERROR;
         }
     } catch (err) {
         console.error(err);

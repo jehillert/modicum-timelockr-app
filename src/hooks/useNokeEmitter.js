@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { NativeEventEmitter } from 'react-native';
 import NokeAndroid from '@noke';
-import { updateDeviceState } from '@noke-state';
+import { updateDevice } from '@noke-state';
 
 export const nokeDeviceEvents = [
     'onNokeDiscovered',
@@ -29,7 +29,7 @@ function useNokeEmitter() {
         const NokeEmitter = new NativeEventEmitter(NokeAndroid);
 
         const handleDeviceEvent = event => data => {
-            dispatch(updateDeviceState(data));
+            dispatch(updateDevice(data));
             console.log(`[NOKE_EMITTER]: ${event}`);
         };
 
