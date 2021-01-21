@@ -4,10 +4,10 @@ import { NokeAndroid } from '@noke';
 
 export const fetchUnlock = createAsyncThunk('unlock/requestStatus', async (payload, thunkAPI) => {
     // const { activeLockId, locks } = thunkAPI.getState().devices;
+    const { mac } = payload;
     const res = await requestUnlock(payload);
-    // const isSuccess = NokeAndroid.sendCommands(response.data.commands);
-    console.log(JSON.stringify(res.data.data.commands, undefined, 2));
     const commands = res.data.data.commands;
+    const isSuccess = NokeAndroid.sendCommands(mac, commands);
     return commands;
 });
 
