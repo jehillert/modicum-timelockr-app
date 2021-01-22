@@ -20,7 +20,6 @@ const serviceSlice = createSlice({
         setScanningError(state, { payload: err }) {
             state.scanningError = err;
         },
-        // ble status code should go here at some point
     },
 });
 

@@ -10,18 +10,24 @@ const instance = axios.create({
     },
 });
 
-// payload = { mac, session, email };
 export const requestUnlock = payload => {
     return instance
-        .post(PATH.UNLOCK, payload)
+        .post(PATH.UNLOCK, payload) // { mac, session, email };
         .then(res => res)
         .catch(error => console.log(error));
 };
 
-// payload = { mac, session, email };
 export const requestUnshackle = payload => {
     return instance
-        .post(PATH.UNSHACKLE, payload)
-        .then(response => console.log(JSON.stringify(response.payload, undefined, 2)))
+        .post(PATH.UNSHACKLE, payload) // { mac, session, email };
+        .then(res => res)
         .catch(error => console.log(error));
 };
+
+// This should be implemented at gateway
+// export const requestLock = payload => {
+//     return instance
+//         .post(PATH.LOCK, payload)
+//         .then(response => console.log(JSON.stringify(response.payload, undefined, 2)))
+//         .catch(error => console.log(error));
+// };

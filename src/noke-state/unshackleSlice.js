@@ -1,17 +1,17 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { requestUnlock } from '@noke-api';
+import { requestUnshackle } from '@noke-api';
 import { NokeAndroid } from '@noke';
 
-export const fetchUnlock = createAsyncThunk('unlock/requestStatus', async (payload, thunkAPI) => {
+export const fetchUnshackle = createAsyncThunk('unshackle/requestStatus', async (payload, thunkAPI) => {
     const { mac } = payload;
-    const res = await requestUnlock(payload);
+    const res = await requestUnshackle(payload);
     const commands = res.data.data.commands;
     await NokeAndroid.sendCommands(mac, commands);
     return commands;
 });
 
-const unlockSlice = createSlice({
-    name: 'unlock',
+const unshackleSlice = createSlice({
+    name: 'unshackle',
     initialState: {
         commands: null,
         loading: 'idle',
@@ -19,13 +19,13 @@ const unlockSlice = createSlice({
     },
     reducers: {},
     extraReducers: {
-        [fetchUnlock.pending]: (state, action) => {
+        [fetchUnshackle.pending]: (state, action) => {
             if (state.loading === 'idle') {
                 state.loading = 'pending';
                 state.currentRequestId = action.meta.requestId;
             }
         },
-        [fetchUnlock.fulfilled]: (state, action) => {
+        [fetchUnshackle.fulfilled]: (state, action) => {
             const { requestId } = action.meta;
             const commands = JSON.parse(action.payload);
             if (state.loading === 'pending' && state.currentRequestId === requestId) {
@@ -34,7 +34,7 @@ const unlockSlice = createSlice({
                 state.currentRequestId = undefined;
             }
         },
-        [fetchUnlock.rejected]: (state, action) => {
+        [fetchUnshackle.rejected]: (state, action) => {
             const { requestId } = action.meta;
             if (state.loading === 'pending' && state.currentRequestId === requestId) {
                 state.loading = 'idle';
@@ -45,4 +45,4 @@ const unlockSlice = createSlice({
     },
 });
 
-export default unlockSlice.reducer;
+export default unshackleSlice.reducer;

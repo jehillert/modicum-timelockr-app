@@ -9,7 +9,6 @@ const getNewLock = data => ({
     name: '',
     session: '',
     hwVersion: '',
-    isAdded: null,
     battery: null,
     isLocked: null,
     isShutdown: null,
@@ -26,20 +25,20 @@ const devicesSlice = createSlice({
     name: 'devices',
     initialState: {
         activeLockId: null,
+        added: [],
         locks: {},
     },
     reducers: {
         addDevice(state, { payload: id }) {
-            state.locks[id].isAdded = true;
-            state.activeLockId = id;
+            const { added } = state;
+            if (!added.includes(id)) {
+                added.push(id);
+                state.activeLockId = id;
+            }
         },
         removeDevice(state, { payload: id }) {
-            state.locks = Object.keys(state.locks).reduce((newLocks, lockId) => {
-                if (lockId !== id) {
-                    newLocks[lockId] = [lockId];
-                }
-                return newLocks;
-            }, {});
+            state.added = state.added.filter(val => val !== id);
+            state.activeLockId = state.added.length ? state.added[0] : null;
         },
         updateDevice: {
             reducer: (state, { payload }) => {
@@ -86,11 +85,9 @@ export const addNokeDevice = id => async (dispatch, getState) => {
 export const removeNokeDevice = id => async (dispatch, getState) => {
     try {
         const { mac } = getState()?.devices?.locks[id];
-
         if (isValidMac(mac)) {
             const isAdded = await NokeAndroid.removeNokeDevice(mac);
-
-            if (!isAdded) {
+            if (isAdded) {
                 dispatch(removeDevice(id));
             }
         } else {
