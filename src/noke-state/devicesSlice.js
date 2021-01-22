@@ -72,7 +72,7 @@ export const addNokeDevice = id => async (dispatch, getState) => {
         if (isValidMac(mac)) {
             const { isAdded } = await NokeAndroid.addNokeDevice({ mac, name });
             if (isAdded) {
-                dispatch(addDevice(id));
+                return dispatch(addDevice(id));
             }
         } else {
             throw NO_LOCK_REFERENCE_ERROR;
@@ -88,7 +88,7 @@ export const removeNokeDevice = id => async (dispatch, getState) => {
         if (isValidMac(mac)) {
             const isAdded = await NokeAndroid.removeNokeDevice(mac);
             if (isAdded) {
-                dispatch(removeDevice(id));
+                return dispatch(removeDevice(id));
             }
         } else {
             throw NO_LOCK_REFERENCE_ERROR;

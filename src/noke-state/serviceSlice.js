@@ -31,7 +31,7 @@ export const startScanning = () => async (dispatch, getState) => {
         const { serviceConnected = null } = getState().service;
         if (serviceConnected) {
             const { isScanning } = await NokeAndroid.startScanning();
-            dispatch(setIsScanning(isScanning));
+            return dispatch(setIsScanning(isScanning));
         }
     } catch (err) {
         dispatch(setScanningError(err));
@@ -43,7 +43,7 @@ export const stopScanning = () => async (dispatch, getState) => {
         const { serviceConnected = null } = getState().service;
         if (serviceConnected) {
             const { isScanning } = await NokeAndroid.stopScanning();
-            dispatch(setIsScanning(isScanning));
+            return dispatch(setIsScanning(isScanning));
         }
     } catch (err) {
         dispatch(setScanningError(err));
