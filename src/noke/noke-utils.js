@@ -40,12 +40,8 @@ function setBluetoothScanDuration(duration) {
     return NokeAndroid.setBluetoothScanDuration(duration).then(logEvent).catch(console.error);
 }
 
-function startScan() {
-    NokeAndroid.startScan().then(logEvent).catch(console.error);
-}
-
-function stopScan() {
-    return NokeAndroid.stopScan().then(logEvent).catch(console.error);
+function setAllowAllDevices() {
+    return NokeAndroid.setAllowAllDevices().then(logEvent).catch(console.error);
 }
 
 const unlock = () => {
@@ -62,8 +58,6 @@ const nokeUtils = {
     setBluetoothDelayBackgroundDefault,
     setBluetoothDelayDefault,
     setBluetoothScanDuration,
-    startScan,
-    stopScan,
     unlock,
 };
 

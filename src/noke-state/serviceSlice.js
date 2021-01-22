@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { nokeUtils } from '@noke';
+import { NokeAndroid } from '@noke';
 
 const initialState = {
     serviceConnected: false,
@@ -25,15 +25,13 @@ const serviceSlice = createSlice({
 });
 
 export const { setServiceConnected, setIsScanning, setScanningError } = serviceSlice.actions;
-
 export default serviceSlice.reducer;
 
 export const startScanning = () => async (dispatch, getState) => {
     try {
-        const { serviceConnected = null } = getState().nokeService;
+        const { serviceConnected = null } = getState().service;
         if (serviceConnected) {
-            const isScanning = await nokeUtils.startScanning();
-            console.log(isScanning);
+            const { isScanning } = await NokeAndroid.startScanning();
             dispatch(setIsScanning(isScanning));
         }
     } catch (err) {
@@ -43,10 +41,10 @@ export const startScanning = () => async (dispatch, getState) => {
 
 export const stopScanning = () => async (dispatch, getState) => {
     try {
-        const { serviceConnected = null } = getState().nokeService;
+        const { serviceConnected = null } = getState().service;
         if (serviceConnected) {
-            const isScanning = nokeUtils.stopScanning();
-            dispatch(setIsScanning(!isScanning));
+            const { isScanning } = await NokeAndroid.stopScanning();
+            dispatch(setIsScanning(isScanning));
         }
     } catch (err) {
         dispatch(setScanningError(err));

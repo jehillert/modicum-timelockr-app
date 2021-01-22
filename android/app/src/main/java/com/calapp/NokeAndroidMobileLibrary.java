@@ -156,7 +156,7 @@ public class NokeAndroidMobileLibrary extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void startScan(Promise promise) {
+    public void startScanning(Promise promise) {
         try {
             final WritableMap event = Arguments.createMap();
             mNokeService.startScanningForNokeDevices();
@@ -168,7 +168,7 @@ public class NokeAndroidMobileLibrary extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void stopScan(Promise promise) {
+    public void stopScanning(Promise promise) {
         try {
             final WritableMap event = Arguments.createMap();
             mNokeService.stopScanning();
@@ -179,10 +179,10 @@ public class NokeAndroidMobileLibrary extends ReactContextBaseJavaModule {
         }
     }
 
-            /**
-             * name: "Lock Name"
-             * mac: "XX:XX:XX:XX:XX:XX"
-             */
+    /**
+     * name: "Lock Name"
+     * mac: "XX:XX:XX:XX:XX:XX"
+     */
     @ReactMethod
     public void addNokeDevice(ReadableMap data, Promise promise) {
         try {
@@ -345,7 +345,7 @@ public class NokeAndroidMobileLibrary extends ReactContextBaseJavaModule {
                 message = "Unable to initialize Bluetooth";
             }
             event.putString("message", message);
-            event.putBoolean("isRunning", true);
+            event.putBoolean("serviceConnected", true);
             emitDeviceEvent("onServiceConnected", event);
         }
 

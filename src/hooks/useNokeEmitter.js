@@ -3,9 +3,9 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { NativeEventEmitter } from 'react-native';
 import NokeAndroid from '@noke';
-import { updateDevice } from '@noke-state';
+import { setServiceConnected, updateDevice } from '@noke-state';
 
-export const nokeDeviceEvents = [
+const nokeDeviceEvents = [
     'onNokeDiscovered',
     'onNokeConnecting',
     'onNokeConnected',
@@ -15,12 +15,9 @@ export const nokeDeviceEvents = [
     'onNokeUnlocked',
 ];
 
-export const otherNokeEvents = [
-    'onServiceConnected',
-    'onServiceDisconnected',
-    'onBluetoothStatusChanged',
-    'onError',
-]
+const serviceConnectionEvents = ['onServiceConnected', 'onServiceDisconnected'];
+
+const otherNokeEvents = ['onBluetoothStatusChanged', 'onError'];
 
 function useNokeEmitter() {
     const dispatch = useDispatch();
@@ -33,24 +30,40 @@ function useNokeEmitter() {
             console.log(`[NOKE_EMITTER]: ${event}`);
         };
 
-        const handleOtherEvent = event => data =>  {
+        const handleServiceConnectionEvent = event => data =>
+            event === 'onServiceConnected' ? dispatch(setServiceConnected(true)) : dispatch(setServiceConnected(false));
+
+        const handleOtherEvent = event => data => {
             console.log(`[NOKE_EMITTER]: ${event}`);
         };
 
-        nokeDeviceEvents
-            .forEach(event => NokeEmitter.addListener(event, handleDeviceEvent(event)));
-        otherNokeEvents
-            .forEach(event => NokeEmitter.addListener(event, handleOtherEvent(event)));
+        nokeDeviceEvents.forEach(
+            event => NokeEmitter.addListener(event, handleDeviceEvent(event))
+        );
+
+        serviceConnectionEvents.forEach(
+            event => NokeEmitter.addListener(event, handleServiceConnectionEvent(event))
+        );
+
+        otherNokeEvents.forEach(
+            event => NokeEmitter.addListener(event, handleOtherEvent(event))
+        );
 
         console.log('LISTENERS ADDED');
 
         return () => {
-            nokeDeviceEvents
-                .forEach(event => NokeEmitter.removeListener(event, handleDeviceEvent));
-            otherNokeEvents
-                .forEach(event => NokeEmitter.removeListener(event, handleOtherEvent));
-        }
+            nokeDeviceEvents.forEach(
+                event => NokeEmitter.removeListener(event, handleDeviceEvent)
+            );
 
+            otherNokeEvents.forEach(
+                event => NokeEmitter.removeListener(event, handleOtherEvent)
+            );
+
+            serviceConnectionEvents.forEach(
+                event => NokeEmitter.removeListener(event, handleServiceConnectionEvent)
+            );
+        };
     }, []);
 }
 

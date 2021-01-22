@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
-import { addNokeDevice, removeNokeDevice, fetchUnlock } from '@noke-state';
+import { addNokeDevice, removeNokeDevice, fetchUnlock, startScanning, stopScanning } from '@noke-state';
 import { requestLocPermissionAsync } from '@utilities';
 import { NokeAndroid, nokeUtils } from '@noke';
 import { useNokeEmitter } from '@hooks';
@@ -51,8 +51,8 @@ function TestingButtons() {
     return (
         <>
             <S.View>
-                <SButton bgColor="#2196F3" onPress={() => nokeUtils.startScan()}>SCAN</SButton>
-                <SButton bgColor="#ff3421" onPress={() => nokeUtils.stopScan()}>STOP SCAN</SButton>
+                <SButton bgColor="#2196F3" onPress={() => dispatch(startScanning())}>SCAN</SButton>
+                <SButton bgColor="#ff3421" onPress={() => dispatch(stopScanning())}>STOP SCAN</SButton>
             </S.View>
             <S.View>
                 <SButton bgColor="green" onPress={() => dispatch(addNokeDevice(activeLockId))}>ADD</SButton>

@@ -56,7 +56,6 @@ export { nokeEvents } from './noke-constants';
 export { default as nokeConstants } from './noke-constants';
 export { default as nokeUtils } from './noke-utils';
 
-
 export const nokeEventUtils = {
     onEvent,
     onEventOnce,

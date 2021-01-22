@@ -6,7 +6,7 @@ const methodsToWatch = [
     'setBluetoothDelayDefault',
     'setBluetoothDelayBackgroundDefault',
     'setBluetoothScanDuration',
-    'startScan',
+    'startScanning',
     'stopScan',
     'sendCommands',
     'addNokeDevice',
