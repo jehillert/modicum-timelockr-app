@@ -1,10 +1,7 @@
 /* eslint-disable prettier/prettier */
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
-import { requestLocPermissionAsync } from '@utilities';
-import { NokeAndroid, nokeUtils } from '@noke';
-import { useNokeEmitter } from '@hooks';
 import { SButton } from '@components';
 import { MAC_HD1 } from '@env';
 import {
@@ -36,24 +33,6 @@ function TestingButtons() {
     const mac = useSelector(state => state?.devices.locks[activeLockId]?.mac) || '';
     const session = useSelector(state => state?.devices.locks[activeLockId]?.session) || '';
     const email = 'john.hillert@gmail.com';
-
-    useEffect(() => {
-        const initializeNokeService = async () => {
-            try {
-                const granted = requestLocPermissionAsync();
-                if (granted) {
-                    const serviceInitialized = await NokeAndroid.initiateNokeService();
-                    console.log(`serviceInitialized: ${serviceInitialized}`);
-                }
-            } catch (e) {
-                console.error(e);
-            }
-        };
-
-        initializeNokeService();
-    }, []);
-
-    useNokeEmitter();
 
     return (
         <>

@@ -49,7 +49,7 @@ function useNokeEmitter() {
             event => NokeEmitter.addListener(event, handleOtherEvent(event))
         );
 
-        console.log('LISTENERS ADDED');
+        console.log('[NOKE_EMITTER]: Event listeners added.');
 
         return () => {
             nokeDeviceEvents.forEach(
