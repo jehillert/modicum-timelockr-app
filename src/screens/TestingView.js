@@ -1,28 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { SafeAreaView, StyleSheet, ScrollView, View, Text, StatusBar } from 'react-native';
-import { requestLocPermissionAsync } from '@utilities';
 import { TestingButtons } from '@components';
-import { NokeAndroid } from '@noke';
-import { useNokeEmitter } from '@hooks';
+import { useNokeEmitter, useNokeService } from '@hooks';
 
 function TestingView() {
-    useEffect(() => {
-        const initializeNokeService = async () => {
-            try {
-                const granted = requestLocPermissionAsync();
-                if (granted) {
-                    const serviceInitialized = await NokeAndroid.initiateNokeService();
-                    console.log(`serviceInitialized: ${serviceInitialized}`);
-                }
-            } catch (e) {
-                console.error(e);
-            }
-        };
-
-        initializeNokeService();
-    }, []);
-
+    useNokeService();
     useNokeEmitter();
 
     return (
