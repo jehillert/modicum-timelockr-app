@@ -43,10 +43,18 @@ const hotReloadingEpic = (...args) => epic$.pipe(switchMap(epic => epic(...args)
 
 epicMiddleware.run(hotReloadingEpic);
 
+// if (process.env.NODE_ENV === 'development' && module.hot) {
+//     module.hot.accept('./root-epic', () => {
+//         const newRootReducer = require('./root-reducer').default;
+//         const nextRootEpic = require('./root-epic').rootEpic;
+//         store.replaceReducer(newRootReducer);
+//         epic$.next(nextRootEpic);
+//     });
+// }
 if (process.env.NODE_ENV === 'development' && module.hot) {
-    module.hot.accept('./root-epic', () => {
+    module.hot.accept(() => {
         const newRootReducer = require('./root-reducer').default;
-        const nextRootEpic = require('./root-epic').rootEpic;
+        const nextRootEpic = require('./root-epic').default;
         store.replaceReducer(newRootReducer);
         epic$.next(nextRootEpic);
     });
