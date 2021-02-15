@@ -1,29 +1,18 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { BehaviorSubject } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
-import { createEpicMiddleware } from 'redux-observable';
 import rootReducer from '@root-reducer';
-import rootEpic from '@root-epic';
+
 const createDebugger = require('redux-flipper').default;
-const epicMiddleware = createEpicMiddleware();
 
 const store = configureStore({
     reducer: rootReducer,
-    middleware: getDefaultMiddleware => getDefaultMiddleware().concat(createDebugger(), epicMiddleware),
+    middleware: getDefaultMiddleware => getDefaultMiddleware().concat(createDebugger()),
     devTools: process.env.NODE_ENV !== 'production',
 });
-
-const epic$ = new BehaviorSubject(rootEpic);
-const hotReloadingEpic = (...args) => epic$.pipe(switchMap(epic => epic(...args)));
-
-epicMiddleware.run(hotReloadingEpic);
 
 if (process.env.NODE_ENV === 'development' && module.hot) {
     module.hot.accept(() => {
         const newRootReducer = require('./root-reducer').default;
-        const nextRootEpic = require('./root-epic').default;
         store.replaceReducer(newRootReducer);
-        epic$.next(nextRootEpic);
     });
 }
 
