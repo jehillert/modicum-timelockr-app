@@ -55,6 +55,7 @@ const nokeUtils = {
     offlineUnlock,
     removeAllNokes,
     sendCommands,
+    setAllowAllDevices,
     setBluetoothDelayBackgroundDefault,
     setBluetoothDelayDefault,
     setBluetoothScanDuration,

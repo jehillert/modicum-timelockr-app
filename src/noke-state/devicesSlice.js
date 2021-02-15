@@ -2,7 +2,8 @@ import { createSlice } from '@reduxjs/toolkit';
 import { NokeAndroid } from '@noke';
 import { isValidMac, removeColons } from '@utilities';
 
-const NO_LOCK_REFERENCE_ERROR = 'Must provide valid mac address or "activeLockId" must reference enumerated lock.';
+const NO_LOCK_REFERENCE_ERROR =
+    'Must provide valid mac address or "activeLockId" must reference enumerated lock.';
 
 const getNewLock = data => ({
     mac: '',
@@ -36,6 +37,10 @@ const devicesSlice = createSlice({
                 state.activeLockId = id;
             }
         },
+        discoverDevice(state, { payload: isDiscovered }) {
+            const { activeLockId: id = '' } = state?.devices;
+            state.locks[id].isDiscovered = isDiscovered;
+        },
         removeDevice(state, { payload: id }) {
             state.added = state.added.filter(val => val !== id);
             state.activeLockId = state.added.length ? state.added[0] : null;
@@ -63,9 +68,11 @@ const devicesSlice = createSlice({
     },
 });
 
-export const { addDevice, removeDevice, updateDevice } = devicesSlice.actions;
+// EXPORTS
+export const { addDevice, discoverDevice, removeDevice, updateDevice } = devicesSlice.actions;
 export default devicesSlice.reducer;
 
+// THUNKS
 export const addNokeDevice = id => async (dispatch, getState) => {
     try {
         const { name, mac } = getState()?.devices?.locks[id];

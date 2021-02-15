@@ -11,7 +11,7 @@ import {
     fetchUnlock,
     fetchUnshackle,
     startScanning,
-    stopScanning
+    stopScanning,
 } from '@noke-state';
 
 const S = {};
@@ -62,12 +62,16 @@ function TestingButtons() {
                 </SButton>
             </S.View>
             <S.View>
-                <SButton bgColor="cornflowerblue" /* bgColor="#2196F3" */ onPress={() => dispatch(fetchUnlock({ mac, session, email }))}>
+                <SButton
+                    bgColor="cornflowerblue"
+                    /* bgColor="#2196F3" */ onPress={() => dispatch(fetchUnlock({ mac, session, email }))}>
                     UNLOCK
                 </SButton>
             </S.View>
             <S.View>
-                <SButton bgColor="cornflowerblue" onPress={() => dispatch(fetchUnshackle({ mac, session, email }))}>
+                <SButton
+                    bgColor="cornflowerblue"
+                    onPress={() => dispatch(fetchUnshackle({ mac, session, email }))}>
                     UNSHACKLE
                 </SButton>
             </S.View>

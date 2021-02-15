@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { SafeAreaView, StyleSheet, ScrollView, View, Text, StatusBar } from 'react-native';
+import { nokeUtils } from '@noke';
 import { TestingButtons } from '@components';
 import { useNokeEmitter, useNokeService } from '@hooks';
 
 function TestingView() {
+    const serviceConnected = useSelector(state => state?.service?.serviceConnected);
+    useEffect(() => {
+        if (serviceConnected) {
+            // TODO: Get bluetooth delay functions to work as intended
+            nokeUtils.setBluetoothDelayDefault(1000);
+            nokeUtils.setBluetoothDelayBackgroundDefault(1000);
+        }
+    }, [serviceConnected]);
     useNokeService();
     useNokeEmitter();
 

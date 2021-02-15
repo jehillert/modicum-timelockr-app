@@ -8,7 +8,7 @@ const initialState = {
 };
 
 const serviceSlice = createSlice({
-    name: 'SERVICE',
+    name: 'service',
     initialState,
     reducers: {
         setServiceConnected(state, { payload: serviceConnected }) {
