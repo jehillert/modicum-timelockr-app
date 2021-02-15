@@ -22,6 +22,7 @@
                     "@reducers": "./src/redux",
                     "@noke": "./src/noke/noke",
                     "@noke-state": "./src/noke-state",
+                    "@noke-sagas": "./src/noke-sagas"
                 }
             }
         ],

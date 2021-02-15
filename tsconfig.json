@@ -17,22 +17,19 @@
         "noUnusedParameters": false,
         "baseUrl": "./src",
         "paths": {
-            // FUNCTIONS
             "@api": ["api/index"],
-            "@hooks": ["hooks/index"],
-            "@utilities": ["utilities/index"],
-            // COMPONENTS
-            "@screens": ["screens/index"],
             "@components": ["components/index"],
-            // REDUX
-            "@store": ["app/store"],
+            "@hooks": ["hooks/index"],
+            "@noke-api": ["noke-api/noke-api"],
+            "@noke-sagas": ["noke-sagas/index"],
+            "@noke-state": ["noke-state/index"],
+            "@noke-state/*": ["noke-state/*"],
+            "@noke": ["noke/noke"],
             "@reducers": ["redux"],
             "@root-reducer": ["app/root-reducer"],
-            // NOKE
-            "@noke": ["noke/noke"],
-            "@noke-api": ["noke-api/noke-api"],
-            "@noke-state/*": ["noke-state/*"],
-            "@noke-state": ["noke-state/index"],
+            "@screens": ["screens/index"],
+            "@store": ["app/store"],
+            "@utilities": ["utilities/index"],
         }
     },
     "exclude": ["node_modules", "babel.config.js", "metro.config.js", "jest.config.js"]
