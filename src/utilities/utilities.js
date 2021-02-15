@@ -52,3 +52,15 @@ export function isValidMac(mac) {
     const macRegex = /^\w\w(:\w\w){5}$/;
     return macRegex.test(mac);
 }
+
+export function throttled(delay, fn) {
+    let lastCall = 0;
+    return function (...args) {
+        const now = new Date().getTime();
+        if (now - lastCall < delay) {
+            return;
+        }
+        lastCall = now;
+        return fn(...args);
+    };
+}

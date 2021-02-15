@@ -4,9 +4,11 @@ import { useDispatch } from 'react-redux';
 import { NativeEventEmitter } from 'react-native';
 import NokeAndroid from '@noke';
 import { updateDevice } from '@noke-state';
+import { throttled } from '@utilities';
+
+const onNokeDiscovered = 'onNokeDiscovered';
 
 const nokeDeviceEvents = [
-    'onNokeDiscovered',
     'onNokeConnecting',
     'onNokeConnected',
     'onNokeDisconnected',
@@ -22,6 +24,16 @@ function useNokeEmitter() {
 
     useEffect(() => {
         const NokeEmitter = new NativeEventEmitter(NokeAndroid);
+
+        /* DISCOVER LOCKS */
+        const handleOnDiscovered = event => data => {
+            dispatch(updateDevice(data));
+            console.log(`NOKE_EMITTER: Lock discovered...\n${JSON.stringify(data, undefined, 2)}`);
+        }
+
+        const throttledDiscovery = throttled(1000, handleOnDiscovered);
+
+        NokeEmitter.addListener(onNokeDiscovered, throttled(1000, handleOnDiscovered(onNokeDiscovered)));
 
         const handleDeviceEvent = event => data => {
             dispatch(updateDevice(data));
@@ -50,6 +62,8 @@ function useNokeEmitter() {
             otherNokeEvents.forEach(
                 event => NokeEmitter.removeListener(event, handleOtherEvent)
             );
+
+            NokeEmitter.removeListener(onNokeDiscovered, throttledDiscovery);
         };
     }, []);
 }
