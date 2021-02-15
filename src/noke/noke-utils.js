@@ -2,7 +2,7 @@
 import { NokeAndroid } from '@noke';
 import { requestUnlock } from '@noke-api';
 
-const logEvent = event => console.log(`COMMAND CALLBACK: ${JSON.stringify(event, undefined)}`);
+const logEvent = event => console.log(`RN_BRIDGE: ${JSON.stringify(event, undefined)}`);
 
 function addNokeOfflineValues(lockData) {
     return NokeAndroid.addNokeOfflineValues(lockData).then(logEvent).catch(console.error);

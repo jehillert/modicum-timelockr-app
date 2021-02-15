@@ -4,7 +4,7 @@ import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { SafeAreaView, StyleSheet, ScrollView, View, Text, StatusBar } from 'react-native';
 import { nokeUtils } from '@noke';
 import { TestingButtons } from '@components';
-import { useNokeEmitter, useNokeService } from '@hooks';
+import { useNokeEmitter, useNokeService, useNokeServiceListener } from '@hooks';
 
 function TestingView() {
     const serviceConnected = useSelector(state => state?.service?.serviceConnected);
@@ -16,6 +16,7 @@ function TestingView() {
         }
     }, [serviceConnected]);
     useNokeService();
+    useNokeServiceListener();
     useNokeEmitter();
 
     return (
