@@ -21,7 +21,7 @@
                     "@components": "./src/components/index",
                     "@reducers": "./src/redux",
                     "@noke": "./src/noke/noke",
-                    "@noke-state": "./src/noke-state"
+                    "@noke-state": "./src/noke-state",
                 }
             }
         ],
