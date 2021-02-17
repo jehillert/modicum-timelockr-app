@@ -22,6 +22,27 @@ const getNewLock = data => ({
     ...data,
 });
 
+const setDeviceData = {
+    reducer: (state, { payload }) => {
+        const { locks } = state;
+        const { id, lockData } = payload;
+        if (Object.keys(locks).includes(id)) {
+            locks[id] = {
+                ...locks[id],
+                ...lockData,
+            };
+        } else {
+            locks[id] = getNewLock(lockData);
+        }
+        state.activeLockId = id;
+    },
+    prepare: lockData => {
+        const { mac = '' } = lockData;
+        const id = removeColons(mac);
+        return { payload: { id, lockData } };
+    },
+};
+
 const devicesSlice = createSlice({
     name: 'devices',
     initialState: {
@@ -37,34 +58,12 @@ const devicesSlice = createSlice({
                 state.activeLockId = id;
             }
         },
-        discoverDevice(state, { payload: isDiscovered }) {
-            const { activeLockId: id = '' } = state?.devices;
-            state.locks[id].isDiscovered = isDiscovered;
-        },
         removeDevice(state, { payload: id }) {
             state.added = state.added.filter(val => val !== id);
             state.activeLockId = state.added.length ? state.added[0] : null;
         },
-        updateDevice: {
-            reducer: (state, { payload }) => {
-                const { locks } = state;
-                const { id, lockData } = payload;
-                if (Object.keys(locks).includes(id)) {
-                    locks[id] = {
-                        ...locks[id],
-                        ...lockData,
-                    };
-                } else {
-                    locks[id] = getNewLock(lockData);
-                }
-                state.activeLockId = id;
-            },
-            prepare: lockData => {
-                const { mac = '' } = lockData;
-                const id = removeColons(mac);
-                return { payload: { id, lockData } };
-            },
-        },
+        discoverDevice: setDeviceData,
+        updateDevice: setDeviceData,
     },
 });
 

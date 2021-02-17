@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { NativeEventEmitter } from 'react-native';
 import NokeAndroid from '@noke';
-import { updateDevice } from '@noke-state';
+import { updateDevice } from '@noke-slices';
 import { throttled } from '@utilities';
 
 const onNokeDiscovered = 'onNokeDiscovered';

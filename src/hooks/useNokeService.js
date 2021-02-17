@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { NokeAndroid } from '@noke';
 import { requestLocPermissionAsync } from '@utilities';
-import { setServiceConnected } from '@noke-state';
+import { setServiceConnected } from '@noke-slices';
 import { NativeEventEmitter } from 'react-native';
 
 export function useNokeService() {

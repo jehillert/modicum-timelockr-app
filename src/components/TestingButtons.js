@@ -6,13 +6,18 @@ import { SButton } from '@components';
 import { MAC_HD1 } from '@env';
 import { nokeUtils } from '@noke';
 import {
+    getActiveLockId,
+    getMac,
+    getSession,
+} from '@selectors';
+import {
     addNokeDevice,
     removeNokeDevice,
     fetchUnlock,
     fetchUnshackle,
     startScanning,
     stopScanning,
-} from '@noke-state';
+} from '@noke-slices';
 
 const S = {};
 
@@ -30,9 +35,9 @@ S.Button = styled.Button``;
 
 function TestingButtons() {
     const dispatch = useDispatch();
-    const activeLockId = useSelector(state => state?.devices?.activeLockId) || '';
-    const mac = useSelector(state => state?.devices.locks[activeLockId]?.mac) || '';
-    const session = useSelector(state => state?.devices.locks[activeLockId]?.session) || '';
+    const activeLockId = useSelector(getActiveLockId);
+    const mac = useSelector(getMac);
+    const session = useSelector(getSession);
     const email = 'john.hillert@gmail.com';
 
     return (

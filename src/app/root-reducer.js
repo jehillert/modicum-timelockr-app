@@ -1,5 +1,5 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import { devicesReducer, serviceReducer, unlockReducer, unshackleReducer } from '@noke-state';
+import { devicesReducer, serviceReducer, unlockReducer, unshackleReducer } from '@noke-slices';
 
 const rootReducer = combineReducers({
     devices: devicesReducer,
