@@ -1,10 +1,7 @@
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { SafeAreaView, StyleSheet, ScrollView, View, Text, StatusBar } from 'react-native';
-import { nokeUtils } from '@noke';
 import { TestingButtons } from '@components';
-import { getServiceConnected } from '@selectors';
 import {
     useNokeEmitter,
     useNokeService,

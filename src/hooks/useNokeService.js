@@ -2,19 +2,20 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { NokeAndroid } from '@noke';
 import { requestLocPermissionAsync } from '@utilities';
-import { setServiceConnected } from '@noke-slices';
+import {
+    startServiceSuccess,
+    startService,
+} from '@noke-slices';
 import { NativeEventEmitter } from 'react-native';
 
 export function useNokeService() {
+    const dispatch = useDispatch();
     useEffect(() => {
         const initializeNokeService = async () => {
             try {
                 const granted = requestLocPermissionAsync();
                 if (granted) {
-                    const serviceInitialized = await NokeAndroid.initiateNokeService();
-                    console.log(
-                        serviceInitialized ? 'Noke service is running...' : 'Noke service failed to start.',
-                    );
+                    dispatch(startService());
                 }
             } catch (e) {
                 console.error(e);
@@ -33,9 +34,10 @@ export function useNokeServiceListener() {
         const NokeEmitter = new NativeEventEmitter(NokeAndroid);
 
         const handleServiceConnectionEvent = event => data =>
+            // TODO: pass the error if it comes with the event
             event === 'onServiceConnected'
-                ? dispatch(setServiceConnected(true))
-                : dispatch(setServiceConnected(false));
+                ? dispatch(startServiceSuccess())
+                : dispatch(startServiceFailure());
 
         serviceConnectionEvents.forEach(event =>
             NokeEmitter.addListener(event, handleServiceConnectionEvent(event)),

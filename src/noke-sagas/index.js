@@ -1,14 +1,27 @@
-import { all, fork, map } from 'redux-saga/effects';
-import { handleDeviceUpdate, updateWithOnDiscoveredEventData } from '@noke-sagas';
-// import * as nokeSagas from './noke-sagas';
-// const combinedSagas = { ...nokeSagas };
+import { all, call, spawn } from 'redux-saga/effects';
+import {
+    serviceSaga,
+} from '@noke-sagas';
 
-// export default function* rootSaga() {
-//     yield all(map(fork, combinedSagas));
-// }
+export default function* rootSaga () {
+    const sagas = [
+        serviceSaga
+    ];
 
-export default function* rootSaga() {
-    yield all([handleDeviceUpdate, updateWithOnDiscoveredEventData]);
+    yield all(
+        sagas.map(saga =>
+            spawn(function* () {
+                while (true) {
+                    try {
+                        yield call(saga);
+                        break;
+                    } catch (e) {
+                        console.log(e);
+                    }
+                }
+            }),
+        ),
+    );
 }
 
 export * from './noke-sagas';

@@ -15,8 +15,8 @@ import {
     removeNokeDevice,
     fetchUnlock,
     fetchUnshackle,
-    startScanning,
-    stopScanning,
+    startScanningThunk,
+    stopScanningThunk,
 } from '@noke-slices';
 
 const S = {};
@@ -43,10 +43,10 @@ function TestingButtons() {
     return (
         <>
             <S.View>
-                <SButton bgColor="seagreen" onPress={() => dispatch(startScanning())}>
+                <SButton bgColor="seagreen" onPress={() => dispatch(startScanningThunk())}>
                     SCAN
                 </SButton>
-                <SButton bgColor="#e73535" onPress={() => dispatch(stopScanning())}>
+                <SButton bgColor="#e73535" onPress={() => dispatch(stopScanningThunk())}>
                     STOP SCAN
                 </SButton>
             </S.View>
