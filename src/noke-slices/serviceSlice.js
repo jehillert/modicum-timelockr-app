@@ -1,5 +1,5 @@
+// TODO: add isListening action
 import { createSlice } from '@reduxjs/toolkit';
-import { NokeAndroid } from '@noke';
 
 const initialState = {
     serviceStatus: 'disconnected',
@@ -15,6 +15,7 @@ const serviceSlice = createSlice({
     name: 'service',
     initialState,
     reducers: {
+        // START SERVICE
         startService(state) {
             state.serviceStatus = 'connecting';
             state.startStatus = 'loading';
@@ -28,40 +29,54 @@ const serviceSlice = createSlice({
             state.startStatus = 'failure';
             state.startError = startError;
         },
+        // STOP SERVICE
         stopService(state) {
-            state.serviceStatus = 'connecting';
+            state.serviceStatus = 'disconnecting';
             state.stopStatus = 'loading';
             state.stopError = null;
         },
         stopServiceSuccess(state) {
-            state.serviceStatus = 'connected';
+            state.serviceStatus = 'disconnected';
             state.stopStatus = 'success';
         },
         stopServiceFailure(state, { payload: stopError = {} }) {
             state.stopStatus = 'failure';
             state.stopError = stopError;
         },
+        // STOP CHANNELS
+        stopServiceChannel() {},
+        stopDeviceChannel() {},
+        // BLUETOOTH SCANNING
         setIsScanning(state, { payload: isScanning = null }) {
             state.isScanning = isScanning;
         },
-        startScanning(state) {},
-        stopScanning(state) {},
+        startScanning() {},
+        stopScanning() {},
         setScanningError(state, { payload: err }) {
             state.scanningError = err;
+        },
+        // MISCELLANEOUS
+        startEventChannels() {},
+        setServiceStatus(state, { payload: newServiceStatus = '' }) {
+            state.serviceStatus = newServiceStatus;
         },
     },
 });
 
 export const {
-    startService,
-    startServiceSuccess,
-    startServiceFailure,
-    stopService,
-    stopServiceSuccess,
-    stopServiceFailure,
     setIsScanning,
-    startScanning,
-    stopScanning,
     setScanningError,
+    setServiceStatus,
+    startEventChannels,
+    startScanning,
+    startService,
+    startServiceFailure,
+    startServiceSuccess,
+    stopDeviceChannel,
+    stopScanning,
+    stopService,
+    stopServiceChannel,
+    stopServiceFailure,
+    stopServiceSuccess,
 } = serviceSlice.actions;
 export default serviceSlice.reducer;

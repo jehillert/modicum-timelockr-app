@@ -1,53 +1,58 @@
-import { NativeEventEmitter } from 'react-native';
-import { eventChannel, END } from 'redux-saga';
+// TODO: import { isValidMac, removeColons } from '@utilities';
 import { NokeAndroid } from '@noke';
-import { getServiceConnected, getServiceStatus } from '@selectors';
+import { requestLocPermissionAsync } from '@utilities';
 import {
-    startService,
-    startServiceSuccess,
-    stopService,
-    stopServiceSuccess,
+    addDevice,
+    addDeviceFailure,
+    addDeviceSuccess,
+    removeDevice,
+    removeDeviceFailure,
+    removeDeviceSuccess,
     setIsScanning,
-    startScanning,
-    stopScanning,
     setScanningError,
+    setServiceStatus,
+    startScanning,
+    startService,
+    startServiceFailure,
+    startServiceSuccess,
+    stopScanning,
+    stopService,
 } from '@noke-slices';
 import {
     call,
-    cancel,
-    cancelled,
-    delay,
-    fork,
     put,
     select,
     take,
     takeEvery,
 } from 'redux-saga/effects';
+import {
+    getActiveMac,
+    getActiveName,
+    getServiceConnected,
+} from '@selectors';
 
-const START_SERVICE_SUCCESS_MSG = 'Noke service is running...';
+const START_SERVICE_MSG = 'Noke service initialized... 1/2';
 const START_SERVICE_FAILURE_MSG = "Noke service failed to initialize";
-
-const yack = () => console.log("•••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••");
-
-export function* talkingSaga() {
-    yield takeEvery("service/startServiceSuccess", yack);
-}
+const NO_LOCK_REFERENCE_ERROR = 'Must provide valid mac address or "activeLockId" must reference enumerated lock.';
 
 export function* serviceSaga() {
     while (true) {
         yield take (startService);
         try {
+            const locationPermissionGranted = yield call(requestLocPermissionAsync);
             const serviceInitialized = yield call(NokeAndroid.initiateNokeService);
-            if (serviceInitialized) {
-                console.log(START_SERVICE_SUCCESS_MSG);
-                yield put(startServiceSuccess());
+
+            if (locationPermissionGranted && serviceInitialized) {
+                yield put(setServiceStatus('initialized'));
+                console.log(START_SERVICE_MSG);
             } else {
                 console.log( START_SERVICE_FAILURE_MSG );
             }
-        } catch (error) {
+        } catch (err) {
             console.log(START_SERVICE_FAILURE_MSG);
-            yield put(startServiceFailure(error));
+            yield put(startServiceFailure(err));
         }
+
         yield take(stopService);
     }
 }
@@ -77,33 +82,37 @@ export function* scanningSaga() {
     }
 }
 
+export function* addDeviceTask() {
+    yield takeEvery(addDevice, function* () {
+        try {
+            const activeMac = yield select(getActiveMac);
+            const activeName = yield select(getActiveName);
+            const { isSuccess } = yield call(NokeAndroid.addNokeDevice, { mac: activeMac, name: activeName });
 
-// export const startScanningThunk = () => async (dispatch, getState) => {
-//     try {
-    //     const { serviceConnected = null } = getState().service;
-    //     if (serviceConnected) {
-    //         const { isScanning } = await NokeAndroid.startScanning();
-    //         return isScanning && dispatch(startScanning());
-    //     }
-    // } catch (err) {
-    //     dispatch(setScanningError(err));
-    // }
-// };
+            if (isSuccess) {
+                yield put(addDeviceSuccess());
+            } else {
+                throw NO_LOCK_REFERENCE_ERROR;
+            }
+        } catch (err) {
+            yield put(addDeviceFailure(err))
+        }
+    })
+}
 
-// export const stopScanningThunk = () => async (dispatch, getState) => {
-//     try {
-//         const { serviceConnected = null } = getState().service;
-//         if (serviceConnected) {
-//             const { isScanning } = await NokeAndroid.stopScanning();
-//             return !isScanning && dispatch(stopScanning());
-//         }
-//     } catch (err) {
-//         dispatch(setScanningError(err));
-//     }
-// };
+export function* removeDeviceTask() {
+    yield takeEvery(removeDevice, function* () {
+        try {
+            const activeMac = yield select(getActiveMac);
+            const { isSuccess } = yield call(NokeAndroid.removeNokeDevice, activeMac);
 
-// export function* connectSaga() {
-//     while(true) {
-//         yield
-//     }
-// }
+            if (isSuccess) {
+                yield put(removeDeviceSuccess());
+            } else {
+                throw NO_LOCK_REFERENCE_ERROR;
+            }
+        } catch (err) {
+            yield put(removeDeviceFailure(err))
+        }
+    })
+}

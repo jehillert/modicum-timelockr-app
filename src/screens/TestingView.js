@@ -1,17 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { SafeAreaView, StyleSheet, ScrollView, View, Text, StatusBar } from 'react-native';
 import { TestingButtons } from '@components';
-import {
-    useNokeEmitter,
-    useNokeService,
-    useNokeServiceListener
-} from '@hooks';
+import { useNokeSagas } from '@hooks';
 
 function TestingView() {
-    useNokeService();
-    useNokeServiceListener();
-    useNokeEmitter();
+    useNokeSagas();
 
     return (
         <>

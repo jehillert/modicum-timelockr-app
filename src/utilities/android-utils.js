@@ -41,6 +41,7 @@ export const requestLocPermissionAsync = async (
             return granted === PermissionsAndroid.RESULTS.GRANTED;
         }
     } catch (err) {
+        // TODO: Do this error handling correctly
         console.warn(err);
     }
 };

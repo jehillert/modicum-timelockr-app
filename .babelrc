@@ -14,6 +14,7 @@
                     "@env": "@env",
                     "@hooks": "./src/hooks",
                     "@noke-api": "./src/noke-api/index",
+                    "@noke-channel-sagas": "./src/noke-sagas/noke-channel-sagas",
                     "@noke-sagas": "./src/noke-sagas",
                     "@noke-slices": "./src/noke-slices",
                     "@noke": "./src/noke/noke",

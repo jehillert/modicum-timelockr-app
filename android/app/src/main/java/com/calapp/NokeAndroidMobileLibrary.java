@@ -197,7 +197,7 @@ public class NokeAndroidMobileLibrary extends ReactContextBaseJavaModule {
                 return;
             }
             mNokeService.addNokeDevice(noke);
-            event.putBoolean("isAdded", true);
+            event.putBoolean("isSuccess", true);
             promise.resolve(event);
         } catch (IllegalViewOperationException e) {
             promise.reject("message", e.getMessage());
@@ -303,7 +303,7 @@ public class NokeAndroidMobileLibrary extends ReactContextBaseJavaModule {
         try {
             final WritableMap event = Arguments.createMap();
             mNokeService.removeNokeDevice(mac);
-            event.putBoolean("isAdded", false);
+            event.putBoolean("isSuccess", true);
             promise.resolve(event);
         } catch (IllegalViewOperationException e) {
             promise.reject("message", e.getMessage());

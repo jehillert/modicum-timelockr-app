@@ -7,12 +7,12 @@ import { MAC_HD1 } from '@env';
 import { nokeUtils } from '@noke';
 import {
     getActiveLockId,
-    getMac,
+    getActiveMac,
     getSession,
 } from '@selectors';
 import {
-    addNokeDevice,
-    removeNokeDevice,
+    addDevice,
+    removeDevice,
     fetchUnlock,
     fetchUnshackle,
     startScanning,
@@ -35,8 +35,7 @@ S.Button = styled.Button``;
 
 function TestingButtons() {
     const dispatch = useDispatch();
-    const activeLockId = useSelector(getActiveLockId);
-    const mac = useSelector(getMac);
+    const mac = useSelector(getActiveMac);
     const session = useSelector(getSession);
     const email = 'john.hillert@gmail.com';
 
@@ -51,10 +50,10 @@ function TestingButtons() {
                 </SButton>
             </S.View>
             <S.View>
-                <SButton bgColor="seagreen" onPress={() => dispatch(addNokeDevice(activeLockId))}>
+                <SButton bgColor="seagreen" onPress={() => dispatch(addDevice())}>
                     ADD
                 </SButton>
-                <SButton bgColor="#e73535" onPress={() => dispatch(removeNokeDevice(activeLockId))}>
+                <SButton bgColor="#e73535" onPress={() => dispatch(removeDevice())}>
                     REMOVE
                 </SButton>
             </S.View>

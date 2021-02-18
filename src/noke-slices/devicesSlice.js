@@ -1,9 +1,6 @@
+// TODO: add isListening action
 import { createSlice } from '@reduxjs/toolkit';
-import { NokeAndroid } from '@noke';
-import { isValidMac, removeColons } from '@utilities';
-
-const NO_LOCK_REFERENCE_ERROR =
-    'Must provide valid mac address or "activeLockId" must reference enumerated lock.';
+import { removeColons } from '@utilities';
 
 const getNewLock = data => ({
     mac: '',
@@ -47,59 +44,52 @@ const devicesSlice = createSlice({
     name: 'devices',
     initialState: {
         activeLockId: null,
-        added: [],
+        lockTaskStatus: '',
+        lockTaskError: null,
+        lockIds: [],
         locks: {},
     },
     reducers: {
-        addDevice(state, { payload: id }) {
-            const { added } = state;
-            if (!added.includes(id)) {
-                added.push(id);
-                state.activeLockId = id;
-            }
+        addDevice(state) {
+            state.lockTaskStatus = `${state.activeLockId}/Add: EXECUTING`;
+            state.lockTaskError = null;
         },
-        removeDevice(state, { payload: id }) {
-            state.added = state.added.filter(val => val !== id);
-            state.activeLockId = state.added.length ? state.added[0] : null;
+        addDeviceSuccess(state) {
+            if (!state.lockIds.includes(state.activeLockId)) {
+                state.lockIds.push(state.activeLockId);
+            }
+            state.lockTaskStatus = `${state.activeLockId}/Add: SUCCESS`;
+        },
+        addDeviceFailure(state, { payload: err }) {
+            state.lockTaskStatus = `${state.activeLockId}/Add: FAILURE`
+            state.lockTaskError = err;
+        },
+        removeDevice(state) {
+            state.lockTaskStatus = `${state.activeLockId}/Remove: EXECUTING`;
+        },
+        removeDeviceSuccess(state) {
+            state.lockIds = state.lockIds.filter(val => val !== state.activeLockId);
+            state.lockTaskStatus = `${state.activeLockId}/Remove: SUCCESS`;
+            state.activeLockId = state.lockIds.length ? state.lockIds[0] : null;
+        },
+        removeDeviceFailure(state, { payload: err }) {
+            state.lockTaskStatus = `${state.activeLockId}/Remove: FAILURE`
+            state.lockTaskError = err;
         },
         discoverDevice: setDeviceData,
         updateDevice: setDeviceData,
     },
 });
 
-// EXPORTS
-export const { addDevice, discoverDevice, removeDevice, updateDevice } = devicesSlice.actions;
+export const {
+    addDevice,
+    addDeviceSuccess,
+    addDeviceFailure,
+    discoverDevice,
+    removeDevice,
+    removeDeviceSuccess,
+    removeDeviceFailure,
+    updateDevice,
+} = devicesSlice.actions;
+
 export default devicesSlice.reducer;
-
-// THUNKS
-export const addNokeDevice = id => async (dispatch, getState) => {
-    try {
-        const { name, mac } = getState()?.devices?.locks[id];
-        if (isValidMac(mac)) {
-            const { isAdded } = await NokeAndroid.addNokeDevice({ mac, name });
-            if (isAdded) {
-                return dispatch(addDevice(id));
-            }
-        } else {
-            throw NO_LOCK_REFERENCE_ERROR;
-        }
-    } catch (err) {
-        console.error(err);
-    }
-};
-
-export const removeNokeDevice = id => async (dispatch, getState) => {
-    try {
-        const { mac } = getState()?.devices?.locks[id];
-        if (isValidMac(mac)) {
-            const isAdded = await NokeAndroid.removeNokeDevice(mac);
-            if (isAdded) {
-                return dispatch(removeDevice(id));
-            }
-        } else {
-            throw NO_LOCK_REFERENCE_ERROR;
-        }
-    } catch (err) {
-        console.error(err);
-    }
-};
