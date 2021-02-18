@@ -5,6 +5,9 @@ import { requestLocPermissionAsync } from '@utilities';
 import {
     startServiceSuccess,
     startService,
+    startServiceFailure,
+    stopServiceSuccess,
+    stopServiceFailure,
 } from '@noke-slices';
 import { NativeEventEmitter } from 'react-native';
 
@@ -27,26 +30,21 @@ export function useNokeService() {
 }
 
 export function useNokeServiceListener() {
-    const serviceConnectionEvents = ['onServiceConnected', 'onServiceDisconnected'];
+    const onServiceConnected = 'onServiceConnected';
+    const onServiceDisconnected = 'onServiceDisconnected';
     const dispatch = useDispatch();
 
     useEffect(() => {
         const NokeEmitter = new NativeEventEmitter(NokeAndroid);
+        const handleServiceConnectionEvent = event => data => startServiceSuccess();
+        const handleServiceDisconnectionEvent = event => data => dispatch(stopServiceSuccess());
 
-        const handleServiceConnectionEvent = event => data =>
-            // TODO: pass the error if it comes with the event
-            event === 'onServiceConnected'
-                ? dispatch(startServiceSuccess())
-                : dispatch(startServiceFailure());
-
-        serviceConnectionEvents.forEach(event =>
-            NokeEmitter.addListener(event, handleServiceConnectionEvent(event)),
-        );
+        NokeEmitter.addListener(onServiceConnected, handleServiceConnectionEvent(onServiceConnected));
+        NokeEmitter.addListener(onServiceDisconnected, handleServiceDisconnectionEvent(onServiceDisconnected));
 
         return () => {
-            serviceConnectionEvents.forEach(event =>
-                NokeEmitter.removeListener(event, handleServiceConnectionEvent),
-            );
+            NokeEmitter.removeListener(onServiceConnected, handleServiceConnectionEvent);
+            NokeEmitter.removeListener(onServiceDisconnected, handleServiceDisconnectionEvent);
         };
     }, []);
 }

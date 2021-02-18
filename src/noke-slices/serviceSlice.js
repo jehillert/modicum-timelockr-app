@@ -39,17 +39,13 @@ const serviceSlice = createSlice({
         },
         stopServiceFailure(state, { payload: stopError = {} }) {
             state.stopStatus = 'failure';
-            state.stopError = startError;
+            state.stopError = stopError;
         },
-        setIsScanning(state, { payload: isScanning }) {
+        setIsScanning(state, { payload: isScanning = null }) {
             state.isScanning = isScanning;
         },
-        startScanning(state) {
-            state.isScanning = true;
-        },
-        stopScanning(state) {
-            state.isScanning = false;
-        },
+        startScanning(state) {},
+        stopScanning(state) {},
         setScanningError(state, { payload: err }) {
             state.scanningError = err;
         },
@@ -59,35 +55,13 @@ const serviceSlice = createSlice({
 export const {
     startService,
     startServiceSuccess,
+    startServiceFailure,
     stopService,
     stopServiceSuccess,
+    stopServiceFailure,
     setIsScanning,
     startScanning,
     stopScanning,
     setScanningError,
 } = serviceSlice.actions;
 export default serviceSlice.reducer;
-
-export const startScanningThunk = () => async (dispatch, getState) => {
-    try {
-        const { serviceConnected = null } = getState().service;
-        if (serviceConnected) {
-            const { isScanning } = await NokeAndroid.startScanning();
-            return isScanning && dispatch(startScanning());
-        }
-    } catch (err) {
-        dispatch(setScanningError(err));
-    }
-};
-
-export const stopScanningThunk = () => async (dispatch, getState) => {
-    try {
-        const { serviceConnected = null } = getState().service;
-        if (serviceConnected) {
-            const { isScanning } = await NokeAndroid.stopScanning();
-            return !isScanning && dispatch(stopScanning());
-        }
-    } catch (err) {
-        dispatch(setScanningError(err));
-    }
-};

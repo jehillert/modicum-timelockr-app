@@ -1,12 +1,9 @@
 import { all, call, spawn } from 'redux-saga/effects';
-import {
-    serviceSaga,
-} from '@noke-sagas';
+import * as nokeSagas from '@noke-sagas';
 
 export default function* rootSaga () {
-    const sagas = [
-        serviceSaga
-    ];
+    const sagas = Object.keys(nokeSagas).slice(1).map(nokeSagaKey => nokeSagas[nokeSagaKey]);
+    console.log(Object.keys(nokeSagas));
 
     yield all(
         sagas.map(saga =>
