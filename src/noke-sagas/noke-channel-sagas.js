@@ -13,11 +13,10 @@ import { call, cancelled, put, take } from 'redux-saga/effects';
 import NokeAndroid from '@noke';
 
 // CONSTANTS
-const EMITTER_TAG = '[NOKE_EMITTER]'
 const START_SERVICE_SUCCESS_MSG = 'Noke service is running... 2/2';
 const START_SERVICE_FAILURE_MSG = 'Noke service failed to initialize';
-const DEVICE_LISTENERS_ADDED_MSG = `${EMITTER_TAG} Noke device event listeners added.`
-const SERVICE_LISTENERS_ADDED_MSG = `${EMITTER_TAG} Noke service event listeners added.`
+const DEVICE_LISTENERS_ADDED_MSG = 'Noke device event listeners added.'
+const SERVICE_LISTENERS_ADDED_MSG = 'Noke service event listeners added.'
 
 // HELPERS
 const cleanupSubs = subscrArray => {
@@ -65,8 +64,6 @@ export function* listenToServiceChannel() {
     while (true) {
         try {
             const { eventName, data } = yield take(serviceChannel);
-            console.log(`%cdata: ${JSON.stringify(data, undefined, 2)};`, 'color: darkred; background-color: gold');
-            console.log(`%ceventName: ${eventName}`, 'color: purple; background-color: white');
             if (eventName === nokeServiceEvents.onServiceConnected) {
                 yield put(startServiceSuccess());
                 console.log(START_SERVICE_SUCCESS_MSG);
@@ -95,7 +92,6 @@ export function* listenToDeviceChannel() {
     while (true) {
         try {
             const { data } = yield take(deviceChannel);
-            console.log(`%cdata: ${JSON.stringify(data, undefined, 2)};`, 'color: darkred; background-color: gold');
             yield put(updateDevice(event.data));
         } catch (err) {
             console.warn(err);
