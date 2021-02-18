@@ -10,9 +10,9 @@ import {
     removeDeviceSuccess,
     setIsScanning,
     setScanningError,
-    setServiceStatus,
     startScanning,
     startService,
+    startEventChannels,
     startServiceFailure,
     startServiceSuccess,
     stopScanning,
@@ -43,7 +43,6 @@ export function* serviceSaga() {
             const serviceInitialized = yield call(NokeAndroid.initiateNokeService);
 
             if (locationPermissionGranted && serviceInitialized) {
-                yield put(setServiceStatus('initialized'));
                 console.log(START_SERVICE_MSG);
             } else {
                 console.log( START_SERVICE_FAILURE_MSG );

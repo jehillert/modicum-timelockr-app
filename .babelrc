@@ -11,6 +11,7 @@
                 "extensions": [".js", ".ios.js", ".android.js"],
                 "alias": {
                     "@components": "./src/components/index",
+                    "@constants": "./src/constants",
                     "@env": "@env",
                     "@hooks": "./src/hooks",
                     "@noke-api": "./src/noke-api/index",

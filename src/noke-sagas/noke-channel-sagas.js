@@ -2,6 +2,7 @@
 // TODO: Move constants in this file to dedicated file
 import { NativeEventEmitter } from 'react-native';
 import { eventChannel, END, channel } from 'redux-saga';
+import { nokeServiceEvents, nokeDeviceEvents } from '@constants';
 import {
     startEventChannels,
     startServiceFailure,
@@ -26,36 +27,25 @@ const cleanupSubs = subscrArray => {
     }
 };
 
-// ADD SERVICE LISTENERS
+const handleEvent = (eventName, emitter) => data => {
+    emitter({ eventName, data })
+};
+
+// CREATE CHANNELS
 function createNokeServiceChannel() {
     return eventChannel(emitter => {
         const NokeServiceEmitter = new NativeEventEmitter(NokeAndroid);
-        const nokeServiceEvents = [
-            'onServiceConnected',
-            'onServiceDisconnected',
-            'onBluetoothStatusChanged',
-            'onError',
-        ];
-        nokeServiceEvents.map(eventName => NokeServiceEmitter.addListener(eventName, emitter));
+        Object.values(nokeServiceEvents).map(eventName => NokeServiceEmitter.addListener(eventName, handleEvent(eventName, emitter)));
         console.log(SERVICE_LISTENERS_ADDED_MSG);
         return () => cleanupSubs(serviceSubs);
     });
 }
 
-// ADD DEVICE-SPECIFICE SERVICE LISTENERS
+// ADD DEVICE-SPECIFIC SERVICE LISTENERS
 function createNokeDeviceChannel() {
     return eventChannel(emitter => {
         const NokeDeviceEmitter = new NativeEventEmitter(NokeAndroid);
-        const nokeDeviceEvents = [
-            'onNokeDiscovered',
-            'onNokeConnecting',
-            'onNokeConnected',
-            'onNokeDisconnected',
-            'onNokeShutdown',
-            'onNokeSyncing',
-            'onNokeUnlocked',
-        ];
-        nokeDeviceEvents.map(eventName => NokeDeviceEmitter.addListener(eventName, emitter));
+        Object.values(nokeDeviceEvents).map(eventName => NokeDeviceEmitter.addListener(eventName, handleEvent(eventName, emitter)));
         console.log(DEVICE_LISTENERS_ADDED_MSG);
         return () => cleanupSubs(deviceSubs);
     });
@@ -70,19 +60,18 @@ function createNokeDeviceChannel() {
 export function* listenToServiceChannel() {
     // TODO: figure out appropriate error messaging here
     yield take(startEventChannels);
-    console.log(`•••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••`);
     const serviceChannel = yield call(createNokeServiceChannel);
 
     while (true) {
         try {
-            const event = yield take(serviceChannel);
-            console.log(`%cevent: ${JSON.stringify(event, undefined, 2)};`, 'color: darkred; background-color: gold');
-            console.log(`NOKE_EMITTER: ${event}`);
-            if (event === onServiceConnected) {
+            const { eventName, data } = yield take(serviceChannel);
+            console.log(`%cdata: ${JSON.stringify(data, undefined, 2)};`, 'color: darkred; background-color: gold');
+            console.log(`%ceventName: ${eventName}`, 'color: purple; background-color: white');
+            if (eventName === nokeServiceEvents.onServiceConnected) {
                 yield put(startServiceSuccess());
                 console.log(START_SERVICE_SUCCESS_MSG);
             }
-            if (event === onServiceDisconnected) {
+            if (eventName === nokeServiceEvents.onServiceDisconnected) {
                 yield put(stopServiceSuccess());
                 console.log(START_SERVICE_SUCCESS_MSG);
             }
@@ -105,9 +94,8 @@ export function* listenToDeviceChannel() {
 
     while (true) {
         try {
-            const event = yield take(deviceChannel);
-            console.log(`%cevent: ${JSON.stringify(event, undefined, 2)};`, 'color: darkred; background-color: gold');
-            console.log(`NOKE_EMITTER: Lock discovered...\n${JSON.stringify(data, undefined, 2)}`);
+            const { data } = yield take(deviceChannel);
+            console.log(`%cdata: ${JSON.stringify(data, undefined, 2)};`, 'color: darkred; background-color: gold');
             yield put(updateDevice(event.data));
         } catch (err) {
             console.warn(err);

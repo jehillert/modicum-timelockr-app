@@ -57,16 +57,12 @@ const serviceSlice = createSlice({
         },
         // MISCELLANEOUS
         startEventChannels() {},
-        setServiceStatus(state, { payload: newServiceStatus = '' }) {
-            state.serviceStatus = newServiceStatus;
-        },
     },
 });
 
 export const {
     setIsScanning,
     setScanningError,
-    setServiceStatus,
     startEventChannels,
     startScanning,
     startService,

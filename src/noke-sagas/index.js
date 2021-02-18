@@ -5,8 +5,6 @@ import * as nokeEventChannels from 'noke-sagas/noke-channel-sagas'
 export default function* rootSaga () {
     const nokeSagasArray = Object.keys(nokeSagas).slice(1).map(sagaKey => nokeSagas[sagaKey]);
     const nokeEventChannelsArray = Object.keys(nokeEventChannels).map(channelKey => nokeEventChannels[channelKey]);
-    console.log(Object.keys(nokeSagas));
-    console.log(Object.keys(nokeEventChannels));
 
     yield all(
         nokeSagasArray.concat(nokeEventChannelsArray).map(saga =>

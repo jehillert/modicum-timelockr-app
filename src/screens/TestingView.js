@@ -2,10 +2,11 @@ import React from 'react';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { SafeAreaView, StyleSheet, ScrollView, View, Text, StatusBar } from 'react-native';
 import { TestingButtons } from '@components';
-import { useNokeSagas } from '@hooks';
+import { useNokeService, useEventChannels } from '@hooks';
 
 function TestingView() {
-    useNokeSagas();
+    useEventChannels();
+    useNokeService();
 
     return (
         <>
