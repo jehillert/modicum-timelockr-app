@@ -1,15 +1,13 @@
-// TODO: Import { requestLocPermissionAsync, throttled } from '@utilities';
-// TODO: Move constants in this file to dedicated file
 import { NativeEventEmitter } from 'react-native';
 import { eventChannel, END, channel } from 'redux-saga';
 import { nokeServiceEvents, nokeDeviceEvents } from '@constants';
 import {
+    deviceEventActionCreators,
     startEventChannels,
     startServiceFailure,
     startServiceSuccess,
-    updateDevice,
 } from '@noke-slices';
-import { call, cancelled, put, take } from 'redux-saga/effects';
+import { call, cancelled, put, take, throttle } from 'redux-saga/effects';
 import NokeAndroid from '@noke';
 
 // CONSTANTS
@@ -17,6 +15,7 @@ const START_SERVICE_SUCCESS_MSG = 'Noke service is running... 2/2';
 const START_SERVICE_FAILURE_MSG = 'Noke service failed to initialize';
 const DEVICE_LISTENERS_ADDED_MSG = 'Noke device event listeners added.'
 const SERVICE_LISTENERS_ADDED_MSG = 'Noke service event listeners added.'
+const onNokeDiscovered = 'onNokeDiscovered';
 
 // HELPERS
 const cleanupSubs = subscrArray => {
@@ -31,7 +30,7 @@ const handleEvent = (eventName, emitter) => data => {
 };
 
 // CREATE CHANNELS
-function createNokeServiceChannel() {
+function createServiceEventChannel() {
     return eventChannel(emitter => {
         const NokeServiceEmitter = new NativeEventEmitter(NokeAndroid);
         Object.values(nokeServiceEvents).map(eventName => NokeServiceEmitter.addListener(eventName, handleEvent(eventName, emitter)));
@@ -41,29 +40,23 @@ function createNokeServiceChannel() {
 }
 
 // ADD DEVICE-SPECIFIC SERVICE LISTENERS
-function createNokeDeviceChannel() {
+function createDeviceEventChannel() {
     return eventChannel(emitter => {
         const NokeDeviceEmitter = new NativeEventEmitter(NokeAndroid);
-        Object.values(nokeDeviceEvents).map(eventName => NokeDeviceEmitter.addListener(eventName, handleEvent(eventName, emitter)));
+        Object.keys(deviceEventActionCreators).map(eventName => NokeDeviceEmitter.addListener(eventName, handleEvent(eventName, emitter)));
         console.log(DEVICE_LISTENERS_ADDED_MSG);
         return () => cleanupSubs(deviceSubs);
     });
 }
 
-/*
-    const throttledDiscovery = throttled(1000, handleOnDiscovered);
-    NokeEmitter.addListener(onNokeDiscovered, throttled(1000, handleOnDiscovered(onNokeDiscovered)));
-*/
-
 // SUBSCRIBE SERVICE CHANNEL
 export function* listenToServiceChannel() {
-    // TODO: figure out appropriate error messaging here
     yield take(startEventChannels);
-    const serviceChannel = yield call(createNokeServiceChannel);
+    const serviceChannel = yield call(createServiceEventChannel);
 
     while (true) {
         try {
-            const { eventName, data } = yield take(serviceChannel);
+            const { eventName } = yield take(serviceChannel);
             if (eventName === nokeServiceEvents.onServiceConnected) {
                 yield put(startServiceSuccess());
                 console.log(START_SERVICE_SUCCESS_MSG);
@@ -84,15 +77,13 @@ export function* listenToServiceChannel() {
 }
 
 export function* listenToDeviceChannel() {
-    // TODO: yield put(setDeviceChannelStatus({ isActive: true })) (maybe don't need this)
-    // TODO: Clean up error-handling. Create action for channel isActive, isListening, isError for device channel
     yield take(startEventChannels);
-    const deviceChannel = yield call(createNokeDeviceChannel);
-
+    const deviceChannel = yield call(createDeviceEventChannel);
     while (true) {
         try {
-            const { data } = yield take(deviceChannel);
-            yield put(updateDevice(event.data));
+            const { eventName, data } = yield take(deviceChannel);
+            const eventAction = deviceEventActionCreators[eventName](data);
+            yield put(eventAction);
         } catch (err) {
             console.warn(err);
         } finally {

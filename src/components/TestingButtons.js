@@ -6,12 +6,12 @@ import { SButton } from '@components';
 import { MAC_HD1 } from '@env';
 import { nokeUtils } from '@noke';
 import {
-    getActiveLockId,
     getActiveMac,
     getSession,
 } from '@selectors';
 import {
     addDevice,
+    discoverAddDevice,
     removeDevice,
     fetchUnlock,
     fetchUnshackle,
@@ -68,7 +68,7 @@ function TestingButtons() {
             <S.View>
                 <SButton
                     bgColor="cornflowerblue"
-                    /* bgColor="#2196F3" */ onPress={() => dispatch(fetchUnlock({ mac, session, email }))}>
+                    onPress={() => dispatch(fetchUnlock({ mac, session, email }))}>
                     UNLOCK
                 </SButton>
             </S.View>
@@ -77,6 +77,14 @@ function TestingButtons() {
                     bgColor="cornflowerblue"
                     onPress={() => dispatch(fetchUnshackle({ mac, session, email }))}>
                     UNSHACKLE
+                </SButton>
+            </S.View>
+            <S.View>
+                <SButton
+                    bgColor="#f3cf03"
+                    fgColor="black"
+                    onPress={() => dispatch(discoverAddDevice())}>
+                    DISCOVER & ADD
                 </SButton>
             </S.View>
             <S.View>

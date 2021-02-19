@@ -1,3 +1,5 @@
+const deviceEventDomain = 'device/event';
+
 export const nokeServiceEvents = {
     onServiceConnected: 'onServiceConnected',
     onServiceDisconnected: 'onServiceDisconnected',
@@ -7,11 +9,11 @@ export const nokeServiceEvents = {
 }
 
 export const nokeDeviceEvents = {
-    onNokeDiscovered: 'onNokeDiscovered',
-    onNokeConnecting: 'onNokeConnecting',
-    onNokeConnected: 'onNokeConnected',
-    onNokeDisconnected: 'onNokeDisconnected',
-    onNokeShutdown: 'onNokeShutdown',
-    onNokeSyncing: 'onNokeSyncing',
-    onNokeUnlocked: 'onNokeUnlocked',
+    onNokeDiscovered: `${deviceEventDomain}/onNokeDiscovered`,
+    onNokeConnecting: `${deviceEventDomain}/onNokeConnecting`,
+    onNokeConnected: `${deviceEventDomain}/onNokeConnected`,
+    onNokeDisconnected: `${deviceEventDomain}/onNokeDisconnected`,
+    onNokeShutdown: `${deviceEventDomain}/onNokeShutdown`,
+    onNokeSyncing: `${deviceEventDomain}/onNokeSyncing`,
+    onNokeUnlocked: `${deviceEventDomain}/onNokeUnlocked`,
 }

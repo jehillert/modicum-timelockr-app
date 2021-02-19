@@ -19,7 +19,7 @@
         "paths": {
             "@api": ["api/index"],
             "@components": ["components/index"],
-            "@constants": "constants/index",
+            "@constants": ["constants/index"],
             "@hooks": ["hooks/index"],
             "@noke-api": ["noke-api/noke-api"],
             "@noke-sagas": ["noke-sagas/noke-sagas"],

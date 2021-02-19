@@ -5,6 +5,8 @@ import {
     addDevice,
     addDeviceFailure,
     addDeviceSuccess,
+    discoverAddDevice,
+    deviceEventActionCreators,
     removeDevice,
     removeDeviceFailure,
     removeDeviceSuccess,
@@ -12,9 +14,7 @@ import {
     setScanningError,
     startScanning,
     startService,
-    startEventChannels,
     startServiceFailure,
-    startServiceSuccess,
     stopScanning,
     stopService,
 } from '@noke-slices';
@@ -114,4 +114,14 @@ export function* removeDeviceTask() {
             yield put(removeDeviceFailure(err))
         }
     })
+}
+
+export function* discoverAddDeviceTask() {
+    while(true) {
+        yield take(discoverAddDevice);
+        yield put(startScanning());
+        yield take(deviceEventActionCreators['onNokeDiscovered'])
+        yield put(addDevice());
+        yield put(stopScanning());
+    }
 }

@@ -1,6 +1,6 @@
-// TODO: add isListening action
-import { createSlice } from '@reduxjs/toolkit';
+import { createAction, createSlice } from '@reduxjs/toolkit';
 import { removeColons } from '@utilities';
+import { nokeDeviceEvents } from '@constants';
 
 const getNewLock = data => ({
     mac: '',
@@ -19,27 +19,14 @@ const getNewLock = data => ({
     ...data,
 });
 
-const setDeviceData = {
-    reducer: (state, { payload }) => {
-        const { locks } = state;
-        const { id, lockData } = payload;
-        if (Object.keys(locks).includes(id)) {
-            locks[id] = {
-                ...locks[id],
-                ...lockData,
-            };
-        } else {
-            locks[id] = getNewLock(lockData);
-        }
-        state.activeLockId = id;
-    },
-    prepare: lockData => {
-        const { mac = '' } = lockData;
-        const id = removeColons(mac);
-        return { payload: { id, lockData } };
-    },
-};
+export const deviceEventActionCreators = Object.keys(nokeDeviceEvents).reduce((accumulator, eventName) => {
+    accumulator[eventName] = createAction(nokeDeviceEvents[eventName]);
+    return accumulator;
+}, {})
 
+console.log(Object.values(nokeDeviceEvents))
+
+// DEVICE SLICE
 const devicesSlice = createSlice({
     name: 'devices',
     initialState: {
@@ -61,7 +48,7 @@ const devicesSlice = createSlice({
             state.lockTaskStatus = `${state.activeLockId}/Add: SUCCESS`;
         },
         addDeviceFailure(state, { payload: err }) {
-            state.lockTaskStatus = `${state.activeLockId}/Add: FAILURE`
+            state.lockTaskStatus = `${state.activeLockId}/Add: FAILURE`;
             state.lockTaskError = err;
         },
         removeDevice(state) {
@@ -73,11 +60,31 @@ const devicesSlice = createSlice({
             state.activeLockId = state.lockIds.length ? state.lockIds[0] : null;
         },
         removeDeviceFailure(state, { payload: err }) {
-            state.lockTaskStatus = `${state.activeLockId}/Remove: FAILURE`
+            state.lockTaskStatus = `${state.activeLockId}/Remove: FAILURE`;
             state.lockTaskError = err;
         },
-        discoverDevice: setDeviceData,
-        updateDevice: setDeviceData,
+        discoverAddDevice() {},
+    },
+    extraReducers: builder => {
+        builder.addMatcher(
+            // TODO: use the eventName instead of transmitting over the bridge to set properties like isDiscovered
+            action => Object.values(nokeDeviceEvents).includes(action.type),
+            (state, { payload: data }) => {
+                const { locks } = state;
+                const { mac = '' } = data;
+                const id = removeColons(mac);
+
+                if (Object.keys(locks).includes(id)) {
+                    locks[id] = {
+                        ...locks[id],
+                        ...data,
+                    };
+                } else {
+                    locks[id] = getNewLock(data);
+                }
+                state.activeLockId = id;
+            },
+        );
     },
 });
 
@@ -85,7 +92,7 @@ export const {
     addDevice,
     addDeviceSuccess,
     addDeviceFailure,
-    discoverDevice,
+    discoverAddDevice,
     removeDevice,
     removeDeviceSuccess,
     removeDeviceFailure,

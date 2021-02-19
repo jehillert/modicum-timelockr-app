@@ -1,6 +1,6 @@
 import { displayName } from '../../app.json';
 
-export const permReqFieldConstants = {
+export const androidPermissionsConstants = {
     BUTTON_NEGATIVE_TXT: 'Deny',
     BUTTON_NEUTRAL_TXT: 'Ask Me Later',
     BUTTON_POSITIVE_TXT: 'Allow',

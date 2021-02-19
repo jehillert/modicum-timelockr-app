@@ -1,20 +1,14 @@
 import { PermissionsAndroid } from 'react-native';
-import { displayName } from '../../app.json';
-
-const BUTTON_NEGATIVE_TXT = 'Deny';
-const BUTTON_NEUTRAL_TXT = 'Ask Me Later';
-const BUTTON_POSITIVE_TXT = 'Allow';
-const PERMISSIONS_REQUEST_MSG = `${displayName} needs access to your`;
-const PERMISSIONS_TITLE_TXT = `${displayName} Permissions Request`;
+import { androidPermissionsConstants as pc } from '@constants';
 
 export const requestLocPermissionAsync = async (
     permissions = 'ACCESS_FINE_LOCATION',
     permissionsLabel = 'Location',
-    title = PERMISSIONS_TITLE_TXT,
-    message = PERMISSIONS_REQUEST_MSG,
-    buttonNeutral = BUTTON_NEGATIVE_TXT,
-    buttonNegative = BUTTON_NEUTRAL_TXT,
-    buttonPositive = BUTTON_POSITIVE_TXT,
+    title = pc.PERMISSIONS_TITLE_TXT,
+    message = pc.PERMISSIONS_REQUEST_MSG,
+    buttonNeutral = pc.BUTTON_NEGATIVE_TXT,
+    buttonNegative = pc.BUTTON_NEUTRAL_TXT,
+    buttonPositive = pc.BUTTON_POSITIVE_TXT,
 ) => {
     const isReqMult = Array.isArray(permissions);
 
@@ -54,10 +48,6 @@ export const requestPermissions = async permissions => {
             const multPermissions = permissions.map(permission => PermissionsAndroid.PERMISSIONS[permission]);
             const results = await PermissionsAndroid.requestMultiple(multPermissions);
             console.log(JSON.stringify(results, undefined, 2));
-            // return (
-            //     results['android.permission.ACCESS_FINE_LOCATION'] === 'granted' &&
-            //     results['android.permission.ACCESS_COARSE_LOCATION'] === 'granted'
-            // );
             return results;
         }
     } catch (err) {
