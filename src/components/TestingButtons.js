@@ -5,12 +5,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { SButton } from '@components';
 import { MAC_HD1 } from '@env';
 import { nokeUtils } from '@noke';
-import {
-    getActiveMac,
-    getSession,
-} from '@selectors';
+import { getActiveMac, } from '@selectors';
 import {
     addDevice,
+    connectDevice,
+    connectAndUnlock,
     discoverAddDevice,
     removeDevice,
     fetchUnlock,
@@ -34,7 +33,6 @@ S.Button = styled.Button``;
 function TestingButtons() {
     const dispatch = useDispatch();
     const mac = useSelector(getActiveMac);
-    const session = useSelector(getSession);
     const email = 'john.hillert@gmail.com';
 
     return (
@@ -56,7 +54,7 @@ function TestingButtons() {
                 </SButton>
             </S.View>
             <S.View>
-                <SButton bgColor="hotpink" onPress={() => nokeUtils.connect(mac)}>
+                <SButton bgColor="hotpink" onPress={() => dispatch(connectDevice())}>
                     CONNECT
                 </SButton>
                 <SButton bgColor="#e73535" onPress={() => nokeUtils.disconnect(MAC_HD1)}>
@@ -66,14 +64,14 @@ function TestingButtons() {
             <S.View>
                 <SButton
                     bgColor="cornflowerblue"
-                    onPress={() => dispatch(fetchUnlock({ mac, session, email }))}>
+                    onPress={() => dispatch(fetchUnlock({ mac, email }))}>
                     UNLOCK
                 </SButton>
             </S.View>
             <S.View>
                 <SButton
                     bgColor="cornflowerblue"
-                    onPress={() => dispatch(fetchUnshackle({ mac, session, email }))}>
+                    onPress={() => dispatch(fetchUnshackle({ mac, email }))}>
                     UNSHACKLE
                 </SButton>
             </S.View>
@@ -86,6 +84,14 @@ function TestingButtons() {
                 </SButton>
             </S.View>
             <S.View>
+                <SButton
+                    bgColor="#f3cf03"
+                    fgColor="black"
+                    onPress={() => dispatch(connectAndUnlock({ mac, email}))}>
+                    CONNECT & UNLOCK
+                </SButton>
+            </S.View>
+            <S.View>
                 <SButton bgColor="dimgrey" onPress={() => nokeUtils.offlineUnlock(MAC_HD1)}>
                     OFFLINE UNLOCK
                 </SButton>
@@ -93,11 +99,6 @@ function TestingButtons() {
             <S.View>
                 <SButton bgColor="dimgrey" onPress={() => nokeUtils.removeAllNokes()}>
                     REMOVE ALL NOKES
-                </SButton>
-            </S.View>
-            <S.View>
-                <SButton bgColor="dimgrey" onPress={() => nokeUtils.sendCommands(MAC_HD1, command)}>
-                    SEND COMMANDS
                 </SButton>
             </S.View>
             <S.View>

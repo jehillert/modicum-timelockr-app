@@ -1,14 +1,20 @@
+/* eslint-disable prettier/prettier */
 // TODO: import { isValidMac, removeColons } from '@utilities';
 // TODO: cancel/cancelled
 import { NokeAndroid } from '@noke';
-import { nokeServiceMessages as nsm } from '@constants';
 import { requestLocPermissionAsync } from '@utilities';
+import { nokeServiceMessages as nsm } from '@constants';
 import {
     addDevice,
     addDeviceFailure,
     addDeviceSuccess,
+    connectAndUnlock,
+    connectDevice,
+    connectDeviceSuccess,
+    connectDeviceFailure,
     discoverAddDevice,
     deviceEventActionCreators,
+    fetchUnlock,
     removeDevice,
     removeDeviceFailure,
     removeDeviceSuccess,
@@ -90,6 +96,18 @@ export function* addDeviceTask() {
     })
 }
 
+export function* connectDeviceTask() {
+    yield takeEvery(connectDevice, function* () {
+        try {
+            const activeMac = yield select(getActiveMac);
+            yield call(NokeAndroid.connect, activeMac);
+            yield put(connectDeviceSuccess());
+        } catch (err) {
+            yield put(connectDeviceFailure(err));
+        }
+    })
+}
+
 export function* removeDeviceTask() {
     yield takeEvery(removeDevice, function* () {
         try {
@@ -99,7 +117,7 @@ export function* removeDeviceTask() {
             if (isSuccess) {
                 yield put(removeDeviceSuccess());
             } else {
-                throw NO_LOCK_REFERENCE_ERROR;
+                throw nsm.NO_LOCK_REFERENCE_ERROR;
             }
         } catch (err) {
             yield put(removeDeviceFailure(err))
@@ -111,8 +129,21 @@ export function* discoverAddDeviceTask() {
     while(true) {
         yield take(discoverAddDevice);
         yield put(startScanning());
-        yield take(deviceEventActionCreators['onNokeDiscovered'])
+        yield take(deviceEventActionCreators.onNokeDiscovered)
         yield put(addDevice());
+        yield put(stopScanning());
+    }
+}
+
+export function* connectAndUnlockTask() {
+    while(true) {
+        const { payload } = yield take(connectAndUnlock);
+        yield put(startScanning());
+        yield take(deviceEventActionCreators.onNokeDiscovered);
+        yield put(connectDevice());
+        yield take(deviceEventActionCreators.onNokeConnected);
+        yield put(fetchUnlock(payload));
+        yield take(deviceEventActionCreators.onNokeUnlocked)
         yield put(stopScanning());
     }
 }

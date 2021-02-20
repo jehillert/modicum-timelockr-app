@@ -7,6 +7,7 @@ import {
     startEventChannels,
     startServiceFailure,
     startServiceSuccess,
+    stopServiceSuccess,
 } from '@noke-slices';
 import { call, cancelled, put, take } from 'redux-saga/effects';
 import NokeAndroid from '@noke';
@@ -20,30 +21,33 @@ const cleanupSubs = subscrArray => {
 };
 
 const handleEvent = (eventName, emitter) => data => {
-    emitter({ eventName, data })
+    emitter({ eventName, data });
 };
 
 // CREATE CHANNELS
 function createServiceEventChannel() {
     return eventChannel(emitter => {
         const NokeServiceEmitter = new NativeEventEmitter(NokeAndroid);
-        Object.values(nokeServiceEvents).map(eventName => NokeServiceEmitter.addListener(eventName, handleEvent(eventName, emitter)));
+        const serviceSubs = Object.values(nokeServiceEvents).map(eventName =>
+            NokeServiceEmitter.addListener(eventName, handleEvent(eventName, emitter)),
+        );
         console.log(nsm.SERVICE_LISTENERS_ADDED_MSG);
         return () => cleanupSubs(serviceSubs);
     });
 }
 
-// ADD DEVICE-SPECIFIC SERVICE LISTENERS
 function createDeviceEventChannel() {
     return eventChannel(emitter => {
         const NokeDeviceEmitter = new NativeEventEmitter(NokeAndroid);
-        Object.keys(deviceEventActionCreators).map(eventName => NokeDeviceEmitter.addListener(eventName, handleEvent(eventName, emitter)));
+        const deviceSubs = Object.keys(deviceEventActionCreators).map(eventName =>
+            NokeDeviceEmitter.addListener(eventName, handleEvent(eventName, emitter)),
+        );
         console.log(nsm.DEVICE_LISTENERS_ADDED_MSG);
         return () => cleanupSubs(deviceSubs);
     });
 }
 
-// SUBSCRIBE SERVICE CHANNEL
+// SERVICE CHANNEL
 export function* listenToServiceChannel() {
     yield take(startEventChannels);
     const serviceChannel = yield call(createServiceEventChannel);
@@ -67,6 +71,7 @@ export function* listenToServiceChannel() {
     }
 }
 
+// DEVICE CHANNEL
 export function* listenToDeviceChannel() {
     yield take(startEventChannels);
     const deviceChannel = yield call(createDeviceEventChannel);

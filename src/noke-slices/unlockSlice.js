@@ -1,10 +1,18 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { requestUnlock } from '@noke-api';
 import { NokeAndroid } from '@noke';
+import { getSession } from '@selectors';
 
-export const fetchUnlock = createAsyncThunk('unlock/requestStatus', async (payload, thunkAPI) => {
+export const fetchUnlock = createAsyncThunk('unlock/requestStatus', async (payload, { getState }) => {
     const { mac } = payload;
-    const res = await requestUnlock(payload);
+    // const activeLockId = getState().devices.activeLockId;
+    // const { session } = getState().devices.locks[activeLockId];
+    const session = getSession(getState());
+    const newPayload = {
+        ...payload,
+        session: session,
+    };
+    const res = await requestUnlock(newPayload);
     const commands = res.data.data.commands;
     await NokeAndroid.sendCommands(mac, commands);
     return commands;
@@ -16,9 +24,6 @@ const unlockSlice = createSlice({
         commands: null,
         loading: 'idle',
         error: null,
-    },
-    reducers: {
-        unlock() {}
     },
     extraReducers: {
         [fetchUnlock.pending]: (state, action) => {
@@ -46,7 +51,5 @@ const unlockSlice = createSlice({
         },
     },
 });
-
-export const { unlock } = unlockSlice.actions;
 
 export default unlockSlice.reducer;
