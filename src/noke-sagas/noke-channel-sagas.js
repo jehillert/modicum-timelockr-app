@@ -11,11 +11,9 @@ import { call, cancelled, put, take, throttle } from 'redux-saga/effects';
 import NokeAndroid from '@noke';
 
 // CONSTANTS
-const START_SERVICE_SUCCESS_MSG = 'Noke service is running... 2/2';
 const START_SERVICE_FAILURE_MSG = 'Noke service failed to initialize';
 const DEVICE_LISTENERS_ADDED_MSG = 'Noke device event listeners added.'
 const SERVICE_LISTENERS_ADDED_MSG = 'Noke service event listeners added.'
-const onNokeDiscovered = 'onNokeDiscovered';
 
 // HELPERS
 const cleanupSubs = subscrArray => {
@@ -59,15 +57,12 @@ export function* listenToServiceChannel() {
             const { eventName } = yield take(serviceChannel);
             if (eventName === nokeServiceEvents.onServiceConnected) {
                 yield put(startServiceSuccess());
-                console.log(START_SERVICE_SUCCESS_MSG);
             }
             if (eventName === nokeServiceEvents.onServiceDisconnected) {
                 yield put(stopServiceSuccess());
-                console.log(START_SERVICE_SUCCESS_MSG);
             }
         } catch (err) {
-            console.warn(START_SERVICE_FAILURE_MSG);
-            yield put(startServiceFailure(err));
+            yield put(startServiceFailure(START_SERVICE_FAILURE_MSG));
         } finally {
             if (yield cancelled()) {
                 channel.close();

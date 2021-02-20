@@ -17,7 +17,9 @@ const unlockSlice = createSlice({
         loading: 'idle',
         error: null,
     },
-    reducers: {},
+    reducers: {
+        unlock() {}
+    },
     extraReducers: {
         [fetchUnlock.pending]: (state, action) => {
             if (state.loading === 'idle') {
@@ -44,5 +46,7 @@ const unlockSlice = createSlice({
         },
     },
 });
+
+export const { unlock } = unlockSlice.actions;
 
 export default unlockSlice.reducer;

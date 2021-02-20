@@ -1,14 +1,14 @@
 import { PermissionsAndroid } from 'react-native';
-import { androidPermissionsConstants as pc } from '@constants';
+import { androidPermissionsConstants as apc } from '@constants';
 
 export const requestLocPermissionAsync = async (
     permissions = 'ACCESS_FINE_LOCATION',
     permissionsLabel = 'Location',
-    title = pc.PERMISSIONS_TITLE_TXT,
-    message = pc.PERMISSIONS_REQUEST_MSG,
-    buttonNeutral = pc.BUTTON_NEGATIVE_TXT,
-    buttonNegative = pc.BUTTON_NEUTRAL_TXT,
-    buttonPositive = pc.BUTTON_POSITIVE_TXT,
+    title = apc.PERMISSIONS_TITLE_TXT,
+    message = apc.PERMISSIONS_REQUEST_MSG,
+    buttonNeutral = apc.BUTTON_NEGATIVE_TXT,
+    buttonNegative = apc.BUTTON_NEUTRAL_TXT,
+    buttonPositive = apc.BUTTON_POSITIVE_TXT,
 ) => {
     const isReqMult = Array.isArray(permissions);
 

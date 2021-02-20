@@ -364,7 +364,6 @@ public class NokeAndroidMobileLibrary extends ReactContextBaseJavaModule {
             WritableMap event = createCommonEvents(noke);
             event.putInt("connectionState", noke.getConnectionState());
             event.putString("hwVersion", noke.getVersion());
-            event.putBoolean("isDiscovered", true);
             emitDeviceEvent("onNokeDiscovered", event);
         }
 
@@ -372,7 +371,6 @@ public class NokeAndroidMobileLibrary extends ReactContextBaseJavaModule {
         public void onNokeConnecting(NokeDevice noke) {
             WritableMap event = createCommonEvents(noke);
             event.putString("hwVersion", noke.getVersion());
-            event.putBoolean("isConnecting", true);
             emitDeviceEvent("onNokeConnecting", event);
         }
 
@@ -382,8 +380,6 @@ public class NokeAndroidMobileLibrary extends ReactContextBaseJavaModule {
             event.putInt("battery", noke.getBattery());
             event.putString("hwVersion", noke.getVersion());
             event.putString("session", noke.getSession());
-            event.putBoolean("isConnecting", false);
-            event.putBoolean("isConnected", true);
             currentNoke = noke;
             mNokeService.stopScanning();
             emitDeviceEvent("onNokeConnected", event);
@@ -393,7 +389,6 @@ public class NokeAndroidMobileLibrary extends ReactContextBaseJavaModule {
         public void onNokeSyncing(NokeDevice noke) {
             WritableMap event = createCommonEvents(noke);
             event.putString("session", noke.getSession());
-            event.putBoolean("isSyncing", false);
             emitDeviceEvent("onNokeSyncing", event);
         }
 
@@ -401,7 +396,6 @@ public class NokeAndroidMobileLibrary extends ReactContextBaseJavaModule {
         public void onNokeUnlocked(NokeDevice noke) {
             WritableMap event = createCommonEvents(noke);
             event.putString("session", noke.getSession());
-            event.putBoolean("isLocked", false);
             emitDeviceEvent("onNokeUnlocked", event);
         }
 
@@ -409,7 +403,6 @@ public class NokeAndroidMobileLibrary extends ReactContextBaseJavaModule {
         public void onNokeDisconnected(NokeDevice noke) {
             WritableMap event = createCommonEvents(noke);
             event.putString("session", noke.getSession());
-            event.putBoolean("isConnected", false);
             emitDeviceEvent("onNokeDisconnected", event);
             // mNokeService.uploadData();
             mNokeService.startScanningForNokeDevices();
@@ -421,7 +414,6 @@ public class NokeAndroidMobileLibrary extends ReactContextBaseJavaModule {
             WritableMap event = createCommonEvents(noke);
             event.putBoolean("didTimeout", didTimeout);
             event.putBoolean("isLocked", isLocked);
-            event.putBoolean("isShutdown", true);
             emitDeviceEvent("onNokeShutdown", event);
         }
 

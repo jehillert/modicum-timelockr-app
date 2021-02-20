@@ -1,5 +1,7 @@
+// TODO: make a map fo eventName and eventStatusName
+// TODO: onDiscovered is false when stop scanning
 import { createAction, createSlice } from '@reduxjs/toolkit';
-import { removeColons } from '@utilities';
+import { getStatusFromEventAction, removeColons } from '@utilities';
 import { nokeDeviceEvents } from '@constants';
 
 const getNewLock = data => ({
@@ -24,8 +26,6 @@ export const deviceEventActionCreators = Object.keys(nokeDeviceEvents).reduce((a
     return accumulator;
 }, {})
 
-console.log(Object.values(nokeDeviceEvents))
-
 // DEVICE SLICE
 const devicesSlice = createSlice({
     name: 'devices',
@@ -38,21 +38,18 @@ const devicesSlice = createSlice({
     },
     reducers: {
         addDevice(state) {
-            state.lockTaskStatus = `${state.activeLockId}/Add: EXECUTING`;
             state.lockTaskError = null;
         },
         addDeviceSuccess(state) {
             if (!state.lockIds.includes(state.activeLockId)) {
                 state.lockIds.push(state.activeLockId);
             }
-            state.lockTaskStatus = `${state.activeLockId}/Add: SUCCESS`;
         },
         addDeviceFailure(state, { payload: err }) {
-            state.lockTaskStatus = `${state.activeLockId}/Add: FAILURE`;
             state.lockTaskError = err;
         },
         removeDevice(state) {
-            state.lockTaskStatus = `${state.activeLockId}/Remove: EXECUTING`;
+            state.lockTaskError = null;
         },
         removeDeviceSuccess(state) {
             state.lockIds = state.lockIds.filter(val => val !== state.activeLockId);
@@ -69,15 +66,17 @@ const devicesSlice = createSlice({
         builder.addMatcher(
             // TODO: use the eventName instead of transmitting over the bridge to set properties like isDiscovered
             action => Object.values(nokeDeviceEvents).includes(action.type),
-            (state, { payload: data }) => {
+            (state, { type, payload: data }) => {
                 const { locks } = state;
                 const { mac = '' } = data;
                 const id = removeColons(mac);
+                const eventStatusName = getStatusFromEventAction(type);
 
                 if (Object.keys(locks).includes(id)) {
                     locks[id] = {
                         ...locks[id],
                         ...data,
+                        [eventStatusName]: true,
                     };
                 } else {
                     locks[id] = getNewLock(data);

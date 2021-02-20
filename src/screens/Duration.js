@@ -17,7 +17,6 @@ S.ColumnContainer = styled.View`
 S.DurationColumn = styled.View`
     flex-grow: 1;
 `;
-
 S.DurationContainer = styled.View`
     flex-direction: row;
     padding: 30px;
@@ -35,7 +34,6 @@ S.TimeIncrementInput = styled.TextInput`
 S.Minutes = styled(S.TimeIncrementInput)``;
 S.Hours = styled(S.TimeIncrementInput)``;
 S.Days = styled(S.TimeIncrementInput)``;
-
 S.TimeIncrementText = styled.Text`
     color: black;
     font-size: 22px;

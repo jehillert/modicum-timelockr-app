@@ -24,13 +24,11 @@ const S = {};
 S.Text = styled.Text`
     color: red;
 `;
-
 S.View = styled.View`
     margin-bottom: 10px;
     flex-direction: row;
     justify-content: space-around;
 `;
-
 S.Button = styled.Button``;
 
 function TestingButtons() {

@@ -25,9 +25,9 @@ const serviceSlice = createSlice({
             state.serviceStatus = 'connected';
             state.startStatus = 'success';
         },
-        startServiceFailure(state, { payload: startError = {} }) {
+        startServiceFailure(state, { payload: error = {} }) {
             state.startStatus = 'failure';
-            state.startError = startError;
+            state.startError = error;
         },
         // STOP SERVICE
         stopService(state) {
@@ -39,9 +39,9 @@ const serviceSlice = createSlice({
             state.serviceStatus = 'disconnected';
             state.stopStatus = 'success';
         },
-        stopServiceFailure(state, { payload: stopError = {} }) {
+        stopServiceFailure(state, { payload: error = {} }) {
             state.stopStatus = 'failure';
-            state.stopError = stopError;
+            state.stopError = error;
         },
         // STOP CHANNELS
         stopServiceChannel() {},

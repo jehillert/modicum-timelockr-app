@@ -34,6 +34,8 @@ export function initializeBridgeSpyHermes() {
     MessageQueue.spy(spyFunction);
 }
 
+export const getStatusFromEventAction = actionPath => actionPath.replace(/(^.*onNoke)(.*)$/g, 'is$2');
+
 export function initializeBridgeSpy() {
     const spyFunction = msg => {
         if (methodsToWatch.includes(msg.method)) {
