@@ -13,7 +13,7 @@ import {
     connectDeviceSuccess,
     connectDeviceFailure,
     discoverAddDevice,
-    deviceEventActionCreators,
+    deviceEventActions,
     fetchUnlock,
     removeDevice,
     removeDeviceFailure,
@@ -129,7 +129,7 @@ export function* discoverAddDeviceTask() {
     while(true) {
         yield take(discoverAddDevice);
         yield put(startScanning());
-        yield take(deviceEventActionCreators.onNokeDiscovered)
+        yield take(deviceEventActions.onNokeDiscovered)
         yield put(addDevice());
         yield put(stopScanning());
     }
@@ -139,11 +139,11 @@ export function* connectAndUnlockTask() {
     while(true) {
         const { payload } = yield take(connectAndUnlock);
         yield put(startScanning());
-        yield take(deviceEventActionCreators.onNokeDiscovered);
+        yield take(deviceEventActions.onNokeDiscovered);
         yield put(connectDevice());
-        yield take(deviceEventActionCreators.onNokeConnected);
+        yield take(deviceEventActions.onNokeConnected);
         yield put(fetchUnlock(payload));
-        yield take(deviceEventActionCreators.onNokeUnlocked)
+        yield take(deviceEventActions.onNokeUnlocked)
         yield put(stopScanning());
     }
 }

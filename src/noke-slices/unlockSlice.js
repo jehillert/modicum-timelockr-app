@@ -1,3 +1,4 @@
+// ADD CANCELLATION
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { requestUnlock } from '@noke-api';
 import { NokeAndroid } from '@noke';
@@ -5,14 +6,11 @@ import { getSession } from '@selectors';
 
 export const fetchUnlock = createAsyncThunk('unlock/requestStatus', async (payload, { getState }) => {
     const { mac } = payload;
-    // const activeLockId = getState().devices.activeLockId;
-    // const { session } = getState().devices.locks[activeLockId];
     const session = getSession(getState());
-    const newPayload = {
+    const res = await requestUnlock({
         ...payload,
-        session: session,
-    };
-    const res = await requestUnlock(newPayload);
+        session,
+    });
     const commands = res.data.data.commands;
     await NokeAndroid.sendCommands(mac, commands);
     return commands;

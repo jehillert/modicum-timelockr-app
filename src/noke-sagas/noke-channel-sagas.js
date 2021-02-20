@@ -3,7 +3,7 @@ import { NativeEventEmitter } from 'react-native';
 import { eventChannel, channel } from 'redux-saga';
 import { nokeServiceEvents, nokeServiceMessages as nsm } from '@constants';
 import {
-    deviceEventActionCreators,
+    deviceEventActions,
     startEventChannels,
     startServiceFailure,
     startServiceSuccess,
@@ -39,7 +39,7 @@ function createServiceEventChannel() {
 function createDeviceEventChannel() {
     return eventChannel(emitter => {
         const NokeDeviceEmitter = new NativeEventEmitter(NokeAndroid);
-        const deviceSubs = Object.keys(deviceEventActionCreators).map(eventName =>
+        const deviceSubs = Object.keys(deviceEventActions).map(eventName =>
             NokeDeviceEmitter.addListener(eventName, handleEvent(eventName, emitter)),
         );
         console.log(nsm.DEVICE_LISTENERS_ADDED_MSG);
@@ -78,7 +78,7 @@ export function* listenToDeviceChannel() {
     while (true) {
         try {
             const { eventName, data } = yield take(deviceChannel);
-            const eventAction = deviceEventActionCreators[eventName](data);
+            const eventAction = deviceEventActions[eventName](data);
             yield put(eventAction);
         } catch (err) {
             console.warn(err);

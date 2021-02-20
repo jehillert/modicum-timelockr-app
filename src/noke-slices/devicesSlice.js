@@ -29,7 +29,7 @@ const getNewLock = data => ({
     ...data,
 });
 
-export const deviceEventActionCreators = Object.keys(nokeDeviceEvents).reduce((accumulator, eventName) => {
+export const deviceEventActions = Object.keys(nokeDeviceEvents).reduce((accumulator, eventName) => {
     accumulator[eventName] = createAction(nokeDeviceEvents[eventName]);
     return accumulator;
 }, {});
