@@ -19,10 +19,8 @@ export const nokeDeviceEvents = {
 }
 
 export const nokeServiceMessages = {
-    START_SERVICE_MSG: 'Noke service initialized... 1/2',
     START_SERVICE_FAILURE_MSG: "Noke service failed to initialize",
     NO_LOCK_REFERENCE_ERROR: 'Must provide valid mac address or "activeLockId" must reference enumerated lock.',
-    START_SERVICE_SUCCESS_MSG: 'Noke service is running... 2/2',
     START_SERVICE_FAILURE_MSG: 'Noke service failed to initialize',
     DEVICE_LISTENERS_ADDED_MSG: 'Noke device event listeners added.',
     SERVICE_LISTENERS_ADDED_MSG: 'Noke service event listeners added.',

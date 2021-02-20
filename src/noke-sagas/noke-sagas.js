@@ -1,5 +1,7 @@
 // TODO: import { isValidMac, removeColons } from '@utilities';
+// TODO: cancel/cancelled
 import { NokeAndroid } from '@noke';
+import { nokeServiceMessages as nsm } from '@constants';
 import { requestLocPermissionAsync } from '@utilities';
 import {
     addDevice,
@@ -31,24 +33,13 @@ import {
     getServiceConnected,
 } from '@selectors';
 
-const START_SERVICE_MSG = 'Noke service initialized... 1/2';
-const START_SERVICE_FAILURE_MSG = "Noke service failed to initialize";
-const NO_LOCK_REFERENCE_ERROR = 'Must provide valid mac address or "activeLockId" must reference enumerated lock.';
-
 export function* serviceSaga() {
     while (true) {
         yield take (startService);
         try {
-            const locationPermissionGranted = yield call(requestLocPermissionAsync);
-            const serviceInitialized = yield call(NokeAndroid.initiateNokeService);
-
-            if (locationPermissionGranted && serviceInitialized) {
-                console.log(START_SERVICE_MSG);
-            } else {
-                console.log( START_SERVICE_FAILURE_MSG );
-            }
+            yield call(requestLocPermissionAsync);
+            yield call(NokeAndroid.initiateNokeService);
         } catch (err) {
-            console.log(START_SERVICE_FAILURE_MSG);
             yield put(startServiceFailure(err));
         }
 
@@ -91,7 +82,7 @@ export function* addDeviceTask() {
             if (isSuccess) {
                 yield put(addDeviceSuccess());
             } else {
-                throw NO_LOCK_REFERENCE_ERROR;
+                throw nsm.NO_LOCK_REFERENCE_ERROR;
             }
         } catch (err) {
             yield put(addDeviceFailure(err))

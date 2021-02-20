@@ -1,19 +1,15 @@
+// TODO: Add "END" language to channels
 import { NativeEventEmitter } from 'react-native';
-import { eventChannel, END, channel } from 'redux-saga';
-import { nokeServiceEvents, nokeDeviceEvents } from '@constants';
+import { eventChannel, channel } from 'redux-saga';
+import { nokeServiceEvents, nokeServiceMessages as nsm } from '@constants';
 import {
     deviceEventActionCreators,
     startEventChannels,
     startServiceFailure,
     startServiceSuccess,
 } from '@noke-slices';
-import { call, cancelled, put, take, throttle } from 'redux-saga/effects';
+import { call, cancelled, put, take } from 'redux-saga/effects';
 import NokeAndroid from '@noke';
-
-// CONSTANTS
-const START_SERVICE_FAILURE_MSG = 'Noke service failed to initialize';
-const DEVICE_LISTENERS_ADDED_MSG = 'Noke device event listeners added.'
-const SERVICE_LISTENERS_ADDED_MSG = 'Noke service event listeners added.'
 
 // HELPERS
 const cleanupSubs = subscrArray => {
@@ -32,7 +28,7 @@ function createServiceEventChannel() {
     return eventChannel(emitter => {
         const NokeServiceEmitter = new NativeEventEmitter(NokeAndroid);
         Object.values(nokeServiceEvents).map(eventName => NokeServiceEmitter.addListener(eventName, handleEvent(eventName, emitter)));
-        console.log(SERVICE_LISTENERS_ADDED_MSG);
+        console.log(nsm.SERVICE_LISTENERS_ADDED_MSG);
         return () => cleanupSubs(serviceSubs);
     });
 }
@@ -42,7 +38,7 @@ function createDeviceEventChannel() {
     return eventChannel(emitter => {
         const NokeDeviceEmitter = new NativeEventEmitter(NokeAndroid);
         Object.keys(deviceEventActionCreators).map(eventName => NokeDeviceEmitter.addListener(eventName, handleEvent(eventName, emitter)));
-        console.log(DEVICE_LISTENERS_ADDED_MSG);
+        console.log(nsm.DEVICE_LISTENERS_ADDED_MSG);
         return () => cleanupSubs(deviceSubs);
     });
 }
@@ -62,7 +58,7 @@ export function* listenToServiceChannel() {
                 yield put(stopServiceSuccess());
             }
         } catch (err) {
-            yield put(startServiceFailure(START_SERVICE_FAILURE_MSG));
+            yield put(startServiceFailure(nsm.START_SERVICE_FAILURE_MSG));
         } finally {
             if (yield cancelled()) {
                 channel.close();
