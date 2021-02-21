@@ -5,41 +5,21 @@ import { requestUnlock, requestUnshackle } from '@noke-api';
 import { NokeAndroid } from '@noke';
 import { getSession } from '@selectors';
 
-// const fetchLockCommand = (apiActionType, apiCall) => createAsyncThunk(apiActionType, async (payload, { getState }) => {
-//     const { mac } = payload;
-//     const session = getSession(getState());
-//     const res = await apiCall({
-//         ...payload,
-//         session,
-//     });
-//     const commands = res.data.data.commands;
-//     await NokeAndroid.sendCommands(mac, commands);
-//     return commands;
-// });
-
-export const fetchUnlock = createAsyncThunk('unlock/requestStatus', async (payload, { getState }) => {
-    const { mac } = payload;
-    const session = getSession(getState());
-    const res = await requestUnlock({
-        ...payload,
-        session,
+const fetchLockCommand = (apiActionType, apiCall) =>
+    createAsyncThunk(apiActionType, async (payload, { getState }) => {
+        const { mac } = payload;
+        const session = getSession(getState());
+        const res = await apiCall({
+            ...payload,
+            session,
+        });
+        const commands = res.data.data.commands;
+        await NokeAndroid.sendCommands(mac, commands);
+        return commands;
     });
-    const commands = res.data.data.commands;
-    await NokeAndroid.sendCommands(mac, commands);
-    return commands;
-});
 
-export const fetchUnshackle = createAsyncThunk('unshackle/requestStatus', async (payload, { getState }) => {
-    const { mac } = payload;
-    const session = getSession(getState());
-    const res = await requestUnshackle({
-        ...payload,
-        session,
-    });
-    const commands = res.data.data.commands;
-    await NokeAndroid.sendCommands(mac, commands);
-    return commands;
-});
+export const fetchUnlock = fetchLockCommand('unlock/requestStatus', requestUnlock)
+export const fetchUnshackle = fetchLockCommand('unshackle/requestStatus', requestUnshackle)
 
 const coreApiSlice = createSlice({
     name: 'coreApi',
