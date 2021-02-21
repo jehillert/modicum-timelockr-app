@@ -404,9 +404,6 @@ public class NokeAndroidMobileLibrary extends ReactContextBaseJavaModule {
             WritableMap event = createCommonEvents(noke);
             event.putString("session", noke.getSession());
             emitDeviceEvent("onNokeDisconnected", event);
-            // mNokeService.uploadData();
-            mNokeService.startScanningForNokeDevices();
-            mNokeService.setBluetoothScanDuration(8000);
         }
 
         @Override

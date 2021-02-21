@@ -1,7 +1,9 @@
 // TODO: add isListening action
+// TODO: explore BLE "beacon" to avoid having to open app and/or turn on bluetooth
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
+    bluetoothStatusCode: '',
     serviceStatus: 'disconnected',
     startStatus: '',
     stopStatus: '',
@@ -9,6 +11,7 @@ const initialState = {
     stopError: null,
     isScanning: null,
     scanningError: null,
+    serviceError: null,
 };
 
 const serviceSlice = createSlice({
@@ -43,15 +46,25 @@ const serviceSlice = createSlice({
             state.stopStatus = 'failure';
             state.stopError = error;
         },
+        // ERRORS
+        setServiceError(state, { payload }) {
+            state.serviceError = payload;
+        },
         // STOP CHANNELS
         stopServiceChannel() {},
         stopDeviceChannel() {},
-        // BLUETOOTH SCANNING
-        setIsScanning(state, { payload: isScanning = null }) {
-            state.isScanning = isScanning;
+        // BLUETOOTH
+        updateBluetoothStatus(state, { payload }) {
+            state.bluetoothStatusCode = payload.bluetoothStatusCode;
         },
         startScanning() {},
+        startScanningSuccess(state) {
+            state.isScanning = true;
+        },
         stopScanning() {},
+        stopScanningSuccess(state) {
+            state.isScanning = false;
+        },
         setScanningError(state, { payload: err }) {
             state.scanningError = err;
         },
@@ -61,18 +74,21 @@ const serviceSlice = createSlice({
 });
 
 export const {
-    setIsScanning,
     setScanningError,
+    startScanningSuccess,
+    stopScanningSuccess,
     startEventChannels,
     startScanning,
     startService,
     startServiceFailure,
     startServiceSuccess,
+    setServiceError,
     stopDeviceChannel,
     stopScanning,
     stopService,
     stopServiceChannel,
     stopServiceFailure,
     stopServiceSuccess,
+    updateBluetoothStatus,
 } = serviceSlice.actions;
 export default serviceSlice.reducer;

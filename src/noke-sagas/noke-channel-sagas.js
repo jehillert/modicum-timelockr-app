@@ -4,10 +4,12 @@ import { eventChannel, channel } from 'redux-saga';
 import { nokeServiceEvents, nokeServiceMessages as nsm } from '@constants';
 import {
     deviceEventActions,
+    setServiceError,
     startEventChannels,
     startServiceFailure,
     startServiceSuccess,
     stopServiceSuccess,
+    updateBluetoothStatus,
 } from '@noke-slices';
 import { call, cancelled, put, take } from 'redux-saga/effects';
 import NokeAndroid from '@noke';
@@ -54,12 +56,16 @@ export function* listenToServiceChannel() {
 
     while (true) {
         try {
-            const { eventName } = yield take(serviceChannel);
+            const { eventName, data } = yield take(serviceChannel);
+            console.log(`%ceventName: ${eventName}`, 'color: darkred; background-color: gold');
             if (eventName === nokeServiceEvents.onServiceConnected) {
                 yield put(startServiceSuccess());
-            }
-            if (eventName === nokeServiceEvents.onServiceDisconnected) {
+            } else if (eventName === nokeServiceEvents.onServiceDisconnected) {
                 yield put(stopServiceSuccess());
+            } else if (eventName === nokeServiceEvents.onBluetoothStatusChanged) {
+                yield put(updateBluetoothStatus(data));
+            } else if (eventName === nokeServiceEvents.onError) {
+                yield put(setServiceError(data));
             }
         } catch (err) {
             yield put(startServiceFailure(nsm.START_SERVICE_FAILURE_MSG));

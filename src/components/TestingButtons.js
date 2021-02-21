@@ -10,6 +10,7 @@ import {
     addDevice,
     connectDevice,
     connectAndUnlock,
+    connectAndUnshackle,
     discoverAddDevice,
     removeDevice,
     fetchUnlock,
@@ -39,16 +40,23 @@ function TestingButtons() {
         <>
             <S.View>
                 <SButton
-                    bgColor="cornflowerblue"
+                    bgColor="dimgrey"
                     onPress={() => dispatch(discoverAddDevice())}>
-                    DISCOVER & ADD
+                    ADD LOCK
                 </SButton>
             </S.View>
             <S.View>
                 <SButton
                     bgColor="cornflowerblue"
                     onPress={() => dispatch(connectAndUnlock({ mac, email}))}>
-                    CONNECT & UNLOCK
+                    UNLOCK
+                </SButton>
+            </S.View>
+            <S.View>
+                <SButton
+                    bgColor="cornflowerblue"
+                    onPress={() => dispatch(connectAndUnshackle({ mac, email}))}>
+                    UNSHACKLE
                 </SButton>
             </S.View>
             <S.View>

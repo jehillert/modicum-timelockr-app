@@ -75,8 +75,6 @@ const devicesSlice = createSlice({
             state.lockTaskStatus = `${state.activeLockId}/Remove: FAILURE`;
             state.lockTaskError = err;
         },
-        connectAndUnlock() {},
-        discoverAddDevice() {},
     },
     extraReducers: builder => {
         builder.addMatcher(
@@ -114,11 +112,9 @@ export const {
     addDevice,
     addDeviceSuccess,
     addDeviceFailure,
-    connectAndUnlock,
     connectDevice,
     connectDeviceSuccess,
     connectDeviceFailure,
-    discoverAddDevice,
     removeDevice,
     removeDeviceSuccess,
     removeDeviceFailure,

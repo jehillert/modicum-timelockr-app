@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 // TODO: import { isValidMac, removeColons } from '@utilities';
 // TODO: cancel/cancelled
+// TODO: set scanning timeout/ setServiceError
 import { NokeAndroid } from '@noke';
 import { requestLocPermissionAsync } from '@utilities';
 import { nokeServiceMessages as nsm } from '@constants';
@@ -9,21 +10,24 @@ import {
     addDeviceFailure,
     addDeviceSuccess,
     connectAndUnlock,
+    connectAndUnshackle,
     connectDevice,
     connectDeviceSuccess,
     connectDeviceFailure,
     discoverAddDevice,
     deviceEventActions,
     fetchUnlock,
+    fetchUnshackle,
     removeDevice,
     removeDeviceFailure,
     removeDeviceSuccess,
-    setIsScanning,
     setScanningError,
     startScanning,
+    startScanningSuccess,
     startService,
     startServiceFailure,
     stopScanning,
+    stopScanningSuccess,
     stopService,
 } from '@noke-slices';
 import {
@@ -59,8 +63,8 @@ export function* scanningSaga() {
         try {
             const serviceConnected = yield select(getServiceConnected);
             if (serviceConnected) {
-                const { isScanning } = yield call(NokeAndroid.startScanning);
-                yield put(setIsScanning(isScanning));
+                yield call(NokeAndroid.startScanning);
+                yield put(startScanningSuccess());
             }
         } catch (err) {
             yield put(setScanningError(err));
@@ -70,7 +74,7 @@ export function* scanningSaga() {
             const serviceConnected = yield select(getServiceConnected);
             const { isScanning } = yield call(NokeAndroid.stopScanning);
             if (serviceConnected && !isScanning) {
-                yield put(setIsScanning(isScanning));
+                yield put(stopScanningSuccess());
             }
         } catch (err) {
             yield put(setScanningError(err));
@@ -142,8 +146,19 @@ export function* connectAndUnlockTask() {
         yield take(deviceEventActions.onNokeDiscovered);
         yield put(connectDevice());
         yield take(deviceEventActions.onNokeConnected);
+        yield put(stopScanning());
         yield put(fetchUnlock(payload));
-        yield take(deviceEventActions.onNokeUnlocked)
+    }
+}
+
+export function* connectAndUnshackleTask() {
+    while(true) {
+        const { payload } = yield take(connectAndUnshackle);
+        yield put(startScanning());
+        yield take(deviceEventActions.onNokeDiscovered);
+        yield put(connectDevice());
+        yield take(deviceEventActions.onNokeConnected);
+        yield put(fetchUnshackle(payload));
         yield put(stopScanning());
     }
 }

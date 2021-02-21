@@ -28,6 +28,11 @@ const coreApiSlice = createSlice({
         loading: 'idle',
         error: null,
     },
+    reducers: {
+        connectAndUnlock() {},
+        connectAndUnshackle() {},
+        discoverAddDevice() {},
+    },
     extraReducers: builder => {
         builder
             .addMatcher(
@@ -64,5 +69,7 @@ const coreApiSlice = createSlice({
             );
     },
 });
+
+export const { connectAndUnlock, connectAndUnshackle, discoverAddDevice } = coreApiSlice.actions;
 
 export default coreApiSlice.reducer;
