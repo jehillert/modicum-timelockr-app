@@ -38,8 +38,22 @@ function TestingButtons() {
     return (
         <>
             <S.View>
+                <SButton
+                    bgColor="cornflowerblue"
+                    onPress={() => dispatch(discoverAddDevice())}>
+                    DISCOVER & ADD
+                </SButton>
+            </S.View>
+            <S.View>
+                <SButton
+                    bgColor="cornflowerblue"
+                    onPress={() => dispatch(connectAndUnlock({ mac, email}))}>
+                    CONNECT & UNLOCK
+                </SButton>
+            </S.View>
+            <S.View>
                 <SButton bgColor="seagreen" onPress={() => dispatch(startScanning())}>
-                    SCAN
+                    START SCAN
                 </SButton>
                 <SButton bgColor="#e73535" onPress={() => dispatch(stopScanning())}>
                     STOP SCAN
@@ -47,10 +61,10 @@ function TestingButtons() {
             </S.View>
             <S.View>
                 <SButton bgColor="seagreen" onPress={() => dispatch(addDevice())}>
-                    ADD
+                    ADD DEVICE
                 </SButton>
                 <SButton bgColor="#e73535" onPress={() => dispatch(removeDevice())}>
-                    REMOVE
+                    REMOVE DEVICE
                 </SButton>
             </S.View>
             <S.View>
@@ -63,32 +77,16 @@ function TestingButtons() {
             </S.View>
             <S.View>
                 <SButton
-                    bgColor="cornflowerblue"
+                    bgColor="#f3cf03"
+                    fgColor="black"
                     onPress={() => dispatch(fetchUnlock({ mac, email }))}>
                     UNLOCK
                 </SButton>
-            </S.View>
-            <S.View>
                 <SButton
-                    bgColor="cornflowerblue"
+                    bgColor="#f3cf03"
+                    fgColor="black"
                     onPress={() => dispatch(fetchUnshackle({ mac, email }))}>
                     UNSHACKLE
-                </SButton>
-            </S.View>
-            <S.View>
-                <SButton
-                    bgColor="#f3cf03"
-                    fgColor="black"
-                    onPress={() => dispatch(discoverAddDevice())}>
-                    DISCOVER & ADD
-                </SButton>
-            </S.View>
-            <S.View>
-                <SButton
-                    bgColor="#f3cf03"
-                    fgColor="black"
-                    onPress={() => dispatch(connectAndUnlock({ mac, email}))}>
-                    CONNECT & UNLOCK
                 </SButton>
             </S.View>
             <S.View>

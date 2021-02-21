@@ -11,7 +11,7 @@ const createDebugger = require('redux-flipper').default;
 // RUDUX SAGA
 const sagaMiddleware = createSagaMiddleware();
 
-//PERSIST (https://github.com/rt2zz/redux-persist/issues/988)
+//PERSIST
 const persistConfig = {
     key: 'root',
     storage: AsyncStorage,
