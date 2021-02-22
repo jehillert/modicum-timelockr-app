@@ -1,9 +1,9 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import color from 'color';
+// import color from 'color';
 import { DrawerItem, DrawerContentScrollView } from '@react-navigation/drawer';
 import {
-    useTheme,
+    // useTheme,
     Avatar,
     Title,
     Caption,
@@ -13,22 +13,14 @@ import {
     TouchableRipple,
     Switch,
 } from 'react-native-paper';
-import { MaterialCommunityIcons } from 'react-native-vector-icons';
+// import { MaterialCommunityIcons } from 'react-native-vector-icons';
 
 function AppDrawerContent(props) {
     return (
         <DrawerContentScrollView {...props}>
             <View style={styles.drawerContent}>
                 <View style={styles.userInfoSection}>
-                    <Avatar.Image
-                        source={{
-                            uri:
-                                'https://pbs.twimg.com/profile_images/952545910990495744/b59hSXUd_400x400.jpg',
-                        }}
-                        size={50}
-                    />
-                    <Title style={styles.title}>Dawid Urbaniak</Title>
-                    <Caption style={styles.caption}>@trensik</Caption>
+                    <Title style={styles.title}>TimeLockr</Title>
                     <View style={styles.row}>
                         <View style={styles.section}>
                             <Paragraph style={[styles.paragraph, styles.caption]}>202</Paragraph>

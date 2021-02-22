@@ -1,9 +1,8 @@
 import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 // import { StackNavigator } from './stack';
-import { TestingView, Duration, Settings } from 'ui/screens';
-import { AppDrawerContent } from '@components';
-import { FAB } from '@components';
+import { TestingView, Duration, Settings } from '@screens';
+import { FAB, AppDrawerContent } from '@components';
 
 const Drawer = createDrawerNavigator();
 
