@@ -18,6 +18,7 @@
         "baseUrl": "./src",
         "paths": {
             "@api": ["api/index"],
+            "@assets": ["assets/index"],
             "@components": ["ui/components/index"],
             "@constants": ["constants/index"],
             "@hooks": ["hooks/index"],
