@@ -1,7 +1,7 @@
 import React from 'react';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { SafeAreaView, StyleSheet, ScrollView, View, Text, StatusBar } from 'react-native';
-import { TestingButtons } from '@components';
+import { TestingButtons } from 'ui/components';
 import { useNokeService, useEventChannels } from '@hooks';
 
 function TestingView() {
@@ -18,7 +18,7 @@ function TestingView() {
                     style={styles.scrollView}>
                     {global.HermesInternal == null ? null : (
                         <View style={styles.engine}>
-                            <Text style={{ color: "red", backgroundColor: "black" }}>Engine: Hermes</Text>
+                            <Text style={{ color: 'red', backgroundColor: 'black' }}>Engine: Hermes</Text>
                         </View>
                     )}
                     <View style={styles.sectionContainer}>

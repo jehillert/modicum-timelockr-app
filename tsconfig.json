@@ -18,7 +18,7 @@
         "baseUrl": "./src",
         "paths": {
             "@api": ["api/index"],
-            "@components": ["components/index"],
+            "@components": ["ui/components/index"],
             "@constants": ["constants/index"],
             "@hooks": ["hooks/index"],
             "@noke-api": ["noke-api/noke-api"],
@@ -29,7 +29,7 @@
             "@noke": ["noke/noke"],
             "@reducers": ["redux"],
             "@root-reducer": ["app/root-reducer"],
-            "@screens": ["screens/index"],
+            "@screens": ["ui/screens/index"],
             "@selectors": ["app/selectors"],
             "@store": ["app/store"],
             "@utilities": ["utilities/index"],

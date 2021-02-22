@@ -57,7 +57,6 @@ export function* listenToServiceChannel() {
     while (true) {
         try {
             const { eventName, data } = yield take(serviceChannel);
-            console.log(`%ceventName: ${eventName}`, 'color: darkred; background-color: gold');
             if (eventName === nokeServiceEvents.onServiceConnected) {
                 yield put(startServiceSuccess());
             } else if (eventName === nokeServiceEvents.onServiceDisconnected) {

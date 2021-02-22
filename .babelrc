@@ -1,5 +1,10 @@
 {
     "presets": ["module:metro-react-native-babel-preset"],
+    "env": {
+        "production": {
+          "plugins": ["react-native-paper/babel"]
+        }
+    },
     "plugins": [
         [
             "babel-plugin-styled-components"
@@ -10,7 +15,7 @@
                 "root": ["./src"],
                 "extensions": [".js", ".ios.js", ".android.js"],
                 "alias": {
-                    "@components": "./src/components/index",
+                    "@components": "./src/ui/components/index",
                     "@constants": "./src/constants",
                     "@env": "@env",
                     "@hooks": "./src/hooks",
@@ -21,7 +26,7 @@
                     "@noke": "./src/noke/noke",
                     "@reducers": "./src/redux",
                     "@root-reducer": "./src/app/root-reducer",
-                    "@screens": "./src/screens",
+                    "@screens": "./src/ui/screens",
                     "@selectors": "./src/app/selectors",
                     "@src": "./src",
                     "@store": "./src/app/store",

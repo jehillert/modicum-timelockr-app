@@ -18,8 +18,8 @@ const fetchLockCommand = (apiActionType, apiCall) =>
         return commands;
     });
 
-export const fetchUnlock = fetchLockCommand('unlock/requestStatus', requestUnlock)
-export const fetchUnshackle = fetchLockCommand('unshackle/requestStatus', requestUnshackle)
+export const fetchUnlock = fetchLockCommand('unlock/requestStatus', requestUnlock);
+export const fetchUnshackle = fetchLockCommand('unshackle/requestStatus', requestUnshackle);
 
 const coreApiSlice = createSlice({
     name: 'coreApi',
