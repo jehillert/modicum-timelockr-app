@@ -1,7 +1,7 @@
 // TODO: add isListening action
 // TODO: explore BLE "beacon" to avoid having to open app and/or turn on bluetooth
 import { createSlice } from '@reduxjs/toolkit';
-◆
+
 const initialState = {
     bluetoothStatusCode: '',
     serviceStatus: 'disconnected',

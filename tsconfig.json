@@ -22,6 +22,7 @@
             "@components": ["ui/components/index"],
             "@constants": ["constants/index"],
             "@hooks": ["hooks/index"],
+            "@navigation": ["ui/navigation/index"],
             "@noke-api": ["noke/noke-api/noke-api"],
             "@noke-sagas": ["noke/noke-sagas/noke-sagas"],
             "@noke-channel-sagas": ["noke/noke-sagas/noke-channel-sagas"],

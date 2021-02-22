@@ -21,6 +21,7 @@
                     "@constants": "./src/constants",
                     "@env": "@env",
                     "@hooks": "./src/hooks",
+                    "@navigation": "./src/ui/navigation/index",
                     "@noke-api": "./src/noke/noke-api/index",
                     "@noke-channel-sagas": "./src/noke/noke-sagas/noke-channel-sagas",
                     "@noke-sagas": "./src/noke/noke-sagas",
