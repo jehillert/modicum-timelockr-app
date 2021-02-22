@@ -6,6 +6,18 @@ import { NokeAndroid } from '@noke';
 import { requestLocPermissionAsync } from '@utilities';
 import { nokeServiceMessages as nsm } from '@constants';
 import {
+    call,
+    put,
+    select,
+    take,
+    takeEvery,
+} from 'redux-saga/effects';
+import {
+    getActiveMac,
+    getActiveName,
+    getServiceConnected,
+} from '@selectors';
+import {
     addDevice,
     addDeviceFailure,
     addDeviceSuccess,
@@ -30,18 +42,7 @@ import {
     stopScanningSuccess,
     stopService,
 } from '@noke-slices';
-import {
-    call,
-    put,
-    select,
-    take,
-    takeEvery,
-} from 'redux-saga/effects';
-import {
-    getActiveMac,
-    getActiveName,
-    getServiceConnected,
-} from '@selectors';
+
 
 export function* serviceSaga() {
     while (true) {
