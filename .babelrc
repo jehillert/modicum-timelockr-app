@@ -19,10 +19,10 @@
                     "@constants": "./src/constants",
                     "@env": "@env",
                     "@hooks": "./src/hooks",
-                    "@noke-api": "./src/noke-api/index",
-                    "@noke-channel-sagas": "./src/noke-sagas/noke-channel-sagas",
-                    "@noke-sagas": "./src/noke-sagas",
-                    "@noke-slices": "./src/noke-slices",
+                    "@noke-api": "./src/noke/noke-api/index",
+                    "@noke-channel-sagas": "./src/noke/noke-sagas/noke-channel-sagas",
+                    "@noke-sagas": "./src/noke/noke-sagas",
+                    "@noke-slices": "./src/noke/noke-slices",
                     "@noke": "./src/noke/noke",
                     "@reducers": "./src/redux",
                     "@root-reducer": "./src/app/root-reducer",
@@ -30,7 +30,7 @@
                     "@selectors": "./src/app/selectors",
                     "@src": "./src",
                     "@store": "./src/app/store",
-                    "@utilities": "./src/utilities"
+                    "@utilities": "./src/util"
                 }
             }
         ],

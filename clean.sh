@@ -8,6 +8,9 @@ rm -rf  $TEMPDIR/haste-*
 rm -rf  $TEMPDIR/metro-*
 rm -rf  $TEMPDIR/haste-map-react-native-packager-*
 
+echo "Clean Android files"
+cd android && ./gradlew clean && cd..
+
 echo "Clean iOS simulator files"
 rm -rf ~/Library/Developer/Xcode/DerivedData/MemberServices-*
 
