@@ -1,3 +1,4 @@
+// "babel-preset-react-native has been replaced by metro-react-native-babel-preset"
 {
     "presets": ["module:metro-react-native-babel-preset"],
     "env": {
@@ -15,6 +16,7 @@
                 "root": ["./src"],
                 "extensions": [".js", ".ios.js", ".android.js"],
                 "alias": {
+                    "@assets": "./assets",
                     "@components": "./src/ui/components/index",
                     "@constants": "./src/constants",
                     "@env": "@env",
