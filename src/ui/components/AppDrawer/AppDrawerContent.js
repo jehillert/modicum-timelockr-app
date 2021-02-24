@@ -1,121 +1,88 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
-// import color from 'color';
+import styled from 'styled-components';
 import { DrawerItem, DrawerContentScrollView } from '@react-navigation/drawer';
-import {
-    // useTheme,
-    Avatar,
-    Title,
-    Caption,
-    Paragraph,
-    Drawer,
-    Text,
-    TouchableRipple,
-    Switch,
-} from 'react-native-paper';
-// import { MaterialCommunityIcons } from 'react-native-vector-icons';
+import { Drawer } from 'react-native-paper';
+import * as RootNavigation from '@navigation';
+// import { FlaskSvgIcon, GearSvgIcon, PadlockSvgIcon } from '@assets';
+// import { FlaskSvgIcon } from '../../../../assets/flask.png';
+
+const S = {};
+
+S.DrawerTop = styled.View`
+    height: 40px;
+    background: black;
+`;
+
+S.DrawerContentScrollView = styled(DrawerContentScrollView)`
+    background: #012c36;
+`;
+
+S.DrawerContainer = styled.View`
+    flex: 1;
+`;
+
+S.TitleView = styled.View`
+    padding-left: 20px;
+    margin-top: 20px;
+`;
+
+S.Title = styled.Text`
+    font-weight: bold;
+    font-size: 24px;
+    color: #65eab9;
+`;
+
+S.DrawerContentContainer = styled.View`
+`;
+
+S.DrawerSection = styled(Drawer.Section)`
+
+`;
+
+S.DrawerItem = styled(DrawerItem)`
+    margin-left: 30px;
+`;
 
 function AppDrawerContent(props) {
     return (
-        <DrawerContentScrollView {...props}>
-            <View style={styles.drawerContent}>
-                <View style={styles.userInfoSection}>
-                    <Title style={styles.title}>TimeLockr</Title>
-                    <View style={styles.row}>
-                        <View style={styles.section}>
-                            <Paragraph style={[styles.paragraph, styles.caption]}>202</Paragraph>
-                            <Caption style={styles.caption}>Following</Caption>
-                        </View>
-                        <View style={styles.section}>
-                            <Paragraph style={[styles.paragraph, styles.caption]}>159</Paragraph>
-                            <Caption style={styles.caption}>Followers</Caption>
-                        </View>
-                    </View>
-                </View>
-                <Drawer.Section style={styles.drawerSection}>
-                    <DrawerItem
-                        // icon={({ color, size }) => (
-                        //     <MaterialCommunityIcons name="account-outline" color={color} size={size} />
-                        // )}
-                        label="Profile"
-                        onPress={() => {}}
-                    />
-                    <DrawerItem
-                        // icon={({ color, size }) => (
-                        //     <MaterialCommunityIcons name="tune" color={color} size={size} />
-                        // )}
-                        label="Preferences"
-                        onPress={() => {}}
-                    />
-                    <DrawerItem
-                        // icon={({ color, size }) => (
-                        //     <MaterialCommunityIcons name="bookmark-outline" color={color} size={size} />
-                        // )}
-                        label="Bookmarks"
-                        onPress={() => {}}
-                    />
-                </Drawer.Section>
-                <Drawer.Section title="Preferences">
-                    <TouchableRipple onPress={() => {}}>
-                        <View style={styles.preference}>
-                            <Text>Dark Theme</Text>
-                            <View pointerEvents="none">
-                                <Switch value={false} />
-                            </View>
-                        </View>
-                    </TouchableRipple>
-                    <TouchableRipple onPress={() => {}}>
-                        <View style={styles.preference}>
-                            <Text>RTL</Text>
-                            <View pointerEvents="none">
-                                <Switch value={false} />
-                            </View>
-                        </View>
-                    </TouchableRipple>
-                </Drawer.Section>
-            </View>
-        </DrawerContentScrollView>
+        <S.DrawerContentScrollView {...props}>
+            <S.DrawerContainer>
+                <S.DrawerTop />
+                <S.TitleView>
+                    <S.Title>TimeLockr</S.Title>
+                </S.TitleView>
+                <S.DrawerContentContainer>
+                    <S.DrawerSection>
+                        <S.DrawerItem
+                            // icon={() => FlaskSvgIcon}
+                            label="Testing View"
+                            onPress={() => RootNavigation.navigate('TestingView')}
+                            activeTintColor="#65eab9"
+                            inactiveTintColor="papayawhip"
+                            activeBackgroundColor="darkblue"
+                            // inactiveBackgroundColor="green"
+                        />
+                        <S.DrawerItem
+                            label="Set Lockout"
+                            onPress={() => RootNavigation.navigate('Duration')}
+                            activeTintColor="#65eab9"
+                            inactiveTintColor="papayawhip"
+                            activeBackgroundColor="darkblue"
+                            // inactiveBackgroundColor="green"
+                        />
+                        <S.DrawerItem
+                            label="Settings"
+                            onPress={() => RootNavigation.navigate('Settings')}
+                            activeTintColor="#65eab9"
+                            inactiveTintColor="papayawhip"
+                            activeBackgroundColor="darkblue"
+                            // inactiveBackgroundColor="green"
+                        />
+                    </S.DrawerSection>
+                </S.DrawerContentContainer>
+            </S.DrawerContainer>
+        </S.DrawerContentScrollView>
     );
 }
-
-const styles = StyleSheet.create({
-    drawerContent: {
-        flex: 1,
-    },
-    userInfoSection: {
-        paddingLeft: 20,
-    },
-    title: {
-        marginTop: 20,
-        fontWeight: 'bold',
-    },
-    caption: {
-        fontSize: 14,
-        lineHeight: 14,
-    },
-    row: {
-        marginTop: 20,
-        flexDirection: 'row',
-        alignItems: 'center',
-    },
-    section: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        marginRight: 15,
-    },
-    paragraph: {
-        fontWeight: 'bold',
-        marginRight: 3,
-    },
-    drawerSection: {
-        marginTop: 15,
-    },
-    preference: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        paddingVertical: 12,
-        paddingHorizontal: 16,
-    },
-});
 
 export default AppDrawerContent;

@@ -1,22 +1,19 @@
 import * as React from 'react';
 import { StyleSheet } from 'react-native';
 import { Portal, FAB as ReactNativePaperFab } from 'react-native-paper';
-// import { fabSvgIcon } from '@assets';
 import * as RootNavigation from '@navigation';
 
 function FAB() {
     return (
         <Portal>
-
-        <ReactNativePaperFab
-            visible={true}
-            style={styles.fab}
-            large
-            icon="plus"
-            onPress={() => RootNavigation.toggleDrawer()}
-        />
+            <ReactNativePaperFab
+                visible={true}
+                style={styles.fab}
+                large
+                icon="plus"
+                onPress={() => RootNavigation.toggleDrawer()}
+            />
         </Portal>
-
     );
 }
 

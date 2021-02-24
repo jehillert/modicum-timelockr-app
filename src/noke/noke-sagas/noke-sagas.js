@@ -159,7 +159,7 @@ export function* connectAndUnshackleTask() {
         yield take(deviceEventActions.onNokeDiscovered);
         yield put(connectDevice());
         yield take(deviceEventActions.onNokeConnected);
-        yield put(fetchUnshackle(payload));
         yield put(stopScanning());
+        yield put(fetchUnshackle(payload));
     }
 }

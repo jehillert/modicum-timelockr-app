@@ -1,6 +1,5 @@
 import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-// import { StackNavigator } from './stack';
 import { TestingView, Duration, Settings } from '@screens';
 import { FAB, AppDrawerContent } from '@components';
 
@@ -10,8 +9,10 @@ function AppDrawer() {
     return (
         <>
             <FAB />
-            <Drawer.Navigator initialRouteName="TestingView" drawerContent={() => <AppDrawerContent />}>
-                {/* <Drawer.Screen name="Home" component={StackNavigator} /> */}
+            <Drawer.Navigator
+                initialRouteName="TestingView"
+                backBehavior="initialRoute"
+                drawerContent={() => <AppDrawerContent />}>
                 <Drawer.Screen name="TestingView" component={TestingView} />
                 <Drawer.Screen name="Duration" component={Duration} />
                 <Drawer.Screen name="Settings" component={Settings} />

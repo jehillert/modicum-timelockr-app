@@ -7,6 +7,10 @@ function navigate(name, params) {
     navigationRef.current?.navigate(name, params);
 }
 
+function jumpTo(screenName) {
+    navigationRef.current?.jumpTo(screenName);
+}
+
 function closeDrawer() {
     navigationRef.current?.dispatch(DrawerActions.closeDrawer());
 }
@@ -19,4 +23,4 @@ function toggleDrawer() {
     navigationRef.current?.dispatch(DrawerActions.toggleDrawer());
 }
 
-export { navigationRef, navigate, closeDrawer, openDrawer, toggleDrawer };
+export { navigationRef, navigate, closeDrawer, jumpTo, openDrawer, toggleDrawer };
