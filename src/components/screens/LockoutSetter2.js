@@ -46,7 +46,7 @@ S.MinutesText = styled(S.TimeIncrementText)``;
 S.HoursText = styled(S.TimeIncrementText)``;
 S.DaysText = styled(S.TimeIncrementText)``;
 
-function Duration({ navigation }) {
+function LockoutSetter2({ navigation }) {
     const [minutes, setMinutes] = useState(null);
     const [hours, setHours] = useState(null);
     const [days, setDays] = useState(null);
@@ -93,4 +93,4 @@ function Duration({ navigation }) {
     );
 }
 
-export default Duration;
+export default LockoutSetter2;

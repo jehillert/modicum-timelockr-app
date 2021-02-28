@@ -3,7 +3,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { requestUnlock, requestUnshackle } from '@noke-api';
 import { NokeAndroid } from '@noke';
-import { getSession } from '@selectors';
+import { getSession } from 'redux/selectors';
 
 const fetchLockCommand = (apiActionType, apiCall) =>
     createAsyncThunk(apiActionType, async (payload, { getState }) => {

@@ -11,7 +11,7 @@ S.SettingsHeader = styled.View`
     height: 100px;
 `;
 
-function Settings({ navigation }) {
+function SettingsScreen({ navigation }) {
     return (
         <S.SafeAreaView>
             <S.SettingsHeader />
@@ -20,4 +20,4 @@ function Settings({ navigation }) {
     );
 }
 
-export default Settings;
+export default SettingsScreen;

@@ -2,7 +2,7 @@
 
 # Bold High Intensity
 BIBlack='\033[1;90m'      # Black
-BIYellow='\033[1;91m'        # Red
+BIRed='\033[1;91m'        # Red
 BIGreen='\033[1;92m'      # Green
 BIYellow='\033[1;93m'     # Yellow
 BIBlue='\033[1;94m'       # Blue

@@ -17,22 +17,22 @@
                 "extensions": [".js", ".ios.js", ".android.js"],
                 "alias": {
                     "@assets": "./assets",
-                    "@components": "./src/ui/components/index",
+                    "@components": "./src/components/index",
                     "@constants": "./src/constants",
                     "@env": "@env",
                     "@hooks": "./src/hooks",
-                    "@navigation": "./src/ui/navigation/index",
+                    "@navigation": "./src/navigation/index",
                     "@noke-api": "./src/noke/noke-api/index",
                     "@noke-channel-sagas": "./src/noke/noke-sagas/noke-channel-sagas",
                     "@noke-sagas": "./src/noke/noke-sagas",
                     "@noke-slices": "./src/noke/noke-slices",
                     "@noke": "./src/noke/noke",
                     "@reducers": "./src/redux",
-                    "@root-reducer": "./src/app/root-reducer",
-                    "@screens": "./src/ui/screens",
-                    "@selectors": "./src/app/selectors",
+                    "@root-reducer": "./src/redux/root-reducer",
+                    "@screens": "./src/screens",
+                    "@selectors": "./src/redux/selectors",
                     "@src": "./src",
-                    "@store": "./src/app/store",
+                    "@store": "./src/redux/store",
                     "@utilities": "./src/util"
                 }
             }

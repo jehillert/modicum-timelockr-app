@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { StyleSheet } from 'react-native';
 import { Portal, FAB as ReactNativePaperFab } from 'react-native-paper';
-import * as RootNavigation from '@navigation';
+import * as RootNavigation from 'components/navigation';
 
 function FAB() {
     return (

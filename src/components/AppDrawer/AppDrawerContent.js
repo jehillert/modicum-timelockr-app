@@ -2,16 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 import { DrawerItem, DrawerContentScrollView } from '@react-navigation/drawer';
 import { Drawer } from 'react-native-paper';
-import * as RootNavigation from '@navigation';
+import * as RootNavigation from 'components/navigation';
 // import { FlaskSvgIcon, GearSvgIcon, PadlockSvgIcon } from '@assets';
 // import { FlaskSvgIcon } from '../../../../assets/flask.png';
 
 const S = {};
 
-S.DrawerTop = styled.View`
-    height: 40px;
-    background: black;
-`;
+// S.DrawerTop = styled.View`
+//     height: 40px;
+//     background: black;
+// `;
 
 S.DrawerContentScrollView = styled(DrawerContentScrollView)`
     background: #012c36;
@@ -47,7 +47,7 @@ function AppDrawerContent(props) {
     return (
         <S.DrawerContentScrollView {...props}>
             <S.DrawerContainer>
-                <S.DrawerTop />
+                {/* <S.DrawerTop /> */}
                 <S.TitleView>
                     <S.Title>TimeLockr</S.Title>
                 </S.TitleView>
@@ -56,15 +56,24 @@ function AppDrawerContent(props) {
                         <S.DrawerItem
                             // icon={() => FlaskSvgIcon}
                             label="Testing View"
-                            onPress={() => RootNavigation.navigate('TestingView')}
+                            onPress={() => RootNavigation.navigate('TestingScreen')}
                             activeTintColor="#65eab9"
                             inactiveTintColor="papayawhip"
                             activeBackgroundColor="darkblue"
                             // inactiveBackgroundColor="green"
                         />
                         <S.DrawerItem
-                            label="Set Lockout"
-                            onPress={() => RootNavigation.navigate('Duration')}
+                            // icon={() => FlaskSvgIcon}
+                            label="Set Lockout (DTP)"
+                            onPress={() => RootNavigation.navigate('LockoutSetter1')}
+                            activeTintColor="#65eab9"
+                            inactiveTintColor="papayawhip"
+                            activeBackgroundColor="darkblue"
+                            // inactiveBackgroundColor="green"
+                        />
+                        <S.DrawerItem
+                            label="Set Lockout (JEH)"
+                            onPress={() => RootNavigation.navigate('LockoutSetter2')}
                             activeTintColor="#65eab9"
                             inactiveTintColor="papayawhip"
                             activeBackgroundColor="darkblue"

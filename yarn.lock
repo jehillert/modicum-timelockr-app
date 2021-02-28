@@ -6547,6 +6547,11 @@
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
   "version" "16.13.1"
 
+"react-native-date-picker@^3.2.10":
+  "integrity" "sha512-/fA+htnZcr3rBw3eaOR/DvMwGLDTg59MCiiluin5YcHBxNZQYs/uYp/l6Hf719qZXndPGcixS46YIgso4Jf4gg=="
+  "resolved" "https://registry.npmjs.org/react-native-date-picker/-/react-native-date-picker-3.2.10.tgz"
+  "version" "3.2.10"
+
 "react-native-dotenv@^2.5.3":
   "integrity" "sha512-Fibw5q6vy91aRwol7yO6U9Om+EyE7Vs4pO70AYGRkDuMkaQ4EIyYw9mmiPcKo6VFCwlpE8y1AZImxoKREFASXA=="
   "resolved" "https://registry.npmjs.org/react-native-dotenv/-/react-native-dotenv-2.5.3.tgz"

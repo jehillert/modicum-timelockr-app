@@ -2,10 +2,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
-import { SButton } from 'ui/components';
+import { SButton } from 'components';
 import { MAC_HD1 } from '@env';
 import { nokeUtils } from '@noke';
-import { getActiveMac, } from '@selectors';
+import { getActiveMac, } from 'redux/selectors';
 import {
     addDevice,
     connectDevice,

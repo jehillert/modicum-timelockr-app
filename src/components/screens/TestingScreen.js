@@ -1,10 +1,10 @@
 import React from 'react';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { SafeAreaView, StyleSheet, ScrollView, View, Text, StatusBar } from 'react-native';
-import { TestingButtons } from 'ui/components';
+import { TestingButtons } from 'components';
 import { useNokeService, useEventChannels } from '@hooks';
 
-function TestingView() {
+function TestingScreen() {
     useEventChannels();
     useNokeService();
 
@@ -47,4 +47,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default TestingView;
+export default TestingScreen;
