@@ -1,14 +1,13 @@
 import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { TestingScreen, LockoutSetter1, LockoutSetter2, SettingsScreen } from '@screens';
-import { FAB, AppDrawerContent } from 'components';
+import { AppDrawerContent } from 'components';
 
 const Drawer = createDrawerNavigator();
 
 function AppDrawer() {
     return (
         <>
-            <FAB />
             <Drawer.Navigator
                 initialRouteName="LockoutSetter1"
                 backBehavior="initialRoute"

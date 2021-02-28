@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { DrawerItem, DrawerContentScrollView } from '@react-navigation/drawer';
 import { Drawer } from 'react-native-paper';
-import * as RootNavigation from 'components/navigation';
+import * as RootNavigation from '@navigation';
 // import { FlaskSvgIcon, GearSvgIcon, PadlockSvgIcon } from '@assets';
 // import { FlaskSvgIcon } from '../../../../assets/flask.png';
 
