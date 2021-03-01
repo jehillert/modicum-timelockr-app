@@ -32,12 +32,9 @@ S.Title = styled.Text`
     color: #65eab9;
 `;
 
-S.DrawerContentContainer = styled.View`
-`;
+S.DrawerContentContainer = styled.View``;
 
-S.DrawerSection = styled(Drawer.Section)`
-
-`;
+S.DrawerSection = styled(Drawer.Section)``;
 
 S.DrawerItem = styled(DrawerItem)`
     margin-left: 30px;
@@ -81,7 +78,7 @@ function AppDrawerContent(props) {
                         />
                         <S.DrawerItem
                             label="Settings"
-                            onPress={() => RootNavigation.navigate('Settings')}
+                            onPress={() => RootNavigation.navigate('SettingsScreen')}
                             activeTintColor="#65eab9"
                             inactiveTintColor="papayawhip"
                             activeBackgroundColor="darkblue"

@@ -1,4 +1,3 @@
-export { default as AppDrawer } from './AppDrawer/AppDrawer';
 export { default as AppDrawerContent } from './AppDrawer/AppDrawerContent';
 export { default as FAB } from './Fab/FAB';
 export { default as SButton } from './SButton/SButton';
