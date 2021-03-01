@@ -3,12 +3,12 @@ import { createSlice } from '@reduxjs/toolkit';
 const settingsSlice = createSlice({
     name: 'settings',
     initialState: {
-        isDarkMode: false,
         systemColorScheme: null,
+        themeModePref: 'system',
     },
     reducers: {
-        setIsDarkMode(state, { payload: newIsDarkMode = false }) {
-            state.isDarkMode = newIsDarkMode;
+        setThemeModePref(state, { payload: themeModePref = 'system' }) {
+            state.themeModePref = themeModePref;
         },
         setSystemColorScheme(state, { payload: currentSystemColorScheme = null }) {
             state.systemColorScheme = currentSystemColorScheme;
@@ -16,6 +16,6 @@ const settingsSlice = createSlice({
     },
 });
 
-export const { setSystemColorScheme, setIsDarkMode } = settingsSlice.actions;
+export const { setThemeModePref, setSystemColorScheme } = settingsSlice.actions;
 
 export default settingsSlice.reducer;

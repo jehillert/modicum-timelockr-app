@@ -23,36 +23,36 @@ rm -rf  $TEMPDIR/haste-*
 rm -rf  $TEMPDIR/metro-*
 rm -rf  $TEMPDIR/haste-map-react-native-packager-*
 
-echo "${BIYellow}🔸 Cleaning Android files${Color_Off}"
+echo "${BIYellow}\n🔸 Cleaning Android files${Color_Off}"
 cd android && ./gradlew clean && cd ..
 echo "${BIGreen}◆ done${Color_Off}"
 
-echo "${BIYellow}🔸 Cleaning iOS simulator files${Color_Off}"
+echo "${BIYellow}\n🔸 Cleaning iOS simulator files${Color_Off}"
 rm -rf ~/Library/Developer/Xcode/DerivedData/MemberServices-*
 echo "${BIGreen}◆ done${Color_Off}"
 
-echo "${BIYellow}🔸 Removing node_modules folder${Color_Off}"
+echo "${BIYellow}\n🔸 Removing node_modules folder${Color_Off}"
 rm -rf node_modules
 echo "${BIGreen}◆ done${Color_Off}"
 
-echo "${BIYellow}🔸 Removing package-lock.json file${Color_Off}"
+echo "${BIYellow}\n🔸 Removing package-lock.json file${Color_Off}"
 rm -f package-lock.json
 echo "${BIGreen}◆ done${Color_Off}"
 
-echo "${BIYellow}🔸 Removing pods folder${Color_Off}"
+echo "${BIYellow}\n🔸 Removing pods folder${Color_Off}"
 cd ios && rm -rf pods
 echo "${BIGreen}◆ done${Color_Off}"
 
-echo "${BIYellow}🔸 Removing Podfile.lock file${Color_Off}"
+echo "${BIYellow}\n🔸 Removing Podfile.lock file${Color_Off}"
 rm -f Podfile.lock && cd ..
 echo "${BIGreen}◆ done${Color_Off}"
 
-echo "${BIYellow}🔸 Installing node modules (npm)${Color_Off}"
+echo "${BIYellow}\n🔸 Installing node modules (npm)${Color_Off}"
 # npm i
 npm install --force
 echo "${BIGreen}◆ done${Color_Off}"
 
-echo "${BIYellow}🔸 Cocoapod - Installing pods${Color_Off}"
+echo "${BIYellow}\n🔸 Cocoapod - Installing pods${Color_Off}"
 cd ios && pod install && cd ..
 
 echo "${BIGreen}◆◆◆ DONE ◆◆◆${Color_Off}"

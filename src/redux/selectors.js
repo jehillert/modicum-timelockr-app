@@ -5,8 +5,9 @@ export const getActiveName = state => state?.devices?.locks[getActiveLockId(stat
 export const getServiceStatus = state => state?.service?.serviceStatus || '';
 export const getServiceConnected = state => getServiceStatus(state) === 'connected';
 export const getSession = state => state?.devices?.locks[getActiveLockId(state)]?.session || '';
-export const activeTheme = state => {
-    const { isDarkMode, systemColorScheme } = state?.settings;
-
-    return activeTheme;
-}
+export const getSystemColorScheme = state => state?.settings?.systemColorScheme || null;
+export const getThemeModePref = state => state?.settings?.themeModePref || 'system';
+export const getActiveTheme = state => {
+    const { systemColorScheme, themeModePref } = state?.settings;
+    return themeModePref === 'system' ? systemColorScheme : themeModePref;
+};

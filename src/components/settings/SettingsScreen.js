@@ -1,8 +1,15 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components/native';
+import { useDispatch, useSelector } from 'react-redux';
+import { RadioButton } from 'react-native-paper';
 import { SafeAreaView } from '@components';
-import { setIsDarkMode } from '@slices';
+import { setThemeModePref } from '@slices';
+import {
+    LIGHT_THEME_TXT,
+    DARK_THEME_TXT,
+    THEME_SETTING_TITLE_TXT,
+    USE_SYSTEM_DEFAULT_THEME_TXT,
+} from './constants';
 
 const S = {};
 
@@ -11,7 +18,8 @@ S.SettingsHeader = styled.View`
 `;
 
 S.SettingsContainer = styled.View`
-    padding: 8px 0px 10px 10px;
+    padding: 20px 10px;
+    padding-left: 15px;
     background-color: gold;
 `;
 
@@ -21,58 +29,54 @@ S.SettingContainer = styled.View`
     justify-content: space-between;
 `;
 
-S.SettingTitle = styled.Text`
+S.SettingText = styled.Text``;
+
+S.SettingTitleText = styled(S.SettingText)`
     font-size: 20px;
     font-weight: bold;
-    padding: 8px 0px;
 `;
 
-S.SettingText = styled.Text`
+S.SettingBodyText = styled(S.SettingText)`
     font-size: 18px;
+    padding-top: 8px;
+    padding-left: 10px;
 `;
-S.DarkThemeSwitch = styled.Switch``;
-S.LightThemeSwitch = styled.Switch``;
-S.SystemDefaultThemeSwitch = styled.Switch``;
+
+S.DarkThemeRadioButton = styled(RadioButton)``;
+S.LightThemeRadioButton = styled(RadioButton)``;
+S.SystemDefaultThemeRadioButton = styled(RadioButton)``;
 
 function SettingsScreen() {
     const dispatch = useDispatch();
-    const isDarkMode = useSelector(state => state?.settings.isDarkMode);
-
-    const toggleSwitch = () => dispatch(setIsDarkMode(!isDarkMode));
+    const themeModePref = useSelector(state => state?.settings?.themeModePref);
 
     return (
         <SafeAreaView>
             <S.SettingsHeader />
             <S.SettingsContainer>
-                <S.SettingTitle>Set Color Theme</S.SettingTitle>
+                <S.SettingTitleText>{THEME_SETTING_TITLE_TXT}</S.SettingTitleText>
                 <S.SettingContainer>
-                    <S.SettingText>Light Theme</S.SettingText>
-                    <S.LightThemeSwitch
-                        trackColor={{ false: '#767577', true: '#81b0ff' }}
-                        thumbColor={isDarkMode ? '#f5dd4b' : '#f4f3f4'}
-                        ios_backgroundColor="#3e3e3e"
-                        onValueChange={toggleSwitch}
-                        value={isDarkMode}
+                    <S.SettingBodyText>{LIGHT_THEME_TXT}</S.SettingBodyText>
+                    <S.LightThemeRadioButton
+                        value="light"
+                        status={themeModePref === 'light' ? 'checked' : 'unchecked'}
+                        onPress={() => dispatch(setThemeModePref('light'))}
                     />
                 </S.SettingContainer>
                 <S.SettingContainer>
-                    <S.SettingText>Dark Theme</S.SettingText>
-                    <S.DarkThemeSwitch
-                        trackColor={{ false: '#767577', true: '#81b0ff' }}
-                        thumbColor={isDarkMode ? '#f5dd4b' : '#f4f3f4'}
-                        ios_backgroundColor="#3e3e3e"
-                        onValueChange={toggleSwitch}
-                        value={isDarkMode}
+                    <S.SettingBodyText>{DARK_THEME_TXT}</S.SettingBodyText>
+                    <S.DarkThemeRadioButton
+                        value="dark"
+                        status={themeModePref === 'dark' ? 'checked' : 'unchecked'}
+                        onPress={() => dispatch(setThemeModePref('dark'))}
                     />
                 </S.SettingContainer>
                 <S.SettingContainer>
-                    <S.SettingText>Use System Default</S.SettingText>
-                    <S.SystemDefaultThemeSwitch
-                        trackColor={{ false: '#767577', true: '#81b0ff' }}
-                        thumbColor={isDarkMode ? '#f5dd4b' : '#f4f3f4'}
-                        ios_backgroundColor="#3e3e3e"
-                        onValueChange={toggleSwitch}
-                        value={isDarkMode}
+                    <S.SettingBodyText>{USE_SYSTEM_DEFAULT_THEME_TXT}</S.SettingBodyText>
+                    <S.SystemDefaultThemeRadioButton
+                        value="system"
+                        status={themeModePref === 'system' ? 'checked' : 'unchecked'}
+                        onPress={() => dispatch(setThemeModePref('system'))}
                     />
                 </S.SettingContainer>
             </S.SettingsContainer>
