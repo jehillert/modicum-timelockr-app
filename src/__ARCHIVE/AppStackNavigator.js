@@ -1,3 +1,11 @@
+// IMPLEMENT
+import { AppStackNavigator } from '@navigation';
+<AppStackNavigator />
+
+// REFERENCE
+export { default as AppStackNavigator } from './AppStackNavigator';
+
+// DEFINE
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { TestingScreen, LockoutSetter1, LockoutSetter2, SettingsScreen } from '@screens';

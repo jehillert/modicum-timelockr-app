@@ -1,29 +1,23 @@
 import * as React from 'react';
-import { StyleSheet } from 'react-native';
+import styled from 'styled-components/native';
 import { Portal, FAB as ReactNativePaperFab } from 'react-native-paper';
 import * as RootNavigation from '@navigation';
+
+const S = {};
+
+S.FAB = styled(ReactNativePaperFab)`
+    position: absolute;
+    margin: 16px;
+    right: 25px;
+    bottom: 25px;
+`;
 
 function FAB() {
     return (
         <Portal>
-            <ReactNativePaperFab
-                visible={true}
-                style={styles.fab}
-                large
-                icon="plus"
-                onPress={() => RootNavigation.toggleDrawer()}
-            />
+            <S.FAB visible={true} large icon="plus" onPress={() => RootNavigation.toggleDrawer()} />
         </Portal>
     );
 }
-
-const styles = StyleSheet.create({
-    fab: {
-        position: 'absolute',
-        margin: 16,
-        right: 25,
-        bottom: 25,
-    },
-});
 
 export default FAB;

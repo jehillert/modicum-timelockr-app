@@ -1,7 +1,7 @@
 import React from 'react';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
-import { SafeAreaView, StyleSheet, ScrollView, View, Text, StatusBar } from 'react-native';
-import { TestingButtons } from 'components';
+import { StyleSheet, ScrollView, View, Text } from 'react-native';
+import { SafeAreaView, TestingButtons } from '@components';
 import { useNokeService, useEventChannels } from '@hooks';
 
 function TestingScreen() {
@@ -10,7 +10,6 @@ function TestingScreen() {
 
     return (
         <>
-            <StatusBar barStyle="dark-content" />
             <SafeAreaView>
                 <ScrollView
                     nestedScrollEnabled={true}

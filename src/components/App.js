@@ -6,19 +6,22 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { persistor, store } from 'redux/store';
 import { PersistGate } from 'redux-persist/integration/react';
 import { AppNavigation } from '@navigation';
+import { AppearanceProvider } from 'react-native-appearance';
 
-const App = () => {
+function App() {
     return (
         <Provider store={store}>
             <PersistGate loading={null} persistor={persistor}>
-                <PaperProvider>
-                    <SafeAreaProvider>
-                        <AppNavigation />
-                    </SafeAreaProvider>
-                </PaperProvider>
+                <AppearanceProvider>
+                    <PaperProvider>
+                        <SafeAreaProvider>
+                            <AppNavigation />
+                        </SafeAreaProvider>
+                    </PaperProvider>
+                </AppearanceProvider>
             </PersistGate>
         </Provider>
     );
-};
+}
 
 export default App;

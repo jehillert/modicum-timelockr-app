@@ -1,33 +1,15 @@
 import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { TestingScreen, LockoutSetter1, LockoutSetter2, SettingsScreen } from '@screens';
-import { AppDrawerContent } from 'components';
+import { AppDrawerContent } from '@components';
 
 const Drawer = createDrawerNavigator();
 
-function AppDrawerNavigator() {
-    // const getDrawerScreenHeader = ({ scene }) => {
-    //     const { options } = scene.descriptor;
-    //     const title =
-    //         options.headerTitle !== undefined
-    //             ? options.headerTitle
-    //             : options.title !== undefined
-    //             ? options.title
-    //             : scene.route.name;
-
-    //     return (
-    //         <MyHeader
-    //             title={title}
-    //             leftButton={<DrawerToggleButton onPress={scene.descriptor.navigation.toggleDrawer} />}
-    //             style={options.headerStyle}
-    //         />
-    //     );
-    // };
-
+function AppDrawerNavigator({ initialRouteName }) {
     return (
         <>
             <Drawer.Navigator
-                initialRouteName="LockoutSetter1"
+                initialRouteName={initialRouteName}
                 backBehavior="initialRoute"
                 swipeEnabled="false"
                 drawerContent={() => <AppDrawerContent />}>

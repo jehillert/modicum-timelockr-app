@@ -17,7 +17,7 @@
                 "extensions": [".js", ".ios.js", ".android.js"],
                 "alias": {
                     "@assets": "./assets",
-                    "@components": "./src/components/index",
+                    "@components": "./src/components/components-index",
                     "@constants": "./src/constants",
                     "@env": "@env",
                     "@hooks": "./src/hooks",
@@ -28,11 +28,13 @@
                     "@noke-slices": "./src/noke/noke-slices",
                     "@noke": "./src/noke/noke",
                     "@reducers": "./src/redux",
+                    "@slices": "./src/components/slices-index",
                     "@root-reducer": "./src/redux/root-reducer",
-                    "@screens": "./src/components/screens",
+                    "@screens": "./src/components/screens-index",
                     "@selectors": "./src/redux/selectors",
                     "@src": "./src",
                     "@store": "./src/redux/store",
+                    "@themes": "./src/themes",
                     "@utilities": "./src/util"
                 }
             }

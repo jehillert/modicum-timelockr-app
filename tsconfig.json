@@ -19,7 +19,8 @@
         "paths": {
             "@api": ["api/index"],
             "@assets": ["assets/index"],
-            "@components": ["components/index"],
+            "@components": ["components/components-index"],
+            "@components/*": ["components/*"],
             "@constants": ["constants/index"],
             "@hooks": ["hooks/index"],
             "@navigation": ["components/navigation/index"],
@@ -31,9 +32,11 @@
             "@noke": ["noke/noke"],
             "@reducers": ["redux"],
             "@root-reducer": ["redux/root-reducer"],
-            "@screens": ["components/screens/index"],
+            "@slices": ["components/slices-index"],
+            "@screens": ["components/screens-index"],
             "@selectors": ["redux/selectors"],
             "@store": ["redux/store"],
+            "@themes": ["themes/index"],
             "@utilities": ["util/index"],
         }
     },

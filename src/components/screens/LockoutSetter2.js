@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import styled from 'styled-components/native';
+import { SafeAreaView } from '@components';
 
 const S = {};
 
-S.SafeAreaView = styled.SafeAreaView`
-    flex: 1;
-`;
 S.Header = styled.View`
     height: 100px;
 `;
+
 S.ColumnContainer = styled.View`
     flex: 1;
     flex-direction: row;
@@ -52,7 +51,7 @@ function LockoutSetter2({ navigation }) {
     const [days, setDays] = useState(null);
 
     return (
-        <S.SafeAreaView>
+        <SafeAreaView>
             <S.Header />
             <S.DurationContainer>
                 <S.DurationColumn>
@@ -89,7 +88,7 @@ function LockoutSetter2({ navigation }) {
                     <S.MinutesText>Minutes</S.MinutesText>
                 </S.DurationColumn>
             </S.DurationContainer>
-        </S.SafeAreaView>
+        </SafeAreaView>
     );
 }
 

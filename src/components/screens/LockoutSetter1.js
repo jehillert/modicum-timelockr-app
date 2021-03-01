@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import DatePicker from 'react-native-date-picker';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaView } from '@components';
 
 function LockoutSetter1(props) {
     const [date, setDate] = useState(new Date());
