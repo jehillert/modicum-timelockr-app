@@ -3,6 +3,7 @@ import { NativeEventEmitter } from 'react-native';
 import { eventChannel, channel } from 'redux-saga';
 import { nokeServiceEvents, nokeServiceMessages as nsm } from '@constants';
 import {
+    NokeAndroid,
     deviceEventActions,
     setServiceError,
     startEventChannels,
@@ -10,9 +11,9 @@ import {
     startServiceSuccess,
     stopServiceSuccess,
     updateBluetoothStatus,
-} from '@noke-slices';
+} from '@noke';
 import { call, cancelled, put, take } from 'redux-saga/effects';
-import NokeAndroid from '@noke';
+
 
 // HELPERS
 const cleanupSubs = subscrArray => {
@@ -49,8 +50,7 @@ function createDeviceEventChannel() {
     });
 }
 
-// SERVICE CHANNEL
-export function* listenToServiceChannel() {
+function* listenToServiceChannel() {
     yield take(startEventChannels);
     const serviceChannel = yield call(createServiceEventChannel);
 
@@ -76,8 +76,8 @@ export function* listenToServiceChannel() {
     }
 }
 
-// DEVICE CHANNEL
-export function* listenToDeviceChannel() {
+// SUBSCRIBE CHANNELS
+function* listenToDeviceChannel() {
     yield take(startEventChannels);
     const deviceChannel = yield call(createDeviceEventChannel);
     while (true) {
@@ -94,3 +94,5 @@ export function* listenToDeviceChannel() {
         }
     }
 }
+
+export { listenToServiceChannel, listenToDeviceChannel };

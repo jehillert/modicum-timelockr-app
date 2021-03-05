@@ -7,7 +7,7 @@ export const getServiceConnected = state => getServiceStatus(state) === 'connect
 export const getSession = state => state?.devices?.locks[getActiveLockId(state)]?.session || '';
 export const getSystemColorScheme = state => state?.settings?.systemColorScheme || null;
 export const getThemeModePref = state => state?.settings?.themeModePref || 'system';
-export const getActiveTheme = state => {
+export const getThemeMode = state => {
     const { systemColorScheme, themeModePref } = state?.settings;
     return themeModePref === 'system' ? systemColorScheme : themeModePref;
 };

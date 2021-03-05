@@ -5,28 +5,23 @@ import { useSelector } from 'react-redux';
 import { ThemeProvider } from 'styled-components/native';
 import { AppDrawerNavigator, navigationRef } from '@navigation';
 import { FAB } from '@components';
-import { lightTheme, darkTheme } from '@themes';
 import { useSystemColorScheme } from '@hooks';
-import { getActiveTheme } from '@selectors';
-import {
-    NavigationContainer,
-    DefaultTheme as RNDefaultTheme,
-    DarkTheme as RNDarkTheme,
-} from '@react-navigation/native';
+import { getThemeMode } from '@selectors';
+import { NavigationContainer } from '@react-navigation/native';
+import theme from '@theme';
 
 function AppNavigation() {
     useSystemColorScheme();
+    console.log(JSON.stringify(theme, undefined, 2));
 
-    const initialRouteName = 'SettingsScreen';
-    const isDarkTheme = useSelector(getActiveTheme) === 'dark';
-    const navigationTheme = isDarkTheme ? RNDarkTheme : RNDefaultTheme;
-    const theme = isDarkTheme ? darkTheme : lightTheme;
+    const themeMode = useSelector(getThemeMode);
+    const activeTheme = theme[themeMode];
 
     return (
-        <NavigationContainer theme={navigationTheme} ref={navigationRef}>
-            <ThemeProvider theme={theme}>
+        <NavigationContainer theme={activeTheme} ref={navigationRef}>
+            <ThemeProvider theme={activeTheme}>
                 <FAB />
-                <AppDrawerNavigator initialRouteName={initialRouteName} />
+                <AppDrawerNavigator />
             </ThemeProvider>
         </NavigationContainer>
     );

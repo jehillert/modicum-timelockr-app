@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { CORE_API_SANDBOX_HOST, MOBILE_KEY, PRIVATE_KEY } from '@env';
 
-export const PATH = {
+const PATH = {
     ACTIVITY: '/activity/',
     KEYS: '/keys/',
     LOCK: '/lock/',
@@ -28,7 +28,7 @@ const instance = axios.create({
  * or all locks associated with a company.
  *
  **/
-export const fetchLocks = payload => {
+const fetchLocks = payload => {
     return instance
         .post(PATH.LOCK, payload)
         .then(response => console.log(JSON.stringify(response.payload, undefined, 2)))
@@ -45,7 +45,7 @@ export const fetchLocks = payload => {
  * optionally take a tracking key to associate to lock activity.
  *
  **/
-export const requestUnlock = payload => {
+const requestUnlock = payload => {
     return instance
         .post(PATH.UNLOCK, payload)
         .then(res => res)
@@ -61,7 +61,7 @@ export const requestUnlock = payload => {
  * Used to remove the shackle from an HD padlock. Operates identically to the /unlock/ endpoint.
  *
  **/
-export const requestUnshackle = payload => {
+const requestUnshackle = payload => {
     return instance
         .post(PATH.UNSHACKLE, payload)
         .then(res => res)
@@ -86,7 +86,7 @@ export const requestUnshackle = payload => {
  * the lock without an active network connection.
  *
  **/
-export const fetchOfflineKeys = payload => {
+const fetchOfflineKeys = payload => {
     return instance
         .post(PATH.KEYS, payload)
         .then(res => res)
@@ -106,7 +106,7 @@ export const fetchOfflineKeys = payload => {
  * NOTE: this route uses a mobile api key rather than the server api key.
  *
  **/
-export const postActivityLogs = payload => {
+const postActivityLogs = payload => {
     const config = {
         headers: {
             Authorization: `Bearer ${MOBILE_KEY}`,
@@ -132,7 +132,7 @@ export const postActivityLogs = payload => {
  * NOTE: this route uses a mobile api key rather than the server api key.
  *
  **/
-export const fetchActivityLogs = payload => {
+const fetchActivityLogs = payload => {
     const config = {
         headers: {
             Authorization: `Bearer ${MOBILE_KEY}`,
@@ -144,3 +144,14 @@ export const fetchActivityLogs = payload => {
         .then(res => res)
         .catch(error => console.log(error));
 };
+
+const nokeApi = {
+    fetchLocks,
+    requestUnlock,
+    requestUnshackle,
+    fetchOfflineKeys,
+    postActivityLogs,
+    fetchActivityLogs,
+};
+
+export default nokeApi;

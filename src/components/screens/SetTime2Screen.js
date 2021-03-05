@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styled from 'styled-components/native';
+import styled from 'styled-components';
 import { SafeAreaView } from '@components';
 
 const S = {};
@@ -45,7 +45,7 @@ S.MinutesText = styled(S.TimeIncrementText)``;
 S.HoursText = styled(S.TimeIncrementText)``;
 S.DaysText = styled(S.TimeIncrementText)``;
 
-function LockoutSetter2({ navigation }) {
+function SetTime2Screen({ navigation }) {
     const [minutes, setMinutes] = useState(null);
     const [hours, setHours] = useState(null);
     const [days, setDays] = useState(null);
@@ -92,4 +92,4 @@ function LockoutSetter2({ navigation }) {
     );
 }
 
-export default LockoutSetter2;
+export default SetTime2Screen;

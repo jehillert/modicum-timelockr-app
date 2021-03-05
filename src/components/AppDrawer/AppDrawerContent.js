@@ -8,11 +8,6 @@ import * as RootNavigation from '@navigation';
 
 const S = {};
 
-// S.DrawerTop = styled.View`
-//     height: 40px;
-//     background: black;
-// `;
-
 S.DrawerContentScrollView = styled(DrawerContentScrollView)`
     background: #012c36;
 `;
@@ -53,7 +48,7 @@ function AppDrawerContent(props) {
                         <S.DrawerItem
                             // icon={() => FlaskSvgIcon}
                             label="Testing View"
-                            onPress={() => RootNavigation.navigate('TestingScreen')}
+                            onPress={() => RootNavigation.navigate('TestingScreenStack')}
                             activeTintColor="#65eab9"
                             inactiveTintColor="papayawhip"
                             activeBackgroundColor="darkblue"
@@ -62,7 +57,7 @@ function AppDrawerContent(props) {
                         <S.DrawerItem
                             // icon={() => FlaskSvgIcon}
                             label="Set Lockout (DTP)"
-                            onPress={() => RootNavigation.navigate('LockoutSetter1')}
+                            onPress={() => RootNavigation.navigate('SetTime1ScreenStack')}
                             activeTintColor="#65eab9"
                             inactiveTintColor="papayawhip"
                             activeBackgroundColor="darkblue"
@@ -70,7 +65,7 @@ function AppDrawerContent(props) {
                         />
                         <S.DrawerItem
                             label="Set Lockout (JEH)"
-                            onPress={() => RootNavigation.navigate('LockoutSetter2')}
+                            onPress={() => RootNavigation.navigate('SetTime2ScreenStack')}
                             activeTintColor="#65eab9"
                             inactiveTintColor="papayawhip"
                             activeBackgroundColor="darkblue"
@@ -78,7 +73,7 @@ function AppDrawerContent(props) {
                         />
                         <S.DrawerItem
                             label="Settings"
-                            onPress={() => RootNavigation.navigate('SettingsScreen')}
+                            onPress={() => RootNavigation.navigate('SettingsScreenStack')}
                             activeTintColor="#65eab9"
                             inactiveTintColor="papayawhip"
                             activeBackgroundColor="darkblue"

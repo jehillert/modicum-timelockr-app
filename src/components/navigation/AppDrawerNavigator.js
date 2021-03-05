@@ -1,11 +1,16 @@
 import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { TestingScreen, LockoutSetter1, LockoutSetter2, SettingsScreen } from '@screens';
 import { AppDrawerContent } from '@components';
+import {
+    SetTime1ScreenStack,
+    SetTime2ScreenStack,
+    TestingScreenStack,
+    SettingsScreenStack,
+} from '@navigation';
 
 const Drawer = createDrawerNavigator();
 
-function AppDrawerNavigator({ initialRouteName }) {
+function AppDrawerNavigator({ initialRouteName = 'TestingScreen' }) {
     return (
         <>
             <Drawer.Navigator
@@ -13,10 +18,10 @@ function AppDrawerNavigator({ initialRouteName }) {
                 backBehavior="initialRoute"
                 swipeEnabled="false"
                 drawerContent={() => <AppDrawerContent />}>
-                <Drawer.Screen name="TestingScreen" component={TestingScreen} />
-                <Drawer.Screen name="LockoutSetter1" component={LockoutSetter1} />
-                <Drawer.Screen name="LockoutSetter2" component={LockoutSetter2} />
-                <Drawer.Screen name="SettingsScreen" component={SettingsScreen} />
+                <Drawer.Screen name="SetTime1ScreenStack" component={SetTime1ScreenStack} />
+                <Drawer.Screen name="SetTime2ScreenStack" component={SetTime2ScreenStack} />
+                <Drawer.Screen name="TestingScreenStack" component={TestingScreenStack} />
+                <Drawer.Screen name="SettingsScreenStack" component={SettingsScreenStack} />
             </Drawer.Navigator>
         </>
     );

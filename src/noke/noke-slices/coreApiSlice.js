@@ -1,8 +1,7 @@
 // TODO: Sets the session of the lock after connecting.  Session is only valid for the duration that the lock is connected
 // ADD CANCELLATION
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { requestUnlock, requestUnshackle } from '@noke-api';
-import { NokeAndroid } from '@noke';
+import { NokeAndroid, nokeApi } from '@noke';
 import { getSession } from 'redux/selectors';
 
 const fetchLockCommand = (apiActionType, apiCall) =>
@@ -18,8 +17,8 @@ const fetchLockCommand = (apiActionType, apiCall) =>
         return commands;
     });
 
-export const fetchUnlock = fetchLockCommand('unlock/requestStatus', requestUnlock);
-export const fetchUnshackle = fetchLockCommand('unshackle/requestStatus', requestUnshackle);
+export const fetchUnlock = fetchLockCommand('unlock/requestStatus', nokeApi.requestUnlock);
+export const fetchUnshackle = fetchLockCommand('unshackle/requestStatus', nokeApi.requestUnshackle);
 
 const coreApiSlice = createSlice({
     name: 'coreApi',

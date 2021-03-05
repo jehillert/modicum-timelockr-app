@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { SButton } from '@components';
 import { MAC_HD1 } from '@env';
-import { nokeUtils } from '@noke';
+import { NokeAndroid } from '@noke';
 import { getActiveMac, } from 'redux/selectors';
 import {
     addDevice,
@@ -22,13 +22,15 @@ import {
 const S = {};
 
 S.Text = styled.Text`
-    color: red;
+    color: ${props => props.theme.notification};
 `;
+
 S.View = styled.View`
     margin-bottom: 10px;
     flex-direction: row;
     justify-content: space-around;
 `;
+
 S.Button = styled.Button``;
 
 function TestingButtons() {
@@ -79,7 +81,7 @@ function TestingButtons() {
                 <SButton bgColor="hotpink" onPress={() => dispatch(connectDevice())}>
                     CONNECT
                 </SButton>
-                <SButton bgColor="#e73535" onPress={() => nokeUtils.disconnect(MAC_HD1)}>
+                <SButton bgColor="#e73535" onPress={() => NokeAndroid.disconnect(MAC_HD1)}>
                     DISCONNECT
                 </SButton>
             </S.View>
@@ -98,34 +100,34 @@ function TestingButtons() {
                 </SButton>
             </S.View>
             <S.View>
-                <SButton bgColor="dimgrey" onPress={() => nokeUtils.offlineUnlock(MAC_HD1)}>
+                <SButton bgColor="dimgrey" onPress={() => NokeAndroid.offlineUnlock(MAC_HD1)}>
                     OFFLINE UNLOCK
                 </SButton>
             </S.View>
             <S.View>
-                <SButton bgColor="dimgrey" onPress={() => nokeUtils.removeAllNokes()}>
+                <SButton bgColor="dimgrey" onPress={() => NokeAndroid.removeAllNokes()}>
                     REMOVE ALL NOKES
                 </SButton>
             </S.View>
             <S.View>
                 <SButton
                     bgColor="dimgrey"
-                    onPress={() => nokeUtils.addNokeOfflineValues({ name: 'LOCK 1', mac: MAC_HD1 })}>
+                    onPress={() => NokeAndroid.addNokeOfflineValues({ name: 'LOCK 1', mac: MAC_HD1 })}>
                     ADD OFFLINE VAL
                 </SButton>
             </S.View>
             <S.View>
-                <SButton bgColor="dimgrey" onPress={() => nokeUtils.setBluetoothDelayBackgroundDefault(1)}>
+                <SButton bgColor="dimgrey" onPress={() => NokeAndroid.setBluetoothDelayBackgroundDefault(1)}>
                     SET DEF BLUETOOTH BACKGROUND DELAY{' '}
                 </SButton>
             </S.View>
             <S.View>
-                <SButton bgColor="dimgrey" onPress={() => nokeUtils.setBluetoothDelayDefault(1)}>
+                <SButton bgColor="dimgrey" onPress={() => NokeAndroid.setBluetoothDelayDefault(1)}>
                     SET DEFAULT BLUETOOTH DELAY
                 </SButton>
             </S.View>
             <S.View>
-                <SButton bgColor="dimgrey" onPress={() => nokeUtils.setBluetoothScanDuration(1)}>
+                <SButton bgColor="dimgrey" onPress={() => NokeAndroid.setBluetoothScanDuration(1)}>
                     SET BLUETOOTH SCAN DURATION
                 </SButton>
             </S.View>

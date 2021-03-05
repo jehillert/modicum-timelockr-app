@@ -8,7 +8,7 @@ export { default as AppStackNavigator } from './AppStackNavigator';
 // DEFINE
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { TestingScreen, LockoutSetter1, LockoutSetter2, SettingsScreen } from '@screens';
+import { TestingScreen, SetTime1Screen, SetTime2Screen, SettingsScreen } from '@screens';
 
 const Stack = createStackNavigator();
 
@@ -23,8 +23,8 @@ function AppStackNavigator() {
                 headerBackTitle: 'Back',
             }}>
             <Stack.Screen name="TestingScreen" component={TestingScreen} />
-            <Stack.Screen name="LockoutSetter1" component={LockoutSetter1} />
-            <Stack.Screen name="LockoutSetter2" component={LockoutSetter2} />
+            <Stack.Screen name="SetTime1Screen" component={SetTime1Screen} />
+            <Stack.Screen name="SetTime2Screen" component={SetTime2Screen} />
             <Stack.Screen name="SettingsScreen" component={SettingsScreen} />
         </Stack.Navigator>
     );

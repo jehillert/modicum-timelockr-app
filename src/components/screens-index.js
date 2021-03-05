@@ -1,4 +1,4 @@
-export { default as LockoutSetter1 } from './screens/LockoutSetter1';
-export { default as LockoutSetter2 } from './screens/LockoutSetter2';
+export { default as SetTime1Screen } from './screens/SetTime1Screen';
+export { default as SetTime2Screen } from './screens/SetTime2Screen';
 export { default as TestingScreen } from './screens/TestingScreen';
 export { default as SettingsScreen } from './settings/SettingsScreen';

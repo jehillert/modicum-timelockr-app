@@ -1,4 +1,4 @@
-// "babel-preset-react-native has been replaced by metro-react-native-babel-preset"
+// NOTE: "babel-preset-react-native has been replaced by metro-react-native-babel-preset"
 {
     "presets": ["module:metro-react-native-babel-preset"],
     "env": {
@@ -22,11 +22,8 @@
                     "@env": "@env",
                     "@hooks": "./src/hooks",
                     "@navigation": "./src/components/navigation/index",
-                    "@noke-api": "./src/noke/noke-api/index",
-                    "@noke-channel-sagas": "./src/noke/noke-sagas/noke-channel-sagas",
-                    "@noke-sagas": "./src/noke/noke-sagas",
                     "@noke-slices": "./src/noke/noke-slices",
-                    "@noke": "./src/noke/noke",
+                    "@noke": "./src/noke/index",
                     "@reducers": "./src/redux",
                     "@slices": "./src/components/slices-index",
                     "@root-reducer": "./src/redux/root-reducer",
@@ -34,7 +31,8 @@
                     "@selectors": "./src/redux/selectors",
                     "@src": "./src",
                     "@store": "./src/redux/store",
-                    "@themes": "./src/themes",
+                    "@styled": "./src/components/styled",
+                    "@theme": "./src/theme/theme",
                     "@utilities": "./src/util"
                 }
             }

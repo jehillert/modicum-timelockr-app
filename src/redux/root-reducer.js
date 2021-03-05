@@ -1,6 +1,6 @@
 import { combineReducers } from '@reduxjs/toolkit';
 import { settingsReducer } from '@slices';
-import { coreApiReducer, devicesReducer, serviceReducer } from '@noke-slices';
+import { coreApiReducer, devicesReducer, serviceReducer } from '@noke';
 
 const rootReducer = combineReducers({
     coreApi: coreApiReducer,

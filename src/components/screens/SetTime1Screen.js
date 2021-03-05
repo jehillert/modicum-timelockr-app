@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import DatePicker from 'react-native-date-picker';
 import { SafeAreaView } from '@components';
 
-function LockoutSetter1(props) {
+function SetTime1Screen(props) {
     const [date, setDate] = useState(new Date());
 
     const getMaximumDate = () => {};
@@ -26,4 +26,4 @@ function LockoutSetter1(props) {
     );
 }
 
-export default LockoutSetter1;
+export default SetTime1Screen;
