@@ -12,16 +12,20 @@ S.SettingsHeader = styled.View`
     height: 50px;
 `;
 
+S.Container = styled.View`
+    padding: 24px 24px;
+`;
+
 S.DarkThemeRadioButton = styled(RadioButton)``;
 S.LightThemeRadioButton = styled(RadioButton)``;
 S.SystemDefaultThemeRadioButton = styled(RadioButton)``;
 
 function SettingsScreen() {
     return (
-        <SafeAreaView>
+        <S.Container>
             <Settings.Header />
             <SetThemeMode />
-        </SafeAreaView>
+        </S.Container>
     );
 }
 

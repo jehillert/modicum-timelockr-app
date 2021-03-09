@@ -14,11 +14,7 @@ function NavigationDrawerStructure(props) {
                         uri:
                             'https://raw.githubusercontent.com/AboutReact/sampleresource/master/drawerWhite.png',
                     }}
-                    style={{
-                        width: 25,
-                        height: 25,
-                        marginLeft: 5,
-                    }}
+                    style={{ width: 30, height: 30, marginLeft: 25 }}
                 />
             </TouchableOpacity>
         </View>

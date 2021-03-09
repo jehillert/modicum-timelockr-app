@@ -11,6 +11,7 @@ const lightTheme = {
     colors: {
         ...LightTheme.colors,
         background: 'rgba(255, 255, 255, 1)',
+        primary: '#012c36',
     },
 };
 
@@ -19,6 +20,7 @@ const darkTheme = {
     colors: {
         ...DarkTheme.colors,
         background: "rgba(27, 32, 36, 1)",
+        primary: '#012c36',
     },
 };
 
