@@ -1,20 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
-import { ThemeProvider } from 'styled-components/native';
+import styled, { ThemeProvider } from 'styled-components/native';
 import { useSystemColorScheme } from '@hooks';
 import { getThemeMode } from '@selectors';
 import { theme } from '@theme';
-import { Button, Platform, SafeAreaView, StatusBar, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, StyleSheet } from 'react-native';
 import { Provider as PaperProvider } from 'react-native-paper';
 import { AppearanceProvider } from 'react-native-appearance';
 
-const STYLES = ['default', 'dark-content', 'light-content'];
-const TRANSITIONS = ['fade', 'slide', 'none'];
+const S = {};
+
+S.SafeAreaView = styled.SafeAreaView`
+    flex: 1;
+    justify-content: center;
+    background-color: #ecf0f1;
+`;
 
 function ThemeWrapper({ children }) {
     useSystemColorScheme();
-    console.log(JSON.stringify(theme, undefined, 2));
-
     const themeMode = useSelector(getThemeMode);
     const activeTheme = theme[themeMode];
 
