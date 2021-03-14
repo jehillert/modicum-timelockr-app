@@ -15,6 +15,7 @@ function createStackScreen(Component, title) {
             headerLeft: () => <ViewBar navigationProps={navigation} />,
             headerStyle: {
                 backgroundColor: theme.colors.primary,
+                height: 80,
             },
             headerTintColor: theme.colors.colorOnPrimary,
             headerTitleStyle: {
