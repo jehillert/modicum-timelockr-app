@@ -33,7 +33,7 @@
             "@selectors": ["redux/selectors"],
             "@store": ["redux/store"],
             "@styled": ["components/styled"],
-            "@theme": ["theme/theme"],
+            "@theme": ["theme/index"],
             "@utilities": ["util/index"],
         }
     },

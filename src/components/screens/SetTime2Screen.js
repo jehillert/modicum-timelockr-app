@@ -6,7 +6,6 @@ const S = {};
 S.Header = styled.View`
     height: 100px;
 `;
-
 S.ColumnContainer = styled.View`
     flex: 1;
     flex-direction: row;

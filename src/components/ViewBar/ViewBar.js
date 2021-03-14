@@ -1,13 +1,21 @@
 import * as React from 'react';
-import { View, TouchableOpacity, Image } from 'react-native';
+import styled from 'styled-components';
+import { TouchableOpacity, Image } from 'react-native';
 
-function NavigationDrawerStructure(props) {
+const S = {};
+
+// Text is styled in '../navigation/StackNavigators.js'
+S.ViewBarContainer = styled.View`
+    flex-direction: row;
+`;
+
+function ViewBar(props) {
     const toggleDrawer = () => {
         props.navigationProps.toggleDrawer();
     };
 
     return (
-        <View style={{ flexDirection: 'row' }}>
+        <S.ViewBarContainer>
             <TouchableOpacity onPress={() => toggleDrawer()}>
                 <Image
                     source={{
@@ -17,8 +25,8 @@ function NavigationDrawerStructure(props) {
                     style={{ width: 30, height: 30, marginLeft: 25 }}
                 />
             </TouchableOpacity>
-        </View>
+        </S.ViewBarContainer>
     );
 }
 
-export default NavigationDrawerStructure;
+export default ViewBar;

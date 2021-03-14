@@ -1,14 +1,13 @@
 // follow these instructions for iOS https://github.com/oblador/react-native-vector-icons#ios
 // TODO: have a better radio button.  whole row colored, or something.  dot is old
+// NOTE: It appears for now that react-native-safe-area-view needs to be improted but you can use standard SafeAreaView
 import React, { useState } from 'react';
 import { Provider } from 'react-redux';
 import { Button, Platform, SafeAreaView, StatusBar, StyleSheet, Text, View } from 'react-native';
-import { Provider as PaperProvider } from 'react-native-paper';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { persistor, store } from 'redux/store';
 import { PersistGate } from 'redux-persist/integration/react';
 import { AppNavigation } from '@navigation';
-import { AppearanceProvider } from 'react-native-appearance';
+import { ThemeWrapper } from '@theme';
 
 const STYLES = ['default', 'dark-content', 'light-content'];
 const TRANSITIONS = ['fade', 'slide', 'none'];
@@ -41,54 +40,22 @@ function App() {
     return (
         <Provider store={store}>
             <PersistGate loading={null} persistor={persistor}>
-                <AppearanceProvider>
-                    <PaperProvider>
-                        <SafeAreaView style={styles.container}>
-                            <StatusBar
-                                animated={true}
-                                backgroundColor="#61dafb"
-                                barStyle={statusBarStyle}
-                                showHideTransition={statusBarTransition}
-                                hidden={hidden}
-                            />
-            {/* <Text style={styles.textStyle}>
-                StatusBar Visibility:{'\n'}
-                {hidden ? 'Hidden' : 'Visible'}
-            </Text>
-            <Text style={styles.textStyle}>
-                StatusBar Style:{'\n'}
-                {statusBarStyle}
-            </Text>
-            {Platform.OS === 'ios' ? (
-                <Text style={styles.textStyle}>
-                    StatusBar Transition:{'\n'}
-                    {statusBarTransition}
-                </Text>
-            ) : null}
-            <View style={styles.buttonsContainer}>
-                <Button title="Toggle StatusBar" onPress={changeStatusBarVisibility} />
-                <Button title="Change StatusBar Style" onPress={changeStatusBarStyle} />
-                {Platform.OS === 'ios' ? (
-                    <Button title="Change StatusBar Transition" onPress={changeStatusBarTransition} />
-                ) : null}
-            </View> */}
-                            {/* <SafeAreaProvider> */}
-                                <AppNavigation />
-                            {/* </SafeAreaProvider> */}
-                        </SafeAreaView>
-                    </PaperProvider>
-                </AppearanceProvider>
+                <ThemeWrapper>
+                    <StatusBar
+                        animated={true}
+                        backgroundColor="#61dafb"
+                        barStyle={statusBarStyle}
+                        showHideTransition={statusBarTransition}
+                        hidden={hidden}
+                    />
+                    <AppNavigation />
+                </ThemeWrapper>
             </PersistGate>
         </Provider>
     );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        backgroundColor: '#ECF0F1',
-    },
     buttonsContainer: {
         padding: 10,
     },

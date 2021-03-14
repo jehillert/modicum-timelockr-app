@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { ThemeContext } from 'styled-components';
 import { createStackNavigator } from '@react-navigation/stack';
-import { NavigationDrawerStructure } from '@navigation';
+import { ViewBar } from '@components';
 import { SetTime1Screen, SetTime2Screen, TestingScreen, SettingsScreen } from '@screens';
 
 const Stack = createStackNavigator();
@@ -12,11 +12,11 @@ function createStackScreen(Component, title) {
 
         const options = {
             title: title,
-            headerLeft: () => <NavigationDrawerStructure navigationProps={navigation} />,
+            headerLeft: () => <ViewBar navigationProps={navigation} />,
             headerStyle: {
                 backgroundColor: theme.colors.primary,
             },
-            headerTintColor: theme.colors.text,
+            headerTintColor: theme.colors.colorOnPrimary,
             headerTitleStyle: {
                 fontWeight: 'bold',
             },

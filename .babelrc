@@ -32,7 +32,7 @@
                     "@src": "./src",
                     "@store": "./src/redux/store",
                     "@styled": "./src/components/styled",
-                    "@theme": "./src/theme/theme",
+                    "@theme": "./src/theme/index",
                     "@utilities": "./src/util"
                 }
             }
