@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import DatePicker from 'react-native-date-picker';
-import { SafeAreaView } from '@components';
 
 const S = {};
 
@@ -26,21 +25,19 @@ function SetTime1Screen(props) {
     };
 
     return (
-        <SafeAreaView>
-            <S.Container>
-                <S.DatePicker
-                    date={date}
-                    onDateChange={handleDateChange}
-                    mode={'datetime'}
-                    // fadeToColor={(color, 'green')}
-                    maximumDate={new Date('2021-12-31')}
-                    minimumDate={new Date('2021-01-01')}
-                    minuteInterval={15}
-                    androidVariant="nativeAndroid"
-                    textColor='#65eab9'
-                />
-            </S.Container>
-        </SafeAreaView>
+        <S.Container>
+            <S.DatePicker
+                date={date}
+                onDateChange={handleDateChange}
+                mode={'datetime'}
+                // fadeToColor={(color, 'green')}
+                maximumDate={new Date('2021-12-31')}
+                minimumDate={new Date('2021-01-01')}
+                minuteInterval={15}
+                androidVariant="nativeAndroid"
+                textColor="#65eab9"
+            />
+        </S.Container>
     );
 }
 

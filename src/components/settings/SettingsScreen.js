@@ -2,7 +2,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { RadioButton } from 'react-native-paper';
-import { SafeAreaView } from '@components';
 import { Settings } from '@styled';
 import SetThemeMode from './SetThemeMode';
 

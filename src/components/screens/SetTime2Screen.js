@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { SafeAreaView } from '@components';
 
 const S = {};
 
@@ -51,7 +50,7 @@ function SetTime2Screen({ navigation }) {
     const [days, setDays] = useState(null);
 
     return (
-        <SafeAreaView>
+        <>
             <S.Header />
             <S.DurationContainer>
                 <S.DurationColumn>
@@ -88,7 +87,7 @@ function SetTime2Screen({ navigation }) {
                     <S.MinutesText>Minutes</S.MinutesText>
                 </S.DurationColumn>
             </S.DurationContainer>
-        </SafeAreaView>
+        </>
     );
 }
 

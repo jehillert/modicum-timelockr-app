@@ -1,7 +1,6 @@
 import React from 'react';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { StyleSheet, ScrollView, View, Text } from 'react-native';
-import { SafeAreaView, TestingButtons } from '@components';
+import { TestingButtons } from '@components';
 import { useNokeService, useEventChannels } from '@hooks';
 
 function TestingScreen() {
@@ -10,18 +9,16 @@ function TestingScreen() {
 
     return (
         <>
-            <SafeAreaView>
-                <ScrollView nestedScrollEnabled={true} contentInsetAdjustmentBehavior="automatic">
-                    {global.HermesInternal == null ? null : (
-                        <View style={styles.engine}>
-                            <Text style={{ color: 'red', backgroundColor: 'black' }}>Engine: Hermes</Text>
-                        </View>
-                    )}
-                    <View style={styles.sectionContainer}>
-                        <TestingButtons />
+            <ScrollView nestedScrollEnabled={true} contentInsetAdjustmentBehavior="automatic">
+                {global.HermesInternal == null ? null : (
+                    <View style={styles.engine}>
+                        <Text style={{ color: 'red', backgroundColor: 'black' }}>Engine: Hermes</Text>
                     </View>
-                </ScrollView>
-            </SafeAreaView>
+                )}
+                <View style={styles.sectionContainer}>
+                    <TestingButtons />
+                </View>
+            </ScrollView>
         </>
     );
 }

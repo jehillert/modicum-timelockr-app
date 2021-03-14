@@ -1,8 +1,6 @@
 
 
 To Do:
- - SafeAreaView
- - SafeAreaProvider
  - DrawerHeader
  - Add time to redux
  - CountdownView

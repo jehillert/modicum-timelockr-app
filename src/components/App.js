@@ -51,7 +51,7 @@ function App() {
                                 showHideTransition={statusBarTransition}
                                 hidden={hidden}
                             />
-                            {/* <Text style={styles.textStyle}>
+            {/* <Text style={styles.textStyle}>
                 StatusBar Visibility:{'\n'}
                 {hidden ? 'Hidden' : 'Visible'}
             </Text>
@@ -72,9 +72,9 @@ function App() {
                     <Button title="Change StatusBar Transition" onPress={changeStatusBarTransition} />
                 ) : null}
             </View> */}
-                            <SafeAreaProvider>
+                            {/* <SafeAreaProvider> */}
                                 <AppNavigation />
-                            </SafeAreaProvider>
+                            {/* </SafeAreaProvider> */}
                         </SafeAreaView>
                     </PaperProvider>
                 </AppearanceProvider>
