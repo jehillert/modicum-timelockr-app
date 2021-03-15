@@ -19,10 +19,9 @@ S.SafeAreaView = styled.SafeAreaView`
 function ThemeWrapper({ children }) {
     useSystemColorScheme();
     const themeMode = useSelector(getThemeMode);
-    const activeTheme = theme[themeMode];
 
     return (
-        <ThemeProvider theme={activeTheme}>
+        <ThemeProvider theme={theme[themeMode]}>
             <AppearanceProvider>
                 <PaperProvider>
                     <SafeAreaView style={styles.container}>{children}</SafeAreaView>
