@@ -1,5 +1,3 @@
-// TODO: match navigationTheme to user setting on phone
-// TODO: In settings, have a radio button that sets theme.dark
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { AppDrawerNavigator, navigationRef } from '@navigation';
