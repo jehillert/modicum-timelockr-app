@@ -1,19 +1,16 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useContext } from 'react';
+import { ThemeContext } from 'styled-components';
 import { StatusBar } from 'react-native';
 import { AppDrawerNavigator, navigationRef } from '@navigation';
 import { FAB } from '@components';
-import { getThemeMode } from '@selectors';
 import { NavigationContainer } from '@react-navigation/native';
-import { theme } from '@theme';
 
 function AppNavigation() {
-    const themeMode = useSelector(getThemeMode);
-    const activeTheme = theme[themeMode];
+    const theme = useContext(ThemeContext);
 
     return (
-        <NavigationContainer theme={activeTheme} ref={navigationRef}>
-            <StatusBar animated={true} backgroundColor="#61dafb" />
+        <NavigationContainer theme={theme} ref={navigationRef}>
+            <StatusBar animated={true} backgroundColor={theme.colors.primary} />
             <FAB />
             <AppDrawerNavigator />
         </NavigationContainer>

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { ThemeContext } from 'styled-components';
 import { createStackNavigator } from '@react-navigation/stack';
-import { ViewBar } from '@components';
+import { DrawerToggleButton } from '@components';
 import { SetTime1Screen, SetTime2Screen, TestingScreen, SettingsScreen } from '@screens';
 
 const Stack = createStackNavigator();
@@ -12,7 +12,7 @@ function createStackScreen(Component, title) {
 
         const options = {
             title: title,
-            headerLeft: () => <ViewBar navigationProps={navigation} />,
+            headerLeft: () => <DrawerToggleButton navigationProps={navigation} />,
             headerStyle: {
                 backgroundColor: theme.colors.primary,
             },

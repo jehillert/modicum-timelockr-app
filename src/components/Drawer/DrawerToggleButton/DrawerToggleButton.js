@@ -5,17 +5,17 @@ import { TouchableOpacity, Image } from 'react-native';
 const S = {};
 
 // Text is styled in '../navigation/StackNavigators.js'
-S.ViewBarContainer = styled.View`
+S.DrawerToggleButtonContainer = styled.View`
     flex-direction: row;
 `;
 
-function ViewBar(props) {
+function DrawerToggleButton(props) {
     const toggleDrawer = () => {
         props.navigationProps.toggleDrawer();
     };
 
     return (
-        <S.ViewBarContainer>
+        <S.DrawerToggleButtonContainer>
             <TouchableOpacity onPress={() => toggleDrawer()}>
                 <Image
                     source={{
@@ -25,8 +25,8 @@ function ViewBar(props) {
                     style={{ width: 30, height: 30, marginLeft: 25 }}
                 />
             </TouchableOpacity>
-        </S.ViewBarContainer>
+        </S.DrawerToggleButtonContainer>
     );
 }
 
-export default ViewBar;
+export default DrawerToggleButton;
