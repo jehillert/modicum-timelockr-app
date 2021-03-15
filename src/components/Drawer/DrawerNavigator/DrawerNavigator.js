@@ -10,7 +10,7 @@ import {
 
 const Drawer = createDrawerNavigator();
 
-function DrawerNavigator({ initialRouteName = 'DurationScreen' }) {
+function DrawerNavigator({ initialRouteName = 'TestingScreenStack' }) {
     return (
         <>
             <Drawer.Navigator
