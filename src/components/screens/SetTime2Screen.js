@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
 
 const S = {};
@@ -44,9 +44,27 @@ S.HoursText = styled(S.TimeIncrementText)``;
 S.DaysText = styled(S.TimeIncrementText)``;
 
 function SetTime2Screen({ navigation }) {
-    const [minutes, setMinutes] = useState(null);
-    const [hours, setHours] = useState(null);
-    const [days, setDays] = useState(null);
+    const daysRef = useRef(null);
+    const hoursRef = useRef(null);
+    const minutesRef = useRef(null);
+
+    const [minutes, setMinutes] = useState('');
+    const [hours, setHours] = useState('');
+    const [days, setDays] = useState('');
+
+    useEffect(() => {
+        if (days.length === 2) {
+            hoursRef.current.focus();
+        }
+    }, [days, hoursRef]);
+
+    useEffect(() => {
+        if (hours.length === 2) {
+            minutesRef.current.focus();
+        }
+    }, [hours, minutesRef]);
+
+    // onKeyEvent back button clears all
 
     return (
         <>
@@ -55,33 +73,45 @@ function SetTime2Screen({ navigation }) {
                 <S.DurationColumn>
                     <S.Days
                         name="days"
-                        placeholder="00"
-                        placeholderTextColor="white"
                         value={days}
+                        maxLength={2}
+                        placeholder="00"
+                        placeholderTextColor="gray"
                         onChange={event => setDays(event.nativeEvent.text)}
                         keyboardType="number-pad"
+                        selectTextOnFocus
+                        spellCheck={false}
+                        ref={daysRef}
                     />
                     <S.DaysText>Days</S.DaysText>
                 </S.DurationColumn>
                 <S.DurationColumn>
                     <S.Hours
                         name="hours"
-                        placeholder="00"
-                        placeholderTextColor="white"
                         value={hours}
+                        maxLength={2}
+                        placeholder="00"
+                        placeholderTextColor="gray"
                         onChange={event => setHours(event.nativeEvent.text)}
                         keyboardType="number-pad"
+                        selectTextOnFocus
+                        spellCheck={false}
+                        ref={hoursRef}
                     />
                     <S.HoursText>Hours</S.HoursText>
                 </S.DurationColumn>
                 <S.DurationColumn>
                     <S.Minutes
                         name="minutes"
-                        placeholder="00"
-                        placeholderTextColor="white"
                         value={minutes}
+                        maxLength={2}
+                        placeholder="00"
+                        placeholderTextColor="gray"
                         onChange={event => setMinutes(event.nativeEvent.text)}
                         keyboardType="number-pad"
+                        selectTextOnFocus
+                        spellCheck={false}
+                        ref={minutesRef}
                     />
                     <S.MinutesText>Minutes</S.MinutesText>
                 </S.DurationColumn>
