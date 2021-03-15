@@ -1,6 +1,7 @@
 // follow these instructions for iOS https://github.com/oblador/react-native-vector-icons#ios
-// TODO: have a better radio button.  whole row colored, or something.  dot is old
 // NOTE: It appears for now that react-native-safe-area-view needs to be improted but you can use standard SafeAreaView
+// TODO: have a better radio button.  whole row colored, or something.  dot is old
+// TODO: Add no screen rotation for ios
 import React, { useState } from 'react';
 import { Provider } from 'react-redux';
 import { Button, Platform, SafeAreaView, StatusBar, StyleSheet, Text, View } from 'react-native';
