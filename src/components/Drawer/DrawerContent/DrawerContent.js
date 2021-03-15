@@ -35,7 +35,7 @@ S.DrawerItem = styled(DrawerItem)`
     margin-left: 30px;
 `;
 
-function AppDrawerContent(props) {
+function DrawerContent(props) {
     return (
         <S.DrawerContentScrollView {...props}>
             <S.DrawerContainer>
@@ -86,4 +86,4 @@ function AppDrawerContent(props) {
     );
 }
 
-export default AppDrawerContent;
+export default DrawerContent;
