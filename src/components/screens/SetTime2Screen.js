@@ -6,22 +6,18 @@ const S = {};
 S.Header = styled.View`
     height: 100px;
 `;
-
 S.ColumnContainer = styled.View`
     flex: 1;
     flex-direction: row;
     padding: 30px;
 `;
-
 S.DurationColumn = styled.View`
     flex-grow: 1;
 `;
-
 S.DurationContainer = styled.View`
     flex-direction: row;
     padding: 30px;
 `;
-
 S.TimeIncrementInput = styled.TextInput`
     background: black;
     color: white;
@@ -32,13 +28,9 @@ S.TimeIncrementInput = styled.TextInput`
     text-align: center;
     padding: 10px;
 `;
-
 S.Minutes = styled(S.TimeIncrementInput)``;
-
 S.Hours = styled(S.TimeIncrementInput)``;
-
 S.Days = styled(S.TimeIncrementInput)``;
-
 S.TimeIncrementText = styled.Text`
     color: black;
     font-size: 22px;
@@ -47,23 +39,11 @@ S.TimeIncrementText = styled.Text`
     text-align: center;
     margin: 20px 0px;
 `;
-
 S.MinutesText = styled(S.TimeIncrementText)``;
-
 S.HoursText = styled(S.TimeIncrementText)``;
-
 S.DaysText = styled(S.TimeIncrementText)``;
 
 function SetTime2Screen({ navigation }) {
-    // //First, start with a particular time
-    // var date = new Date();
-    // //Add two hours
-    // date.setHours(date.getHours() + 2);
-    // //Go back 3 days
-    // date.setDate(date.getDate() - 3);
-    // //One minute ago...
-    // date.setMinutes(date.getMinutes() - 1);
-
     const daysRef = useRef(null);
     const hoursRef = useRef(null);
     const minutesRef = useRef(null);
