@@ -1,8 +1,8 @@
 import { all, call, spawn } from 'redux-saga/effects';
-import * as nokeSagas from './noke-sagas';
-import * as nokeEventChannels from './noke-channel-sagas';
+import * as nokeSagas from '@noke-sagas';
+import * as nokeEventChannels from '@noke-channel-sagas';
 
-function* nokeRootSaga() {
+export default function* rootSaga() {
     const nokeSagasArray = Object.keys(nokeSagas)
         .slice(1)
         .map(sagaKey => nokeSagas[sagaKey]);
@@ -27,5 +27,3 @@ function* nokeRootSaga() {
 }
 
 export * from './noke-sagas';
-
-export default nokeRootSaga;

@@ -29,6 +29,8 @@
             "@noke-constants": ["noke/noke-constants"],
             "@noke-slices": ["noke/noke-slices/index"],
             "@noke-slices/*": ["noke/noke-slices/*"],
+            "@noke-sagas": ["noke/noke-sagas/index"],
+            "@noke-channel-sagas": ["noke/noke-sagas/noke-channel-sagas"],
             "@noke": ["noke/index"],
             "@reducers": ["redux"],
             "@root-reducer": ["redux/root-reducer"],

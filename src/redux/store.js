@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
 import rootReducer from 'redux/root-reducer';
-import { nokeRootSaga } from '@noke';
+import rootSaga from '@noke-sagas';
 import { persistStore, persistReducer } from 'redux-persist';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -29,7 +29,7 @@ const storeConfig = {
 
 const store = configureStore(storeConfig);
 
-sagaMiddleware.run(nokeRootSaga);
+sagaMiddleware.run(rootSaga);
 
 if (process.env.NODE_ENV === 'development' && module.hot) {
     module.hot.accept(() => {

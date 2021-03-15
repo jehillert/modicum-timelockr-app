@@ -1,9 +1,8 @@
 // TODO: Add "END" language to channels
 import { NativeEventEmitter } from 'react-native';
 import { eventChannel, channel } from 'redux-saga';
-import { nokeServiceEvents, nokeServiceMessages as nsm } from '@noke-constants';
+import { nokeServiceEvents, nokeServiceMessages as nsm } from '../noke-constants';
 import {
-    NokeAndroid,
     deviceEventActions,
     setServiceError,
     startEventChannels,
@@ -11,8 +10,9 @@ import {
     startServiceSuccess,
     stopServiceSuccess,
     updateBluetoothStatus,
-} from '@noke';
+} from '@noke-slices';
 import { call, cancelled, put, take } from 'redux-saga/effects';
+import NokeAndroid from '@noke';
 
 // HELPERS
 const cleanupSubs = subscrArray => {
@@ -49,7 +49,8 @@ function createDeviceEventChannel() {
     });
 }
 
-function* listenToServiceChannel() {
+// SERVICE CHANNEL
+export function* listenToServiceChannel() {
     yield take(startEventChannels);
     const serviceChannel = yield call(createServiceEventChannel);
 
@@ -75,8 +76,8 @@ function* listenToServiceChannel() {
     }
 }
 
-// SUBSCRIBE CHANNELS
-function* listenToDeviceChannel() {
+// DEVICE CHANNEL
+export function* listenToDeviceChannel() {
     yield take(startEventChannels);
     const deviceChannel = yield call(createDeviceEventChannel);
     while (true) {
@@ -93,5 +94,3 @@ function* listenToDeviceChannel() {
         }
     }
 }
-
-export { listenToServiceChannel, listenToDeviceChannel };

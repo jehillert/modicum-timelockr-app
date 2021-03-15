@@ -4,7 +4,7 @@
 // TODO: set scanning timeout/ setServiceError
 import { NokeAndroid } from '@noke';
 import { requestLocPermissionAsync } from 'util';
-import { nokeServiceMessages as nsm } from '@noke-constants';
+import { nokeServiceMessages as nsm } from '../noke-constants';
 import {
     call,
     put,
@@ -147,8 +147,8 @@ export function* connectAndUnlockTask() {
         yield take(deviceEventActions.onNokeDiscovered);
         yield put(connectDevice());
         yield take(deviceEventActions.onNokeConnected);
-        yield put(fetchUnlock(payload));
         yield put(stopScanning());
+        yield put(fetchUnlock(payload));
     }
 }
 
@@ -159,7 +159,7 @@ export function* connectAndUnshackleTask() {
         yield take(deviceEventActions.onNokeDiscovered);
         yield put(connectDevice());
         yield take(deviceEventActions.onNokeConnected);
-        yield put(fetchUnshackle(payload));
         yield put(stopScanning());
+        yield put(fetchUnshackle(payload));
     }
 }
