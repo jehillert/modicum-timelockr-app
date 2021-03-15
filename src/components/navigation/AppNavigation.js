@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { StatusBar } from 'react-native';
 import { AppDrawerNavigator, navigationRef } from '@navigation';
 import { FAB } from '@components';
 import { getThemeMode } from '@selectors';
@@ -12,6 +13,7 @@ function AppNavigation() {
 
     return (
         <NavigationContainer theme={activeTheme} ref={navigationRef}>
+            <StatusBar animated={true} backgroundColor="#61dafb" />
             <FAB />
             <AppDrawerNavigator />
         </NavigationContainer>
