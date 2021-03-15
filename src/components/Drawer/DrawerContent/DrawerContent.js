@@ -57,7 +57,7 @@ function DrawerContent(props) {
                         <S.DrawerItem
                             // icon={() => FlaskSvgIcon}
                             label="Set Lockout (DTP)"
-                            onPress={() => RootNavigation.navigate('SetTime1ScreenStack')}
+                            onPress={() => RootNavigation.navigate('DateScreenStack')}
                             activeTintColor="#65eab9"
                             inactiveTintColor="papayawhip"
                             activeBackgroundColor="darkblue"
@@ -65,7 +65,7 @@ function DrawerContent(props) {
                         />
                         <S.DrawerItem
                             label="Set Lockout (JEH)"
-                            onPress={() => RootNavigation.navigate('SetTime2ScreenStack')}
+                            onPress={() => RootNavigation.navigate('DurationScreenStack')}
                             activeTintColor="#65eab9"
                             inactiveTintColor="papayawhip"
                             activeBackgroundColor="darkblue"

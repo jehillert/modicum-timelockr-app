@@ -4,7 +4,7 @@
 // TODO: set scanning timeout/ setServiceError
 import { NokeAndroid } from '@noke';
 import { requestLocPermissionAsync } from 'util';
-import { nokeServiceMessages as nsm } from '@constants';
+import { nokeServiceMessages as nsm } from '@noke-constants';
 import {
     call,
     put,

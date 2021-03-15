@@ -10,7 +10,7 @@
 // TODO: figure out what you want to do with isDiscovered when scanning stops. propably move state change to startScanningSuccess and stopScanningSuccess and remove setIsScanning
 import { createAction, createSlice } from '@reduxjs/toolkit';
 import { getStatusFromEventAction, removeColons } from 'util';
-import { nokeDeviceEvents } from '@constants';
+import { nokeDeviceEvents } from '@noke-constants';
 
 const getNewLock = data => ({
     mac: '',

@@ -2,8 +2,9 @@ import React, { useContext } from 'react';
 import { ThemeContext } from 'styled-components';
 import { createStackNavigator } from '@react-navigation/stack';
 import { DrawerToggleButton } from '@drawer';
-import { SetTime1Screen, SetTime2Screen } from '@screens';
 import { SettingsScreen } from '@settings';
+import { DateScreen } from '@view-date';
+import { DurationScreen } from '@view-duration';
 import { TestingScreen } from '@view-testing';
 
 const Stack = createStackNavigator();
@@ -32,9 +33,9 @@ function createStackScreen(Component, title) {
     };
 }
 
-const SetTime1ScreenStack = createStackScreen(SetTime1Screen, 'Set Lockout');
-const SetTime2ScreenStack = createStackScreen(SetTime2Screen, 'Set Lockout');
+const DateScreenStack = createStackScreen(DateScreen, 'Set Lockout');
+const DurationScreenStack = createStackScreen(DurationScreen, 'Set Lockout');
 const TestingScreenStack = createStackScreen(TestingScreen, 'Noke Android API');
 const SettingsScreenStack = createStackScreen(SettingsScreen, 'Settings');
 
-export { SetTime1ScreenStack, SetTime2ScreenStack, TestingScreenStack, SettingsScreenStack };
+export { DateScreenStack, DurationScreenStack, TestingScreenStack, SettingsScreenStack };

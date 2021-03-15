@@ -1,7 +1,7 @@
 // TODO: Add "END" language to channels
 import { NativeEventEmitter } from 'react-native';
 import { eventChannel, channel } from 'redux-saga';
-import { nokeServiceEvents, nokeServiceMessages as nsm } from '@constants';
+import { nokeServiceEvents, nokeServiceMessages as nsm } from '@noke-constants';
 import {
     NokeAndroid,
     deviceEventActions,
@@ -13,7 +13,6 @@ import {
     updateBluetoothStatus,
 } from '@noke';
 import { call, cancelled, put, take } from 'redux-saga/effects';
-
 
 // HELPERS
 const cleanupSubs = subscrArray => {

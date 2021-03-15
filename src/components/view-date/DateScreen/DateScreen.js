@@ -13,7 +13,7 @@ S.DatePicker = styled(DatePicker)`
     width: 100%;
 `;
 
-function SetTime1Screen(props) {
+function DateScreen(props) {
     const theme = useContext(ThemeContext);
     const [date, setDate] = useState(new Date());
 
@@ -41,4 +41,4 @@ function SetTime1Screen(props) {
     );
 }
 
-export default SetTime1Screen;
+export default DateScreen;

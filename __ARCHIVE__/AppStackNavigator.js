@@ -1,14 +1,14 @@
-// IMPLEMENT
+// Implement
 import { AppStackNavigator } from '@navigation';
 <AppStackNavigator />
 
-// REFERENCE
+// Reference
 export { default as AppStackNavigator } from './AppStackNavigator';
 
-// DEFINE
+// Define
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { TestingScreen, SetTime1Screen, SetTime2Screen, SettingsScreen } from '@screens';
+import { TestingScreen, DateScreen, DurationScreen, SettingsScreen } from '@screens';
 
 const Stack = createStackNavigator();
 
@@ -23,8 +23,8 @@ function AppStackNavigator() {
                 headerBackTitle: 'Back',
             }}>
             <Stack.Screen name="TestingScreen" component={TestingScreen} />
-            <Stack.Screen name="SetTime1Screen" component={SetTime1Screen} />
-            <Stack.Screen name="SetTime2Screen" component={SetTime2Screen} />
+            <Stack.Screen name="DateScreen" component={DateScreen} />
+            <Stack.Screen name="DurationScreen" component={DurationScreen} />
             <Stack.Screen name="SettingsScreen" component={SettingsScreen} />
         </Stack.Navigator>
     );

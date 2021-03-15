@@ -1,5 +1,5 @@
 import { PermissionsAndroid } from 'react-native';
-import { androidPermissionsConstants as apc } from '@constants';
+import { androidPermissionsConstants as apc } from './constants';
 
 export const requestLocPermissionAsync = async (
     permissions = 'ACCESS_FINE_LOCATION',
