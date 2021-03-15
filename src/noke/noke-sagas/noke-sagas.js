@@ -16,7 +16,7 @@ import {
     getActiveMac,
     getActiveName,
     getServiceConnected,
-} from 'redux/selectors';
+} from '@selectors';
 import {
     addDevice,
     addDeviceFailure,

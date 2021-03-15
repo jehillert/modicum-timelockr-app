@@ -36,10 +36,11 @@
                     "@src": "./src",
                     "@store": "./src/redux/store",
                     "@theme": "./src/theme/index",
-                    "@view-date": "./src/components/view-date/index",
-                    "@view-duration": "./src/components/view-duration/index",
-                    "@view-lockout": "./src/components/view-lockout/index",
-                    "@view-testing": "./src/components/view-testing/index",
+                    "@view-date": "./src/components/views/view-date/index",
+                    "@view-duration": "./src/components/views/view-duration/index",
+                    "@view-lockout": "./src/components/views/view-lockout/index",
+                    "@view-manage-locks": "./src/components/views/view-manage-locks/index",
+                    "@view-testing": "./src/components/views/view-testing/index",
                     "@utilities": "./src/util"
                 }
             }

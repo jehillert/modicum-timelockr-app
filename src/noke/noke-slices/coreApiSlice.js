@@ -2,7 +2,7 @@
 // ADD CANCELLATION
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { NokeAndroid, nokeApi } from '@noke';
-import { getSession } from 'redux/selectors';
+import { getSession } from '@selectors';
 
 const fetchLockCommand = (apiActionType, apiCall) =>
     createAsyncThunk(apiActionType, async (payload, { getState }) => {

@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { SButton } from '@common';
 import { MAC_HD1 } from '@env';
 import { NokeAndroid } from '@noke';
-import { getActiveMac, } from 'redux/selectors';
+import { getActiveMac } from '@selectors';
 import {
     addDevice,
     connectDevice,

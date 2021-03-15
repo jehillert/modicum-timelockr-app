@@ -6,7 +6,6 @@ import { useNokeService, useEventChannels } from '@hooks';
 function TestingScreen() {
     useEventChannels();
     useNokeService();
-
     return (
         <>
             <ScrollView nestedScrollEnabled={true} contentInsetAdjustmentBehavior="automatic">

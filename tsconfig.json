@@ -39,6 +39,7 @@
             "@view-date": ["components/view-date/index"],
             "@view-duration": ["components/view-duration/index"],
             "@view-lockout": ["components/view-lockout/index"],
+            "@view-manage-locks": ["components/view-manage-locks/index"],
             "@view-testing": ["components/view-testing/index"],
             "@utilities": ["util/index"],
         }

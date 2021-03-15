@@ -5,8 +5,11 @@ import { navigationRef } from '@navigation';
 import { DrawerNavigator } from '@drawer';
 import { FAB } from '@view-lockout';
 import { NavigationContainer } from '@react-navigation/native';
+// import { useNokeService, useEventChannels } from '@hooks';
 
 function AppNavigation() {
+    // useEventChannels();
+    // useNokeService();
     const theme = useContext(ThemeContext);
 
     return (
