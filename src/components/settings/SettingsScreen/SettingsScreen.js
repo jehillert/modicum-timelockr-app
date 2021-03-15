@@ -2,9 +2,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { RadioButton } from 'react-native-paper';
-import { Settings } from '@styled';
-import SetThemeMode from './SetThemeMode';
+import { SetThemeMode, Settings } from '@settings';
 
+// styling
 const S = {};
 
 S.SettingsHeader = styled.View`
@@ -16,9 +16,12 @@ S.Container = styled.View`
 `;
 
 S.DarkThemeRadioButton = styled(RadioButton)``;
+
 S.LightThemeRadioButton = styled(RadioButton)``;
+
 S.SystemDefaultThemeRadioButton = styled(RadioButton)``;
 
+// component
 function SettingsScreen() {
     return (
         <S.Container>

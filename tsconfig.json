@@ -1,3 +1,6 @@
+// NOTE: Aliases are implemented for the following purposes:
+//  - Only paths in .babelrc & tsconfig.json need changing to move a Feature Folders
+//  - Quick access to common components
 {
     "compilerOptions": {
         "allowJs": true,
@@ -18,9 +21,10 @@
         "baseUrl": "./src",
         "paths": {
             "@assets": ["assets/index"],
-            "@components": ["components/components-index"],
+            "@common": ["components/common"],
             "@components/*": ["components/*"],
             "@constants": ["constants/index"],
+            "@drawer": ["components/drawer/index"],
             "@hooks": ["hooks/index"],
             "@navigation": ["components/navigation/index"],
             "@noke-slices": ["noke/noke-slices/index"],
@@ -28,12 +32,14 @@
             "@noke": ["noke/index"],
             "@reducers": ["redux"],
             "@root-reducer": ["redux/root-reducer"],
-            "@slices": ["components/slices-index"],
             "@screens": ["components/screens-index"],
             "@selectors": ["redux/selectors"],
+            "@settings": ["components/settings/index"],
             "@store": ["redux/store"],
-            "@styled": ["components/styled"],
             "@theme": ["theme/index"],
+            "@view-testing": ["components/view-testing/index"],
+            "@view-lockout": ["components/view-lockout/index"],
+            "@view-duration": ["components/view-duration/index"],
             "@utilities": ["util/index"],
         }
     },

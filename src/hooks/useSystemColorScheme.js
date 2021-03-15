@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useColorScheme } from 'react-native-appearance';
-import { setSystemColorScheme } from '@slices';
+import { setSystemColorScheme } from '@settings';
 
 // Requires react-native-appearance library
 // Place this effect downstream of <AppearanceProvider>

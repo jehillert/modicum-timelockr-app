@@ -16,6 +16,7 @@ const settingsSlice = createSlice({
     },
 });
 
+export const { actions: settingsActions } = settingsSlice;
 export const { setThemeModePref, setSystemColorScheme } = settingsSlice.actions;
 
 export default settingsSlice.reducer;

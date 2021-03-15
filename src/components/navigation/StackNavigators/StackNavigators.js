@@ -1,8 +1,10 @@
 import React, { useContext } from 'react';
 import { ThemeContext } from 'styled-components';
 import { createStackNavigator } from '@react-navigation/stack';
-import { DrawerToggleButton } from '@components';
-import { SetTime1Screen, SetTime2Screen, TestingScreen, SettingsScreen } from '@screens';
+import { DrawerToggleButton } from '@drawer';
+import { SetTime1Screen, SetTime2Screen } from '@screens';
+import { SettingsScreen } from '@settings';
+import { TestingScreen } from '@view-testing';
 
 const Stack = createStackNavigator();
 

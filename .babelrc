@@ -1,4 +1,8 @@
 // NOTE: "babel-preset-react-native has been replaced by metro-react-native-babel-preset"
+// NOTE: Aliases are implemented for the following purposes:
+//  - Only paths in .babelrc & tsconfig.json need changing to move a Feature Folders
+//  - Quick access to commonly referenced components, selectors, etc.
+//  Redux files should be referenced from their feature, even if root__ requires more paths
 {
     "presets": ["module:metro-react-native-babel-preset"],
     "env": {
@@ -17,21 +21,24 @@
                 "extensions": [".js", ".ios.js", ".android.js"],
                 "alias": {
                     "@assets": "./assets",
-                    "@components": "./src/components/components-index",
+                    "@common": "./src/components/common",
                     "@constants": "./src/constants",
+                    "@drawer": "./src/components/drawer/index",
                     "@env": "@env",
                     "@hooks": "./src/hooks",
                     "@navigation": "./src/components/navigation/index",
                     "@noke-slices": "./src/noke/noke-slices",
                     "@noke": "./src/noke/index",
                     "@reducers": "./src/redux",
-                    "@slices": "./src/components/slices-index",
                     "@root-reducer": "./src/redux/root-reducer",
                     "@screens": "./src/components/screens-index",
                     "@selectors": "./src/redux/selectors",
+                    "@settings": "./src/components/settings/index",
+                    "@view-testing": "./src/components/view-testing/index",
+                    "@view-lockout": "./src/components/view-lockout/index",
+                    "@view-duration": "./src/components/view-duration/index",
                     "@src": "./src",
                     "@store": "./src/redux/store",
-                    "@styled": "./src/components/styled",
                     "@theme": "./src/theme/index",
                     "@utilities": "./src/util"
                 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { DrawerContent } from '@components';
+import { DrawerContent } from '@drawer';
 import {
     SetTime1ScreenStack,
     SetTime2ScreenStack,
@@ -10,7 +10,7 @@ import {
 
 const Drawer = createDrawerNavigator();
 
-function AppDrawerNavigator({ initialRouteName = 'SetTime2Screen' }) {
+function DrawerNavigator({ initialRouteName = 'SetTime2Screen' }) {
     return (
         <>
             <Drawer.Navigator
@@ -27,4 +27,4 @@ function AppDrawerNavigator({ initialRouteName = 'SetTime2Screen' }) {
     );
 }
 
-export default AppDrawerNavigator;
+export default DrawerNavigator;

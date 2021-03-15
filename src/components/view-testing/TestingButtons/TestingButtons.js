@@ -2,7 +2,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
-import { SButton } from '@components';
+import { SButton } from '@common';
 import { MAC_HD1 } from '@env';
 import { NokeAndroid } from '@noke';
 import { getActiveMac, } from 'redux/selectors';

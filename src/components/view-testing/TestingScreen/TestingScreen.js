@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, ScrollView, View, Text } from 'react-native';
-import { TestingButtons } from '@components';
+import { TestingButtons } from '@view-testing';
 import { useNokeService, useEventChannels } from '@hooks';
 
 function TestingScreen() {

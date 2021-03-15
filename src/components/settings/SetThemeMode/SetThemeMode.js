@@ -3,21 +3,26 @@ import React from 'react';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { RadioButton } from 'react-native-paper';
-import { setThemeModePref } from '@slices';
-import {
+import { settingsConstants, setThemeModePref, Settings } from '@settings';
+
+// styling
+const S = {};
+
+S.DarkThemeRadioButton = styled(RadioButton)``;
+
+S.LightThemeRadioButton = styled(RadioButton)``;
+
+S.SystemDefaultThemeRadioButton = styled(RadioButton)``;
+
+// constants
+const {
     LIGHT_THEME_TXT,
     DARK_THEME_TXT,
     THEME_SETTING_TITLE_TXT,
     USE_SYSTEM_DEFAULT_THEME_TXT,
-} from './constants';
-import { Settings } from '@styled';
+} = settingsConstants;
 
-const S = {};
-
-S.DarkThemeRadioButton = styled(RadioButton)``;
-S.LightThemeRadioButton = styled(RadioButton)``;
-S.SystemDefaultThemeRadioButton = styled(RadioButton)``;
-
+// component
 function SetThemeMode() {
     const dispatch = useDispatch();
     const themeModePref = useSelector(state => state?.settings?.themeModePref);

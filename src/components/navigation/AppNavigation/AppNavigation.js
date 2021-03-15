@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
 import { ThemeContext } from 'styled-components';
 import { StatusBar } from 'react-native';
-import { AppDrawerNavigator, navigationRef } from '@navigation';
-import { FAB } from '@components';
+import { navigationRef } from '@navigation';
+import { DrawerNavigator } from '@drawer';
+import { FAB } from '@view-lockout';
 import { NavigationContainer } from '@react-navigation/native';
 
 function AppNavigation() {
@@ -12,7 +13,7 @@ function AppNavigation() {
         <NavigationContainer theme={theme} ref={navigationRef}>
             <StatusBar animated={true} backgroundColor={theme.colors.primary} />
             <FAB />
-            <AppDrawerNavigator />
+            <DrawerNavigator />
         </NavigationContainer>
     );
 }
