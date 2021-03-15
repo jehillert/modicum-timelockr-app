@@ -10,7 +10,7 @@ import {
 
 const Drawer = createDrawerNavigator();
 
-function AppDrawerNavigator({ initialRouteName = 'TestingScreen' }) {
+function AppDrawerNavigator({ initialRouteName = 'SetTime2ScreenStack' }) {
     return (
         <>
             <Drawer.Navigator
@@ -20,8 +20,8 @@ function AppDrawerNavigator({ initialRouteName = 'TestingScreen' }) {
                 drawerContent={() => <AppDrawerContent />}>
                 <Drawer.Screen name="SetTime1ScreenStack" component={SetTime1ScreenStack} />
                 <Drawer.Screen name="SetTime2ScreenStack" component={SetTime2ScreenStack} />
-                <Drawer.Screen name="TestingScreenStack" component={TestingScreenStack} />
                 <Drawer.Screen name="SettingsScreenStack" component={SettingsScreenStack} />
+                <Drawer.Screen name="TestingScreenStack" component={TestingScreenStack} />
             </Drawer.Navigator>
         </>
     );
