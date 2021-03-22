@@ -10,7 +10,7 @@ const settingsSlice = createSlice({
         setThemeModePref(state, { payload: themeModePref = 'system' }) {
             state.themeModePref = themeModePref;
         },
-        setSystemColorScheme(state, { payload: currentSystemColorScheme = null }) {
+        setSystemColorScheme(state, { payload: currentSystemColorScheme = 'light' }) {
             state.systemColorScheme = currentSystemColorScheme;
         },
     },
