@@ -8,6 +8,6 @@ export const getSession = state => state?.devices?.locks[getActiveLockId(state)]
 export const getSystemColorScheme = state => state?.settings?.systemColorScheme || null;
 export const getThemeModePref = state => state?.settings?.themeModePref || 'system';
 export const getThemeMode = state => {
-    const { systemColorScheme = 'light', themeModePref = 'light' } = state?.settings;
+    const { systemColorScheme = 'light', themeModePref = 'system' } = state?.settings;
     return themeModePref === 'system' ? systemColorScheme : themeModePref;
 };
