@@ -1,0 +1,32 @@
+{
+    "folders": [
+        {
+            "name": "src/components",
+            "path": "../src/components"
+        },
+        {
+            "name": "...",
+            "path": "../"
+        }
+    ],
+    "settings": {
+        "workbench.colorTheme": "Complementary Theme",
+        "[java]": {
+            "editor.defaultFormatter": "redhat.java"
+        },
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "java.format.enabled": true,
+        "java.format.onType.enabled": false,
+        "favorites.resources": [
+            "../.babelrc",
+            "../tsconfig.json",
+            "../package.json",
+            "../android/app/src/main/java/com/calapp/NokeAndroidMobileLibrary.java",
+            "../android/app/src/main/java/com/calapp/MainActivity.java"
+        ],
+        "java.configuration.updateBuildConfiguration": "disabled",
+        "explorerExclude.backup": null,
+        "favorites.sortOrder": "MANUAL",
+        "commentAnchors.tagHighlights.enabled": true
+    }
+}
