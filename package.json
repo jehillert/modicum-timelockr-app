@@ -1,6 +1,18 @@
 {
   "name": "timelockr",
+  "license": "UNLICENSED",
+  "description": "This is an app that controls a smart lock. The lock denies user access for period of time specified by user",
   "version": "0.0.1",
+  "author": "John Hillert <john.hillert@gmail.com> (https://github.com/jehillert)",
+  "homepage": "https://github.com/jehillert/modicum-timelockr-app#readme",
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jehillert/modicum-timelockr-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jehillert/modicum-timelockr-app/issues"
+  },
   "private": true,
   "scripts": {
     "android": "react-native run-android",

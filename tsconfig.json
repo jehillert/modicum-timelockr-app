@@ -22,6 +22,7 @@
         "paths": {
             "@assets": ["assets/index"],
             "@common": ["components/common"],
+            "@components": ["components/index"],
             "@components/*": ["components/*"],
             "@drawer": ["components/drawer/index"],
             "@hooks": ["hooks/index"],

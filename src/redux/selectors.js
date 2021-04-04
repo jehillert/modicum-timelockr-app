@@ -9,5 +9,7 @@ export const getSystemColorScheme = state => state?.settings?.systemColorScheme 
 export const getThemeModePref = state => state?.settings?.themeModePref || 'system';
 export const getThemeMode = state => {
     const { systemColorScheme = 'light', themeModePref = 'system' } = state?.settings;
+    console.log(systemColorScheme);
+    console.log(themeModePref);
     return themeModePref === 'system' ? systemColorScheme : themeModePref;
 };
