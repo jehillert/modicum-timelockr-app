@@ -6,7 +6,7 @@ import {
     DurationScreenStack,
     TestingScreenStack,
     SettingsScreenStack,
-} from '@navigation';
+} from 'components/navigator';
 
 const Drawer = createDrawerNavigator();
 

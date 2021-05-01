@@ -3,9 +3,7 @@ import { ThemeContext } from 'styled-components';
 import { createStackNavigator } from '@react-navigation/stack';
 import { DrawerToggleButton } from '@drawer';
 import { SettingsScreen } from '@settings';
-import { DateScreen } from '@view-date';
-import { DurationScreen } from '@view-duration';
-import { TestingScreen } from '@view-testing';
+import { DateScreen, DurationScreen, TestingScreen } from '@views';
 
 const Stack = createStackNavigator();
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { Portal, FAB as ReactNativePaperFab } from 'react-native-paper';
-import * as RootNavigation from '@navigation';
+import * as RootNavigation from 'components/navigator';
 
 const S = {};
 

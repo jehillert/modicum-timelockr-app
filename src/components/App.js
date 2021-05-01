@@ -5,7 +5,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { persistor, store } from 'redux/store';
 import { PersistGate } from 'redux-persist/integration/react';
-import { AppNavigation } from '@navigation';
+import { Navigation } from 'components/navigator';
 import { ThemeWrapper } from '@theme';
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
         <Provider store={store}>
             <PersistGate loading={null} persistor={persistor}>
                 <ThemeWrapper>
-                    <AppNavigation />
+                    <Navigation />
                 </ThemeWrapper>
             </PersistGate>
         </Provider>

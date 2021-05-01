@@ -1,3 +1,3 @@
-export { default as DrawerContent } from './drawer-content/DrawerContent';
-export { default as DrawerNavigator } from './drawer-navigator/DrawerNavigator';
-export { default as DrawerToggleButton } from './drawer-toggle-button/DrawerToggleButton';
+export { default as DrawerContent } from './DrawerContent';
+export { default as DrawerNavigator } from './DrawerNavigator';
+export { default as DrawerToggleButton } from './DrawerToggleButton';

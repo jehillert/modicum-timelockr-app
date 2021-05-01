@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
 import { ThemeContext } from 'styled-components';
 import { StatusBar } from 'react-native';
-import { navigationRef } from '@navigation';
+import { navigationRef } from 'components/navigator';
 import { DrawerNavigator } from '@drawer'
-import { FAB } from '@view-lockout';
+import { FAB } from '@views';
 import { NavigationContainer } from '@react-navigation/native';
 // import { useNokeService, useEventChannels } from '@hooks';
 
-function AppNavigation() {
+function Navigation() {
     // useEventChannels();
     // useNokeService();
     const theme = useContext(ThemeContext);
@@ -21,4 +21,4 @@ function AppNavigation() {
     );
 }
 
-export default AppNavigation;
+export default Navigation;
