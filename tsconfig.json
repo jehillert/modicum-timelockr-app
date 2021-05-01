@@ -1,6 +1,3 @@
-// NOTE: Aliases are implemented for the following purposes:
-//  - Only paths in .babelrc & tsconfig.json need changing to move a Feature Folders
-//  - Quick access to common components
 {
     "compilerOptions": {
         "allowJs": true,
