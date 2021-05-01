@@ -1,10 +1,6 @@
 {
     "folders": [
         {
-            "name": "src/components",
-            "path": "../src/components"
-        },
-        {
             "name": "...",
             "path": "../"
         }
@@ -18,11 +14,11 @@
         "java.format.enabled": true,
         "java.format.onType.enabled": false,
         "favorites.resources": [
-            "../.babelrc",
-            "../tsconfig.json",
-            "../package.json",
-            "../android/app/src/main/java/com/calapp/NokeAndroidMobileLibrary.java",
-            "../android/app/src/main/java/com/calapp/MainActivity.java"
+            "tsconfig.json",
+            ".babelrc",
+            ".prettierrc.js",
+            ".eslintrc.js",
+            ".env"
         ],
         "java.configuration.updateBuildConfiguration": "disabled",
         "explorerExclude.backup": null,
