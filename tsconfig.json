@@ -32,11 +32,11 @@
             "@noke-sagas": ["src/noke/noke-sagas/index"],
             "@noke": ["src/noke/index"],
             "@root-reducer": ["src/redux/root-reducer"],
+            "@screens": ["src/components/screens/index"],
             "@selectors": ["src/redux/selectors"],
             "@settings": ["src/components/settings/index"],
             "@store": ["src/redux/store"],
             "@theme": ["src/theme/index"],
-            "@views": ["src/components/views/index"],
             "@utilities": ["src/util/index"],
         }
     },

@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { ThemeContext } from 'styled-components';
 import { StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { FAB } from '@views';
+import { FAB } from '@screens';
 import { DrawerNavigator, RootNavigation } from '@navigators';
 
 function AppNavigator() {
