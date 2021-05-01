@@ -1,1 +1,1 @@
-export { default as DurationScreen } from './DurationScreen/DurationScreen';
+export { default as DurationScreen } from './duration-screen/DurationScreen';

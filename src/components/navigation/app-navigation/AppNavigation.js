@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { ThemeContext } from 'styled-components';
 import { StatusBar } from 'react-native';
 import { navigationRef } from '@navigation';
-import { DrawerNavigator } from '@drawer';
+import { DrawerNavigator } from '@drawer'
 import { FAB } from '@view-lockout';
 import { NavigationContainer } from '@react-navigation/native';
 // import { useNokeService, useEventChannels } from '@hooks';

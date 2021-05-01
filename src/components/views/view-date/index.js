@@ -1,1 +1,1 @@
-export { default as DateScreen } from './DateScreen/DateScreen';
+export { default as DateScreen } from './date-screen/DateScreen';

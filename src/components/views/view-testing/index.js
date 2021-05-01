@@ -1,2 +1,2 @@
-export { default as TestingButtons } from './TestingButtons/TestingButtons';
-export { default as TestingScreen } from './TestingScreen/TestingScreen';
+export { default as TestingButtons } from './testing-buttons/TestingButtons';
+export { default as TestingScreen } from './testing-screen/TestingScreen';

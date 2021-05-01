@@ -1,3 +1,3 @@
 export * from './root-navigation.js';
-export * from './StackNavigators/StackNavigators';
-export { default as AppNavigation } from './AppNavigation/AppNavigation';
+export * from './stack-navigators/StackNavigators';
+export { default as AppNavigation } from './app-navigation/AppNavigation';
