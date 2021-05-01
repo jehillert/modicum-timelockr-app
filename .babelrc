@@ -22,10 +22,9 @@
                 "alias": {
                     "@assets": "./assets/index",
                     "@common": "./src/components/common",
-                    "@drawer": "./src/components/drawer/index",
                     "@env": "@env",
                     "@hooks": "./src/hooks/index",
-                    "@navigator": "./src/components/navigator/index",
+                    "@navigators": "./src/components/navigators/index",
                     "@noke-constants": "./src/noke/noke-constants",
                     "@noke-slices": "./src/noke/noke-slices/index",
                     "@noke-api": "./src/noke/noke-api/index",

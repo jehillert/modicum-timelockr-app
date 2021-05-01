@@ -3,9 +3,9 @@
 // NOTE: have a better radio button.  whole row colored, or something.
 import React from 'react';
 import { Provider } from 'react-redux';
-import { persistor, store } from 'redux/store';
 import { PersistGate } from 'redux-persist/integration/react';
-import { Navigation } from 'components/navigator';
+import { persistor, store } from '@store';
+import { AppNavigator } from '@navigators';
 import { ThemeWrapper } from '@theme';
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
         <Provider store={store}>
             <PersistGate loading={null} persistor={persistor}>
                 <ThemeWrapper>
-                    <Navigation />
+                    <AppNavigator />
                 </ThemeWrapper>
             </PersistGate>
         </Provider>

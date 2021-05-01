@@ -1,12 +1,7 @@
 import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import {
-    DateScreenStack,
-    DrawerContent,
-    DurationScreenStack,
-    TestingScreenStack,
-    SettingsScreenStack,
-} from '@navigators';
+import DrawerContent from './DrawerContent';
+import { DateScreenStack, DurationScreenStack, TestingScreenStack, SettingsScreenStack } from '@navigators';
 
 const Drawer = createDrawerNavigator();
 
