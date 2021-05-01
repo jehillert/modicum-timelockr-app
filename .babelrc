@@ -20,7 +20,7 @@
                 "root": ["./src"],
                 "extensions": [".ios.js", ".android.js", ".js", ".ts", ".tsx", ".json"],
                 "alias": {
-                    "@assets": "./assets/index",
+                    "@assets": "./src/assets/index",
                     "@common": "./src/components/common",
                     "@env": "@env",
                     "@hooks": "./src/hooks/index",
