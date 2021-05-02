@@ -3,6 +3,10 @@
         {
             "name": "...",
             "path": "../"
+        },
+        {
+            "name": "timelockr-app/src",
+            "path": "../src"
         }
     ],
     "settings": {
@@ -18,7 +22,12 @@
             ".babelrc",
             ".prettierrc.js",
             ".eslintrc.js",
-            ".env"
+            ".env",
+            "/Users/jeh/dev/Projects/modicum/timelockr-app/.babelrc",
+            "/Users/jeh/dev/Projects/modicum/timelockr-app/tsconfig.json",
+            "/Users/jeh/dev/Projects/modicum/timelockr-app/.eslintrc.js",
+            "/Users/jeh/dev/Projects/modicum/timelockr-app/.eslintignore",
+            "/Users/jeh/dev/Projects/modicum/timelockr-app/.prettierrc.js"
         ],
         "java.configuration.updateBuildConfiguration": "disabled",
         "explorerExclude.backup": null,
