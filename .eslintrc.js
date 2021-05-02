@@ -1,13 +1,21 @@
 module.exports = {
+    parser: '@typescript-eslint/parser',
     root: true,
-    extends: ['@react-native-community', 'prettier', 'plugin:import/errors', 'plugin:import/warnings'],
+    extends: [
+        '@react-native-community',
+        'airbnb-typescript',
+        'prettier',
+        'prettier/@typescript-eslint',
+        'prettier/react',
+    ],
     settings: {
         'import/resolver': {
             'babel-module': {},
         },
     },
-    rules: {
-        'import/no-named-as-default': 0,
-        'import/named': 0,
-    },
-};
+    overrides: [
+        {
+            files: ['*.ts', '*.tsx'], // Your TypeScript files extension
+        },
+    ],
+}
