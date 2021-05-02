@@ -1,10 +1,10 @@
 // TODO: have a better radio button.  whole row colored, or something.  dot is old
 import React from 'react';
-import styled, { StyledComponent } from 'styled-components';
-import { useDispatch, useSelector } from 'react-redux';
+import styled from 'styled-components';
 import { RadioButton } from 'react-native-paper';
 import { settingsConstants, setThemeModePref, Settings } from '@settings';
-import { StyledSubCompsObj } from '@common';
+import { StyledSubCompsObj } from '@types';
+import { useAppDispatch, useAppSelector } from '@hooks';
 
 /*
 type StyledComponent<
@@ -31,8 +31,8 @@ const { LIGHT_THEME_TXT, DARK_THEME_TXT, THEME_SETTING_TITLE_TXT, USE_SYSTEM_DEF
 
 // component
 const SetThemeMode: React.FC = () => {
-    const dispatch = useDispatch();
-    const themeModePref = useSelector(state => state?.settings?.themeModePref);
+    const dispatch = useAppDispatch();
+    const themeModePref = useAppSelector(state => state?.settings?.themeModePref);
 
     return (
         <Settings.Group>

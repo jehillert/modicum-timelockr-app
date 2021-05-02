@@ -4,16 +4,14 @@
 //  - Quick access to commonly referenced components, selectors, etc.
 //  Redux files should be referenced from their feature, even if root__ requires more paths
 {
-    "presets": ["module:metro-react-native-babel-preset"],
+    "presets": ["module:metro-react-native-babel-preset", "@babel/preset-typescript"],
     "env": {
         "production": {
-          "plugins": ["react-native-paper/babel"]
+            "plugins": ["react-native-paper/babel"]
         }
     },
     "plugins": [
-        [
-            "babel-plugin-styled-components"
-        ],
+        ["babel-plugin-styled-components"],
         [
             "module-resolver",
             {
@@ -36,6 +34,7 @@
                     "@settings": "./src/components/settings/index",
                     "@store": "./src/redux/store",
                     "@theme": "./src/theme/index",
+                    "@types": "./src/types/index",
                     "@utilities": "./src/util/index"
                 }
             }

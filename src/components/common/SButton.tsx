@@ -1,18 +1,23 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/native';
+import { StyledSubCompsObj } from '@types';
 
-const S = {};
+const S: StyledSubCompsObj = {};
+
+interface BoolProps {
+    [prop: string]: string;
+}
 
 S.TouchableOpacity = styled.TouchableOpacity`
     flex: 1;
     height: 70px;
     margin: 15px;
-    background: ${({ bgColor }) => (bgColor ? bgColor : 'darkgrey')};
+    background: ${props => (props.bgColor ? props.bgColor : 'darkgrey')};
 `;
 
 S.Text = styled.Text`
     font-size: 18px;
-    color: ${({ fgColor }) => (fgColor ? fgColor : 'white')};
+    color: ${props => (props.fgColor ? props.fgColor : 'white')};
     margin: auto;
 `;
 

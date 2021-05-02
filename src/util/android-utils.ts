@@ -40,7 +40,7 @@ export const requestLocPermissionAsync = async (
     }
 };
 
-export const requestPermissions = async permissions => {
+export const requestPermissions = async (permissions: Array<string>) => {
     const isReqMult = Array.isArray(permissions);
 
     try {

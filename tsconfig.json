@@ -16,6 +16,7 @@
         "noUnusedLocals": false,
         "noUnusedParameters": false,
         "outDir": "./dist",
+        "resolveJsonModule": true,
         "skipLibCheck": false,
         "strict": true,
         "strictBindCallApply": true,
@@ -39,6 +40,7 @@
             "@settings": ["components/settings/index"],
             "@store": ["redux/store"],
             "@theme": ["theme/index"],
+            "@types": ["types/index"],
             "@utilities": ["util/index"]
         }
     },

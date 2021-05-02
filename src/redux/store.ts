@@ -30,9 +30,26 @@ const storeConfig = {
 const store = configureStore(storeConfig);
 
 sagaMiddleware.run(rootSaga);
+/*
+const anyModule = module as any;
+if (anyModule.hot) {
+  anyModule.hot.accept('./app', () => render(App));
+}
+DON'T DO THIS. It will result in full page reloads each time you make a change. Instead do something like this:
 
-if (process.env.NODE_ENV === 'development' && module.hot) {
-    module.hot.accept(() => {
+if ((module as any).hot) {
+  (module as any).hot.accept('./app', () => render(App));
+}
+or this:
+
+declare const module: any;
+if (module.hot) {
+  module.hot.accept('./app', () => render(App));
+}
+*/
+
+if (process.env.NODE_ENV === 'development' && (module as any).hot) {
+    (module as any).hot.accept(() => {
         const newRootReducer = require('./root-reducer').default;
         store.replaceReducer(newRootReducer);
     });
@@ -41,3 +58,7 @@ if (process.env.NODE_ENV === 'development' && module.hot) {
 let persistor = persistStore(store);
 
 export { persistor, store };
+
+// TYPES
+export type AppDispatch = typeof store.dispatch;
+export type RootState = ReturnType<typeof store.getState>;

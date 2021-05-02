@@ -1,12 +1,12 @@
-import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 import { useColorScheme } from 'react-native-appearance';
 import { setSystemColorScheme } from '@settings';
+import { useAppDispatch } from '@hooks';
 
 // Requires react-native-appearance library
 // Place this effect downstream of <AppearanceProvider>
 function useSystemColorScheme() {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const colorScheme = useColorScheme();
 
     useEffect(() => {

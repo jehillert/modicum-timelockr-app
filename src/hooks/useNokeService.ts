@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from '@hooks';
 import { startEventChannels, startService } from '@noke-slices';
 
 export function useNokeService() {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     useEffect(() => {
         dispatch(startService());
@@ -11,7 +11,7 @@ export function useNokeService() {
 }
 
 export function useEventChannels() {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     useEffect(() => {
         dispatch(startEventChannels());

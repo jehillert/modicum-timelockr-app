@@ -27,7 +27,8 @@
             "/Users/jeh/dev/Projects/modicum/timelockr-app/tsconfig.json",
             "/Users/jeh/dev/Projects/modicum/timelockr-app/.eslintrc.js",
             "/Users/jeh/dev/Projects/modicum/timelockr-app/.eslintignore",
-            "/Users/jeh/dev/Projects/modicum/timelockr-app/.prettierrc.js"
+            "/Users/jeh/dev/Projects/modicum/timelockr-app/.prettierrc.js",
+            "/Users/jeh/dev/Projects/modicum/timelockr-app/node_modules/react-navigation/typescript/react-navigation.d.ts"
         ],
         "java.configuration.updateBuildConfiguration": "disabled",
         "explorerExclude.backup": null,
