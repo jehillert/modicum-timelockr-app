@@ -7,8 +7,9 @@ import { theme } from '@theme';
 import { SafeAreaView, StyleSheet } from 'react-native';
 import { Provider as PaperProvider } from 'react-native-paper';
 import { AppearanceProvider } from 'react-native-appearance';
+import { StyledSubCompsObj } from '@types';
 
-const S = {};
+const S: StyledSubCompsObj = {};
 
 S.SafeAreaView = styled.SafeAreaView`
     flex: 1;

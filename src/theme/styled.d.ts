@@ -1,10 +1,7 @@
-import 'styled-components';
-import { Theme } from '@react-navigation/native';
+import {} from 'styled-components';
+import { theme } from '@theme';
 
 declare module 'styled-components' {
-    export interface DefaultTheme extends Theme {
-        colors: {
-            [prop: string]: string;
-        };
-    }
+    type Theme = typeof theme;
+    export interface DefaultTheme extends Theme {}
 }

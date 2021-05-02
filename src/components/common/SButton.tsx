@@ -8,16 +8,16 @@ interface BoolProps {
     [prop: string]: string;
 }
 
-S.TouchableOpacity = styled.TouchableOpacity`
+S.TouchableOpacity = styled.TouchableOpacity<BoolProps>`
     flex: 1;
     height: 70px;
     margin: 15px;
-    background: ${props => (props.bgColor ? props.bgColor : 'darkgrey')};
+    background: ${(props: BoolProps) => (props.bgColor ? props.bgColor : 'darkgrey')};
 `;
 
-S.Text = styled.Text`
+S.Text = styled.Text<BoolProps>`
     font-size: 18px;
-    color: ${props => (props.fgColor ? props.fgColor : 'white')};
+    color: ${(props: BoolProps) => (props.fgColor ? props.fgColor : 'white')};
     margin: auto;
 `;
 

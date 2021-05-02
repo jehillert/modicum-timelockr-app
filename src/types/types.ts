@@ -1,7 +1,7 @@
-import styled, { StyledComponent } from 'styled-components';
+import styled, { DefaultTheme, StyledComponent } from 'styled-components';
 
 export interface StyledSubCompsObj {
-    [prop: string]: StyledComponent<React.ComponentType<any>, {}>;
+    [prop: string]: StyledComponent<React.ComponentType<any>, DefaultTheme>;
 }
 
 /*
@@ -22,3 +22,8 @@ declare module 'react-native' {
   }
 }
 */
+
+// import styled, { DefaultTheme, ReactNativeThemedStyledFunction, StyledComponent } from 'styled-components/native';
+// export interface StyledSubCompsObj {
+//     [prop: string]: ReactNativeThemedStyledFunction<<any>, DefaultTheme>;
+// }
