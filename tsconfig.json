@@ -39,6 +39,7 @@
             "@selectors": ["redux/selectors"],
             "@settings": ["components/settings/index"],
             "@store": ["redux/store"],
+            "@system": ["system/index"],
             "@theme": ["theme/index"],
             "@types": ["types/index"],
             "@utilities": ["util/index"]

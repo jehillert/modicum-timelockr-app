@@ -4,8 +4,14 @@ import { StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { FAB } from '@screens';
 import { DrawerNavigator, RootNavigation } from '@navigators';
+import { useAppState, useFocusState, useMemory, useNetworkStatus } from '@hooks';
 
 function AppNavigator() {
+    useAppState();
+    useFocusState();
+    useNetworkStatus();
+    // useMemory(3000);
+
     const theme = useContext(ThemeContext);
 
     return (

@@ -34,6 +34,7 @@
                     "@settings": "./src/components/settings/index",
                     "@store": "./src/redux/store",
                     "@theme": "./src/theme/index",
+                    "@system": "./src/system/index",
                     "@types": "./src/types/index",
                     "@utilities": "./src/util/index"
                 }

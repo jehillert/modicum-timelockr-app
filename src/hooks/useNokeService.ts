@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useAppDispatch } from '@hooks';
 import { startEventChannels, startService } from '@noke-slices';
 
-export function useNokeService() {
+function useNokeService() {
     const dispatch = useAppDispatch();
 
     useEffect(() => {
@@ -17,3 +17,5 @@ export function useEventChannels() {
         dispatch(startEventChannels());
     }, []);
 }
+
+export { useNokeService };

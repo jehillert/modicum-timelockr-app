@@ -1,4 +1,8 @@
 // TODO: Determine if you really need defaults in this file given initial state set elsewhere.
+export const getAppState = state => state?.system.appState || 'background';
+export const getFocusState = state => state?.system.focusState || 'blur';
+export const getHasNetAccess = state => state?.system.hasNetAccess;
+export const getMemoryUse = state => state?.system.memoryUse || 'unavailable';
 export const getActiveLockId = state => state?.devices?.activeLockId;
 export const getActiveMac = state => state?.devices?.locks[getActiveLockId(state)]?.mac || '';
 export const getActiveName = state => state?.devices?.locks[getActiveLockId(state)]?.name || '';

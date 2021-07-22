@@ -13,4 +13,4 @@ function usePrevious<T>(value: T): MutableRefObject<T | undefined>['current'] {
     return ref.current;
 }
 
-export default usePrevious;
+export { usePrevious };

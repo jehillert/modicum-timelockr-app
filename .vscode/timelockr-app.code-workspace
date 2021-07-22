@@ -3,10 +3,6 @@
         {
             "name": "...",
             "path": "../"
-        },
-        {
-            "name": "timelockr-app/src",
-            "path": "../src"
         }
     ],
     "settings": {

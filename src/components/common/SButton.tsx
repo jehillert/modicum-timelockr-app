@@ -4,29 +4,37 @@ import { StyledSubCompsObj } from '@types';
 
 const S: StyledSubCompsObj = {};
 
-interface BoolProps {
+type BoolProps = {
     [prop: string]: string;
-}
+};
 
 S.TouchableOpacity = styled.TouchableOpacity<BoolProps>`
     flex: 1;
     height: 70px;
     margin: 15px;
-    background: ${(props: BoolProps) => (props.bgColor ? props.bgColor : 'darkgrey')};
+    background: ${props => (props.bgColor ? props.bgColor : 'darkgrey')};
 `;
 
 S.Text = styled.Text<BoolProps>`
     font-size: 18px;
-    color: ${(props: BoolProps) => (props.fgColor ? props.fgColor : 'white')};
+    color: ${props => (props.fgColor ? props.fgColor : 'white')};
     margin: auto;
 `;
 
-function SButton({ bgColor, fgColor, children, className, onPress }) {
+type SButtonProps = {
+    bgColor: string;
+    fgColor: string;
+    children: React.ReactNode;
+    className: string;
+    onPress: string;
+};
+
+const SButton = ({ bgColor, fgColor, children, className, onPress }: SButtonProps) => {
     return (
         <S.TouchableOpacity bgColor={bgColor} className={className} onPress={onPress}>
             <S.Text fgColor={fgColor}>{children}</S.Text>
         </S.TouchableOpacity>
     );
-}
+};
 
 export default SButton;

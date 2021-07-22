@@ -144,6 +144,7 @@ android {
     }
 
     defaultConfig {
+        multiDexEnabled true
         applicationId "com.timelockr"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
@@ -197,6 +198,7 @@ android {
 }
 
 dependencies {
+    implementation 'com.android.support:multidex:1.0.3' //enter the latest version
     implementation fileTree(dir: "libs", include: ["*.jar"])
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules

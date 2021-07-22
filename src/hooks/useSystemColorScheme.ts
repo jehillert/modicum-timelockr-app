@@ -14,4 +14,4 @@ function useSystemColorScheme() {
     }, [colorScheme, dispatch]);
 }
 
-export default useSystemColorScheme;
+export { useSystemColorScheme };

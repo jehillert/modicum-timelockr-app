@@ -1,58 +1,100 @@
 #!/bin/zsh
+# * out-of-date source repos which you can update with `pod repo update` or with `pod install --repo-update`.
+# CONFIGURATION
+PACKAGE_MANAGER="yarn"
+PROJECT_ROOT=$HOME/dev/dmg-provider
+CACHE_TO_DELETE=("haste-*" "metro-*" "yarn-*" "react-*")
+DERIVED_DATA_DIR=$HOME/Library/Developer/Xcode/DerivedData
 
-# Bold High Intensity
-BIBlack='\033[1;90m'      # Black
-BIRed='\033[1;91m'        # Red
-BIGreen='\033[1;92m'      # Green
-BIYellow='\033[1;93m'     # Yellow
-BIBlue='\033[1;94m'       # Blue
-BIPurple='\033[1;95m'     # Purple
-BICyan='\033[1;96m'       # Cyan
-BIWhite='\033[1;97m'      # White
+# FORMATTING
+BOLD_BLACK="\033[1;90m" # Black
+BOLD_RED="\033[1;91m" # Red
+BOLD_GREEN="\033[1;92m" # Green
+BOLD_YELLOW="\033[1;93m" # Yellow
+BOLD_BLUE="\033[1;94m" # Blue
+BOLD_PURPLE="\033[1;95m" # Purple
+BOLD_CYAN="\033[1;96m" # Cyan
+BOLD_WHITE="\033[1;97m" # White
 
-# Color off
-Color_Off='\033[0m'
+COLOR_OFF="\033[0m"
 
-echo "Delete watchmen"
+# FUNCTIONS
+say()
+{
+  echo "$BOLD_YELLOW\n🔸 $1$COLOR_OFF"
+}
+
+printDivider()
+{
+  printf %"$COLUMNS"s |tr " " "•"
+}
+
+sayDone()
+{
+  echo "$BOLD_BLUE🔹 done$COLOR_OFF"
+}
+
+announceBig()
+{
+  echo "$BOLD_RED"
+  printDivider
+  echo "$BOLD_WHITE🔸🔸🔸 $1 🔸🔸🔸$BOLD_RED"
+  printDivider
+  echo "$COLOR_OFF"
+}
+
+# EXECUTION
+announceBig "RUNNING CLEANING SCRIPT"
+cd "${PROJECT_ROOT}"
+
+say "Deleting watchmen..."
 watchman watch-del-all
+sayDone
 
-echo "Delete temporary files"
-rm -rf  $TEMPDIR/react-*
-rm -rf  $TEMPDIR/npm-*
-rm -rf  $TEMPDIR/haste-*
-rm -rf  $TEMPDIR/metro-*
-rm -rf  $TEMPDIR/haste-map-react-native-packager-*
+say "Cleaning temporary files..."
+for i in $CACHE_TO_DELETE; do
+    echo " Deleting $BOLD_PURPLE\$TMPDIR/$i$COLOR_OFF"
+    rm -rf $TMPDIR/$i
+done
+sayDone
 
-echo "${BIYellow}\n🔸 Cleaning Android files${Color_Off}"
+say "Cleaning Android files..."
 cd android && ./gradlew clean && cd ..
-echo "${BIGreen}◆ done${Color_Off}"
+sayDone
 
-echo "${BIYellow}\n🔸 Cleaning iOS simulator files${Color_Off}"
-rm -rf ~/Library/Developer/Xcode/DerivedData/MemberServices-*
-echo "${BIGreen}◆ done${Color_Off}"
+say "Cleaning iOS simulator files..."
+rm -rf $DERIVED_DATA_DIR && mkdir $DERIVED_DATA_DIR
+sayDone
 
-echo "${BIYellow}\n🔸 Removing node_modules folder${Color_Off}"
+say "Removing node_modules folder..."
 rm -rf node_modules
-echo "${BIGreen}◆ done${Color_Off}"
+sayDone
 
-echo "${BIYellow}\n🔸 Removing package-lock.json file${Color_Off}"
-rm -f package-lock.json
-echo "${BIGreen}◆ done${Color_Off}"
+if [[ $PACKAGE_MANAGER == "yarn" ]]; then
+  say "Deleting yarn-lock file..."
+  rm -f yarn-lock.json
+fi
 
-echo "${BIYellow}\n🔸 Removing pods folder${Color_Off}"
-cd ios && rm -rf pods
-echo "${BIGreen}◆ done${Color_Off}"
+if [[ $PACKAGE_MANAGER == "npm" ]]; then
+  say "Deleting package-lock file..."
+  rm -f package-lock.json
+fi
+sayDone
 
-echo "${BIYellow}\n🔸 Removing Podfile.lock file${Color_Off}"
-rm -f Podfile.lock && cd ..
-echo "${BIGreen}◆ done${Color_Off}"
+say "Removing pods folder..."
+cd ios && rm -rf pods && cd ..
+sayDone
 
-echo "${BIYellow}\n🔸 Installing node modules (npm)${Color_Off}"
-# npm i
-npm install --force
-echo "${BIGreen}◆ done${Color_Off}"
+say "Removing Podfile.lock file..."
+cd ios && rm -f /Podfile.lock && cd ..
+sayDone
 
-echo "${BIYellow}\n🔸 Cocoapod - Installing pods${Color_Off}"
+say "Installing node modules..."
+$PACKAGE_MANAGER install
+sayDone
+
+say "Cocoapod - Installing cocoapods pods..."
 cd ios && pod install && cd ..
+sayDone
 
-echo "${BIGreen}◆◆◆ DONE ◆◆◆${Color_Off}"
+announceBig "ALL DONE!!!"
