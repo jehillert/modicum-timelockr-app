@@ -1,16 +1,10 @@
 import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import {
-    DateScreenStack,
-    DrawerContent,
-    DurationScreenStack,
-    TestingScreenStack,
-    SettingsScreenStack,
-} from '@navigators';
+import { DateScreen, DrawerContent, DurationScreen, TestingScreen, SettingsScreen } from '@navigators';
 
 const Drawer = createDrawerNavigator();
 
-function DrawerNavigator({ initialRouteName = 'TestingScreenStack' }) {
+function DrawerNavigator({ initialRouteName = 'TestingScreen' }) {
     return (
         <>
             <Drawer.Navigator
@@ -18,10 +12,10 @@ function DrawerNavigator({ initialRouteName = 'TestingScreenStack' }) {
                 backBehavior="initialRoute"
                 swipeEnabled="false"
                 drawerContent={() => <DrawerContent />}>
-                <Drawer.Screen name="DurationScreenStack" component={DurationScreenStack} />
-                <Drawer.Screen name="DateScreenStack" component={DateScreenStack} />
-                <Drawer.Screen name="TestingScreenStack" component={TestingScreenStack} />
-                <Drawer.Screen name="SettingsScreenStack" component={SettingsScreenStack} />
+                <Drawer.Screen name="DurationScreen" component={DurationScreen} />
+                <Drawer.Screen name="DateScreen" component={DateScreen} />
+                <Drawer.Screen name="TestingScreen" component={TestingScreen} />
+                <Drawer.Screen name="SettingsScreen" component={SettingsScreen} />
             </Drawer.Navigator>
         </>
     );

@@ -48,7 +48,7 @@ function DrawerContent(props) {
                         <S.DrawerItem
                             // icon={() => FlaskSvgIcon}
                             label="Testing View"
-                            onPress={() => RootNavigation.navigate('TestingScreenStack')}
+                            onPress={() => RootNavigation.navigate('Testing Screen')}
                             activeTintColor="#65eab9"
                             inactiveTintColor="papayawhip"
                             activeBackgroundColor="darkblue"
@@ -57,7 +57,7 @@ function DrawerContent(props) {
                         <S.DrawerItem
                             // icon={() => FlaskSvgIcon}
                             label="Set Lockout (DTP)"
-                            onPress={() => RootNavigation.navigate('DateScreenStack')}
+                            onPress={() => RootNavigation.navigate('Date Screen')}
                             activeTintColor="#65eab9"
                             inactiveTintColor="papayawhip"
                             activeBackgroundColor="darkblue"
@@ -65,7 +65,7 @@ function DrawerContent(props) {
                         />
                         <S.DrawerItem
                             label="Set Lockout (JEH)"
-                            onPress={() => RootNavigation.navigate('DurationScreenStack')}
+                            onPress={() => RootNavigation.navigate('Duration Screen')}
                             activeTintColor="#65eab9"
                             inactiveTintColor="papayawhip"
                             activeBackgroundColor="darkblue"
@@ -73,7 +73,7 @@ function DrawerContent(props) {
                         />
                         <S.DrawerItem
                             label="Settings"
-                            onPress={() => RootNavigation.navigate('SettingsScreenStack')}
+                            onPress={() => RootNavigation.navigate('Settings Screen')}
                             activeTintColor="#65eab9"
                             inactiveTintColor="papayawhip"
                             activeBackgroundColor="darkblue"
