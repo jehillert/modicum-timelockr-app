@@ -1,7 +1,7 @@
 #!/bin/zsh
 # * out-of-date source repos which you can update with `pod repo update` or with `pod install --repo-update`.
 # CONFIGURATION
-PACKAGE_MANAGER="yarn"
+PACKAGE_MANAGER="npm"
 PROJECT_ROOT=$HOME/dev/dmg-provider
 CACHE_TO_DELETE=("haste-*" "metro-*" "yarn-*" "react-*")
 DERIVED_DATA_DIR=$HOME/Library/Developer/Xcode/DerivedData
@@ -70,15 +70,9 @@ say "Removing node_modules folder..."
 rm -rf node_modules
 sayDone
 
-if [[ $PACKAGE_MANAGER == "yarn" ]]; then
-  say "Deleting yarn-lock file..."
-  rm -f yarn-lock.json
-fi
-
-if [[ $PACKAGE_MANAGER == "npm" ]]; then
-  say "Deleting package-lock file..."
-  rm -f package-lock.json
-fi
+say "Deleting all lock files..."
+rm -f yarn-lock.json
+rm -f package-lock.json
 sayDone
 
 say "Removing pods folder..."
@@ -89,8 +83,13 @@ say "Removing Podfile.lock file..."
 cd ios && rm -f /Podfile.lock && cd ..
 sayDone
 
-say "Installing node modules..."
-$PACKAGE_MANAGER install
+say "Installing node modules with $PACKAGE_MANAGER..."
+if [[ $PACKAGE_MANAGER == "yarn" ]]; then
+  $PACKAGE_MANAGER install
+fi
+if [[ $PACKAGE_MANAGER == "npm" ]]; then
+  $PACKAGE_MANAGER install --force
+fi
 sayDone
 
 say "Cocoapod - Installing cocoapods pods..."
